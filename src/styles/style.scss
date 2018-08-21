@@ -1,0 +1,45 @@
+@import "variables";
+@import "popcart";
+
+
+.lazyload,
+.lazyloading {
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+img.lazyloaded {
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+@media #{$notDesktop} {
+    .only-desk{
+        display: none;
+    }
+}
+
+.only-sim{
+    display: none;
+
+    @media #{$mobile} {
+        display: block;
+    }
+}
+
+
+.page-braderie{
+    color:$color-black;
+
+    a{
+        text-decoration: none;
+        color:inherit;
+    }
+
+    span{
+        font-family: ARS, sans-serif;
+    }
+}
+
+
+@import "push-prod"

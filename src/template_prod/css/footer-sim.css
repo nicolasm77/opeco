@@ -1,0 +1,262 @@
+/*footer*/
+footer{background:#fff}
+footer div{text-align:center}
+footer div a{display:inline-block;vertical-align:middle;text-decoration:none;font-size:0.5625em;color:#3b3b3b}
+footer div a svg{margin:0 auto 5px}
+footer div span{font-size:0.5625em;color:#3b3b3b;display:block}
+footer div:first-child{background:#f3f6fa;padding:10px 0;border-bottom:1px solid #dbdbdb}
+footer div:first-child a{padding:10px;margin:0 5%}
+footer div:first-child a svg{width:40px}
+footer div:nth-child(2),footer div:nth-child(3){display:block;width:50%;float:left;margin:20px 0;-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+footer div:nth-child(2) a,footer div:nth-child(3) a{padding:0 7%}
+footer div:nth-child(2) a svg,footer div:nth-child(3) a svg{height:17px}
+footer div:nth-child(3){border-left:1px solid #dbdbdb}
+footer div:nth-child(3) a{margin:0 5px}
+footer div:nth-child(4){clear:both;border-top:1px solid #dbdbdb;border-bottom: 1px solid #dbdbdb}
+footer div:nth-child(4) a{font-size:0.6875em;color:#808080;text-decoration:underline;padding:15px;margin:5px 0}
+/* ABO */
+#formNewsLetterFooter #emailEms-error, #emailSim-error, #formNewsLetterFooter .parsley-errors-list{display: none;}
+#newsletterSim.sim{background-color: #cfcfcf;width: 100%;}
+#newsletterSim.sim > div{display: block;margin: 0px auto;max-width: 1000px;padding: 20px 0px 5px;text-align: center;}
+#newsletterSim.sim > div p.allInfo{font: 300 16px/16px 'Open Sans',Arial,sans-serif;color: #333;text-align: center;text-transform: uppercase;display: block;width: 100%;padding: 0px;background-color: #cfcfcf;}
+#newsletterSim.sim > div p{font: 400 14px 'Open Sans',Arial,sans-serif;color: #333;text-align: center;display: block;width: 100%;padding: 0px;background-color: #cfcfcf;}
+#newsletterSim.sim > div form{width: 97%;margin: 15px auto 0px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: horizontal;-webkit-box-direction: normal;-ms-flex-flow: row nowrap;flex-flow: row nowrap;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;}
+#newsletterSim.sim > div form input[type="email"]{width: 100%;height: 36px;background-color: #FFF;border:1px solid #a6a6a6;border-radius: 5px;margin: 0px 10px 0px 0px;font: 400 15px 'Open Sans',Arial,sans-serif;color: #232323;text-indent: 15px;outline: none;display: inline-block;vertical-align: top;padding: 0px;-webkit-box-sizing: inherit;box-sizing: inherit;}
+#newsletterSim.sim > div form.news-error input[type="email"]{border:1px solid #b45258;}
+#newsletterSim.sim > div form input[type="submit"]{width: 65px;height: 38px;background-color: #ff5c00;border-radius: 5px;font: 400 15px 'Open Sans',Arial,sans-serif;color: #FFF;border: 0px;text-align: center;cursor: pointer;-webkit-transition: 0.5s all;-o-transition: 0.5s all;transition: 0.5s all;outline: none;display: inline-block;vertical-align: top;margin: 0px;padding: 0px;-webkit-box-sizing: inherit;box-sizing: inherit;}
+#newsletterSim.sim > div .ml-news{font: 600 9px 'Open Sans',Arial,sans-serif;color: #3b3b3b;text-align: center;display: block;max-width: 95%;margin: 10px auto 5px;}
+#newsletterSim.sim > div .ml-news a{color: #3b3b3b;text-decoration: underline;outline: none;}
+#newsletterSim.sim > div form #news-mail-error{display: none !important;}
+#newsletterSim.sim > div #news-info-sim{display: block;font:600 12px 'Open Sans',Arial,sans-serif;color: #333333;text-align: left;min-height: 15px;text-indent: 2px;padding-top: 2px;position: inherit;right: inherit;top: inherit;width: 97%;margin: 0 auto;}
+#newsletterSim.sim > div form.news-error + #news-info-sim{color: #b45258;}
+/* FOOTER */
+#detailsBvquestions { display: none }
+#bottom{background:url("../img/bottom.png") center center no-repeat #fff;font-size:0;height:66px;margin:auto;width:100%}
+.baroWebFooter {
+    display: none;
+    font-size: 18px;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color:#8A8A8A;
+    color: #FFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#bottomfooter {
+    margin-top: 20px;
+}
+#bottomfooter .top {
+    background: #0096b1;
+    overflow: hidden;
+    padding-bottom: 50px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+#bottomfooter .top h2 {
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: 400;
+    text-align: center;
+    padding: 15px 0px;
+}
+#bottomfooter .top a {
+    color: #FFFFFF;
+}
+#bottomfooter .top .services_footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    display: -webkit-flex;
+    width:100%;
+}
+#bottomfooter .top .services_footer a:first-child img{
+    width:55px;
+    height:auto;
+}
+#bottomfooter .top .services_footer a:nth-child(2) img{
+    width:45px;
+    height:auto;
+}
+#bottomfooter .top .services_footer a:nth-child(3) img{
+    width:52px;
+    height:auto;
+    padding-top:5px;
+}
+#bottomfooter .top .services_footer a:last-child img{
+    width:60px;
+    height:auto;
+    padding:10px 20px 0px 0px;
+}
+#bottomfooter .top .services_footer span {
+    display: inline-block;
+}
+#bottomfooter .top .services_footer span.footer-ico {
+    display: inline-block;
+    height:58px;
+}
+#bottomfooter .top .services_footer a {
+    text-decoration: none;
+    width: 25%;
+    text-align: center;
+}
+#bottomfooter .top .services_footer .desctitle {
+    font-size: 10px !important;
+    display: block;
+    padding-top: 5px;
+    color: #ffffff;
+    line-height: 1.2;
+}
+#bottomfooter .middle {
+    background-color: #ececec;
+    overflow: hidden;
+}
+#bottomfooter .middle h2 {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 400;
+    text-align: center;
+    padding: 15px 0px;
+}
+#bottomfooter .middle .services_footer {
+    padding-bottom: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+#bottomfooter .middle .services_footer .loca-ico {
+    margin-right: 15px;
+}
+#bottomfooter .middle .services_footer span.apps {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 90%;
+    margin:0 auto
+}
+#bottomfooter .middle .services_footer span.apps .desctitle {
+    margin-right: 5%;
+}
+#bottomfooter .middle .services_footer span.apps a {
+    max-width: 30%;
+}
+#bottomfooter .middle .services_footer a > span {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+#bottomfooter .middle .services_footer .desctitle {
+    font-size: 12px;
+    color: #333333;
+}
+#bottomfooter .middle .services_footer > a {
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+#bottomfooter .middle .services_footer .tiret {
+    content: "";
+    display: block;
+    margin:15px auto 20px;
+    height: 1px;
+    background-color: white;
+    width: 70%;
+    max-width: 450px;
+}
+#bottomfooter .esca {
+    display: table;
+    margin: 5px auto 10px;
+    max-width: 500px;
+}
+#bottomfooter .esca>div {
+    display: table-cell;
+    padding: 0 9px;
+    vertical-align: middle;
+}
+#bottomfooter .esca p {
+    color: #7d7d7d;
+    font-size: 12px;
+    line-height: 1.2;
+}
+#bottomfooter .bottom {
+    overflow: hidden;
+    text-align: center;
+}
+#bottomfooter .bottom:before,
+#bottomfooter .bottom:after {
+    content: "";
+    display: block;
+    margin:0 auto;
+    height: 1px;
+    background-color: #dadada;
+    width: 80%;
+    max-width: 500px;
+}
+#bottomfooter .bottom a {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20%;
+    text-align: center;
+    margin: 15px 0px;
+}
+#bottomfooter .bottom a svg {
+    margin: auto;
+}
+#bottomfooter .bottom-contact {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 15px;
+    background-color: #FFF;
+}
+#bottomfooter .bottom-contact a {
+    font-size: 12px !important;
+    width: 50%;
+    text-align: center;
+    text-decoration: none;
+    color: #7D7D7D;
+    margin-bottom: 15px;
+}
+#bottomfooter .logo-footer {
+    display: block;
+    margin: auto;
+    padding: 25px 0px;
+}
+@media screen and (max-width: 350px) {
+    #bottomfooter .middle .services_footer svg {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
