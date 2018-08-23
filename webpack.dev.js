@@ -12,7 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 
-
+console.log("DOSSIER3 == "+ process.env.INIT_CWD);
 
 /*
 *

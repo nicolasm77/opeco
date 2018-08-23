@@ -41,6 +41,7 @@
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.5",
 		"babel-preset-env": "^1.7.0",
+		"bubbles": "github:nicolasm77/bubbles",
 		"imagemin": "^5.3.1",
 		"imagemin-mozjpeg": "^7.0.0",
 		"imagemin-pngquant": "^5.1.0",
