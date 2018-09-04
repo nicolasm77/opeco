@@ -10,9 +10,10 @@ const path = require('path');
 //plugin webpack de génération de fichier HTML
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
 
 
-console.log("DOSSIER3 == "+ process.env.INIT_CWD);
+console.log("+++++++++++++++++++++++++++++++++DOSSIER3 == "+ path.normalize(relativePath));
 
 /*
 *
@@ -26,7 +27,7 @@ module.exports = function(env) {
 		devtool: 'eval-cheap-module-source-map',
 
 		//fichier principal : point d'entrée du projet. C'est ce fichier qui détermine le contenu du bundle généré.
-		entry: './src/index.js',
+		entry: relativePath + '/index.js',
 
 		//setup du serveur local avec live-reloading
 		devServer: {
@@ -34,7 +35,7 @@ module.exports = function(env) {
 
 			//défini le dossier racine du local.
 			//sert pour définir le chemin des fichiers non inclus via "entry"; par exemple les fichiers inclus via <img>, <script> ou <link> dans un template css (ces fichiers ne sont pas inclus dans le bundle)
-			contentBase: path.join(__dirname, "src"),
+			contentBase: path.join(__dirname, "_global"),
 		},
 
 		//objet qui sert à définir le loader utilisé pour chaque type de ressource
@@ -44,6 +45,13 @@ module.exports = function(env) {
 					test: /\.html$/,
 					use: [
 						{
+							//transforme les caractères spéciaux en entité HTML
+							loader: path.resolve(__dirname, '_global/loaders/requirepath.js'),
+							options : {
+								path : path.basename(relativePath)
+							}
+						},
+						{
 							loader: 'html-loader',
 							options: {
 								//executer les includes (${require()})
@@ -51,7 +59,7 @@ module.exports = function(env) {
 								//lui dire où regarder pour les fichiers à traiter
 								attrs: ['img:src', 'img:data-src'],
 								//indique le chemin de base des fichiers (images, css, ...) à utiliser en local
-								root: path.resolve(__dirname, 'src/template_prod')
+								root: path.resolve(__dirname, '_global/structure_site')
 							},
 						}
 					]
@@ -133,7 +141,7 @@ module.exports = function(env) {
 		plugins: [
 			//plugin de génération de fichier HTML (gère les includes HTML présent)
 			new HtmlWebpackPlugin({
-				template: (env.sim == "true")? './src/template_prod/template_sim.html' : './src/template_prod/template_desk.html',
+				template: (env.sim == "true")? './_global/structure_site/template_sim.html' : './_global/structure_site/template_desk.html',
 				inject: true
 			})
 		]

@@ -6,7 +6,8 @@
 	"scripts": {
 		"desk": "webpack-dev-server --config webpack.dev.js --mode development  --env.sim=false",
 		"sim": "webpack-dev-server --config webpack.dev.js --mode development --env.sim=true",
-		"mep": "webpack --config webpack.prod.js --mode production"
+		"mep": "webpack --config webpack.prod.js --mode production",
+		"test": ""
 	},
 	"keywords": [],
 	"author": "",
@@ -24,7 +25,7 @@
 		"jimp": "^0.2.28",
 		"lazysizes": "^4.0.4",
 		"mini-css-extract-plugin": "^0.4.0",
-		"node-sass": "^4.9.0",
+		"node-sass": "^4.9.3",
 		"optimize-css-assets-webpack-plugin": "^4.0.2",
 		"postcss-loader": "^2.1.5",
 		"purgecss-webpack-plugin": "^1.2.0",
@@ -42,11 +43,13 @@
 		"babel-loader": "^7.1.5",
 		"babel-preset-env": "^1.7.0",
 		"bubbles": "github:nicolasm77/bubbles",
+		"frameworkHUB": "github:nicolasm77/framework",
 		"imagemin": "^5.3.1",
 		"imagemin-mozjpeg": "^7.0.0",
 		"imagemin-pngquant": "^5.1.0",
-		"npm": "^6.1.0",
+		"npm": "^6.4.1",
 		"svg-url-loader": "^2.3.2",
-		"swiper": "^4.3.3"
+		"swiper": "^4.3.3",
+		"underscore-template-loader": "^1.0.0"
 	}
 }

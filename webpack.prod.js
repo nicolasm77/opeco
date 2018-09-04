@@ -11,8 +11,10 @@ const stagingPath = "/content/static/bcom/evenements/2018/07_braderie/test";
 //module Node.js pour la gestion des chemins d'accès au fichier
 const path = require('path');
 
+const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
+
 //répertoire de destination du "build"
-const buildPath = path.resolve(__dirname, 'dist');
+const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), 'dist');
 
 //module Node.js
 const glob = require('glob');
@@ -33,7 +35,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 
 //plugin pour supprimé la balise <head> créer par le HTML
-const RemoveHeadTag = require(path.resolve(__dirname, 'src/loaders/removeHeadTag.js'));
+const RemoveHeadTag = require(path.resolve(__dirname, '_global/loaders/removeHeadTag.js'));
 
 //plugin de mis en cache pour un build plus rapide
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
@@ -45,7 +47,8 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 // const WebpackFtpUpload = require('webpack-ftp-upload-plugin');
 
 //plugin de concaténation de fichiers CSS
-const whitelist = require(path.resolve(__dirname, "src/loaders/whitelist.js"));
+const whitelist = require(path.resolve(__dirname, "_global/loaders/whitelist.js"));
+
 
 /*
 *
@@ -58,7 +61,7 @@ module.exports = {
     devtool: 'source-map',
 
     //fichier principal : point d'entrée du projet. C'est ce fichier qui détermine le contenu du bundle généré.
-    entry: './src/index.js',
+    entry: relativePath + '/index.js',
 
     //défini le com et le chemin du fichier final (rataché à "entry")
     output: {
@@ -253,11 +256,11 @@ module.exports = {
                     },
                     {
                         //transforme les caractères spéciaux en entité HTML
-                        loader: path.resolve(__dirname, 'src/loaders/entities.js')
+                        loader: path.resolve(__dirname, '_global/loaders/entities.js')
                     },
                     {
                         //modifie les balise <img> pour le lazyload (mise en place du placeholder)
-                        loader: path.resolve(__dirname, 'src/loaders/src.js')
+                        loader: path.resolve(__dirname, '_global/loaders/src.js')
                     }
                 ]
             }
@@ -272,7 +275,7 @@ module.exports = {
 
         //plugin de génération de fichier HTML (gère les includes HTML présent)
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: relativePath + '/index.html',
             // Injecte le bundle à la fin du fichier (avant </body>)
             inject: "body"
         }),
@@ -288,7 +291,7 @@ module.exports = {
 
         //plugin de supression de CSS unitile
         new PurgecssPlugin({
-            paths: glob.sync(path.join(__dirname, 'src/index.html')),
+            paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
             whitelist : whitelist,
             whitelistPatterns : [
                 /^wl-/, // class ou id qui commence par "wl-"
