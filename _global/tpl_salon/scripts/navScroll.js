@@ -86,7 +86,7 @@ $j(function(){
 			var self = this;
 
 			var limitTop = $j('.press__root').offset().top;
-			var limitBottom = ($j('.archive__root').length)? $j('.archive__root').offset().top : $j('#footer').offset().top;
+			var limitBottom = ($j('.others__root').length)? $j('.others__root').offset().top : $j('#footer').offset().top;
 			var scroll = $j(window).scrollTop();
 			var navHeight = $j('.sidebar__nav').outerHeight();
 

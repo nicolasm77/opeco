@@ -143,6 +143,10 @@ module.exports = function(env) {
 			new HtmlWebpackPlugin({
 				template: (env.sim == "true")? './_global/structure_site/template_sim.html' : './_global/structure_site/template_desk.html',
 				inject: true
+			}),
+			new HtmlWebpackPlugin({
+				template: './_global/structure_site/autre.html',
+				inject: true
 			})
 		]
 	}

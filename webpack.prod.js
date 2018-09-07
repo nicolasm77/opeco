@@ -28,7 +28,7 @@ const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), '
 */
 
 //module Node.js
-const glob = require('glob');
+const glob = require('glob-all');
 
 //plugin de suppression de suppression de dossier/fichier
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -302,7 +302,11 @@ module.exports = {
 
         //plugin de supression de CSS unitile
         new PurgecssPlugin({
-            paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
+			//paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
+			paths: glob.sync([
+				path.join(process.env.INIT_CWD, '*.html'),
+				path.join(process.env.INIT_CWD, 'includes/*.html')
+			]),
             whitelist : whitelist,
             whitelistPatterns : [
                 /^wl-/, // class ou id qui commence par "wl-"

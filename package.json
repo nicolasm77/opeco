@@ -44,6 +44,7 @@
 		"babel-preset-env": "^1.7.0",
 		"bubbles": "github:nicolasm77/bubbles",
 		"frameworkHUB": "github:nicolasm77/framework",
+		"glob-all": "^3.1.0",
 		"imagemin": "^5.3.1",
 		"imagemin-mozjpeg": "^7.0.0",
 		"imagemin-pngquant": "^5.1.0",
