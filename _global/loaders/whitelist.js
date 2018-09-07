@@ -12,5 +12,13 @@ module.exports = [
     "lazyloaded",
     "swiper-button-disabled",
     "loading",
-    "sup"
+	"sup",
+	"active",
+	"actif",
+	"current",
+	"fixed",
+	"fixed-bottom",
+	"swiper-pagination-bullet",
+	"swiper-pagination-bullet-active",
+	"swiper-pagination-clickable"
 ]

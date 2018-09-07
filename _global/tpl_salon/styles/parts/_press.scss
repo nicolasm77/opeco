@@ -1,0 +1,160 @@
+.press{
+	&__root{
+		margin-top:60px;
+		position: relative;
+		padding-bottom:60px;
+	}
+
+	&__block-articles{
+		padding-left: 27%;
+	}
+
+	&__section{
+		position: relative;
+		z-index: 999;
+
+		& + &{
+			display: none;
+		}
+	}
+
+	&__article{
+		& + &{
+			margin-top:40px;
+			padding-top:32px;
+		}
+
+		p{
+			font-size:16px;
+			line-height: 24px;
+
+			& + p::before,
+			& + ul::before{
+				content:"\00a0";
+				display: block;
+			}
+
+			a{
+				color:$color-main;
+				text-decoration: underline;
+			}
+		}
+
+		ul {
+			font-size:16px;
+			line-height: 24px;
+
+			& + p::before,
+			& + ul::before{
+				content:"\00a0";
+				display: block;
+			}
+		}
+
+		li {
+			padding-left: 15px;
+			list-style: disc inside;
+		}
+
+		.embed-responsive{
+			margin-top:24px;
+			border-radius: 8px;
+		}
+	}
+
+	&__title{
+		font-family: $font-ars;
+		color:$color-main;
+		font-size:34px;
+		line-height: 41px;
+		margin-bottom:22px;
+	}
+
+	&__subtitle{
+		color:$color-grey;
+		font-size:18px;
+		font-weight: bold;
+		margin-top:-14px;
+		margin-bottom:22px;
+	}
+
+	&__button{
+		align-items: center;
+		justify-content: center;
+		display: table;
+		padding: 8px 13px;
+		margin: 24px auto 0;
+		overflow: hidden;
+		color: #ffffff;
+		font-size: 14px;
+		text-align: center;
+		text-decoration: none;
+		background: $color-main;
+		border: 1px solid $color-main;
+		border-radius: 3px;
+		transition: background-color 0.3s, color 0.3s;
+
+		@media #{$desktop}{
+			&:hover {
+				color: $color-main;
+				background: #ffffff;
+			}
+		}
+	}
+
+	&__illu{
+		display: block;
+		max-width: 100%;
+		border-radius: 8px;
+		margin-top:24px;
+	}
+}
+@media (max-width:800px){
+	.press__block-articles{
+		padding-left:0;
+	}
+}
+@media #{$small}{
+	.press{
+		&__root{
+			margin-top:42px;
+		}
+
+		&__article{
+			& + &{
+				margin-top:10px;
+				padding-top:42px;
+			}
+
+			p{
+				font-size:15px;
+				line-height: 21px;
+			}
+
+			ul {
+				font-size:15px;
+				line-height: 21px;
+			}
+
+			.embed-responsive{
+				margin-top:21px;
+			}
+		}
+
+		&__illu{
+			margin-top:20px;
+		}
+
+		&__title{
+			font-size:24px;
+			line-height: 36px;
+			margin-bottom:20px;
+		}
+
+		&__subtitle{
+			font-size:16px;
+			margin-top:-12px;
+			margin-bottom:20px;
+		}
+	}
+}

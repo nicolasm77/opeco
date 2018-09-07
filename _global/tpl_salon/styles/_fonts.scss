@@ -1,0 +1,185 @@
+/*---------------*\
+  $FONTS
+\*---------------*/
+/**
+ * ARS Light
+ * ARS Light Italic
+ * ARS Regular
+ * ARS Regular Italic
+ * ARS Medium
+ * ARS Medium Italic
+ * ARS Bold
+ * ARS Bold Italic
+ * ARS Black
+ * ARS Black Italic
+ */
+
+// ARS Light
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-Light-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-Light-subset.woff") format("woff");
+	font-style: normal;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-light {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 300;
+}
+
+// ARS Light Italic
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-LightItalic-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-LightItalic-subset.woff") format("woff");
+	font-style: italic;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-light-italic {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 300;
+}
+
+// ARS Regular
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-Regular-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-Regular-subset.woff") format("woff");
+	font-style: normal;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-regular {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+// ARS Regular Italic
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-Italic-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-Italic-subset.woff") format("woff");
+	font-style: italic;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-italic {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: italic;
+	font-weight: 400;
+}
+
+// ARS Medium
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-Medium-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-Medium-subset.woff") format("woff");
+	font-style: normal;
+	font-weight: 500;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-medium {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 500;
+}
+
+// ARS Medium Italic
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-MediumItalic-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-MediumItalic-subset.woff") format("woff");
+	font-style: italic;
+	font-weight: 500;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-medium-italic {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: italic;
+	font-weight: 500;
+}
+
+// ARS Bold
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-Bold-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-Bold-subset.woff") format("woff");
+	font-style: normal;
+	font-weight: 700;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-bold {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 700;
+}
+
+// ARS Bold Italic
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-BoldItalic-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-BoldItalic-subset.woff") format("woff");
+	font-style: italic;
+	font-weight: 700;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-bold-italic {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: italic;
+	font-weight: 700;
+}
+
+// ARS Black
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-Black-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-Black-subset.woff") format("woff");
+	font-style: normal;
+	font-weight: 800;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-black {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 800;
+}
+
+// ARS Black Italic
+@font-face {
+	font-family: "ARS";
+	src : url("../../../_global/fonts/ARS-BlackItalic-subset.woff2") format("woff2"),
+	url("../../../_global/fonts/ARS-BlackItalic-subset.woff") format("woff");
+	font-style: italic;
+	font-weight: 800;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ars-black-italic {
+	font-family: "ARS", Arial, sans-serif;
+	font-style: italic;
+	font-weight: 800;
+}

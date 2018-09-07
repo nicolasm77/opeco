@@ -1,6 +1,6 @@
 /*
 *
-*	Ajout des plugins necessaires
+*	Gestion des chemins
 *
 */
 
@@ -10,10 +10,10 @@ const path = require('path');
 //plugin webpack de génération de fichier HTML
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+//chemin de l'évenement en cours
 const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
 
 
-console.log("+++++++++++++++++++++++++++++++++DOSSIER3 == "+ path.normalize(relativePath));
 
 /*
 *
@@ -46,7 +46,7 @@ module.exports = function(env) {
 					use: [
 						{
 							//transforme les caractères spéciaux en entité HTML
-							loader: path.resolve(__dirname, '_global/loaders/requirepath.js'),
+							loader: path.resolve(__dirname, '_global/loaders/requirePath.js'),
 							options : {
 								path : path.basename(relativePath)
 							}

@@ -1,5 +1,24 @@
+/*
+*
+*	Gestion des chemins
+*
+*/
+
+//module Node.js pour la gestion des chemins d'accès au fichier
+const path = require('path');
+
+//chemin de l'évenement en cours
+const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
+
+//fichier de configuration de l'évenement
+const config = require(relativePath + '/webpack.config.js');
+const now = new Date();
+
 //chemin du dossier FTP
-const stagingPath = "/content/static/bcom/evenements/2018/07_braderie/test";
+const stagingPath = "/content/static/bcom/evenements/"+ ((config.fixedYearPath != "")? config.fixedYearPath : now.getFullYear()) +"/"+ ((config.fixedMonthPath != "")? config.fixedMonthPath : ((now.getMonth()+1 < 10)? "0"+(now.getMonth()+1) : (now.getMonth()+1) ) ) +"_"+path.basename(process.env.INIT_CWD);
+
+//répertoire de destination du "build"
+const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), 'dist');
 
 
 /*
@@ -7,14 +26,6 @@ const stagingPath = "/content/static/bcom/evenements/2018/07_braderie/test";
 *	Ajout des plugins necessaires
 *
 */
-
-//module Node.js pour la gestion des chemins d'accès au fichier
-const path = require('path');
-
-const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
-
-//répertoire de destination du "build"
-const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), 'dist');
 
 //module Node.js
 const glob = require('glob');
@@ -295,7 +306,8 @@ module.exports = {
             whitelist : whitelist,
             whitelistPatterns : [
                 /^wl-/, // class ou id qui commence par "wl-"
-                /^slider/ //class ou id qui commence par "slider"
+				/^slider/, //class ou id qui commence par "slider"
+				/^sidebar/
             ]
         }),
 
