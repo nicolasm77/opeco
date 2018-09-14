@@ -20,5 +20,10 @@ module.exports = [
 	"fixed-bottom",
 	"swiper-pagination-bullet",
 	"swiper-pagination-bullet-active",
-	"swiper-pagination-clickable"
+	"swiper-pagination-clickable",
+	"swiper-pagination" ,
+	"swiper-pagination-bullets",
+	"show",
+	"hide",
+	"hidden"
 ]

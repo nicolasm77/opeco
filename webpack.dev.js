@@ -7,13 +7,26 @@
 //module Node.js pour la gestion des chemins d'accès au fichier
 const path = require('path');
 
-//plugin webpack de génération de fichier HTML
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 //chemin de l'évenement en cours
 const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
 
+//fichier de configuration de l'évenement
+const config = require(relativePath + '/webpack.config.js');
 
+const glob = require('glob-all');
+
+const entries = require(path.resolve(__dirname, '_global/loaders/getJS.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.js')));
+const isSim = (process.env.npm_lifecycle_script.indexOf("--env.sim=true") > 0)? true : false;
+const htmls = require(path.resolve(__dirname, '_global/loaders/getDevHTML.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.html')), config.sameJSandCSS, isSim);
+
+/*
+*
+*	Ajout des plugins necessaires
+*
+*/
+
+//plugin webpack de génération de fichier HTML
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /*
 *
@@ -27,7 +40,7 @@ module.exports = function(env) {
 		devtool: 'eval-cheap-module-source-map',
 
 		//fichier principal : point d'entrée du projet. C'est ce fichier qui détermine le contenu du bundle généré.
-		entry: relativePath + '/index.js',
+		entry: entries,
 
 		//setup du serveur local avec live-reloading
 		devServer: {
@@ -42,30 +55,8 @@ module.exports = function(env) {
 		module: {
 			rules: [
 				{
-					test: /\.html$/,
-					use: [
-						{
-							//transforme les caractères spéciaux en entité HTML
-							loader: path.resolve(__dirname, '_global/loaders/requirePath.js'),
-							options : {
-								path : path.basename(relativePath)
-							}
-						},
-						{
-							loader: 'html-loader',
-							options: {
-								//executer les includes (${require()})
-								interpolate : true,
-								//lui dire où regarder pour les fichiers à traiter
-								attrs: ['img:src', 'img:data-src'],
-								//indique le chemin de base des fichiers (images, css, ...) à utiliser en local
-								root: path.resolve(__dirname, '_global/structure_site')
-							},
-						}
-					]
-				},
-				{
 					test: /\.(scss|css)$/,
+					exclude: /framework.min.css/,
 					use: [
 						{
 							//permet d'inclure le css dans une balise <style> afin de permettre le live-reloading du css
@@ -133,21 +124,36 @@ module.exports = function(env) {
 							options: {}
 						}
 					]
+				},
+				{
+					test: /\.html$/,
+					use: [
+						{
+							//transforme les caractères spéciaux en entité HTML
+							loader: path.resolve(__dirname, '_global/loaders/requireDevFiles.js'),
+							options : {
+								path : path.basename(relativePath)
+							}
+						},
+						{
+							loader: 'html-loader',
+							options: {
+								//executer les includes (${require()})
+								interpolate : true,
+								//lui dire où regarder pour les fichiers à traiter
+								attrs: ['img:src', 'img:data-src'],
+								//indique le chemin de base des fichiers (images, css, ...) à utiliser en local
+								root: path.resolve(__dirname, '_global/structure_site')
+							},
+						}
+					]
 				}
 			],
 		},
 
 		//objet qui sert à définir les plugins qui vont intervenir en fin de compilation afin de traiter les fichiers générés
-		plugins: [
-			//plugin de génération de fichier HTML (gère les includes HTML présent)
-			new HtmlWebpackPlugin({
-				template: (env.sim == "true")? './_global/structure_site/template_sim.html' : './_global/structure_site/template_desk.html',
-				inject: true
-			}),
-			new HtmlWebpackPlugin({
-				template: './_global/structure_site/autre.html',
-				inject: true
-			})
-		]
+		plugins: htmls.concat([
+
+		])
 	}
 };

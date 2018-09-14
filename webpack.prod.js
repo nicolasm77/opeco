@@ -30,6 +30,10 @@ const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), '
 //module Node.js
 const glob = require('glob-all');
 
+const entries = require(path.resolve(__dirname, '_global/loaders/getJS.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.js')));
+const htmls = require(path.resolve(__dirname, '_global/loaders/getHTML.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.html')), config.sameJSandCSS);
+
+
 //plugin de suppression de suppression de dossier/fichier
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -68,132 +72,123 @@ const whitelist = require(path.resolve(__dirname, "_global/loaders/whitelist.js"
 */
 
 module.exports = {
-    //defini comment sont générés les source-map (https://webpack.js.org/configuration/devtool/)
-    devtool: 'source-map',
+	//defini comment sont générés les source-map (https://webpack.js.org/configuration/devtool/)
+	devtool: 'source-map',
 
-    //fichier principal : point d'entrée du projet. C'est ce fichier qui détermine le contenu du bundle généré.
-    entry: relativePath + '/index.js',
+	//fichier principal : point d'entrée du projet. C'est ce fichier qui détermine le contenu du bundle généré.
+	entry: entries,
 
-    //défini le com et le chemin du fichier final (rataché à "entry")
-    output: {
-        filename: '[name].min.js',
-        path: buildPath,
-        publicPath : stagingPath
-    },
+	//défini le com et le chemin du fichier final (rataché à "entry")
+	output: {
+		filename: '[name].min.js',
+		path: buildPath,
+		publicPath : stagingPath
+	},
 
-    //objet qui sert à définir le loader utilisé pour chaque type de ressource
-    module: {
-        rules: [
-            {
-                //compile le js moderne (ES6) en js compréhensible par tout les navigateur
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                options: {
-                    presets: ['env']
-                }
-            },
-            {
-                test: /\.(scss|css|sass)$/,
-                use: [
-                    {
-                        //regroupe les fichiers CSS/SCSS
-                        loader: MiniCssExtractPlugin.loader
-                    },
-                    {
-                        //loader de base (j'ai pas trop compris ce qu'il fait mais il est nécéssaire)
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        // loader d'auto-préfix
-                        loader: "postcss-loader"
-                    },
-                    {
-                        //compile le Sass en CSS
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: true,
-                            sourceMapContents: true
-                        }
-                    }
-                ]
-            },
+	//objet qui sert à définir le loader utilisé pour chaque type de ressource
+	module: {
+		rules: [
 			{
-                test: /\.(png|jpg)$/,
-                //on sépare en 2 cas : les images lozaloaded et les autres
-                oneOf: [
-                    {
-                        resourceQuery: /lazy/,
-                        use: [
-                            {
-                                //création d'un placeholder pour chaque image
-                                loader: 'image-trace-loader',
-                                options : {
-                                    turdSize : 50000,
-                                    alphaMax:0.2,
-                                    color: "COLOR_TRANSPARENT"
-                                }
-                            },
-                            {
-                                //génère les fichiers + remplace le chemin par celui du fichier généré
-                                loader: 'file-loader',
-                                options: {
-                                    name: '[name].[ext]',
-                                    outputPath: 'assets/',
-                                    publicPath: stagingPath+"/assets"
-                                }
-                            },
-                            {
-                                //optimisation des images
-                                loader: 'img-loader',
-                                options: {
-                                    plugins: [
-                                        require('imagemin-mozjpeg')({
-                                            progressive: true,
-                                            arithmetic: false,
-                                            quality : 80
-                                        }),
-                                        require('imagemin-pngquant')({
-                                            floyd: 0.5
-                                        })
-                                    ]
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        use: [
-                            {
-                                //génère les fichiers + remplace le chemin par celui du fichier généré
-                                loader: 'file-loader',
-                                options: {
-                                    name: '[name].[ext]',
-                                    outputPath: 'assets/',
-                                    publicPath: stagingPath+"/assets"
-                                }
-                            },
-                            {
-                                //optimisation des images
-                                loader: 'img-loader',
-                                options: {
-                                    plugins: [
-                                        require('imagemin-mozjpeg')({
-                                            progressive: true,
-                                            arithmetic: false,
-                                            quality : 80
-                                        }),
-                                        require('imagemin-pngquant')({
-                                            floyd: 0.5
-                                        })
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                ]
+				//compile le js moderne (ES6) en js compréhensible par tout les navigateur
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				options: {
+					presets: ['env']
+				}
+			},
+			{
+				test: /\.(scss|css|sass)$/,
+				exclude: /framework.min.css/,
+				use: [
+					{
+						//regroupe les fichiers CSS/SCSS
+						loader: MiniCssExtractPlugin.loader
+					},
+					{
+						//loader de base (j'ai pas trop compris ce qu'il fait mais il est nécéssaire)
+						loader: "css-loader",
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						// loader d'auto-préfix
+						loader: "postcss-loader"
+					},
+					{
+						//compile le Sass en CSS
+						loader: "sass-loader",
+						options: {
+							sourceMap: true,
+							sourceMapContents: true
+						}
+					}
+				]
+			},
+			{
+				test: /\.(png|jpg)$/,
+				//création d'un placeholder pour chaque image lozaloaded
+				resourceQuery: /lazy/,
+				use: [
+					{
+						loader: 'image-trace-loader',
+						options : {
+							turdSize : 50000,
+							alphaMax:0.2,
+							color: "COLOR_TRANSPARENT"
+						}
+					}
+				]
+			},
+			{
+				test: /\.(png|jpg)$/,
+				//on sépare en 2 cas : les images lozaloaded et les autres
+				oneOf: [
+					{
+						resourceQuery: /noOptim/,
+						use: [
+							{
+								//génère les fichiers + remplace le chemin par celui du fichier généré
+								loader: 'file-loader',
+								options: {
+									name: '[name].[ext]',
+									outputPath: 'assets/',
+									publicPath: stagingPath+"/assets"
+								}
+							}
+						]
+					},
+					{
+						use: [
+							{
+								//génère les fichiers + remplace le chemin par celui du fichier généré
+								loader: 'file-loader',
+								options: {
+									name: '[name].[ext]',
+									outputPath: 'assets/',
+									publicPath: stagingPath+"/assets"
+								}
+							},
+							{
+								//optimisation des images
+								loader: 'img-loader',
+								options: {
+									plugins: [
+										require('imagemin-mozjpeg')({
+											progressive: true,
+											arithmetic: false,
+											quality : 80
+										}),
+										require('imagemin-pngquant')({
+											floyd: 0.5
+										})
+									]
+								}
+							}
+						]
+					}
+				]
 			},
 			{
 				test: /\.(gif)$/,
@@ -202,133 +197,127 @@ module.exports = {
 						//génère les fichiers + remplace le chemin par celui du fichier généré
 						loader: 'file-loader',
 						options: {
-                            name: '[name].[ext]',
-                            outputPath: 'assets/',
-                            publicPath: stagingPath+"/assets"
-                        }
+							name: '[name].[ext]',
+							outputPath: 'assets/',
+							publicPath: stagingPath+"/assets"
+						}
 					}
 				]
 			},
-            {
-                test: /\.(woff|woff2)$/,
-                use: [
-                    {
-                        //génère les fichiers + remplace le chemin par celui du fichier généré
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'fonts/',
-                            publicPath: stagingPath+"/fonts"
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.svg$/,
-                oneOf: [
-                    {
-                        resourceQuery: /inline/,
-                        use: {
-                            //inclus les svgs en inline (ses balises)
-                            loader: 'raw-loader',
-                        }
-                    },
-                    {
-                        use:[
-                            {
-                                //compile les fichiers en base64 si inférierur à 5ko, sinon le laisse tel quel
-                                loader: 'svg-url-loader',
-                                options: {
-                                    limit: 5000,
-                                    noquotes : true,
-                                    name: '[name].[ext]',
-                                    outputPath: 'assets/',
-                                    publicPath: stagingPath+"/assets"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            //lui dire où regarder pour les fichiers à traiter
-                            attrs: ['img:src', 'img:data-src', 'link:href'],
-                            //executer les includes (${require()})
-                            interpolate : true,
-                            minimize: true,
-                            //retirer les quotes pose problème avec les svg générés en base 64
-                            removeAttributeQuotes : false
-                        },
-                    },
-                    {
-                        //transforme les caractères spéciaux en entité HTML
-                        loader: path.resolve(__dirname, '_global/loaders/entities.js')
-                    },
-                    {
-                        //modifie les balise <img> pour le lazyload (mise en place du placeholder)
-                        loader: path.resolve(__dirname, '_global/loaders/src.js')
-                    }
-                ]
-            }
-        ]
-    },
+			{
+				test: /\.(woff|woff2)$/,
+				use: [
+					{
+						//génère les fichiers + remplace le chemin par celui du fichier généré
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]',
+							outputPath: 'fonts/',
+							publicPath: stagingPath+"/fonts"
+						}
+					}
+				]
+			},
+			{
+				test: /\.svg$/,
+				oneOf: [
+					{
+						resourceQuery: /inline/,
+						use: {
+							//inclus les svgs en inline (ses balises)
+							loader: 'raw-loader',
+						}
+					},
+					{
+						use:[
+							{
+								//compile les fichiers en base64 si inférierur à 5ko, sinon le laisse tel quel
+								loader: 'svg-url-loader',
+								options: {
+									limit: 5000,
+									noquotes : true,
+									name: '[name].[ext]',
+									outputPath: 'assets/',
+									publicPath: stagingPath+"/assets"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'html-loader',
+						options: {
+							//lui dire où regarder pour les fichiers à traiter
+							attrs: ['img:src', 'img:data-src', 'link:href'],
+							//executer les includes (${require()})
+							interpolate : true,
+							minimize: true,
+							//retirer les quotes pose problème avec les svg générés en base 64
+							removeAttributeQuotes : false
+						},
+					},
+					{
+						//transforme les caractères spéciaux en entité HTML
+						loader: path.resolve(__dirname, '_global/loaders/entities.js')
+					},
+					{
+						//modifie les balise <img> pour le lazyload (mise en place du placeholder)
+						loader: path.resolve(__dirname, '_global/loaders/src.js')
+					}
+				]
+			}
+		]
+	},
 
-    //objet qui sert à définir les plugins qui vont intervenir en fin de compilation afin de traiter et générer les fichiers
-    plugins: [
+	//objet qui sert à définir les plugins qui vont intervenir en fin de compilation afin de traiter et générer les fichiers
+	plugins: htmls.concat([
 
-        //plugin de mis en cache pour un build plus rapide
-        new HardSourceWebpackPlugin(),
+		//plugin de mis en cache pour un build plus rapide
+		new HardSourceWebpackPlugin(),
 
-        //plugin de génération de fichier HTML (gère les includes HTML présent)
-        new HtmlWebpackPlugin({
-            template: relativePath + '/index.html',
-            // Injecte le bundle à la fin du fichier (avant </body>)
-            inject: "body"
-        }),
+		//supprime totalement le dossier "dist" avant qu'il soit re-généré
+		new CleanWebpackPlugin(buildPath),
 
-        //supprime totalement le dossier "dist" avant qu'il soit re-généré
-        new CleanWebpackPlugin(buildPath),
+		//plugin de génération de fichier CSS
+		new MiniCssExtractPlugin({
+			filename: "css/[name].min.css",
+			publicPath : stagingPath+"/css"
+		}),
 
-        //plugin de génération de fichier CSS
-        new MiniCssExtractPlugin({
-            filename: "css/[name].min.css",
-            publicPath : stagingPath+"/css"
-        }),
-
-        //plugin de supression de CSS unitile
-        new PurgecssPlugin({
+		//plugin de supression de CSS unitile
+		new PurgecssPlugin({
 			//paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
 			paths: glob.sync([
 				path.join(process.env.INIT_CWD, '*.html'),
 				path.join(process.env.INIT_CWD, 'includes/*.html')
 			]),
-            whitelist : whitelist,
-            whitelistPatterns : [
-                /^wl-/, // class ou id qui commence par "wl-"
+			whitelist : whitelist,
+			whitelistPatterns : [
+				/^wl-/, //class ou id qui commence par "wl-"
 				/^slider/, //class ou id qui commence par "slider"
-				/^sidebar/
-            ]
-        }),
+				/^sidebar/,
+				/swiper-pagination/
+			]
+		}),
 
-        //plugin de minification du CSS
-        new OptimizeCssAssetsPlugin({
-            cssProcessor: require('cssnano'),
-            cssProcessorOptions: {
-                map: {
-                    inline: false
-                },
-                discardComments: {
-                    removeAll: true
-                }
-            }
-        }),
+		//plugin de minification du CSS
+		new OptimizeCssAssetsPlugin({
+			cssProcessor: require('cssnano'),
+			cssProcessorOptions: {
+				map: {
+					inline: false
+				},
+				discardComments: {
+					removeAll: true
+				}
+			}
+		}),
 
-        //supprime la balise <head> qui englobe les fichiers CSS
-        new RemoveHeadTag()
-    ]
+		//supprime la balise <head> qui englobe les fichiers CSS
+		new RemoveHeadTag()
+	])
 };
