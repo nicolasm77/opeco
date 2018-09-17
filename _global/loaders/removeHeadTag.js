@@ -1,4 +1,6 @@
-function removeHeadTag(){}
+/*jshint esversion: 6 */
+
+function removeHeadTag() {}
 
 removeHeadTag.prototype.apply = function (compiler) {
 	compiler.hooks.compilation.tap('removeHeadTag', (compilation) => {
@@ -9,10 +11,10 @@ removeHeadTag.prototype.apply = function (compiler) {
 				data.html = data.html.replace(new RegExp("https://www.boulanger.com/", "g"), "/");
 				data.html = data.html.replace(new RegExp("https://m.boulanger.com/", "g"), "/");
 
-				cb(null, data)
+				cb(null, data);
 			}
-		)
-	})
-}
+		);
+	});
+};
 
-module.exports = removeHeadTag
+module.exports = removeHeadTag;
