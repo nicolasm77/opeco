@@ -1,7 +1,7 @@
-# HUB Starter kit
+# OPECO Starter kit
 
 ## Présentation
-Ce starter kit à pour but de simplifier le développement de portail "événement" en automatisant certaines tâches et en fournissant un environement de développement local.
+Ce starter kit à pour but de regrouper tout les travaux développer par l'équipe et de les simplifier en automatisant certaines tâches et en fournissant un environement de développement local.
 Il est entièrement basé sur [webpack](https://webpack.js.org/).
 
 Liste des fonctionnalités :
@@ -23,7 +23,7 @@ Liste des fonctionnalités :
 
 Il possède 2 environnements local:
 * desktop
-* ~~sim~~
+* sim
 
 Chacun contenant le header, le footer et les fichers css présents sur ces 2 versions du site boulanger.com. Un *hot realoding* (rechargement de la page à chaque modifications de fichier inclus) est lancé automatiquement.
 
@@ -32,31 +32,54 @@ Chacun contenant le header, le footer et les fichers css présents sur ces 2 ver
 
 1. Récupération du repo
 ```
-git clone git://github.com/***/HUB.git
+git clone git@github.com:nicolasm77/opeco.git
 ```
-2. Setup Bubbles
+
+3. Vérifier que npm est à jour
 ```
-cd bubbles
-npm install
-npm run build
+npm install -g npm@latest
 ```
-3. Setup Framework
+
+4. Installation des dépendances
 ```
-cd ../framework
-npm install
-npm run build
-```
-4. Setup Starter
-```
-cd ../starter
+cd opeco
 npm install
 ```
 
-> Les étapes `npm install` sont assez longue à s'exécuter
+> Cette étape est longue à s'exécuter, mais elle n'est à faire qu'**une seule fois**.
+
+## Structure
+### _global
+#### fonts
+Dossier contenant les fichiers de la font _ARS_
+
+#### loaders
+Dossier contenant des scripts utilisé dans les configurations de webpack
+
+#### structure_site
+Dossier contenant
+
+#### tpl_****
+Dossiers contenants toutes sortes fichiers commun à un template
+
+### evenements
+Dossier contenant tout les travaux fait par l'équipe de devs marketing : portail, article vivre-mieux, page fidélité, BCBU, ...
+
+### templates
+Dossier contenant la base de chaque type de template. Ces dossiers sont à dupliquer lors de la création d'un évenement.
 
 ## Utilisation
 
+### Création d'un évenement
+Chercher le dossier souhaité dans `opeco/templates` et le copié-collé dans `opeco/evenements` puis le renomé.
+
 ### Commandes
+
+**Les commandes sont à exécuter dans le dossier de l'évenement utilisé. Par exemple :**
+```
+opeco/evenements/braderie
+```
+
 Le starter dispose de 3 commandes d'initialisation:
 
 1. Lancement du local *desktop*
@@ -75,14 +98,14 @@ Initialise un serveur local à l'adresse http://localhost:8080 avec hot reloadin
 ```
 npm run mep
 ```
-Génère un dossier `dist` contenant tous les fichiers traités, concaténés et optimisés : ce sont les fichiers à mettre directement sur le FTP.
+Génère un dossier `dist` contenant tous les fichiers traités, concaténés et optimisés : ce sont les fichiers à mettre **directement sur le FTP**.
 
 ### Inclure des fichiers JS et CSS
 Pour ajouter du CSS ou JS qui doit être concaténé, il faut importer le fichier dans `starter/src/index.js` de la manière suivante:
 
 ```js
-import bubbleCSS from "../../bubbles/dist/main.css";
-import bubbleAnim from "../../bubbles/dist/anims.js";
+import bubbleCSS from "bubbles/dist/main.css";
+import bubbleAnim from "bubbles/dist/anims.js";
 ```
 
 Le nom de l'import (*bubbleAnim*) n'est important que dans le cas d'un plugin JS, par exemple :
@@ -100,6 +123,10 @@ Les includes sont à placer dans le dossier `starter/src/includes` et insérés 
 ```js
 ${require('./includes/conv1.html')}
 ```
+> **Attention les urls sont relatives donc dans ce ficiher `conv1.html` les images ont comme chemin : `../images/entree_gam.jpg` par exemple.**
+
+### AJAX
+Il est parfois nécessaire de généré des fichiers HTML qui sont appelés en Ajax pour être inclu dans une page; pour faire cela, il faut mettre ces fichiers HTML dans la racine de l'évenement et mettre le préfixe `ajax-` dans leur nom (par exemple : `opeco/evenements/ajax-menu2.html`)
 
 ### CSS
 Le fichier de base est `starter/src/styles/style.scss`.
