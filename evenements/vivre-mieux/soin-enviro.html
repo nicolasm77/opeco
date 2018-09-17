@@ -1,0 +1,68 @@
+<div class="vm proche">
+	<link rel="stylesheet" href="https://www.boulanger.com/content/static/bcom/framework/css/framework.min.css">
+    <nav class="nav-sim__root">
+        <a href="/evenement/vivre-mieux" class="nav-sim__current">
+			<span class="nav-sim__prev">
+				<img src="./images/ui-prev.svg" width="18" alt="">
+			</span>
+			<span class="nav-sim__current-text">Je prends soin de mon environnement</span>
+        </a>
+	</nav>
+
+	<section class="header__root"></section>
+
+    <div class="nav-desk__root">
+        <ul class="nav-desk__list">
+            <li class="nav-desk__item">
+                <a class="nav-desk__link nav-desk__link--active" href="/evenement/vivre-mieux" title="Vivre mieux">Vivre Mieux</a>
+                <ul class="nav-desk__sub-list">
+                    <li>
+                        <a class="nav-desk__sub-link" href="/evenement/vivre-mieux-soin-de-moi" title="Je prends soin DE MOI">Je prends soin<br> <strong>DE MOI</strong></a>
+                    </li>
+                    <li>
+                        <a class="nav-desk__sub-link" href="/evenement/vivre-mieux-soin-des-proches" title="Je prends soin DE MES PROCHES">Je prends soin<br> <strong>DE MES PROCHES</strong></a>
+                    </li>
+                    <li>
+                        <a class="nav-desk__sub-link" href="/evenement/vivre-mieux-soin-environnement" title="Je prends soin de MON ENVIRONNEMENT">Je prends soin de<br> <strong>MON ENVIRONNEMENT</strong></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-desk__item">
+                <a class="nav-desk__link" href="/evenement/espace-beaute" title="Beaut&eacute; femme">Beaut&eacute; Femme</a>
+            </li>
+            <li class="nav-desk__item">
+                <a class="nav-desk__link" href="/evenement/beaute-homme" title="Beaut&eacute; homme">Beaut&eacute; Homme</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container-center">
+		<h1 class="header__title">
+			Je prends soin <strong>de mon environnement</strong>
+		</h1>
+
+		<section class="list__root categ--trend">
+			<h2 class="list__categ-title">
+				<span>Les articles tendances</span>
+			</h2>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<a href="/evenement/vivre-mieux-maison-saine" class="list__item categ--trend swiper-slide">
+						<div class="list__container-img">
+							<img class="list__img list__img--desk" src="./images/vignettes/maison-saine.jpg?noOptim" alt="Des astuces pour assainir l’air de la maison">
+						</div>
+						<h2 class="list__title">Des astuces pour assainir l’air de la maison</h2>
+					</a>
+					<a href="/evenement/earth-hour" class="list__item categ-- swiper-slide" data-categ="">
+						<div class="list__container-img">
+							<img class="list__img list__img--desk" src="./images/vignettes/earth-hour.jpg?noOptim" alt="Tous mobilisés pour la earth hour">
+						</div>
+						<h2 class="list__title">Tous mobilisés pour la earth hour</h2>
+					</a>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</section>
+
+		${require('./includes/bottom.html')}
+	</div>
+</div>
