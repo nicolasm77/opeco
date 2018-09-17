@@ -963,6 +963,7 @@ body {
 .enviro {
 	.header__root {
 		background-image: url(../images/header_enviro.jpg);
+		background-position: center right;
 
 		@media #{$notDesktop} {
 			background-image: url(../images/header_enviro-sim.jpg);
@@ -974,17 +975,17 @@ body {
 	&--test{
 		.list__categ-title,
 		.list__categ{
-			color:#56AF32;
+			color:#80a085;
 
 			&::before,
 			&::after{
-				background-color: #56AF32;
+				background-color: #80a085;
 			}
 		}
 
 		@media #{$desktop}{
 			.swiper-slide:hover .list__title{
-				color:#56AF32;
+				color:#80a085;
 			}
 		}
 	}
