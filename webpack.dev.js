@@ -1,8 +1,10 @@
+/*jshint esversion: 6 */
+
 /*
-*
-*	Gestion des chemins
-*
-*/
+ *
+ *	Gestion des chemins
+ *
+ */
 
 //module Node.js pour la gestion des chemins d'accès au fichier
 const path = require('path');
@@ -16,25 +18,25 @@ const config = require(relativePath + '/webpack.config.js');
 const glob = require('glob-all');
 
 const entries = require(path.resolve(__dirname, '_global/loaders/getJS.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.js')));
-const isSim = (process.env.npm_lifecycle_script.indexOf("--env.sim=true") > 0)? true : false;
+const isSim = (process.env.npm_lifecycle_script.indexOf("--env.sim=true") > 0) ? true : false;
 const htmls = require(path.resolve(__dirname, '_global/loaders/getDevHTML.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.html')), config.sameJSandCSS, isSim);
 
 /*
-*
-*	Ajout des plugins necessaires
-*
-*/
+ *
+ *	Ajout des plugins necessaires
+ *
+ */
 
 //plugin webpack de génération de fichier HTML
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /*
-*
-*	Configuration de Webpack
-*
-*/
+ *
+ *	Configuration de Webpack
+ *
+ */
 
-module.exports = function(env) {
+module.exports = function (env) {
 	return {
 		//defini comment sont générés les source-map (https://webpack.js.org/configuration/devtool/)
 		devtool: 'eval-cheap-module-source-map',
@@ -53,12 +55,10 @@ module.exports = function(env) {
 
 		//objet qui sert à définir le loader utilisé pour chaque type de ressource
 		module: {
-			rules: [
-				{
+			rules: [{
 					test: /\.(scss|css)$/,
 					exclude: /framework.min.css/,
-					use: [
-						{
+					use: [{
 							//permet d'inclure le css dans une balise <style> afin de permettre le live-reloading du css
 							loader: "style-loader",
 							options: {
@@ -86,8 +86,7 @@ module.exports = function(env) {
 				{
 					test: /\.svg$/,
 					//on sépare en 2 cas : les svgs inline et ceux dans les src des balises <img>
-					oneOf: [
-						{
+					oneOf: [{
 							resourceQuery: /inline/,
 							use: {
 								//inclus les svgs en inline (ses balises)
@@ -95,51 +94,44 @@ module.exports = function(env) {
 							}
 						},
 						{
-							use: [
-								{
-									//génère les fichiers + remplace le chemin par celui du fichier généré
-									loader: 'file-loader',
-									options: {}
-								}
-							]
+							use: [{
+								//génère les fichiers + remplace le chemin par celui du fichier généré
+								loader: 'file-loader',
+								options: {}
+							}]
 						}
 					]
 				},
 				{
 					test: /\.(png|jpg|gif)$/,
-					use: [
-						{
-							//génère les fichiers + remplace le chemin par celui du fichier généré
-							loader: 'file-loader',
-							options: {}
-						}
-					]
+					use: [{
+						//génère les fichiers + remplace le chemin par celui du fichier généré
+						loader: 'file-loader',
+						options: {}
+					}]
 				},
 				{
 					test: /\.(woff|woff2)$/,
-					use: [
-						{
-							//génère les fichiers + remplace le chemin par celui du fichier généré
-							loader: 'file-loader',
-							options: {}
-						}
-					]
+					use: [{
+						//génère les fichiers + remplace le chemin par celui du fichier généré
+						loader: 'file-loader',
+						options: {}
+					}]
 				},
 				{
 					test: /\.html$/,
-					use: [
-						{
+					use: [{
 							//transforme les caractères spéciaux en entité HTML
 							loader: path.resolve(__dirname, '_global/loaders/requireDevFiles.js'),
-							options : {
-								path : path.basename(relativePath)
+							options: {
+								path: path.basename(relativePath)
 							}
 						},
 						{
 							loader: 'html-loader',
 							options: {
 								//executer les includes (${require()})
-								interpolate : true,
+								interpolate: true,
 								//lui dire où regarder pour les fichiers à traiter
 								attrs: ['img:src', 'img:data-src'],
 								//indique le chemin de base des fichiers (images, css, ...) à utiliser en local
