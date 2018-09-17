@@ -23,7 +23,7 @@ module.exports = function (relative, files, same, isSim) {
 
 			options.template = file;
 			options.filename = path.basename(file);
-			options.inject = true;
+			options.inject = false;
 
 			templates.push(new HtmlWebpackPlugin(options));
 
