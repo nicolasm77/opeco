@@ -34,6 +34,12 @@ $j(function(){
 				prevEl: '.header__arrow--prev',
 			}
 		});
+
+		$j(window).on("load", function(){
+			$j(".swiper-container").each(function(){
+				this.swiper.update()
+			})
+		})
 	}
 
 	$j(".totop__btn").on("click", function(){

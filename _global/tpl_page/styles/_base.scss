@@ -1,0 +1,55 @@
+.container-center{
+    max-width: 1030px;
+    margin:0 auto;
+    padding-left: 15px;
+	padding-right:15px;
+
+	&--nopadding{
+		max-width: 1000px;
+		padding-left:0;
+		padding-right:0;
+	}
+}
+
+.lazyload,
+.lazyloading {
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+img.lazyloaded {
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.page-evenement{
+	color:$color-black;
+	font-family: Arial, sans-serif;
+	line-height: normal;
+	line-height: initial;
+}
+
+.embed-responsive {
+	position: relative;
+	display: block;
+	height: 0;
+	padding: 0;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+
+	&-item,
+	embed,
+	iframe,
+	object,
+	video {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+}
+
+
