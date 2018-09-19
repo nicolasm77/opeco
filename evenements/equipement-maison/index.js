@@ -9,7 +9,10 @@ import style from "./styles/style.scss";
 
 /*! XITI */
 import xiti from "../../_global/scripts/data-xiti.js";
+import jquerycolor from "./scripts/jquery.color.js";
 import onload from "./scripts/onload.js";
+
+style, xiti, jquerycolor, onload;
 
 /*! Lazyload */
 import lazy from "lazysizes";

@@ -1,29 +1,59 @@
-function cleanHasTag(a) {
+function BcleanHasTag(a) {
 	return a.split("#")[1];
 }
-
-function changeURL(e) {
+function Binject(a) {
+	var url = "ajax-" + a + ".html";
+	if ($j('.b-content')[0] === undefined) {
+		$j('.page-evenement').append('<div class="b-content"></div>');
+	}
+	$j.ajax({
+		url: url,
+		success: function (data) {
+			var $el, leftPos, newWidth, $magicLine = $j(".b-underline");
+			$j('.b-content').html(data);
+			$j('.page-evenement a.selected').removeClass('selected');
+			$j('a[href=#' + a + ']').addClass('selected');
+			/*
+			$magicLine.width($j(".selected").parent().width())
+			.css("left", $j(".selected").position().left)
+			.data("origLeft", $magicLine.position().left)
+			.data("origWidth", $magicLine.width())
+			.data("origColor", $j(".selected").attr("rel"));
+			$j(".b-nav__list a").hover(function() {
+				$el = $j(this);
+				leftPos = $el.position().left;
+				newWidth = $el.width();
+				$magicLine.stop().animate({
+					left: leftPos,
+					width: newWidth,
+					backgroundColor: $el.attr("rel")
+				});
+			}, function() {
+				$magicLine.stop().animate({
+					left: $magicLine.data("origLeft"),
+					width: $magicLine.data("origWidth"),
+					backgroundColor: $magicLine.data("origColor")
+				});
+			});
+			$j(".b-nav__list a.selected").trigger('mouseover');
+			*/
+		}
+	});
+}
+function BchangeURL() {
 	var hashTag = window.location.hash;
 	if (hashTag) {
-		var a = hashTag;
-		if (cleanHasTag(a) === "cuisine" || cleanHasTag(a) === "linge-maison") {
-			var url = "/ajax-" + cleanHasTag(a) + ".html";
-			$j.ajax({
-				url: url,
-				success: function (data) {
-					$j('.b-content').html(data);
-				}
-			});
+		if (BcleanHasTag(hashTag) === "cuisine" || BcleanHasTag(hashTag) === "linge-maison") {
+			Binject(BcleanHasTag(hashTag));
 		}
 	} else {
-		// Fragment doesn't exist
+		Binject('cuisine');
 	}
 }
-
-$j(window).on('hashchange', function (e) {
-	changeURL(e);
+$j(window).on('hashchange', function () {
+	BchangeURL();
 });
-
 $j(function () {
-	$j('.page-evenement').append('<div class="b-content"></div>');
-}) //.trigger('hashchange');
+	$j(".b-nav__list").append("<span class='b-underline'></span>");
+	BchangeURL();
+}).trigger('hashchange');
