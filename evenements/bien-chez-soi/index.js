@@ -20,3 +20,9 @@ window.lazySizesConfig.expand = 350;
 
 //js des push produits
 import pushProds from "../../_global/tpl_portail/scripts/managePushProds.js";
+
+$j(function(){
+	setTimeout(function(){
+		$j('.articles__root .hub-row').scrollLeft($j(this).width()/1.6);
+	}, 1000);
+});
