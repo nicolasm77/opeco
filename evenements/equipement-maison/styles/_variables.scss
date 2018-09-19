@@ -1,11 +1,27 @@
+/* COLORS */
 $color-black: #000000;
 $color-white: #ffffff;
+$color-grey: #3b3b3b;
+$color-greylighter: #f5f5f5;
 $color-orange: #ff5c00;
-$color-nav-background: #f5f5f5;
-$color-nav-links: #000000;
-$color-nav-links-hover: #ef715e;
+$color-saumon: #ef715e;
+$color-blue: #0096b1;
+$color-marine: #107799;
+
+/* NAV */
+$nav-background: $color-greylighter;
+$nav-links-color: #000000;
+$nav-link1-color: $color-saumon;
+$nav-link2-color: $color-marine;
+
+/* BREAKPOINTS */
 $desktop: "(min-width: 1000px)";
 $notDesktop: "(max-width: 999px)";
 $mobile: "(max-width: 640px)";
 $notMobile: "(min-width: 641px)";
+$tablet: $notMobile "and" $notDesktop;
 $small: "(max-width: 450px)";
+
+/* FONTS */
+$fontfamily: "ARS", Arial, Helvetica, sans-serif;
+$arial: "Arial", Helvetica, sans-serif;
