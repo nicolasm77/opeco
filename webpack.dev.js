@@ -121,10 +121,11 @@ module.exports = function (env) {
 				{
 					test: /\.html$/,
 					use: [{
-							//transforme les caractères spéciaux en entité HTML
+							//
 							loader: path.resolve(__dirname, '_global/loaders/requireDevFiles.js'),
 							options: {
-								path: path.basename(relativePath)
+								path: path.basename(relativePath),
+								isVMarticle : config.isVMarticle
 							}
 						},
 						{

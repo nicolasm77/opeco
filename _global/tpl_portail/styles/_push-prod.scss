@@ -36,7 +36,7 @@
 
         .swiper-button-next {
             right: -42px;
-            background-image: url("../images/arrow-right.svg");
+            background-image: url("../../../_global/tpl_portail/images/arrow-right.svg");
 
             &:hover{
                 background-position: center right;
@@ -45,7 +45,7 @@
 
         .swiper-button-prev {
             left: -42px;
-            background-image: url("../images/arrow-left.svg");
+            background-image: url("../../../_global/tpl_portail/images/arrow-left.svg");
 
             &:hover{
                 background-position: center left;
@@ -329,13 +329,13 @@
             display: block;
             width: 44px;
             height: 100%;
-            background-image: url("../images/icon-cart.svg");
+            background-image: url("../../../_global/tpl_portail/images/icon-cart.svg");
             background-repeat: no-repeat;
             background-position: calc(50% - 1px) 50%;
             background-size: 50%;
 
             &.loading {
-                background-image: url("../images/loader-product_white.svg");
+                background-image: url("../../../_global/tpl_portail/images/loader-product_white.svg");
                 background-size: 100px 100px;
             }
         }

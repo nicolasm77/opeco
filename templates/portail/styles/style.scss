@@ -1,5 +1,5 @@
 @import "variables";
-@import "popcart";
+@import "../../../_global/tpl_portail/styles/popcart";
 
 
 .lazyload,
@@ -28,7 +28,7 @@ img.lazyloaded {
 }
 
 
-.page-braderie{
+.page-porail{
     color:$color-black;
 
     a{
@@ -42,4 +42,4 @@ img.lazyloaded {
 }
 
 
-@import "push-prod"
+@import "../../../_global/tpl_portail/styles/push-prod"
