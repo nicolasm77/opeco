@@ -1,7 +1,7 @@
 # OPECO Starter kit
 
 ## Présentation
-Ce starter kit à pour but de regrouper tout les travaux développer par l'équipe et de les simplifier en automatisant certaines tâches et en fournissant un environement de développement local.
+Ce starter kit à pour but de regrouper **tous les travaux** développer par l'équipe et de les simplifier en automatisant certaines tâches et en fournissant un environement de développement local.
 Il est entièrement basé sur [webpack](https://webpack.js.org/).
 
 Liste des fonctionnalités :
@@ -124,6 +124,8 @@ Les includes sont à placer dans le dossier `starter/src/includes` et insérés 
 ${require('./includes/conv1.html')}
 ```
 > **Attention les urls sont relatives donc dans ce ficiher `conv1.html` les images ont comme chemin : `../images/entree_gam.jpg` par exemple.**
+
+> Expliquer le cas avec plusieur HTML + config par evenement
 
 ### AJAX
 Il est parfois nécessaire de généré des fichiers HTML qui sont appelés en Ajax pour être inclu dans une page; pour faire cela, il faut mettre ces fichiers HTML dans la racine de l'évenement et mettre le préfixe `ajax-` dans leur nom (par exemple : `opeco/evenements/ajax-menu2.html`)

@@ -261,7 +261,7 @@ module.exports = {
 	plugins: htmls.concat([
 
 		//plugin de mis en cache pour un build plus rapide
-		// new HardSourceWebpackPlugin(),
+		new HardSourceWebpackPlugin(),
 
 		//supprime totalement le dossier "dist" avant qu'il soit re-généré
 		new CleanWebpackPlugin(buildPath),
@@ -284,6 +284,7 @@ module.exports = {
 				/^wl-/, //class ou id qui commence par "wl-"
 				/^slider/, //class ou id qui commence par "slider"
 				/^sidebar/,
+				/^popcart/,
 				/swiper-pagination/
 			]
 		}),
