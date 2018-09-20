@@ -583,9 +583,11 @@
   margin-top: 78px;
   margin-right: 0;
 }
-.bloc26 {
+.bloc26.service.flex {
+  padding: 30px 28px;
   margin-top: 105px;
   margin-left: 50px;
+  ;
 }
 .title2 {
   margin-top: 240px;
@@ -594,4 +596,22 @@
 .title3 {
   margin-top: 155px;
   margin-bottom: 125px;
+}
+
+.service {
+  @include radius-all;
+}
+.bloc1 {
+  @media #{$notMobile} {
+  	@include radius-right;
+  }
+  @media #{$mobile} {
+  }
+}
+.bloc10 {
+  @media #{$notMobile} {
+  	@include radius-bottom;
+  }
+  @media #{$mobile} {
+  }
 }

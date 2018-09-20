@@ -7,3 +7,25 @@
 @mixin shadow {
   box-shadow: 6px 6px 20px 1px rgba(0, 0, 0, 0.1);
 }
+
+
+
+@mixin radius-top {
+  border-top-right-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+}
+@mixin radius-bottom {
+  border-bottom-right-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+@mixin radius-left {
+  border-bottom-left-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+}
+@mixin radius-right {
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+@mixin radius-all {
+  @include radius-bottom;@include radius-top;
+}
