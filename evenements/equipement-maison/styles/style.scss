@@ -1,6 +1,5 @@
 @import "mixins";
 @import "variables";
-@import "mobile";
 @import "../../../_global/tpl_salon/styles/reset";
 @import "../../../_global/tpl_salon/styles/fonts";
 @import "../../../_global/tpl_salon/styles/base";
@@ -511,3 +510,9 @@
   margin-top: 155px;
   margin-bottom: 125px;
 }
+
+
+
+
+@import "desk";
+@import "mobile";
