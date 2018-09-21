@@ -13,7 +13,7 @@ function Binject(a) {
 			$j('.b-content').html(data);
 			$j('.page-evenement a.selected').removeClass('selected');
 			$j('a[href=#' + a + ']').addClass('selected');
-			/*
+
 			$magicLine.width($j(".selected").parent().width())
 			.css("left", $j(".selected").position().left)
 			.data("origLeft", $magicLine.position().left)
@@ -36,7 +36,7 @@ function Binject(a) {
 				});
 			});
 			$j(".b-nav__list a.selected").trigger('mouseover');
-			*/
+
 		}
 	});
 }
