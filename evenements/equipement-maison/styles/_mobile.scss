@@ -1,0 +1,50 @@
+/*
+
+// BREAKPOINTS
+
+$desktop: "(min-width: 1000px)";
+$notDesktop: "(max-width: 999px)";
+$mobile: "(max-width: 640px)";
+$notMobile: "(min-width: 641px)";
+$tablet: $notMobile "and" $notDesktop;
+$small: "(max-width: 450px)";
+
+*/
+.b-content{
+	max-width:1024px;
+	padding:0 12px;
+}
+.img-sim{
+	display: none;
+}
+
+.bloc.bloc6-2{
+	display: none;
+	margin: 50px 0 -20px 78px;
+}
+@media #{$notDesktop}{
+	.bloc.bloc1{
+		width: auto;
+		margin:0 auto;
+
+		img{
+			align-self: stretch;
+			object-fit: cover;
+		}
+	}
+
+	.bloc.service.bloc2-1{
+		display: none;
+	}
+	.bloc.bloc6-2{
+		display: flex;
+	}
+}
+@media #{$mobile}{
+	.img-desk{
+		display: none;
+	}
+	.img-sim{
+		display: block;
+	}
+}
