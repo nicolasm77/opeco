@@ -47,4 +47,19 @@ $small: "(max-width: 450px)";
 	.img-sim{
 		display: block;
 	}
+
+	.bloc.container2{
+		justify-content: flex-start;
+		flex-wrap:wrap;
+	}
+
+	.bloc.bloc3{
+		width: 100%;
+	}
+
+	.bloc.bloc4{
+		order: -1;
+		width: calc(100% - 72px);
+		margin-left: 0;
+	}
 }
