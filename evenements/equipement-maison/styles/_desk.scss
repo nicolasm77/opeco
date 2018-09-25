@@ -89,14 +89,35 @@
 }
 .bloc.bloc14{
 	width: 34.6%;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
 }
 .container4{
-	width: 59.3%;
+	width: 61.4%;
+	max-width:593px;
 	margin-left: 4%;
 	align-items: center;
 }
 .bloc.bloc15{
 	margin-left: 0;
+	padding: 8.5% 39% 6.5% 9%;
+
+	.flex.column{
+		padding-left:0;
+		text-align: left;
+	}
+
+	img.absolute {
+		top: auto;
+		width: 36.042%;
+		right: auto;
+		bottom: 50px;
+		left: 63%;
+		min-width: 170px;
+	}
 }
 .bloc.bloc16{
 	margin-left: 0;
