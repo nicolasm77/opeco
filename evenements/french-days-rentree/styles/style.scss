@@ -1,0 +1,461 @@
+@import "variables";
+@import "../../../_global/tpl_page/styles/reset";
+@import "../../../_global/tpl_page/styles/fonts";
+@import "../../../_global/tpl_page/styles/base";
+
+
+.header{
+	&__root{
+		background-color: $color-main;
+		color:$color-white;
+		text-align: center;
+		padding:7px 0 40px;
+	}
+
+	&__date{
+		font-size:12px;
+		margin-bottom: 20px;
+	}
+
+	&__title{
+		display: none;
+	}
+
+	&__back{
+		padding-bottom: percentage(382px/1900px);
+		height: 0;
+		min-height: 280px;
+		background-position: 50%;
+		background-size: cover;
+		background-image: url(../images/header_sept.png);
+	}
+}
+@media #{$mobile}{
+	.header{
+		&__root{
+			padding:7px 0 30px;
+		}
+
+		&__back{
+			background-image: url(../images/header_sept-sim.png);
+			padding-bottom: percentage(382px/650px);
+			min-height: 200px;
+		}
+	}
+}
+
+.intro{
+	&__root{
+		text-align: center;
+		padding:55px 0 60px;
+	}
+
+	&__limit{
+		font-size:20px;
+		font-family: $font-ars;
+	}
+
+	&__title{
+		font-size:29px;
+		line-height: 45px;
+		font-weight: 700;
+		font-family: $font-ars;
+	}
+}
+@media #{$mobile}{
+	.intro{
+		&__root{
+			padding:35px 0 40px;
+		}
+
+		&__limit{
+			font-size:18px;
+		}
+
+		&__title{
+			font-size:26px;
+			line-height: 40px;
+		}
+	}
+}
+@media #{$small}{
+	.intro{
+		&__root{
+			padding:25px 0 30px;
+		}
+
+		&__limit{
+			font-size:16px;
+		}
+
+		&__title{
+			font-size:21px;
+			line-height: 32px;
+		}
+	}
+}
+
+.prod{
+	&__root{
+		background-color: #F4F4F4;
+
+		& + &{
+			background-color: $color-white;
+
+			.prod__container{
+				flex-direction: row-reverse;
+			}
+		}
+	}
+
+	&__container{
+		display: flex;
+		align-items: center;
+
+		&::before{
+			content:"";
+			order:2;
+			flex-grow: 1;
+		}
+
+		&::after{
+			content:"";
+			order:4;
+			flex-grow: 1;
+		}
+	}
+
+	&__illu{
+		display: block;
+		max-width: 50%;
+		order:1;
+	}
+
+	&__content{
+		order:3;
+		color:inherit;
+		text-decoration: none;
+
+		@media #{$desktop}{
+			&:hover .prod__btn{
+				background-color:#242424;
+				color:$color-white;
+			}
+		}
+	}
+
+	&__name{
+		font-size:60px;
+		line-height: 55px;
+		font-weight: 700;
+		font-family: $font-ars;
+		margin-bottom: 30px;
+	}
+
+	&__btn{
+		display: inline-block;
+		font-weight: 500;
+		font-size:15px;
+		font-family: $font-ars;
+		padding: 10px 22px;
+		color:#242424;
+		border:1px solid #242424;
+		border-radius: 3px;
+		transition: color 0.3s, background-color 0.3s;
+	}
+
+	&__bottom{
+		padding:20px 0 55px;
+		text-align: center;
+	}
+
+	&__big-btn{
+		min-width: 31%;
+		display: inline-block;
+		text-decoration: none;
+		font-size:17px;
+		font-family: $font-ars;
+		padding: 16px 35px;
+		color:$color-white;
+		border:1px solid #ed374a;
+		background-color: #ed374a;
+		border-radius: 3px;
+		transition: color 0.3s, background-color 0.3s;
+
+		@media #{$desktop}{
+			&:hover{
+				background-color:$color-white;
+				color:#ed374a;
+			}
+		}
+	}
+}
+@media (max-width:1000px){
+	.prod{
+		&__name{
+			font-size:37px;
+			line-height: 42px;
+		}
+	}
+}
+@media #{$mobile}{
+	.prod{
+		&__root{
+			padding:15px 0;
+		}
+
+		&__name{
+			font-size:26px;
+			font-size: 5.6vw;
+			line-height: 32px;
+			margin-bottom: 24px;
+		}
+
+		&__btn{
+			font-size:14px;
+			padding: 8px 16px;
+		}
+
+		&__bottom{
+			padding:20px 0 40px;
+		}
+
+		&__big-btn{
+			font-size:16px;
+			padding: 12px 35px;
+		}
+	}
+}
+@media #{$small}{
+	.prod{
+		&__name{
+			font-size:18px;
+			font-size: 5.5vw;
+			line-height: 22px;
+			margin-bottom: 16px;
+		}
+
+		&__btn{
+			font-size:12px;
+			padding: 8px 14px;
+		}
+
+		&__bottom{
+			padding:30px 0 30px;
+		}
+
+		&__big-btn{
+			font-size:14px;
+			padding: 10px 35px;
+		}
+	}
+}
+
+.footer{
+	&__root{
+		color:$color-white;
+		background-color: $color-main;
+		padding: 50px 0;
+	}
+
+	&__title{
+		text-align: center;
+		font-size: 22px;
+		margin-bottom:50px;
+	}
+
+	&__container{
+		display: flex;
+	}
+
+	&__4x-block{
+		padding:0 20px;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__4x-subblock{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__4x-title{
+		text-align: center;
+		font-size:22px;
+		font-family: $font-ars;
+		width: 31%;
+		flex-shrink: 0;
+	}
+
+	&__4x-center{
+		margin:0 20px;
+	}
+
+	&__4x-picto{
+		display: block;
+		width:136px;
+		margin:0 auto;
+	}
+
+	&__4x-text{
+		font-size:17px;
+	}
+
+	&__4x-grow{
+		flex-grow: 1;
+	}
+
+	&__shop-block{
+		padding:0 20px;
+		width: 50%;
+		text-align: center;
+	}
+
+	&__shop-logo{
+		display: block;
+		max-width:216px;
+		margin:0 auto 5px;
+	}
+
+	&__shop-title{
+		font-size:28px;
+		font-family: $font-ars;
+		margin-bottom: 5px;
+	}
+
+	&__shop-text{
+		font-size:14px;
+		line-height: 30px;
+	}
+
+	&__btn{
+		display: inline-block;
+		font-weight: 500;
+		font-size:15px;
+		font-family: $font-ars;
+		padding: 10px 22px;
+		color:$color-white;
+		border:1px solid $color-white;
+		border-radius: 3px;
+		text-align: center;
+		text-decoration: none;
+		margin-top:20px;
+		transition: color 0.3s, background-color 0.3s;
+
+		@media #{$desktop}{
+			&:hover{
+				background-color:$color-white;
+				color:$color-main;
+			}
+		}
+	}
+}
+@media (max-width:1000px){
+	.footer{
+		&__container{
+			display: block;
+		}
+
+		&__4x-block{
+			width: 100%;
+			margin:0 auto;
+			max-width: 640px;
+			padding: 0;
+		}
+
+
+		&__4x-text{
+			width: 31%;
+			flex-shrink: 0;
+		}
+
+		&__shop-block{
+			width: 100%;
+			padding: 0;
+			margin-top:50px;
+			padding-top:50px;
+			border-top:1px solid $color-white;
+		}
+	}
+}
+@media #{$mobile}{
+	.footer{
+		&__container{
+			display: block;
+		}
+
+		&__title{
+			font-size: 20px;
+			margin-bottom:40px;
+		}
+
+		&__4x-block{
+			width: 100%;
+			margin:0 auto;
+			max-width: 640px;
+			padding: 0;
+		}
+
+		&__4x-text{
+			width: 31%;
+			flex-shrink: 0;
+		}
+
+		&__shop-title{
+			font-size:22px;
+		}
+
+		&__shop-text{
+			font-size:13px;
+			line-height: 26px;
+		}
+
+		&__btn{
+			font-size:14px;
+			padding: 9px 20px;
+		}
+	}
+}
+@media #{$small}{
+	.footer{
+		&__4x-title{
+			font-size: 14px;
+			width: 27%;
+		}
+
+		&__title{
+			font-size: 16px;
+			margin-bottom:20px;
+		}
+
+		&__4x-picto{
+			width: 96px;
+		}
+
+		&__4x-center{
+			margin:0 13px;
+		}
+
+		&__4x-text{
+			width: 27%;
+			font-size: 11px;
+		}
+
+		&__shop-title{
+			font-size:20px;
+		}
+
+		&__shop-text{
+			font-size:12px;
+			line-height: 24px;
+		}
+
+		&__btn{
+			font-size:13px;
+			padding: 8px 20px;
+		}
+	}
+}

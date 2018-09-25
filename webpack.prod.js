@@ -33,6 +33,7 @@ const glob = require('glob-all');
 const entries = require(path.resolve(__dirname, '_global/loaders/getJS.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.js')));
 const htmls = require(path.resolve(__dirname, '_global/loaders/getHTML.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.html')), config.sameJSandCSS);
 
+//console.log("***************************************************************************\n" + glob.sync(path.join(process.env.INIT_CWD, '**/*.woff')));
 
 //plugin de suppression de suppression de dossier/fichier
 const CleanWebpackPlugin = require('clean-webpack-plugin');
