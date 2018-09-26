@@ -221,7 +221,7 @@ module.exports = {
 							//compile les fichiers en base64 si inférierur à 5ko, sinon le laisse tel quel
 							loader: 'svg-url-loader',
 							options: {
-								limit: 5000,
+								limit: 1,
 								noquotes: true,
 								name: '[name].[ext]',
 								outputPath: 'assets/',

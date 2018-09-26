@@ -87,14 +87,14 @@ $small: "(max-width: 450px)";
 			align-items: stretch !important;
 		}
 
-		&.bloc6.service{
+		&.bloc6.service-sim-col{
 			margin: 50px 0 70px;
 			width: calc(50% - 30px);
 			max-width: 200px;
 			padding: 25px 10px 15px;
 		}
 
-		.bloc.service.row .h4 {
+		.bloc.service-sim-col.row .h4 {
 			margin-left: 0;
 			margin-top:15px;
 		}
@@ -122,11 +122,54 @@ $small: "(max-width: 450px)";
 			width: calc(100% + 24px);
 		}
 
-		&.service{
+		&.service-sim-col{
 			flex-direction: column;
 		}
-	}
 
+		&.bloc11{
+			margin-left: -12px;
+			margin-right:-12px;
+			width:calc(100% + 24px);
+
+			img{
+				width: 100%;
+			}
+		}
+
+		&.container5{
+			flex-wrap: wrap;
+		}
+
+		&.bloc14{
+			width:100%;
+			flex-direction: row;
+
+			img {
+				align-self: stretch;
+				object-fit: cover;
+				max-width: calc(100% - 217px);
+			}
+		}
+
+		&.container4{
+			width: 100%;
+			margin-left: 0;
+			margin-top:70px;
+		}
+
+		&.bloc15{
+			width: 100%;
+
+			img.absolute{
+				min-width: 0;
+			}
+		}
+
+		&.bloc16.service{
+			width:auto;
+			max-width: none;
+		}
+	}
 }
 @media #{$small}{
 	.b-content{
@@ -173,7 +216,8 @@ $small: "(max-width: 450px)";
 	}
 
 	.bloc.bloc1 img,
-	.bloc.bloc3 img{
+	.bloc.bloc3 img,
+	.bloc.bloc14 img{
 		max-height: 130px;
 		max-width: calc(100% - 120px);
 	}
@@ -193,18 +237,20 @@ $small: "(max-width: 450px)";
 		}
 	}
 
-	.bloc.bloc6.service{
+	.bloc.bloc6.service-sim-col{
 		margin: 30px 0 60px;
 		width: calc(50% - 15px);
+	}
+
+	.bloc.service.row {
+		.h4 {
+			font-size:10px;
+			line-height: 12px;
+		}
 
 		img{
 			max-height: 50px;
 		}
-	}
-
-	.bloc.service.row .h4 {
-		font-size:10px;
-		line-height: 12px;
 	}
 
 	.bloc .bloc.bloc7-1{
