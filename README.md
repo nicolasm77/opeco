@@ -13,7 +13,7 @@ Deux environnements locaux :
 Chacun contenant le header, le footer et les fichers CSS présents sur ces 2 versions du site boulanger.com. Un *hot reloading* (rechargement de la page à chaque modifications de fichier inclus) est lancé automatiquement.
 
 ### Liste des fonctionnalités
-* Compression du HTML
+* Minification HTML
 * Injection de fragments HTML
 * Réécriture des chemins de fichiers statiques (src To dist)
 * Encodage des caractères spéciaux en entités HTML
