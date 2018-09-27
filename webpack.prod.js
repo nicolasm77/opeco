@@ -15,11 +15,16 @@ const config = require(relativePath + '/webpack.config.js');
 const now = new Date();
 
 //chemin du dossier FTP
-const stagingPath = "/content/static/bcom/evenements/" + ((config.fixedYearPath != "") ? config.fixedYearPath : now.getFullYear()) + "/" + ((config.fixedMonthPath != "") ? config.fixedMonthPath : ((now.getMonth() + 1 < 10) ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1))) + "_" + path.basename(process.env.INIT_CWD);
+let stagingPath = "";
+if(path.dirname(path.dirname(relativePath)).split(path.sep).pop() == "vivre-mieux"){
+	stagingPath = "/static/bcom/desktop/evenements/2018/01_espace-beaute/asset/images/"+path.basename(process.env.INIT_CWD);
+}else{
+	stagingPath = "/content/static/bcom/evenements/" + ((config.fixedYearPath != "") ? config.fixedYearPath : now.getFullYear()) + "/" + ((config.fixedMonthPath != "") ? config.fixedMonthPath : ((now.getMonth() + 1 < 10) ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1))) + "_" + path.basename(process.env.INIT_CWD);
+}
+
 
 //répertoire de destination du "build"
 const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), 'dist');
-
 
 /*
  *
@@ -32,8 +37,6 @@ const glob = require('glob-all');
 
 const entries = require(path.resolve(__dirname, '_global/loaders/getJS.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.js')));
 const htmls = require(path.resolve(__dirname, '_global/loaders/getHTML.js'))(relativePath, glob.sync(path.join(process.env.INIT_CWD, '*.html')), config.sameJSandCSS);
-
-//console.log("***************************************************************************\n" + glob.sync(path.join(process.env.INIT_CWD, '**/*.woff')));
 
 //plugin de suppression de suppression de dossier/fichier
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -141,7 +144,8 @@ module.exports = {
 			{
 				test: /\.(png|jpg)$/,
 				//on sépare en 2 cas : les images lozaloaded et les autres
-				oneOf: [{
+				oneOf: [
+					{
 						resourceQuery: /noOptim/,
 						use: [{
 							//génère les fichiers + remplace le chemin par celui du fichier généré
@@ -209,11 +213,26 @@ module.exports = {
 			},
 			{
 				test: /\.svg$/,
-				oneOf: [{
+				oneOf: [
+					{
 						resourceQuery: /inline/,
 						use: {
 							//inclus les svgs en inline (ses balises)
 							loader: 'raw-loader',
+						}
+					},
+					{
+						resourceQuery: /compress/,
+						use: {
+							//inclus les svgs en inline (ses balises)
+							loader: 'svg-url-loader',
+							options: {
+								limit: 5000,
+								noquotes: true,
+								name: '[name].[ext]',
+								outputPath: 'assets/',
+								publicPath: stagingPath + "/assets"
+							}
 						}
 					},
 					{

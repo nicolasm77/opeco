@@ -1,5 +1,5 @@
 //fichiers pour le bulles
-import bubblecss from "bubbles/dist/main.css";
+import bubblecss from "bubbles/src/sass/bubble.scss";
 import bubbleCalcul from "bubbles/dist/main.js";
 import bubbleAnim from "bubbles/dist/anims.js";
 

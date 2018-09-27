@@ -10,7 +10,7 @@ module.exports = function (relative, files, same) {
 		let options = {};
 
 		options.template = relative + "/" + path.basename(file);
-		options.filename = path.basename(file);
+		options.filename = (path.dirname(path.dirname(relative)).split(path.sep).pop() == "vivre-mieux") ? relative.split(path.sep).pop()+".html" : path.basename(file);
 		options.inject = 'body';
 
 		if (path.basename(file).indexOf('ajax') !== -1) {

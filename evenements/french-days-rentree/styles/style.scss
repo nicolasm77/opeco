@@ -3,6 +3,24 @@
 @import "../../../_global/tpl_page/styles/fonts";
 @import "../../../_global/tpl_page/styles/base";
 
+@media #{$notDesktop} {
+    .only-desk{
+        display: none !important;
+    }
+}
+
+@media #{$mobile} {
+    .only-noSim{
+        display: none !important;
+    }
+}
+.only-sim{
+    display: none !important;
+
+    @media #{$mobile} {
+        display: block !important;
+	}
+}
 
 .header{
 	&__root{
@@ -465,6 +483,53 @@
 		&__btn{
 			font-size:13px;
 			padding: 8px 20px;
+		}
+	}
+}
+
+.ems{
+	&__root{
+		padding: 30px 0 40px;
+	}
+
+	&__container{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__block{
+		display: block;
+		width:calc(50% - 10px);
+	}
+
+	&__img{
+		display: block;
+		width: 100%;
+	}
+}
+@media #{$mobile}{
+	.ems{
+		&__root{
+			padding: 20px 0 15px;
+		}
+
+		&__container{
+			display: block;
+		}
+
+		&__block{
+			width:100%;
+
+			& + &{
+				margin-top:15px;
+			}
+		}
+	}
+}
+@media #{$small}{
+	.ems{
+		&__container{
+			margin:0 -15px;
 		}
 	}
 }
