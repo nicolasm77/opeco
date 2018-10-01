@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="63.987" height="58.174" viewBox="0 0 63.987 58.174">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #161615;
+      }
+    </style>
+  </defs>
+  <g id="Cuisine_-_Cuisson" data-name="Cuisine - Cuisson" transform="translate(31.993 29.087)">
+    <g id="Cuisine_-_Cuisson-2" data-name="Cuisine - Cuisson" transform="translate(-31.993 -29.087)">
+      <path id="Tracé_5463" data-name="Tracé 5463" class="cls-1" d="M45.935,3.982a17.808,17.808,0,0,0-2.146.131A17.956,17.956,0,0,0,20.811,4.2a18.1,18.1,0,0,0-8.405,35.081V56.174a2,2,0,0,0,2,2H39.337a2,2,0,0,0,0-4H16.405V37.764a2,2,0,0,0-1.548-1.948A14.1,14.1,0,0,1,20.986,8.3a1.987,1.987,0,0,0,1.791-.5,13.957,13.957,0,0,1,19.037-.1,2,2,0,0,0,1.7.5A14.1,14.1,0,0,1,49.1,35.815a2,2,0,0,0-1.548,1.948v18.41a2,2,0,0,0,4,0V39.281a18.111,18.111,0,0,0-5.619-35.3Z" transform="translate(0.026 0)"/>
+      <path id="Tracé_5464" data-name="Tracé 5464" class="cls-1" d="M29.572,46.421a2.665,2.665,0,1,0,2.664-2.677,2.665,2.665,0,0,0-2.664,2.677Z" transform="translate(0.026 0)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="43.972" height="39.996" viewBox="0 0 43.972 39.996">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #2b2e34;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Tracé_1395" data-name="Tracé 1395" class="cls-1" d="M175.123-51.653H219.1v-40H175.123Z" transform="translate(0 0)"/>
+    </clipPath>
+  </defs>
+  <g id="Groupe_4205" data-name="Groupe 4205" class="cls-2" transform="translate(-175.123 91.649)">
+    <g id="Groupe_4203" data-name="Groupe 4203" transform="translate(175.123 -91.65)">
+      <path id="Tracé_1393" data-name="Tracé 1393" class="cls-3" d="M12.83,1.113a12.474,12.474,0,0,0-1.475.089,12.345,12.345,0,0,0-15.8.061,12.422,12.422,0,0,0-1.917-.15A12.432,12.432,0,0,0-18.751,13.558a12.371,12.371,0,0,0,8.529,11.823V37a1.375,1.375,0,0,0,1.374,1.376H8.295a1.375,1.375,0,0,0,0-2.75H-7.472V24.338A1.375,1.375,0,0,0-8.536,23,9.631,9.631,0,0,1-16,13.558,9.679,9.679,0,0,1-6.36,3.863a9.825,9.825,0,0,1,2.038.217,1.365,1.365,0,0,0,1.231-.342A9.594,9.594,0,0,1,10,3.668a1.37,1.37,0,0,0,1.169.342A9.692,9.692,0,0,1,15.008,23a1.375,1.375,0,0,0-1.064,1.339V37a1.375,1.375,0,1,0,2.75,0V25.381A12.452,12.452,0,0,0,12.83,1.113" transform="translate(18.751 1.626)"/>
+    </g>
+    <g id="Groupe_4204" data-name="Groupe 4204" transform="translate(195.455 -61.574)">
+      <path id="Tracé_1394" data-name="Tracé 1394" class="cls-3" d="M0,.748a1.832,1.832,0,1,0,3.663,0A1.832,1.832,0,1,0,0,.748" transform="translate(0 1.093)"/>
+    </g>
+  </g>
+</svg>
