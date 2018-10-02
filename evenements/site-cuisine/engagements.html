@@ -3,6 +3,10 @@
 	${require('./includes/header.html')}
 
 	<nav class="menu__root container-center">
+		<div class="menu__sim">
+			${require("./images/burger.svg?inline")}
+			<span class="menu__sim-name">Engagements et services</span>
+		</div>
 		<ul class="menu__ul">
 			<li class="menu__li">
 				<a href="/presentation.html" class="menu__a">Présentation</a>
@@ -18,7 +22,8 @@
 
 	<div class="container-center">
 		<section class="engage__root">
-			<img src="./images/cuisine.jpg" alt="photo d'une cuisine boulanger" class="engage__illu">
+			<img src="./images/cuisine.jpg" alt="photo d'une cuisine boulanger" class="engage__illu lazyload only-noSim">
+			<img src="./images/cuisine-sim.jpg" alt="photo d'une cuisine boulanger" class="engage__illu lazyload only-sim">
 			<ul class="engage__list">
 				<li class="engage__item">
 					<img src="./images/icon-flag.svg" class="engage__picto">
@@ -28,7 +33,7 @@
 					</h2>
 					<p class="engage__text">
 						Des cuisines 100% made in France, <b>des garanties* de 25 ans sur les charnières et coulisses et de 7 ans sur les meubles.</b><br>
-						Vous avez dit French Touch ?
+						Vous avez dit French Touch&nbsp;?
 					</p>
 				</li>
 				<li class="engage__item">
@@ -38,7 +43,7 @@
 						des prix
 					</h2>
 					<p class="engage__text">
-						<b>Nous nous engageons à respecter votre budget !</b>
+						<b>Nous nous engageons à respecter votre budget&nbsp;!</b>
 					</p>
 				</li>
 				<li class="engage__item">

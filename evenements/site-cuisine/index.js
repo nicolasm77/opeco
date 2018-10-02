@@ -16,5 +16,8 @@ window.lazySizesConfig.expand = 350;
 
 
 $j(document).ready(function() {
-
+	$j(".menu__sim").on("click", function(){
+		$j(".menu__root").toggleClass("show");
+		$j(".menu__ul").slideToggle();
+	})
 });
