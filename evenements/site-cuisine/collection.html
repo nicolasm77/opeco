@@ -4,18 +4,22 @@
 
 	<nav class="menu__root container-center">
 		<div class="menu__sim">
-			${require("./images/burger.svg?inline")}
+			<div class="menu__burger">
+				<span class="menu__burger-line menu__burger-line1"></span>
+				<span class="menu__burger-line menu__burger-line2"></span>
+				<span class="menu__burger-line menu__burger-line3"></span>
+			</div>
 			<span class="menu__sim-name">Notre collection cuisine</span>
 		</div>
 		<ul class="menu__ul">
 			<li class="menu__li">
-				<a href="/presentation.html" class="menu__a">Présentation</a>
+				<a href="/presentation.html" class="menu__a" data-urlprod="/evenement/cuisine-equipee">Présentation</a>
 			</li>
 			<li class="menu__li">
-				<a href="/collection.html" class="menu__a actif">Notre collection cuisine</a>
+				<a href="/collection.html" class="menu__a actif" data-urlprod="/evenement/cuisine-equipee-inspirations">Notre collection cuisine</a>
 			</li>
 			<li class="menu__li">
-				<a href="/engagements.html" class="menu__a">Engagements et services</a>
+				<a href="/engagements.html" class="menu__a" data-urlprod="/evenement/cuisine-equipee-engagements">Engagements et services</a>
 			</li>
 		</ul>
 	</nav>
@@ -35,7 +39,7 @@
 		<section class="catalog__root">
 			<img src="./images/catalogue.jpg" class="catalog__illu only-noSim lazyload" alt="photos du catalogue des cuisines boulanger">
 			<img src="./images/catalogue-sim.jpg" class="catalog__illu only-sim lazyload" alt="photos du catalogue des cuisines boulanger">
-			<a href="" class="catalog__btn">Feuilletez le catalogue</a>
+			<a href="" class="catalog__btn" data-xiti="CuisinesBoulanger::CTA::Catalogue">Feuilletez le catalogue</a>
 		</section>
 	</div>
 </main>

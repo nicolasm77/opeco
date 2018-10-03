@@ -2,6 +2,7 @@
 
 module.exports = function (content) {
 
+	//transformation des balises <img> pour un lazyloading propre
     const imgs = content.match(new RegExp("<img([^>]*[^/])(lazyload)([^>]*[^/])>", "g"))
 
     if (imgs && imgs.length) {
@@ -17,6 +18,8 @@ module.exports = function (content) {
         });
 	}
 
+
+	//compression des SVGs dans src des <img> (pour exclure les SVGs dans les backgrounds CSS)
 	const svgs = content.match(new RegExp("<img([^>]*[^/])(\.svg)([^>]*[^/])>", "g"))
 
 	if (svgs && svgs.length) {
@@ -28,6 +31,21 @@ module.exports = function (content) {
 		let index = 0;
 		content = content.replace(new RegExp("<img([^>]*[^/])(\.svg)([^>]*[^/])>", "g"), function () {
 			return srcs2[index++];
+		});
+	}
+
+
+	const links = content.match(new RegExp("<a([^>]*[^/])(data-urlprod)([^>]*[^/])>", "g"))
+
+	if (links && links.length) {
+		const links2 = links.map(function (tag) {
+			return tag
+			.replace(new RegExp('href=\"(.*?)\"', "g"), 'href="' + tag.match(new RegExp("(?<=data-urlprod=\")(.*?)(?=\")", "g"))[0] + '"')
+		});
+
+		let index = 0;
+		content = content.replace(new RegExp("<a([^>]*[^/])(data-urlprod)([^>]*[^/])>", "g"), function () {
+			return links2[index++];
 		});
 	}
 

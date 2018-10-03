@@ -61,25 +61,29 @@
 	}
 
 	&__btn-all{
-		font-size: 12px;
+		display: none;
+		font-size: 13px;
 		font-weight: 700;
 		font-family: $font-ars;
 		background-color: $color-orange;
 		border:1px solid $color-orange;
 		color:$color-white;
-		transition:background-color 0.3s, color 0.3s;
-		padding:12px 28px;
-		display: inline-block;
+		transition:bottom 0.5s, opacity 0.3s;
+		padding:12px 20px;
 		text-decoration: none;
 		border-radius: 3px;
 		position: fixed;
-		bottom:20px;
+		z-index: 1000;
+		bottom:-50px;
+		opacity: 0;
+		text-align: center;
+		width: 315px;
+		left:50%;
+		margin-left:-157px;
 
-		@media #{$desktop}{
-			&:hover{
-				background-color: $color-white;
-				color:$color-orange;
-			}
+		&.fixed{
+			bottom:20px;
+			opacity: 1;
 		}
 	}
 }
@@ -93,6 +97,10 @@
 		&__text{
 			font-size: 13px;
 			line-height: 23px;
+		}
+
+		&__btn-all{
+			display: inline-block;
 		}
 	}
 }
@@ -111,6 +119,34 @@
 
 		&__btn{
 			padding:10px 20px;
+		}
+
+		&__btn-all{
+			padding:12px 10px;
+			width: 80%;
+			left:10%;
+			margin-left: 0;
+
+			&.fixed{
+				bottom:15px;
+			}
+		}
+	}
+}
+@media (max-width:380px){
+	.cuisine{
+		&__btn-all{
+			padding:10px 5px;
+			width: 80%;
+			left:10%;
+			font-size: 12px;
+		}
+	}
+}
+@media (max-width:322px){
+	.cuisine{
+		&__btn-all{
+			font-size: 11px;
 		}
 	}
 }
@@ -364,10 +400,21 @@
 		&__root{
 			margin-top:0;
 			position: absolute;
+			z-index: 1000;
 			top: 0;
 			left:0;
 			width: 100%;
-			background-color: $color-main;
+			background-color: rgba($color-main,0.83);
+
+			&.fixed {
+				position: fixed;
+			}
+
+			&.fixed-bottom {
+				position: absolute;
+				top: auto;
+				bottom: 0;
+			}
 		}
 
 		&__sim{
@@ -622,7 +669,7 @@
 			background-color: $color-white;
 		}
 
-		&:nth-child(even){
+		&--left{
 			padding-left:0;
 			padding-right:calc(50% + 13px);
 
@@ -648,6 +695,34 @@
 			.frise__num{
 				left:-3px;
 			}
+		}
+	}
+
+	&__space{
+		height: 200px;
+		transition:height 0.7s;
+		position: relative;
+
+		&::before,
+		&::after{
+			content:"";
+			position: absolute;
+			top:0;
+			background-color: $color-white;
+			height: 100%;
+			width: calc(50% - 13px);
+		}
+
+		&::after{
+			left: 0;
+		}
+
+		&::after{
+			left: calc(50% + 13px);
+		}
+
+		&.resize{
+			height: 0;
 		}
 	}
 
@@ -728,6 +803,17 @@
 			}
 		}
 
+		&__space{
+			&::before{
+				width: calc(100% - 22px);
+				left: 22px;
+			}
+
+			&::after{
+				display: none;
+			}
+		}
+
 		&__list{
 			&::before{
 				width:22px;
@@ -751,7 +837,7 @@
 				width:0;
 			}
 
-			&:nth-child(even){
+			&--left{
 				padding-right:0;
 				padding-left:22px;
 
@@ -791,7 +877,7 @@
 @media #{$small}{
 	.frise{
 		&__item{
-			&:nth-child(even){
+			&--left{
 				.frise__container-img{
 					padding-left: 10px;
 				}
@@ -839,7 +925,6 @@
 .metier{
 	&__root{
 		margin-top:120px;
-		padding-bottom:120px;
 
 		display: flex;
 		align-items: center;
@@ -874,7 +959,6 @@
 	.metier{
 		&__root{
 			margin-top:percentage(120px/640px);
-			padding-bottom:percentage(120px/640px);
 		}
 
 		&__content{
@@ -912,6 +996,25 @@
 		width: calc(50% - 20px);
 	}
 }
+@media #{$mobile}{
+	.bottom{
+		&__videos{
+			margin-top:50px;
+			display: block;
+		}
+
+		&__youtube{
+			max-width: 500px;
+			width: 100%;
+			margin: 0 auto;
+
+			& + &{
+				margin-top: 50px;
+			}
+		}
+	}
+}
+
 
 .quote{
 	&__root{
