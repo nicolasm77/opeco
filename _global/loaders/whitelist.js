@@ -27,5 +27,9 @@ module.exports = [
 	"swiper-pagination-bullets",
 	"show",
 	"hide",
-	"hidden"
+	"hidden",
+	"open",
+	"closed",
+	"frise__space",
+	"resize"
 ];

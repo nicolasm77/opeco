@@ -305,7 +305,8 @@ module.exports = {
 				/^slider/, //class ou id qui commence par "slider"
 				/^sidebar/,
 				/^popcart/,
-				/swiper-pagination/
+				/swiper-pagination/,
+				/^poi/
 			]
 		}),
 

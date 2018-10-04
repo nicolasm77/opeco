@@ -7,6 +7,8 @@ import { Distancer } from "./scripts/distancer.js";
 
 import magasins from "./scripts/magasins.js";
 
+import objectFitImages from 'object-fit-images';
+
 //tag XITI
 import xiti from "../../_global/scripts/data-xiti.js";
 
@@ -18,6 +20,8 @@ window.lazySizesConfig.expand = 350;
 
 
 $j(document).ready(function() {
+	objectFitImages();
+
 	$j(".menu__sim").on("click", function(){
 		$j(".menu__root").toggleClass("show");
 		$j(".menu__ul").slideToggle();
@@ -66,15 +70,20 @@ $j(document).ready(function() {
 
 			space.addClass("resize");
 		});
-	})
+	});
+
+	$j(".popin__overlay, .popin__close").on("click", function(){
+		$j(".popin__root").removeClass("open");
+	});
 });
 
 $j(window).on("load", function(){
+	$j(".popin__root").removeClass("closed")
 	$j.userposition = 0;
 	navigator.geolocation.getCurrentPosition(function(userposition){
 		let closest = {distance:100000000000000000, poi : false};
 		let nearby = [];
-		const radius = 10;
+		const radius = 100;
 		$j.each(magasins, function(i, poi){
 			let distancer = new Distancer();
 			distancer.setOrigin({
@@ -99,8 +108,33 @@ $j(window).on("load", function(){
 				nearby.push(poi);
 			}
 		});
-		console.log(closest)
-		console.log(nearby);
+
+		$j(".rdv-btn").attr("href", closest.poi.url);
+
+		if(nearby.length > 1){
+			$j(".rdv-btn").on("click", function(e){
+				e.preventDefault();
+				let html = "";
+
+				$j.each(nearby, function(i, obj){
+					html = html + `<li class="poi__item">
+						<p class="poi__name">
+							${obj.name}
+						</p>
+						<p class="poi__address">
+							${obj.address}
+						</p>
+						<p class="poi__bottom">
+							<a class="cuisine__btn" href="${obj.url}">Prendre rendez-vous avec ce magasin</a>
+						</p>
+					</li>`;
+				});
+
+				$j(".poi__list").empty().append(html);
+				$j(".popin__root").addClass("open");
+			})
+		}
+
 	}, function(error){
 		$j.userposition = false;
 	});
