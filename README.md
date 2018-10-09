@@ -32,6 +32,8 @@ Chacun contenant le header, le footer et les fichers CSS présents sur ces 2 ver
 1. Récupération du repo
 ```
 git clone git@github.com:nicolasm77/opeco.git
+ou si ça ne marche pas
+git clone https://github.com/nicolasm77/opeco.git
 ```
 
 3. Vérifier que npm est à jour
