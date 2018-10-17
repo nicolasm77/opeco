@@ -482,13 +482,20 @@ img.lazyloaded {
     .services {
         &__items {
             margin-top:40px;
-            flex-direction:column;
+            flex-direction:row;
+            flex-wrap: wrap;
         }
 
         &__item {
             justify-content: center;
-            width:100%;
+            width:48%;
             margin-bottom: 20px;
+        }
+
+        &__triple .services__item:last-child{
+            width: 100%;
+            padding: 20px 15px;
+            margin-bottom: 0px;
         }
 
         &__picto {
