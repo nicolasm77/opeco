@@ -1,0 +1,10 @@
+.articles.adq{
+    article{
+        height: 300px;
+        .article--btn{
+            margin-top: 20px;
+        }
+    }
+    .violet{background-color: $color-violet;}
+    .gold{background-color: $color-gold;}
+}
