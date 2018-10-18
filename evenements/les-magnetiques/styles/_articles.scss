@@ -4,7 +4,9 @@
         .article--btn{
             margin-top: 20px;
         }
+        &.rose{background-color: $color-rose;}
     }
     .violet{background-color: $color-violet;}
     .gold{background-color: $color-gold;}
+    .rose{background-color: $color-rose;}
 }
