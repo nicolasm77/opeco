@@ -17,7 +17,7 @@ const now = new Date();
 //chemin du dossier FTP
 let stagingPath = "";
 if(path.dirname(path.dirname(relativePath)).split(path.sep).pop() == "vivre-mieux"){
-	stagingPath = "/static/bcom/desktop/evenements/2018/01_espace-beaute/asset/images/"+path.basename(process.env.INIT_CWD);
+	stagingPath = "/content/static/bcom/desktop/evenements/2018/01_espace-beaute/asset/images/"+path.basename(process.env.INIT_CWD);
 }else{
 	stagingPath = "/content/static/bcom/evenements/" + ((config.fixedYearPath != "") ? config.fixedYearPath : now.getFullYear()) + "/" + ((config.fixedMonthPath != "") ? config.fixedMonthPath : ((now.getMonth() + 1 < 10) ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1))) + "_" + path.basename(process.env.INIT_CWD);
 }
