@@ -200,7 +200,7 @@ module.exports = {
 				}]
 			},
 			{
-				test: /\.(woff|woff2)$/,
+				test: /\.(woff|woff2|ttf|otf|eot)$/,
 				use: [{
 					//génère les fichiers + remplace le chemin par celui du fichier généré
 					loader: 'file-loader',
