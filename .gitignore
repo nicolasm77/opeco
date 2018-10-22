@@ -61,6 +61,7 @@ typings/
 *.mp4
 *.ogg
 *.webm
+*.mov
 
 evenements/surface
 evenements/braderie

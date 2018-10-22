@@ -1,0 +1,27 @@
+.conversation{
+    &__block{
+        padding:percentage(100px/1600px) 0 percentage(60px/1600px);
+        background: url("../images/conv_back.jpg") no-repeat top center;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    &__root{
+        width: 600px;
+        max-width:calc(100% - 35px);
+        margin-left: 13%;
+    }
+}
+@media #{$mobile}{
+    .conv{
+        &__block{
+            padding:percentage(130px/640px) 0 percentage(50px/640px);
+            background: url("../images/conv_back.jpg") no-repeat top center;
+            background-size: cover;
+        }
+
+        &__root{
+            margin-right: auto;
+        }
+    }
+}
