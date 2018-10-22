@@ -1,0 +1,214 @@
+.expert{
+	&__root{
+		margin:50px 0 0;
+		padding:50px 0;
+		background-color: #F4F4F4;
+	}
+
+	&__container{
+		display: flex;
+	}
+
+	&__conversation{
+		width:50%;
+		padding:25px;
+		background: url("../images/conv@2x.jpg") no-repeat center center;
+		background-size: cover;
+		overflow: hidden;
+
+		.conversation__root .bubble + .bubble{
+			margin-top:80px;
+		}
+	}
+
+	&__content{
+		width:50%;
+		padding-left:45px;
+	}
+
+	&__title{
+		display: flex;
+		font-family: ARS,Arial,sans-serif;
+		font-size:26px;
+		font-weight: 500;
+		align-items: center;
+
+		&::before{
+			content:"";
+			width:150px;
+			height:140px;
+			display: block;
+			flex-shrink: 0;
+			margin-right:28px;
+			background: url("../images/picto_expert.svg") no-repeat center center;
+			background-size: 100%;
+		}
+	}
+
+	&__text{
+		font-size:20px;
+		color:$color-grey;
+		margin-top:35px;
+	}
+
+	&__bottom{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		flex-direction: row-reverse;
+		margin-top:10px;
+
+		.enki-button{
+			align-self: flex-start;
+		}
+	}
+
+	&__bottom-link{
+		color:$color-grey !important;
+		font-size:14px;
+		text-decoration: underline !important;
+		margin-top: 60px;
+	}
+}
+
+@media #{$notDesktop}{
+	.expert{
+		&__container{
+			display: block;
+		}
+
+		&__conversation{
+			display: none;
+		}
+
+		&__content{
+			width:100%;
+			padding-left:0;
+			margin:0 auto;
+			max-width:700px;
+		}
+
+		&__title{
+			align-items: center;
+		}
+
+
+		&__bottom{
+			display: block;
+			text-align: center;
+			margin-top:20px;
+		}
+
+		&__bottom-link{
+			display:block;
+			margin-top:15px;
+		}
+	}
+}
+@media #{$mobile}{
+	.expert{
+		&__title{
+			font-size:24px;
+
+			&::before{
+				width:140px;
+				height:130px;
+				margin-right:20px;
+			}
+		}
+
+		&__text{
+			font-size:18px;
+		}
+	}
+}
+@media #{$small}{
+	.expert{
+		&__title{
+			font-size:21px;
+
+			&::before{
+				width:100px;
+				height:93px;
+				margin-right:20px;
+			}
+		}
+
+		&__text{
+			font-size:16px;
+			line-height: 23px;
+		}
+	}
+}
+
+
+.enki-button{
+	padding:16px 45px;
+	text-decoration:none;
+	border:1px solid $color-main;
+	background-color: $color-main;
+	color:$color-white !important;
+	font-size: 17px;
+	font-weight: 500;
+	border-radius: 3px;
+	display: inline-block;
+	text-align: center;
+	font-family: ARS,Arial,sans-serif;
+	transition: background-color 0.3s, color 0.3s;
+
+	&--border{
+		background-color: transparent;
+		border-color: $color-black;
+		color:$color-black !important;
+	}
+
+	&--grey{
+		background-color: #F4F4F4;
+		border-color: #F4F4F4;
+		color:$color-main !important;
+	}
+
+	&--white{
+		background-color: $color-white;
+		color:$color-main !important;
+	}
+
+	&--orange{
+		background-color: $color-orange;
+		border-color:$color-orange;
+	}
+
+	&--big{
+		padding:16px 25px;
+	}
+
+	@media #{$desktop}{
+		&:hover{
+			color:$color-main !important;
+			background-color: $color-white;
+		}
+
+		&--orange:hover{
+			color:$color-orange !important;
+			background-color: $color-white;
+		}
+
+		&--border:hover{
+			color:$color-white !important;
+			background-color: $color-black;
+		}
+	}
+}
+@media #{$mobile}{
+	.enki-button{
+		padding:12px 30px;
+		font-size: 12px;
+
+		&--big{
+			border-radius:5px;
+			// display: block;
+			// width: 100%;
+			font-size: 15px;
+		}
+	}
+}

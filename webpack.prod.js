@@ -251,12 +251,24 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.(mp4)$/,
+				use: [{
+					//génère les fichiers + remplace le chemin par celui du fichier généré
+					loader: 'file-loader',
+					options: {
+						name: '[name].[ext]',
+						outputPath: 'assets/',
+						publicPath: stagingPath + "/assets"
+					}
+				}]
+			},
+			{
 				test: /\.html$/,
 				use: [{
 						loader: 'html-loader',
 						options: {
 							//lui dire où regarder pour les fichiers à traiter
-							attrs: ['img:src', 'img:data-src', 'link:href'],
+							attrs: ['img:src', 'img:data-src', 'link:href', 'video:src'],
 							//executer les includes (${require()})
 							interpolate: true,
 							minimize: true,

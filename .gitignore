@@ -57,6 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
+# videos
+*.mp4
+*.ogg
+*.webm
+
 evenements/surface
 evenements/braderie
 src-old

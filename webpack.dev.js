@@ -119,6 +119,14 @@ module.exports = function (env) {
 					}]
 				},
 				{
+					test: /\.(mp4)$/,
+					use: [{
+						//génère les fichiers + remplace le chemin par celui du fichier généré
+						loader: 'file-loader',
+						options: {}
+					}]
+				},
+				{
 					test: /\.html$/,
 					use: [{
 							//
@@ -134,7 +142,7 @@ module.exports = function (env) {
 								//executer les includes (${require()})
 								interpolate: true,
 								//lui dire où regarder pour les fichiers à traiter
-								attrs: ['img:src', 'img:data-src'],
+								attrs: ['img:src', 'img:data-src', 'video:src'],
 								//indique le chemin de base des fichiers (images, css, ...) à utiliser en local
 								root: path.resolve(__dirname, '_global/structure_site')
 							},
