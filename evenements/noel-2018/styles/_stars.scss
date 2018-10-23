@@ -1,0 +1,50 @@
+.stars-white{
+	content:"";
+	position:absolute;
+	background: url("../images/stars_white.svg") no-repeat center center;
+	background-size: contain;
+}
+.stars-gold{
+	content:"";
+	position:absolute;
+	background: url("../images/stars_gold.svg") no-repeat center center;
+	background-size: contain;
+}
+
+
+.exclu__root{
+	&::before{
+		@extend .stars-gold;
+		width: 170px;
+		height: 163px;
+		top:0;
+		right:calc(50% + 292px);
+		transform: rotate(77deg);
+		opacity: 0.7;
+	}
+}
+
+.footer__root{
+	position: relative;
+	overflow: hidden;
+
+	&::before{
+		@extend .stars-white;
+		width: 87px;
+		height: 84px;
+		top:40px;
+		right:calc(50% + 326px);
+		transform: rotate(261deg);
+		opacity: 0.3;
+	}
+
+	&::after{
+		@extend .stars-white;
+		width: 152px;
+		height: 146px;
+		top:80px;
+		left:calc(50% + 355px);
+		transform: rotate(77deg);
+		opacity: 0.2;
+	}
+}

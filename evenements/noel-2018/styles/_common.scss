@@ -1,0 +1,132 @@
+.typex{
+	text-align:center;
+	width:100%;
+	color:$color-orange;
+	font-size:51px;
+	line-height:1.06;
+	font-family:$font-ars;
+	font-weight:400;
+
+	b{
+		font-weight: 700;
+	}
+
+	&__child{
+		background: linear-gradient(
+			to bottom,
+			rgba(255,255,255,0) 17%,
+			rgba(255,255,255,1) 17%,
+			rgba(255,255,255,1) 90%,
+			rgba(255,255,255,0) 90%,
+			rgba(255,255,255,0) 100%
+		);
+		padding: 0 10px;
+		-webkit-box-decoration-break: clone;
+		-o-box-decoration-break: clone;
+		box-decoration-break: clone;
+	}
+
+	&--invert{
+		color:$color-white;
+
+		.typex__child{
+			background: linear-gradient(
+				to bottom,
+				rgba(255,255,255,0) 17%,
+				rgba($color-orange,1) 17%,
+				rgba($color-orange,1) 90%,
+				rgba(255,255,255,0) 90%,
+				rgba(255,255,255,0) 100%
+			);
+		}
+	}
+
+	&--golden{
+		color:$color-white;
+
+		.typex__child{
+			background: linear-gradient(
+				to bottom,
+				rgba(255,255,255,0) 17%,
+				rgba($color-gold,1) 17%,
+				rgba($color-gold,1) 90%,
+				rgba(255,255,255,0) 90%,
+				rgba(255,255,255,0) 100%
+			);
+		}
+	}
+}
+
+.btn{
+	display: inline-block;
+	text-decoration: none;
+	font-size:15px;
+	font-family:$font-ars;
+	font-weight:500;
+	line-height: 18px;
+	padding:8px 16px;
+	text-align: center;
+	transition: color 0.3s, background-color 0.3s;
+	color:$color-white;
+	background-color: $color-orange;
+	border:1px solid $color-orange;
+	border-radius:3px;
+
+	@media #{$desktop}{
+		&:hover{
+			color:$color-orange;
+			background-color: $color-white;
+		}
+	}
+
+	&--big{
+		font-size:17px;
+		font-weight:700;
+		padding:14px 30px;
+	}
+
+	&--black{
+		color:$color-black;
+		background-color: transparent;
+		border-color: $color-black;
+
+		@media #{$desktop}{
+			&:hover{
+				color:$color-white;
+				background-color: $color-black;
+			}
+		}
+	}
+
+	&--white{
+		background-color: transparent;
+		border-color: $color-white;
+
+		@media #{$desktop}{
+			&:hover{
+				color:$color-orange;
+				background-color: $color-white;
+			}
+		}
+	}
+
+	&--golden{
+		background-color: $color-gold;
+		border-color: $color-gold;
+
+		@media #{$desktop}{
+			&:hover{
+				color:$color-gold;
+				background-color: $color-white;
+			}
+		}
+	}
+}
+
+
+#filAriane {
+    margin: 10px auto;
+}
+.ftr__top{
+	display: none;
+}

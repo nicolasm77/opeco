@@ -1,0 +1,23 @@
+.app{
+	&__back-img{
+		position: relative;
+		background:url("../images/app_back.jpg") no-repeat center center;
+		background-size: cover;
+
+		&::before{
+			position: absolute;
+			content:"";
+			z-index: 0;
+			width:100%;
+			height:100%;
+			left:0;
+			top:0;
+			background-color: rgba($color-black, 0.5);
+		}
+	}
+
+	&__container{
+		position: relative;
+		z-index: 10;
+	}
+}
