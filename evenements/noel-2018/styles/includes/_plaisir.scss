@@ -1,5 +1,24 @@
 .plaisir{
+	&__root{
+		margin-top:110px;
+		position: relative;
+
+		&::before{
+			content:"";
+			position: absolute;
+			z-index: 0;
+			width: 3000px;
+			height:2600px;
+			background: url(../images/oblique_orange.svg) no-repeat bottom left;
+			background-size: contain;
+			top:-378px;
+			left: calc(50% - 1500px);
+		}
+	}
+
 	&__container{
 		background-color: $color-orange;
+		z-index: 10;
+		position: relative;
 	}
 }

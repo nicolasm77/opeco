@@ -137,5 +137,27 @@ $j(window).on("load", function(){
 
 	}, function(error){
 		$j.userposition = false;
+
+		$j(".rdv-btn").on("click", function(e){
+			e.preventDefault();
+			let html = "";
+
+			$j.each(magasins, function(i, obj){
+				html = html + `<li class="poi__item">
+					<p class="poi__name">
+						${obj.name}
+					</p>
+					<p class="poi__address">
+						${obj.address}
+					</p>
+					<p class="poi__bottom">
+						<a class="cuisine__btn" href="${obj.url}">Prendre rendez-vous avec ce magasin</a>
+					</p>
+				</li>`;
+			});
+
+			$j(".poi__list").empty().append(html);
+			$j(".popin__root").addClass("open");
+		})
 	});
 })

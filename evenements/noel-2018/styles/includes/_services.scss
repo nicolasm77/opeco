@@ -1,5 +1,7 @@
 .service{
 	&__root{
 		background-color:$color-back-grey;
+		position: relative;
+		z-index: 10;
 	}
 }

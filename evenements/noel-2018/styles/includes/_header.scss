@@ -3,6 +3,8 @@
 		position: relative;
 		background:url("../images/header.jpg") no-repeat center center;
 		background-size: cover;
+		padding-top:70px;
+		padding-bottom: 258px;
 
 		&::before{
 			position: absolute;
@@ -14,10 +16,33 @@
 			top:0;
 			background-color: rgba($color-black, 0.5);
 		}
+
+		& + .advent__root{
+			margin-top:-258px;
+		}
 	}
 
 	&__container{
 		position: relative;
 		z-index: 10;
+	}
+
+	&__title{
+		font-size:76px;
+		font-weight: 800;
+	}
+
+	&__cta-container{
+		padding: 0 30px;
+		display: flex;
+		justify-content: flex-end;
+		margin-top:100px;
+	}
+
+	&__cta{
+		max-width: 835px;
+		width: 100%;
+		display: flex;
+		align-items: center;
 	}
 }
