@@ -1,28 +1,77 @@
+@keyframes fadein {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
 .articles.adq{
-    article{
-        .article--btn{
-            margin-top: 20px;
-            &--black{
-                color: $color-black;
-                border: 1px solid $color-black;
-            }
+    .article_section{
+        display: none;
+        &.active{
+            display: block;
+            animation: fadein 1s;
         }
-        &.rose{background-color: $color-rose;}
-        &.yellow{background-color: $color-yellow;}
-        &.marron{background-color: $color-marron;}
+        article{
+            position: relative;
+            &.video{
+                .visuel{
+                    cursor: pointer;
+                }
+                .article--play{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    max-width: 28px;
+                }
+                .video__content{
+                    display: none;
+                    position: fixed;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    width: 100%;
+                    height: 100%;
+                    z-index: 99;
+                    top: 0;
+                    left: 0;
+                    .video__frame{
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                    }
+                    .video__close{
+                        position: absolute;
+                        top: 30px;
+                        right: 30px;
+                        cursor: pointer;
+                        max-width: 30px;
+                    }
+                }
+            }
+            .article--btn{
+                margin-top: 20px;
+                &--black{
+                    color: $color-black;
+                    border: 1px solid $color-black;
+                }
+            }
+            &.rose{background-color: $color-rose;}
+            &.yellow{background-color: $color-yellow;}
+            &.marron{background-color: $color-marron;}
+            &.video{height: auto;}
+        }
+        .violet{background-color: $color-violet;}
+        .gold{background-color: $color-gold;}
+        .rose{background-color: $color-rose;}
+        .gray{background-color: $color-gray;color: $color-black;}
+        .yellow{background-color: $color-yellow;}
+        .green{background-color: $color-green;}
+        .green-military{background-color: $color-green-military;}
+        .marron{background-color: $color-marron;}
+        .gray-dark{background-color: $color-gray-dark;}
+        .gray-lighter{background-color: $color-gray-lighter;}
+        .black{background-color: $color-black;}
+        .blue{background-color: $color-blue;}
     }
-    .violet{background-color: $color-violet;}
-    .gold{background-color: $color-gold;}
-    .rose{background-color: $color-rose;}
-    .gray{background-color: $color-gray;color: $color-black;}
-    .yellow{background-color: $color-yellow;}
-    .green{background-color: $color-green;}
-    .green-military{background-color: $color-green-military;}
-    .marron{background-color: $color-marron;}
-    .gray-dark{background-color: $color-gray-dark;}
-    .gray-lighter{background-color: $color-gray-lighter;}
-    .black{background-color: $color-black;}
-    .blue{background-color: $color-blue;}
 }
 
 @media #{$notMobile} {
@@ -37,6 +86,15 @@
     .articles.adq{
         padding-left: 0px;
         padding-right: 0px;
+        .article_section article.video {
+            .visuel{
+                width: 100%;
+            }
+            .video__content .video__frame{
+                width: 100%;
+                height: auto;
+            }
+        }
     }
 }
 

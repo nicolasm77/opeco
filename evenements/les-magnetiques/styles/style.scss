@@ -5,3 +5,24 @@
 @import "colors";
 @import "header";
 @import "articles";
+@import "nav";
+
+.rs__root{
+    text-align: center;
+    margin-top: 80px;
+}
+.brand{
+    font: 400 18px/22px $font-ars;
+    color: $color-black;
+    margin: 22px 0 80px;;
+    text-align: center; 
+}
+
+@media #{$mobile}{
+    .rs__root{
+        margin-top: 40px;
+        img{
+            max-width:59px;
+        }
+    }
+}
