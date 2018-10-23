@@ -1,14 +1,26 @@
 .header{
 	&__root{
 		position: relative;
-		background:url("../images/header.jpg") no-repeat center center;
-		background-size: cover;
 		padding-top:70px;
 		padding-bottom: 258px;
+		background-color: $color-black;
 
 		&::before{
-			position: absolute;
 			content:"";
+			position: absolute;
+			z-index: 0;
+			width:100%;
+			height:100%;
+			max-height:955px;
+			left:0;
+			top:0;
+			background:url("../images/header.jpg") no-repeat center center;
+			background-size: cover;
+		}
+
+		&::after{
+			content:"";
+			position: absolute;
 			z-index: 0;
 			width:100%;
 			height:100%;
@@ -19,17 +31,23 @@
 
 		& + .advent__root{
 			margin-top:-258px;
+
+			.advent__container{
+				border-radius: 20px 20px 0 0;
+			}
 		}
 	}
 
 	&__container{
 		position: relative;
 		z-index: 10;
+		padding-bottom: 90px;
 	}
 
 	&__title{
 		font-size:76px;
 		font-weight: 800;
+		line-height: 1.2;
 	}
 
 	&__cta-container{
@@ -37,17 +55,29 @@
 		display: flex;
 		justify-content: flex-end;
 		margin-top:100px;
+		position: relative;
+
+		&::before{
+			content:"";
+			background-color: rgba($color-black, 0.7);
+			box-shadow: 10px 10px 20px rgba($color-black, 0.82);
+			border-radius: 10px;
+			position: absolute;
+			width:calc(95% - 30px - 30px);
+			max-width: 836px;
+			height:100%;
+			right:30px;
+			top:0;
+		}
 	}
 
 	&__cta-item{
-		max-width: 835px;
 		width: 100%;
 		display: flex;
 		align-items: center;
-		border-radius: 10px;
-		background-color: rgba($color-black, 0.7);
-		box-shadow: 10px 10px 20px rgba($color-black, 0.82);
 		padding:42px 15px;
+		position: relative;
+		z-index: 10;
 	}
 
 	&__cta-text{
@@ -63,10 +93,13 @@
 		flex-grow: 1;
 		flex-shrink: 0;
 		width: 10%;
+		align-self: flex-end;
 	}
 
 	&__cta-img{
 		position: absolute;
+		bottom: -44px;
+		right: -110px;
 	}
 
 	&__cta-btn-container{
@@ -78,5 +111,136 @@
 
 	&__cta-btn{
 
+	}
+}
+
+@media #{$notDesktop}{
+	.header{
+		&__root{
+			padding-bottom: 0;
+
+			& + .advent__root{
+				margin-top:0;
+
+				.advent__container{
+					border-radius: 0;
+				}
+			}
+		}
+	}
+}
+
+@media #{$tablet}{
+	.header{
+		&__root{
+			padding-top:60px;
+		}
+
+		&__container{
+			padding-bottom: 30px;
+		}
+
+		&__cta-item{
+			display: block;
+			padding:22px 15px;
+			max-width: 500px;
+		}
+
+
+		&__cta-img-container{
+			position: absolute;
+			width: auto;
+			bottom: -18px;
+			right: 300px;
+		}
+
+		&__cta-img{
+			position: relative;
+			bottom:0;
+			right:0;
+			display: block;
+		}
+
+		&__cta-btn-container{
+			width: auto;
+			margin-top:16px;
+		}
+	}
+}
+
+@media #{$mobile}{
+	.header{
+		&__root{
+			padding-top:percentage(60px/640px);
+			padding-bottom: percentage(280px/640px);
+
+			&::before{
+				max-height:955px;
+				background:url("../images/header-sim.jpg") no-repeat center center;
+				background-size: cover;
+			}
+
+
+			& + .advent__root{
+				margin-top:percentage(-200px/640px);
+			}
+		}
+
+		&__container{
+			padding-bottom: 0;
+		}
+
+		&__title{
+			@include fs(81);
+		}
+
+		&__cta-container{
+			padding: 0 15px;
+			margin-top:percentage(260px/610px);
+
+			&::before{
+				content:"";
+				width:calc(100% - 15px - 15px);
+				right:15px;
+			}
+		}
+
+		&__cta-item{
+			padding:percentage(95px/580px) 10px percentage(45px/580px);
+			max-width: none;
+		}
+
+		&__cta-text{
+			text-align: center;
+			font-weight: 700;
+			font-family: $font-ars;
+			font-size:32px;
+			color:$color-white;
+		}
+
+		&__cta-img-container{
+			position: relative;
+			flex-grow: 1;
+			flex-shrink: 0;
+			width: 10%;
+			align-self: flex-end;
+		}
+
+		&__cta-img{
+			position: absolute;
+			bottom: -44px;
+			right: -110px;
+		}
+
+		&__cta-btn-container{
+			flex-grow: 1;
+			flex-shrink: 0;
+			width: 10%;
+			text-align: center;
+		}
+
+		&__cta-btn{
+
+		}
 	}
 }
