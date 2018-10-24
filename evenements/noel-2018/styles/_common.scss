@@ -177,6 +177,28 @@
 	}
 }
 
+.separ{
+	&::after{
+		content:"";
+		display: block;
+		width:67px;
+		height:2px;
+		background-color: $color-orange;
+		margin:15px 0;
+	}
+
+	&--white::after{
+		background-color: $color-white;
+	}
+}
+@media #{$small}{
+	.separ{
+		&::after{
+			width:50px;
+		}
+	}
+}
+
 
 #filAriane {
     margin: 10px auto;
