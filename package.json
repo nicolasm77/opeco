@@ -13,6 +13,7 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"@babel/plugin-syntax-dynamic-import": "^7.0.0",
 		"babel-preset-es2015": "^6.24.1",
 		"clean-webpack-plugin": "^0.1.19",
 		"css-loader": "^0.28.11",

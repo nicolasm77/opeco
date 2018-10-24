@@ -1,0 +1,28 @@
+@import "../../../_global/tpl_page/styles/variables";
+@import "../../../_global/tpl_page/styles/reset";
+@import "../../../_global/tpl_page/styles/fonts";
+@import "../../../_global/tpl_page/styles/base";
+@import "colors";
+@import "header-produit";
+@import "articles";
+@import "nav";
+
+.rs__root{
+    text-align: center;
+    margin-top: 80px;
+}
+.brand{
+    font: 400 18px/22px $font-ars;
+    color: $color-black;
+    margin: 22px 0 80px;;
+    text-align: center; 
+}
+
+@media #{$mobile}{
+    .rs__root{
+        margin-top: 40px;
+        img{
+            max-width:59px;
+        }
+    }
+}

@@ -56,6 +56,14 @@ module.exports = function (env) {
 		//objet qui sert à définir le loader utilisé pour chaque type de ressource
 		module: {
 			rules: [{
+				//compile le js moderne (ES6) en js compréhensible par tout les navigateur
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				options: {
+					presets: ['env']
+				}
+			},{
 					test: /\.(scss|css)$/,
 					exclude: /framework.min.css/,
 					use: [{

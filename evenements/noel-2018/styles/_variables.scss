@@ -7,7 +7,13 @@ $color-back-grey: #efefef;
 $font-ars: ARS, Arial, sans-serif;
 $desktop: "(min-width: 1000px)";
 $notDesktop: "(max-width: 999px)";
+$tabletOnly: "(min-width: 641px) and (max-width: 999px)";
+$tablet: "(max-width: 800px)";
 $mobile: "(max-width: 640px)";
 $notMobile: "(min-width: 641px)";
 $small: "(max-width: 450px)";
-$tablet: "(min-width: 641px) and (max-width: 999px)";
+
+@mixin fs($size) {
+  font-size: #{($size*0.5)}px;
+  font-size: #{($size/640*100)}vw;
+}
