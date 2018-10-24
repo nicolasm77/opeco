@@ -21,3 +21,7 @@ $small: "(max-width: 450px)";
 	font-size:#{($size*0.5)}px;
 	font-size:#{($size/640*100)}vw;
 }
+@mixin lh($size) {
+	line-height:#{($size*0.5)}px;
+	line-height:#{($size/640*100)}vw;
+}

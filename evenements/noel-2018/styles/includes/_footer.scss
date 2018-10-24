@@ -14,3 +14,16 @@
 		text-align: center;
 	}
 }
+
+@media #{$mobile}{
+	.footer{
+		&__root{
+			padding:percentage(70px/640px) 0 percentage(60px/640px);
+		}
+
+		&__text{
+			@include fs(40);
+			@include lh(43);
+		}
+	}
+}
