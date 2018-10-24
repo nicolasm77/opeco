@@ -1,4 +1,5 @@
 .header__root{
+    position: relative;
     .ariane__root{
         padding-top: 10px;
         padding-bottom: 8px;
@@ -26,6 +27,17 @@
         background: url(../images/header-home.jpg) center top no-repeat;
         height: 451px;
     }
+    .discover__title{
+        font-family: $font-ars;
+        color: $color-white;
+        font-size: 30px;
+        line-height: 36px;
+        font-weight: bold;
+        position: absolute;
+        top: 83px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .discover{
         width: 800px;
         padding: 0px 64px 20px 64px;
@@ -41,6 +53,9 @@
             font-size: 15px;
             line-height: 18px;
         }
+        &--title--mobile{
+            display: none;
+        }
     }
 }
 
@@ -48,7 +63,10 @@
     .header__root{
         .container-full{
             background: url(../images/header-home-mobile.jpg) center top no-repeat;
-            height: 190px;
+            height: 311px;
+        }
+        .discover__title{
+            display: none;
         }
         .discover{
             width: 100%;
@@ -58,6 +76,15 @@
             &--logo{
                 max-width: 109px;
                 margin: -50px auto 20px;
+            }
+            &--title--mobile{
+                display: block;
+                font-family: $font-ars;
+                color: $color-black;
+                font-size: 26px;
+                line-height: 29px;
+                font-weight: bold;
+                margin-bottom: 33px;
             }
         }
     }

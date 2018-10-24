@@ -10,6 +10,9 @@
 .rs__root{
     text-align: center;
     margin-top: 80px;
+    .rs__link{
+        text-decoration: none;
+    }
 }
 .brand{
     font: 400 18px/22px $font-ars;

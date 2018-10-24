@@ -4,10 +4,14 @@
 @import "../../../_global/tpl_page/styles/base";
 @import "colors";
 @import "header-home";
+@import "univers";
 
 .rs__root{
     text-align: center;
     margin-top: 80px;
+    .rs__link{
+        text-decoration: none;
+    }
 }
 .brand{
     font: 400 18px/22px $font-ars;
