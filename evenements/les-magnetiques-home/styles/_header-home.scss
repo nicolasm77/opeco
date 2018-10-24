@@ -23,27 +23,17 @@
         }
     }
     .container-full{
-        background: url(../images/header-product.jpg) center top no-repeat;
+        background: url(../images/header-home.jpg) center top no-repeat;
         height: 451px;
     }
     .discover{
-        background-color: $color-white;
-        width: 856px;
+        width: 800px;
         padding: 0px 64px 20px 64px;
-        margin: -134px auto 40px;
+        margin: 0 auto 40px;
         position: relative;
         text-align: center;
-        box-shadow: 0px 0px 6px rgba(0,0,0,0.16);
         &--logo{
             margin: -54px auto 30px;
-        }
-        &--title{
-            font-family: $font-ars;
-            color: $color-black;
-            font-size: 30px;
-            line-height: 36px;
-            font-weight: bold;
-            margin-bottom: 33px;
         }
         &--desc{
             font-family: $font-ars;
@@ -57,7 +47,7 @@
 @media #{$mobile} {
     .header__root{
         .container-full{
-            background: url(../images/header-product-sim.jpg) center top no-repeat;
+            background: url(../images/header-home-mobile.jpg) center top no-repeat;
             height: 190px;
         }
         .discover{

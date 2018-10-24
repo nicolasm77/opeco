@@ -10,6 +10,9 @@ import style from "./styles/style.scss";
 // import Swiper from "swiper/dist/js/swiper.min.js";
 // import SwiperCSS from "swiper/dist/css/swiper.css";
 
+//Moteur à cadeaux
+import giftengine from "./scripts/giftengine.js";
+
 //tag XITI
 import xiti from "../../_global/scripts/data-xiti.js";
 

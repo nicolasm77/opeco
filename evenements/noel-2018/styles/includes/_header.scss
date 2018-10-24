@@ -1,3 +1,4 @@
+@import "header.giftengine";
 .header{
 	&__root{
 		position: relative;
@@ -114,13 +115,13 @@
 	}
 }
 
-@media #{$notDesktop}{
-	.header{
-		&__root{
-			padding-bottom: 0;
+@media #{$notDesktop} {
+  .header {
+  	&__root {
+  		padding-bottom: 0;
 
-			& + .advent__root{
-				margin-top:0;
+  		& + .advent__root {
+  			margin-top: 0;
 
 				.advent__container::before{
 					border-radius: 0;
@@ -130,42 +131,42 @@
 	}
 }
 
-@media #{$tablet}{
-	.header{
-		&__root{
-			padding-top:60px;
-		}
+@media #{$tablet} {
+  .header {
+  	&__root {
+  		padding-top: 60px;
+  	}
 
-		&__container{
-			padding-bottom: 30px;
-		}
+  	&__container {
+  		padding-bottom: 30px;
+  	}
 
-		&__cta-item{
-			display: block;
-			padding:22px 15px;
-			max-width: 500px;
-		}
+  	&__cta-item {
+  		display: block;
+  		max-width: 500px;
+  		padding: 22px 15px;
+  	}
 
 
-		&__cta-img-container{
-			position: absolute;
-			width: auto;
-			bottom: -18px;
-			right: 300px;
-		}
+  	&__cta-img-container {
+  		position: absolute;
+  		right: 300px;
+  		bottom: -18px;
+  		width: auto;
+  	}
 
-		&__cta-img{
-			position: relative;
-			bottom:0;
-			right:0;
-			display: block;
-		}
+  	&__cta-img {
+  		position: relative;
+  		right: 0;
+  		bottom: 0;
+  		display: block;
+  	}
 
-		&__cta-btn-container{
-			width: auto;
-			margin-top:16px;
-		}
-	}
+  	&__cta-btn-container {
+  		width: auto;
+  		margin-top: 16px;
+  	}
+  }
 }
 
 @media #{$mobile}{
