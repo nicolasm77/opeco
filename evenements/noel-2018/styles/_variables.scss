@@ -1,16 +1,13 @@
-$color-black:#000000;
-$color-white:#ffffff;
-$color-orange: #FD5300;
-$color-gold : #CCB079;
-
-$color-back-back : #313131;
-$color-back-grey : #EFEFEF;
-
-$font-ars : ARS, Arial, sans-serif;
-
+$color-black: #000000;
+$color-white: #ffffff;
+$color-orange: #fd5300;
+$color-gold: #ccb079;
+$color-back-back: #313131;
+$color-back-grey: #efefef;
+$font-ars: ARS, Arial, sans-serif;
 $desktop: "(min-width: 1000px)";
 $notDesktop: "(max-width: 999px)";
-
 $mobile: "(max-width: 640px)";
 $notMobile: "(min-width: 641px)";
 $small: "(max-width: 450px)";
+$tablet: "(min-width: 641px) and (max-width: 999px)";
