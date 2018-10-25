@@ -20,13 +20,292 @@
 		}
 	}
 
-	&__part-calendar{
+	&__subcontainer{
 		position: relative;
 		z-index: 10;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		max-width:935px;
+		margin-left:auto;
+	}
+
+	&__part-calendar{
+		width:515px;
+		flex-shrink: 0;
 	}
 
 	&__part-prod{
+		width:371px;
+		flex-shrink: 0;
+	}
+
+	&__header{
+		height: 286px;
+		background: url("../images/calendar_top.jpg") no-repeat top center;
+		background-size: 100% auto;
 		position: relative;
-		z-index: 10;
+	}
+
+	&__title{
+		text-align: left;
+		position: absolute;
+		top:120px;
+		left: 180px;
+		text-indent:-60px;
+		z-index: 100;
+	}
+
+	&__calendars{
+		background-color: $color-white;
+		position: relative;
+		overflow-x: hidden;
+		box-shadow: 0 3px 6px rgba($color-black, 0.16);
+	}
+
+	&__calendar{
+		background-color: rgba($color-gold,0.5);
+		display: flex;
+		padding:30px 0 15px;
+		color:$color-white;
+		width:calc(100% - 50px);
+
+		&--decembre{
+			background-color: $color-gold;
+			position: absolute;
+			top: 0;
+			right: calc(-100% + 100px);
+			height: 100%;
+			transition: right 0.5s;
+			transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+			box-shadow: 0 3px 6px rgba($color-black, 0.16);
+		}
+
+		&--open{
+			right: 0;
+		}
+	}
+
+	&__calendar-month{
+		position: relative;
+		width: 51px;
+		flex-shrink: 0;
+		border-right:1px solid $color-white;
+		margin-right: 30px;
+		cursor: pointer;
+
+		@media #{$desktop}{
+			&:hover .advent__calendar-name{
+				bottom:20px;
+			}
+		}
+	}
+
+	&__calendar-name{
+		position: absolute;
+		font-weight:bold;
+		font-size:21px;
+		font-family: $font-ars;
+		bottom:0;
+		left:50%;
+		transform-origin: left center;
+		transform: translateY(50%) rotate(270deg);
+		transition: bottom 0.3s;
+	}
+
+	&__calendar-container{
+		flex-grow: 1;
+		padding-right:10px;
+		font-family: $font-ars;
+		font-weight:bold;
+	}
+
+	&__calendar-day{
+		font-size:21px;
+		line-height: 25px;
+	}
+
+	&__calendar-table{
+		width: calc(100% + 14px);
+		margin-left:-14px;
+		text-align: center;
+
+		td{
+			position: relative;
+			color:$color-white;
+			font-size:18px;
+			line-height: 22px;
+			font-family: $font-ars;
+			padding: 12px 0;
+			cursor: pointer;
+
+			&::after{
+				content:"";
+				position: absolute;
+				height: 34px;
+				width: 34px;
+				border:1px solid $color-white;
+				border-radius: 50%;
+				top: calc(50% - 16px);
+				left: calc(50% - 17px);
+				transition: opacity 0.3s;
+				z-index: 0;
+				opacity: 0;
+			}
+
+			@media #{$desktop}{
+				&:hover::after{
+					opacity: 1;
+				}
+			}
+
+			&:empty{
+				cursor: default;
+				&::after{
+					display: none !important;
+				}
+			}
+		}
+	}
+
+	&__prod-item{
+		text-align: center;
+		padding-bottom: 45px;
+	}
+
+	&__prod-img{
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	&__prod-name{
+		margin-top:10px;
+		font-size:19px;
+		font-family: $font-ars;
+
+		&::after{
+			content:"";
+			display: block;
+			width:67px;
+			height:2px;
+			background-color: $color-gold;
+			margin:15px auto;
+		}
+	}
+
+	&__prod-desc{
+		font-size:17px;
+		line-height: 20px;
+		max-width: 350px;
+		margin: 0 auto;
+	}
+
+	&__prod-price{
+		margin-top: 22px;
+		font-family: $font-ars;
+		font-weight: 800;
+	}
+
+	&__prod-old-price{
+		font-size: 16px;
+		line-height: 13px;
+		position: relative;
+
+		&::before{
+			content:"";
+			height: 2px;
+			width:calc(100% + 5px);
+			position: absolute;
+			top:50%;
+			left:-5px;
+			background-color: rgba(#434A4E, 0.9);
+			transform: translateY(-50%) rotate(-16deg);
+		}
+
+		> sup {
+			position: relative;
+			top: 1px;
+			font-size: 70%;
+			vertical-align: text-top;
+
+			@media #{$small} {
+				top:2px;
+			}
+		}
+	}
+
+	&__prod-new-price{
+		display: block;
+		font-size: 22px;
+		line-height: 16px;
+
+		> sup {
+			position: relative;
+			top: 1px;
+			font-size: 70%;
+			vertical-align: text-top;
+
+			@media #{$small} {
+				top:2px;
+			}
+		}
+	}
+
+	&__prod-bottom{
+		margin-top: 25px;
+
+		.btn{
+			box-shadow: 3px 3px 4px rgba($color-black, 0.2);
+		}
+	}
+}
+td.day{
+	&-christmas{
+		color:$color-black;
+		font-weight: 400;
+		position: relative;
+
+		&::before{
+			content:"";
+			position: absolute;
+			height: 34px;
+			width: 34px;
+			border:1px solid $color-black;
+			border-radius: 50%;
+			top: calc(50% - 16px);
+			left: calc(50% - 17px);
+		}
+	}
+
+	&-current{
+		color:$color-white;
+		position: relative;
+
+		span{
+			position: relative;
+			z-index: 10;
+		}
+
+		&::before{
+			content:"";
+			position: absolute;
+			height: 34px;
+			width: 34px;
+			background-color: $color-black;
+			border-radius: 50%;
+			top: calc(50% - 16px);
+			left: calc(50% - 17px);
+		}
+	}
+
+	&-future{
+		font-weight: 400;
+		opacity: 0.73;
+	}
+
+	&-none{
+		font-weight: 400;
+		opacity: 0.3;
 	}
 }

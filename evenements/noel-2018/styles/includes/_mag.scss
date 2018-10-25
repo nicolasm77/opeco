@@ -1,0 +1,27 @@
+.mag{
+	&__root{
+		padding:140px 0 90px;
+	}
+
+	&__container{
+		display: flex;
+		max-width: 926px;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+
+	&__part-content{
+		width: percentage(485px/926px);
+	}
+
+	&__title{
+		text-align: left;
+		text-indent: 52px;
+	}
+
+
+
+	&__part-find{
+		width: percentage(410px/926px);
+	}
+}
