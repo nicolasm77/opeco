@@ -1,137 +1,146 @@
-/*
-HOMME / FEMME / ENFANT-ADO / COUPLE
+function isLinkClickable(link) {
+	var authorize = link.parents(".box").hasClass("box--category"), // Si on est dans la box "Ajouter une catégorie"
 
-Budget :
-< à 30€
-< à 50€
-< à 100€
-100 à 200€
-200€ et plus
-Tout budget
+		// Si on est dans la box "Ajouter une catégorie" et qu"il y a déjà au maximum 2 paramètres de sélectionnés
+		categoryCount = authorize && $j(".box--category .selected").length <= 2,
+		notInCategory = !authorize; // Si on est dans une autre box que "Ajouter une catégorie"
 
-Univers - iso à l"an dernier avec objets co en + :
-
-- Cuisine - boissons
-- Univers de la TV
-- Univers du Son
-- Sport - Santé
-- Beauté - Bien-être
-- Informatique - smartphone
-- Maison
-- Objets connectés
-- Console - gaming
-- Loisirs - photo
-- Cartes & coffrets cadeaux
-- Incontournables
-- Peu importe
-
-Pour l"affichage des produits, on restera bien sur la même page.
-Afficher 8 produits + le service en 1 fois.
-Au même niveau que le bouton Voir plus de produits, penser à mettre un bouton "Refaire une recherche" et/ou image.png pour revenir en haut de page
-Prévoir 2 blocs services : - Livraison lendemain + retrait 1h en magasin.
-*/
-var link = $j(".giftengine .link");
-
-function scrollingLayout(){
-	if(location.hash === "#engine"){
-		$j("body,html").addClass("overflowFix");
-	}else{
-		$j(".overflowFix").removeClass("overflowFix");
-
-	}
-}
-
-function isLinkClickable(link){
-
-	// Si on est dans la box "Ajouter une catégorie"
-	var authorize = link.parents(".box").hasClass("box--category"),
-
-	// Si on est dans la box "Ajouter une catégorie" et qu"il y a déjà au maximum 2 paramètres de sélectionnés
-	categoryCount =  authorize && $j(".box--category .selected").length <= 2,
-
-	// Si on est dans une autre box que "Ajouter une catégorie"
-	notInCategory = !authorize;
-
-	if( categoryCount || notInCategory){
+	if (categoryCount || notInCategory) {
 		return true;
 	}
 }
 
-$j(function(){
+// On bloque le scroll de la page si le layout est affiché
+function scrollingLayout() {
+	if (location.hash === "#engine") {
+		$j("body,html").addClass("overflowFix");
+	} else {
+		$j(".overflowFix").removeClass("overflowFix");
+	}
+}
 
-	// On déplace le moteur à cadeaux dans le body pour le Zindex
-	$j("#engine").detach().appendTo("body");
+function getProducts() {
 
-	link.hover(
-		function(){
+	$j(".giftengine__close").trigger("click");
 
-			// Si on peut survoler le lien
-			if(isLinkClickable($j(this))){
-				$j(this).addClass("hover");
+	$j(".container-center .header__cta-container").stop(true,true).slideUp(function(){
+		$j(this).remove();
+		$j('<div class="gift"><div class="gift__header"></div><div class="gift__content"></div></div>').insertAfter(".header__title").hide().slideDown();
+	});
+
+	var o = {
+		type: [],
+		category: [],
+		pricerange: ""
+	};
+
+	$j('.box--type .selected').each(function () {
+		o.type.push($j(this).data("value"));
+	});
+	$j('.box--category .selected').each(function () {
+		o.category.push($j(this).data("value"));
+	});
+	$j('.box--pricerange .selected').each(function () {
+		o.pricerange = $j(this).data("value");
+	});
+
+	console.log(o);
+
+	// TODO => ON CHARGE LES PRODUITS
+}
+
+function engine(e) {
+
+	var target = $j(e.currentTarget),
+		event = e.type,
+		close = target.hasClass("giftengine__close"),
+		submit = target.hasClass("giftengine__submit") && !target.attr("disabled"),
+		link = target.hasClass("link");
+
+	if (event === "click") {
+
+		if (submit) {
+
+
+			getProducts();
+
+		} else if (close) {
+
+			location.hash = "";
+
+		} else if (link) {
+
+			// Règles de gestion
+			if (target.parents(".box").hasClass("box--pricerange")) {
+				$j(".box--pricerange .link").removeClass("selected");
+			} else if (target.parents(".box").hasClass("box--category")) {
+				if (target.data("value") === "all") {
+					$j(".box--category .link").removeClass("selected");
+				} else {
+					$j(".box--category .link[data-value='all']").removeClass("selected");
+				}
 			}
 
-		},
-		function(){
+			// Activation du lien
+			if (isLinkClickable(target)) {
+				target.removeClass("hover");
+				target.toggleClass("selected");
+			} else {
+				$j(".box__title small").removeAttr("class");
+				setTimeout(function () {
+					$j(".box__title small").addClass("alert");
+				}, 10);
+			}
 
-			// Sinon on enlève le lien
-			$j(this).removeClass("hover");
-
+			// Contrôle de surface
+			if (($j(".box--type .selected").length >= 1) && ($j(".box--category .selected").length >= 1) && ($j(".box--pricerange .selected").length >= 1)) {
+				$j(".giftengine__error").stop(true, true).slideUp();
+				$j(".giftengine__submit").removeAttr("disabled");
+			} else {
+				$j(".giftengine__error").stop(true, true).slideDown();
+				$j(".giftengine__submit").attr("disabled", "disabled");
+			}
 		}
-	).toggle(function(){
 
-		// Si le lien est cliquable
-		if(isLinkClickable($j(this))){
-			$j(this).removeClass("hover");
-			$j(this).addClass("selected");
-		}else{
-			$j(".box__title small").removeAttr("class");
-			setTimeout(function(){
-				$j(".box__title small").addClass("alert");
-			},10);
+	} else if (event === "mouseenter") {
+		if (target.hasClass("link")) {
+			if (isLinkClickable(target)) {
+				target.addClass("hover");
+			}
 		}
-
-	},
-	function(){
-
-		// Si on clique sur un lien déjà cliqué
-		$j(this).removeClass("selected");
-
-	}).click(function(){
-
-		// Si les 3 box ont un seul paramètre de sélectionné
-		if(($j(".box--type .selected").length >=1) && ($j(".box--category .selected").length >=1) && ($j(".box--pricerange .selected").length >=1)){
-
-			// on cache le message d"erreur
-			$j(".giftengine__error").stop(true,true).slideUp();
-
-			// on active le bouton submit
-			$j(".giftengine__submit").removeAttr("disabled");
-
-			// TODO: CREATE LINK "Voir tous les produits"
-
-		}else{
-
-			// Sinon on affiche l"erreur
-			$j(".giftengine__error").stop(true,true).slideDown();
-
-			// on désactive le bouton submit
-			$j(".giftengine__submit").attr("disabled","disabled");
+	} else if (event === "mouseleave") {
+		if (target.hasClass("link")) {
+			if (isLinkClickable(target)) {
+				target.removeClass("hover");
+			}
 		}
+	}
+
+
+}
+
+function init() {
+
+
+
+	// On déplace le moteur à cadeaux dans le body pour le Zindex
+	$j("#engine").detach().appendTo("body").detach().appendTo("body");
+
+	$j(".giftengine__close, .giftengine__submit, .giftengine button.link").click(function (e) {
+		engine(e);
 	});
 
-	// Si on clique sur "Revenir"
-	$j(".giftengine__close").click(function(){
-		location.hash = "";
+	$j(".giftengine button.link").hover(function (e) {
+		engine(e);
 	});
 
-	// Si on click sur submit
-	$j(".giftengine__bottom__submit").click(function(){
-		/* console.log(params) */
-	});
-
-	$j(window).on("hashchange",function(){
+	$j(window).on("hashchange", function () {
 		scrollingLayout();
 	});
 
 	scrollingLayout();
+}
+
+$j(function () {
+	init();
 });

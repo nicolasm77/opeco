@@ -425,3 +425,15 @@
   	opacity: 0.7;
   }
 }
+
+.gift {
+  &__header {
+  	width: 100%;
+  	padding: 20px;
+  	background: rgba(0,0,0,0.55);
+  	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.82);
+  	border-radius: 10px;
+  }
+  &__content {
+  }
+}
