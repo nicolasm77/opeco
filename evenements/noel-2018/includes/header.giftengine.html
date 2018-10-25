@@ -6,7 +6,7 @@
 		</div>
 		<div class="giftengine__center">
 			<div class="box box--type">
-				<h3 class="box__title">Pour <b>qui ?</b></h3>
+				<h3 class="box__title">Pour <b>qui&nbsp;?</b></h3>
 				<div class="box__flex">
 					<button data-value="man" class="link">
 						${require('../images/giftengine/type-man.svg?inline')}
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div class="box box--category">
-				<h3 class="box__title">Ajouter <b>une catégorie</b> <small>(3 maximum)</small></h3>
+				<h3 class="box__title">Ajouter <b>une catégorie</b> <small>(3&nbsp;maximum)</small></h3>
 				<div class="box__flex">
 					<button data-value="cuisine" class="link">
 						${require('../images/giftengine/category-cuisine.svg?inline')}
@@ -92,12 +92,13 @@
 				</div>
 			</div>
 			<div class="box box--pricerange">
-				<h3 class="box__title">Quel <b>budget ?</b></h3>
-				<button data-value="less_30" class="link">
-					<span class="link__text">Moins de 30€</span>
-				</button>
-				<button data-value="less_50" class="link">
-					<span class="link__text">Moins de 50€</span>
+				<h3 class="box__title">Quel <b>budget&nbsp;?</b></h3>
+				<div class="box__flex">
+					<button data-value="less_30" class="link">
+						<span class="link__text">Moins de 30€</span>
+					</button>
+					<button data-value="less_50" class="link">
+						<span class="link__text">Moins de 50€</span>
 				</button>
 				<button data-value="less_100" class="link">
 					<span class="link__text">Moins de 100€</span>
@@ -112,9 +113,13 @@
 					<span class="link__text">Tous budgets</span>
 				</button>
 			</div>
+			</div>
 		</div>
-		<div class="giftengine__bottom">
-			<a href="javascript:void(0);" class="giftengine__bottom__submit btn btn--golden" disabled>Découvir ma liste</a>
+		<div class="giftengine__error">
+			Pour trouver le cadeau idéal. Veuillez choisir au moins un élément dans chacun des 3 volets.
 		</div>
+
+		<a href="javascript:void(0);" class="giftengine__submit btn btn--golden" disabled="true">Découvir ma liste</a>
+
 	</div>
 </div>
