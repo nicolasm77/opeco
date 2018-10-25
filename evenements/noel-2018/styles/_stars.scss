@@ -1,14 +1,20 @@
-.stars-white{
+.star-white{
 	content:"";
 	position:absolute;
-	background: url("../images/stars_white.svg") no-repeat center center;
+	background: url("../images/star_white.svg") no-repeat center center;
 	background-size: contain;
 }
+.stars-white{
+	@extend .star-white;
+	background-image: url("../images/stars_white.svg");
+}
+.star-gold{
+	@extend .star-white;
+	background-image: url("../images/star_gold.svg");
+}
 .stars-gold{
-	content:"";
-	position:absolute;
-	background: url("../images/stars_gold.svg") no-repeat center center;
-	background-size: contain;
+	@extend .star-white;
+	background-image: url("../images/stars_gold.svg");
 }
 
 
@@ -21,6 +27,55 @@
 		right:calc(50% + 292px);
 		transform: rotate(77deg);
 		opacity: 0.7;
+	}
+}
+
+.service__root{
+	position: relative;
+	overflow: hidden;
+
+	&::before{
+		@extend .stars-gold;
+		width: 83px;
+		height: 80px;
+		top:73px;
+		right:calc(50% + 405px);
+		transform: rotate(261deg);
+		opacity: 0.73;
+	}
+
+	&::after{
+		@extend .stars-gold;
+		width: 170px;
+		height: 163px;
+		top:105px;
+		left:calc(50% + 397px);
+		transform: rotate(77deg);
+		opacity: 0.73;
+	}
+
+	.container-center{
+		position: relative;
+
+		&::before{
+			@extend .star-gold;
+			width: 83px;
+			height: 83px;
+			bottom:30px;
+			right:calc(50% + 510px);
+			transform: rotate(125deg);
+			opacity: 0.73;
+		}
+
+		&::after{
+			@extend .star-gold;
+			width: 36px;
+			height: 36px;
+			bottom:0;
+			right:calc(50% + 85px);
+			transform: rotate(125deg);
+			opacity: 0.59;
+		}
 	}
 }
 
@@ -46,5 +101,50 @@
 		left:calc(50% + 355px);
 		transform: rotate(77deg);
 		opacity: 0.2;
+	}
+}
+
+@media #{$mobile}{
+	.service__root{
+		&::before{
+			width: percentage(139px/640px);
+			height: 0;
+			padding-bottom:percentage(134px/640px);
+			top:2.5%;
+			right:auto;
+			left:percentage(-45px/640px);
+			transform: rotate(286deg);
+			opacity: 0.73;
+		}
+
+		&::after{
+			width: percentage(170px/640px);
+			height: 0;
+			padding-bottom:percentage(164px/640px);
+			top:13%;
+			left:auto;
+			right:percentage(-45px/640px);
+			transform: rotate(77deg);
+			opacity: 0.73;
+		}
+
+		.container-center{
+			position: relative;
+
+			&::before{
+				width: percentage(139px/640px);
+				height: 0;
+				padding-bottom:percentage(134px/640px);
+				bottom:0%;
+				right:auto;
+				left:percentage(-30px/640px);
+				transform: rotate(114deg);
+				opacity: 0.73;
+			}
+
+			&::after{
+				display: none;
+			}
+		}
 	}
 }
