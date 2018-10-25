@@ -18,6 +18,82 @@
 }
 
 
+.plaisir{
+	&__root{
+		&::after{
+			@extend .stars-white;
+			width: 74px;
+			height: 72px;
+			top:0px;
+			left:calc(50% + 330px);
+			opacity: 0.59;
+			z-index: 20;
+		}
+
+		.container-center{
+			position: relative;
+
+			&::before{
+				@extend .star-white;
+				width: 70px;
+				height: 70px;
+				top:156px;
+				right:calc(50% + 480px);
+				opacity: 0.59;
+			}
+
+			&::after{
+				@extend .star-white;
+				width: 70px;
+				height: 70px;
+				top:330px;
+				left:calc(50% + 480px);
+				transform: rotate(261deg);
+				opacity: 0.59;
+			}
+		}
+	}
+
+	&__ribbon{
+		position: relative;
+
+		&::before{
+			@extend .stars-white;
+			width: 77px;
+			height: 65px;
+			top:44px;
+			right:calc(50% + 390px);
+			transform: rotate(-100deg);
+			opacity: 0.59;
+		}
+	}
+
+	&__gifts{
+		position: relative;
+
+		&::before{
+			@extend .stars-white;
+			width: 74px;
+			height: 72px;
+			top:160px;
+			right:calc(50% - 50px);
+			transform: rotate(77deg);
+			opacity: 0.59;
+		}
+
+		&::after{
+			@extend .star-white;
+			width: 44px;
+			height: 44px;
+			top:250px;
+			left:calc(50% - 50px);
+			transform: rotate(31deg);
+			opacity: 0.59;
+		}
+	}
+}
+
+
 .exclu__root{
 	&::before{
 		@extend .stars-gold;
@@ -105,6 +181,66 @@
 }
 
 @media #{$mobile}{
+	.plaisir{
+		&__root{
+			&::after{
+				// @extend .stars-white;
+				width: 74px;
+				height: 72px;
+				top:0px;
+				left:calc(50% + 330px);
+				opacity: 0.59;
+				z-index: 20;
+			}
+
+			.container-center{
+				position: relative;
+
+				&::before{
+					display: none;
+				}
+
+				&::after{
+					// @extend .star-white;
+					width: 70px;
+					height: 70px;
+					top:330px;
+					left:calc(50% + 480px);
+					transform: rotate(261deg);
+					opacity: 0.59;
+				}
+			}
+		}
+
+		&__ribbon{
+			&::before{
+				display: none;
+			}
+		}
+
+		&__gifts{
+			&::before{
+				// @extend .stars-white;
+				width: 74px;
+				height: 72px;
+				top:160px;
+				right:calc(50% - 50px);
+				transform: rotate(77deg);
+				opacity: 0.59;
+			}
+
+			&::after{
+				// @extend .star-white;
+				width: 44px;
+				height: 44px;
+				top:250px;
+				left:calc(50% - 50px);
+				transform: rotate(31deg);
+				opacity: 0.59;
+			}
+		}
+	}
+
 	.service__root{
 		&::before{
 			width: percentage(139px/640px);
