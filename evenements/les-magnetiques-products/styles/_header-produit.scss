@@ -54,7 +54,7 @@
     }
 }
 
-@media #{$mobile} {
+@media #{$notDesktop} {
     .header__root{
         .container-full{
             background: url(../images/header-product-sim.jpg) center top no-repeat;

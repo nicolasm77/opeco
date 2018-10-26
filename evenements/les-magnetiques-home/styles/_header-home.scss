@@ -59,7 +59,7 @@
     }
 }
 
-@media #{$mobile} {
+@media #{$notDesktop} {
     .header__root{
         .container-full{
             background: url(../images/header-home-mobile.jpg) center top no-repeat;
