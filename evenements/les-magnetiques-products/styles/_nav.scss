@@ -24,7 +24,7 @@
                         width: 100%;
                         border-radius: 50px;
                         margin-top: 10px;
-                        opacity: 90%;
+                        opacity: 0.9;
                         transition: 0.5s all; 
                     }
                     &--text{
@@ -50,19 +50,17 @@
         .navbar__nav{
             .swiper-wrapper{
                 padding: 10px 0;
-                .swiper-slide{
-                    &.swiper-slide-active{
-                        .nav__item:after{
-                            content: "";
-                            display: block;
-                            height: 5px;
-                            background-color: $color-black;
-                            width: 100%;
-                            border-radius: 50px;
-                            margin-top: 10px;
-                            opacity: 90%;
-                            transition: 0.5s all;
-                        }
+                .swiper-slide {
+                    &.swiper-slide-active .nav__item:after{
+                        content: "";
+                        display: block;
+                        height: 5px;
+                        background-color: $color-black;
+                        width: 100%;
+                        border-radius: 50px;
+                        margin-top: 10px;
+                        opacity: 0.9;
+                        transition: 0.5s all;
                     }
                     .nav__item{
                         width: auto;
@@ -95,7 +93,7 @@
                             width: 100%;
                             border-radius: 50px;
                             margin-top: 10px;
-                            opacity: 90%;
+                            opacity: 0.9;
                             transition: 0.5s all;
                         } 
                     }
@@ -113,7 +111,7 @@
                             width: 100%;
                             border-radius: 50px;
                             margin-top: 10px;
-                            opacity: 90%;
+                            opacity: 0.9;
                             transition: 0.5s all;
                         }
                     }
