@@ -195,10 +195,10 @@
 @media #{$mobile}{
 	.plaisir{
 		&__root{
-			margin-top:percentage(120px/640px);
+			margin-top:120px;
 
 			&::before{
-				top:-378px;
+				top:-350px;
 			}
 		}
 
@@ -295,6 +295,14 @@
 
 @media #{$small}{
 	.plaisir{
+		&__root{
+			margin-top:100px;
+
+			&::before{
+				top:-320px;
+			}
+		}
+
 		&__tendances-bottom{
 			margin-bottom: -10px;
 			margin-left: -10px;

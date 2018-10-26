@@ -17,6 +17,31 @@
 	background-image: url("../images/stars_gold.svg");
 }
 
+.advent__root{
+	position: relative;
+
+	&::before{
+		@extend .stars-gold;
+		width: 132px;
+		height: 127px;
+		bottom:-15px;
+		right:calc(50% + 500px);
+		transform: rotate(169deg);
+		opacity: 0.73;
+		z-index: 10;
+	}
+
+	&::after{
+		@extend .stars-gold;
+		width: 129px;
+		height: 124px;
+		top:270px;
+		left:calc(50% + 500px);
+		transform: rotate(77deg);
+		opacity: 0.73;
+		z-index: 10;
+	}
+}
 
 .plaisir{
 	&__root{
@@ -185,29 +210,27 @@
 		&__root{
 			&::after{
 				// @extend .stars-white;
-				width: 74px;
-				height: 72px;
-				top:0px;
-				left:calc(50% + 330px);
-				opacity: 0.59;
-				z-index: 20;
+				width: percentage(74px/640px);
+				height: 0;
+				padding-bottom:percentage(72px/640px);
+				top:19%;
+				left:percentage(-10px/640px);
 			}
 
 			.container-center{
-				position: relative;
-
 				&::before{
 					display: none;
 				}
 
 				&::after{
 					// @extend .star-white;
-					width: 70px;
-					height: 70px;
-					top:330px;
-					left:calc(50% + 480px);
-					transform: rotate(261deg);
-					opacity: 0.59;
+					width: percentage(70px/640px);
+					height: 0;
+					padding-bottom:percentage(70px/640px);
+					top:-5%;
+					left:auto;
+					right:percentage(45px/640px);
+					transform: rotate(0);
 				}
 			}
 		}
@@ -221,22 +244,24 @@
 		&__gifts{
 			&::before{
 				// @extend .stars-white;
-				width: 74px;
-				height: 72px;
-				top:160px;
-				right:calc(50% - 50px);
-				transform: rotate(77deg);
-				opacity: 0.59;
+				width: percentage(74px/640px);
+				height: 0;
+				padding-bottom:percentage(72px/640px);
+				top:43%;
+				right:auto;
+				left: percentage(17px/640px);
+				transform: rotate(191deg);
 			}
 
 			&::after{
 				// @extend .star-white;
-				width: 44px;
-				height: 44px;
-				top:250px;
-				left:calc(50% - 50px);
-				transform: rotate(31deg);
-				opacity: 0.59;
+				width: percentage(100px/640px);
+				height: 0;
+				padding-bottom:percentage(100px/640px);
+				top:auto;
+				bottom: 2%;
+				left:92%;
+				transform: rotate(70deg);
 			}
 		}
 	}
@@ -281,6 +306,16 @@
 			&::after{
 				display: none;
 			}
+		}
+	}
+
+	.footer__root{
+		&::before{
+			display: none;
+		}
+
+		&::after{
+			display: none;
 		}
 	}
 }

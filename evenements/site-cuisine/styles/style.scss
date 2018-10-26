@@ -970,6 +970,7 @@
 
 .bottom{
 	&__root{
+		margin-top:120px;
 		padding:75px 0;
 		background-color: #F5F5F5;
 	}
@@ -993,8 +994,19 @@
 		width: calc(50% - 20px);
 	}
 }
+@media #{$notDesktop}{
+	.bottom{
+		&__root{
+			margin-top:percentage(120px/1000px);
+		}
+	}
+}
 @media #{$mobile}{
 	.bottom{
+		&__root{
+			margin-top:percentage(120px/640px);
+		}
+
 		&__videos{
 			margin-top:50px;
 			display: block;

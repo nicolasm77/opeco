@@ -177,6 +177,12 @@
 	}
 }
 
+.subtitle{
+	font-family:$font-ars;
+	font-weight:700;
+	font-size:26px;
+}
+
 .separ{
 	&::after{
 		content:"";

@@ -24,5 +24,11 @@ window.lazySizesConfig.expand = 350;
 
 
 $j(document).ready(function() {
+	$j(".advent__calendar--decembre .advent__calendar-month").on("click", function(){
+		$j(".advent__calendar--decembre").addClass("advent__calendar--open")
+	})
 
+	$j(".advent__calendar--novembre .advent__calendar-month").on("click", function(){
+		$j(".advent__calendar--decembre").removeClass("advent__calendar--open")
+	})
 });
