@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 function isLinkClickable(link) {
 	var authorize = link.parents(".box").hasClass("box--category"), // Si on est dans la box "Ajouter une catégorie"
 		categoryCount = authorize && $j(".box--category .selected").length <= 2, // Si on est dans la box "Ajouter une catégorie" et qu"il y a déjà au maximum 2 paramètres de sélectionnés
@@ -30,7 +32,79 @@ function getProducts() {
 	$j('.box--pricerange .selected').each(function () {o.pricerange = $j(this).data("value");});
 	*/
 	if(!$j(".gift__params").length) {
-		$j('<div class="gift"><div class="gift__header"><div class="gift__title">Votre sélection</div><div class="gift__params"><div class="gift__paramsType"></div><div class="gift__paramsCategory"></div><div class="gift__paramsPricerange"></div></div><a href="#engine" class="gift__edit btn btn--big">Faire une nouvelle recherche</a></div><div class="gift__content"></div></div>').insertAfter(".header__title").hide().slideDown();
+
+		// ${mavar}
+
+
+		$j.removeAccent = function(str){
+			str = str
+				.replace(new RegExp(/Ç/, "g"), 'C')
+				.replace(new RegExp(/ç/, "g"), 'c')
+				.replace(new RegExp(/è|é|ê|ë/, "g"), 'e')
+				.replace(new RegExp(/È|É|Ê|Ë/, "g"), 'E')
+				.replace(new RegExp(/à|á|â|ã|ä|å/, "g"), 'a')
+				.replace(new RegExp(/À|Á|Â|Ã|Ä|Å/, "g"), 'A')
+				.replace(new RegExp(/ì|í|î|ï/, "g"), 'i')
+				.replace(new RegExp(/Ì|Í|Î|Ï/, "g"), 'I')
+				.replace(new RegExp(/ð|ò|ó|ô|õ|ö/, "g"), 'o')
+				.replace(new RegExp(/Ò|Ó|Ô|Õ|Ö/, "g"), 'O')
+				.replace(new RegExp(/ù|ú|û|ü/, "g"), 'u')
+				.replace(new RegExp(/Ù|Ú|Û|Ü/, "g"), 'U')
+				.replace(new RegExp(/ý|ÿ/, "g"), 'y')
+				.replace(new RegExp(/Ý/, "g"), 'Y')
+				.replace(new RegExp(" ", "g"), "_")
+				.toUpperCase();
+			return (str);
+		};
+
+		/*
+			${prod["code réf"]}
+			${prod["data-officer-id"]}
+			${prod["Type"]}
+			${prod["Marque"]}
+			${prod["Produit"]}
+			${$.removeAccent(prod["Type"])}
+			${$.removeAccent(prod["Marque"])}
+			${$.removeAccent(prod["Produit"])}
+			${prod["code réf"]}
+			${prod["EAN"]}
+			${note}
+		*/
+
+		var html = `<div class="push">
+			<article class="push__item" data-ref="1079601" data-offer="1064724">
+				<a href="/ref/1079601" title="Simulateur d'Aube PHILIPS JNDSNBG8" data-xiti="Portail::Noel2018::Push_Produits::SimulateurdAube_Philips__dkrjg54ujd">
+					<span class="push__img">
+						<img class="lazyload" src="https://boulanger.scene7.com/is/image/Boulanger/8710103783367_h_f_l_0?fit=constrain,1&amp;wid=230&amp;hei=230&amp;fmt=png&amp;qlt=100" alt="Simulateur d'Aube PHILIPS JNDSNBG8" >
+					</span>
+					<span class="hub-grow"></span>
+					<span class="push__promo">30€ REMBOURSES</span><span class="hub-grow"></span>
+					<span class="push__name">
+						<span>Simulateur d'aube <strong>PHILIPS</strong> JHNIKEDUJ4</span>
+					</span>
+					<span class="push__ratings">
+						<img src="${require('../images/pushproducts/ratings.svg')}" alt="">
+						<span style="width:20%;"></span>
+					</span>
+					<span class="push__bottom">
+						<span class="push__bottom-left">
+							<span class="push__old-price"></span>
+							<span class="push__price"></span>
+						</span>
+						<span class="push__bottom-right">
+							<span class="push__cart" data-xiti="Ajouts_Paniers::Portail::Noel2018::SimulateurdAube_Philips__dkrjg54ujd">
+								<span class="push__cart-img"></span>
+								<span class="push__cart-txt">Ajouter au panier</span>
+							</span>
+						</span>
+					</span>
+				</a>
+			</article>
+		</div>`;
+		html= html+html+html+html+html+html+html+html+html;
+
+		$j('<div class="engine__products"></div>').insertAfter(".header__title").hide().slideDown();
+		$j(".engine__products").append(html);
 	}
 	$j(".gift__params > div").html('');
 	$j('.box--type .selected').clone().appendTo(".gift__paramsType");
@@ -38,6 +112,7 @@ function getProducts() {
 	$j('.box--pricerange .selected').clone().appendTo(".gift__paramsPricerange");
 	$j('.gift .link.selected').removeClass('selected');
 	// TODO => ON CHARGE LES PRODUITS
+
 }
 
 function engine(e) {
