@@ -10,6 +10,9 @@ import style from "./styles/style.scss";
 // import Swiper from "swiper/dist/js/swiper.min.js";
 // import SwiperCSS from "swiper/dist/css/swiper.css";
 
+//Moteur à cadeaux
+import giftengine from "./scripts/giftengine.js";
+
 //tag XITI
 import xiti from "../../_global/scripts/data-xiti.js";
 
@@ -21,5 +24,11 @@ window.lazySizesConfig.expand = 350;
 
 
 $j(document).ready(function() {
+	$j(".advent__calendar--decembre .advent__calendar-month").on("click", function(){
+		$j(".advent__calendar--decembre").addClass("advent__calendar--open")
+	})
 
+	$j(".advent__calendar--novembre .advent__calendar-month").on("click", function(){
+		$j(".advent__calendar--decembre").removeClass("advent__calendar--open")
+	})
 });

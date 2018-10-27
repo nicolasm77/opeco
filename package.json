@@ -13,6 +13,7 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"@babel/plugin-syntax-dynamic-import": "^7.0.0",
 		"babel-preset-es2015": "^6.24.1",
 		"clean-webpack-plugin": "^0.1.19",
 		"css-loader": "^0.28.11",
@@ -40,7 +41,7 @@
 		"webpack-permissions-plugin": "^1.0.0"
 	},
 	"dependencies": {
-		"babel-core": "^6.26.3",
+		"babel-core": "^7.1.2",
 		"babel-loader": "^7.1.5",
 		"babel-preset-env": "^1.7.0",
 		"bubbles": "https://github.com/nicolasm77/bubbles.git",

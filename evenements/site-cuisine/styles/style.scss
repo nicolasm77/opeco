@@ -34,8 +34,8 @@
 	}
 
 	&__text{
-		font-size: 13px;
-		line-height: 30px;
+		font-size: 15px;
+		line-height: 26px;
 		margin-top:20px;
 	}
 
@@ -95,7 +95,7 @@
 		}
 
 		&__text{
-			font-size: 13px;
+			font-size: 14px;
 			line-height: 23px;
 		}
 
@@ -112,7 +112,7 @@
 		}
 
 		&__text{
-			font-size: 13px;
+			font-size: 14px;
 			line-height: 20px;
 			margin-top:15px;
 		}
@@ -970,6 +970,7 @@
 
 .bottom{
 	&__root{
+		margin-top:120px;
 		padding:75px 0;
 		background-color: #F5F5F5;
 	}
@@ -993,8 +994,19 @@
 		width: calc(50% - 20px);
 	}
 }
+@media #{$notDesktop}{
+	.bottom{
+		&__root{
+			margin-top:percentage(120px/1000px);
+		}
+	}
+}
 @media #{$mobile}{
 	.bottom{
+		&__root{
+			margin-top:percentage(120px/640px);
+		}
+
 		&__videos{
 			margin-top:50px;
 			display: block;
@@ -1021,8 +1033,8 @@
 	}
 
 	&__text{
-		font-size:17px;
-		line-height: 36px;
+		font-size:15px;
+		line-height: 32px;
 	}
 
 	&__author{
@@ -1055,7 +1067,6 @@
 		}
 
 		&__text{
-			font-size:16px;
 			line-height: 30px;
 
 			p + p::before{
@@ -1073,7 +1084,7 @@
 @media #{$small}{
 	.quote{
 		&__text{
-			font-size:15px;
+			font-size:14px;
 			line-height: 24px;
 		}
 

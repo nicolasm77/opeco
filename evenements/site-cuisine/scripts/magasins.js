@@ -123,6 +123,6 @@ module.exports = [
 		address :"1 avenue de l'avenir<br> 59650 Villeneuve D'Ascq",
 		latitude: "50.6174997",
 		longitude: "3.1245546",
-		url : "https://www.clicrdv.com/boulanger-F031?intervention_ids[]=2615960"
+		url : "https://www.clicrdv.com/boulanger-F031?calendar_id=330683"
 	},
 ];

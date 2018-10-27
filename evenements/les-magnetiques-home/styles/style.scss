@@ -1,0 +1,30 @@
+@import "../../../_global/tpl_page/styles/variables";
+@import "../../../_global/tpl_page/styles/reset";
+@import "../../../_global/tpl_page/styles/fonts";
+@import "../../../_global/tpl_page/styles/base";
+@import "colors";
+@import "header-home";
+@import "univers";
+
+.rs__root{
+    text-align: center;
+    margin-top: 80px;
+    .rs__link{
+        text-decoration: none;
+    }
+}
+.brand{
+    font: 400 18px/22px $font-ars;
+    color: $color-black;
+    margin: 22px 0 80px;;
+    text-align: center; 
+}
+
+@media #{$mobile}{
+    .rs__root{
+        margin-top: 40px;
+        img{
+            max-width:59px;
+        }
+    }
+}

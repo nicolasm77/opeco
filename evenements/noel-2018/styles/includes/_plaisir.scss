@@ -1,5 +1,319 @@
 .plaisir{
+	&__root{
+		margin-top:110px;
+		position: relative;
+
+		&::before{
+			content:"";
+			position: absolute;
+			z-index: 0;
+			width: 3000px;
+			height:2600px;
+			background: url(../images/oblique_orange.svg) no-repeat bottom left;
+			background-size: contain;
+			top:-378px;
+			left: calc(50% - 1500px);
+		}
+	}
+
 	&__container{
 		background-color: $color-orange;
+		z-index: 10;
+		position: relative;
+	}
+
+	&__title{
+		text-align: left;
+		text-indent: -85px;
+
+		> span{
+			margin-left:105px;
+		}
+	}
+
+	&__tendances{
+		display: flex;
+		align-items: center;
+		max-width: 930px;
+		margin-left: auto;
+		margin-top:70px;
+		padding-bottom: 15px;
+	}
+
+	&__part-left{
+		width:percentage(464px/930px);
+	}
+
+	&__tendances-img{
+		width: 100%;
+		display: block;
+	}
+
+	&__part-right{
+		margin-left:percentage(33px/930px);
+		width:percentage(433px/930px);
+		margin-top: -36px;
+	}
+
+	&__subtitle{
+		font-family: $font-ars;
+		font-weight:500;
+		font-size:30px;
+		text-align: center;
+		color:$color-white;
+
+		&--tend{
+			text-align: left;
+		}
+
+		&--gift,
+		&--gift2{
+			order:4;
+		}
+	}
+
+	&__tendances-text{
+		font-size:17px;
+		color:$color-white;
+		max-width: 355px;
+	}
+
+	&__tendances-bottom{
+		margin-top: 25px;
+		margin-bottom: -10px;
+		margin-left: -10px;
+
+		.btn{
+			width:172px;
+			margin-left: 10px;
+			margin-bottom: 10px;
+		}
+	}
+
+	&__ribbon{
+		background-color:rgba($color-white, 0.23);
+		text-align: center;
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+		padding:35px 0;
+		font-family: $font-ars;
+		font-weight:700;
+		font-size:30px;
+		color:$color-white;
+
+		&::after{
+			content:"";
+			display: block;
+			width:67px;
+			height:2px;
+			background-color: $color-white;
+			margin:15px auto 0;
+		}
+	}
+
+	&__gifts{
+		display: flex;
+		max-width: 960px;
+		margin: 50px auto 0;
+		padding-bottom: 45px;
+	}
+
+	&__gift{
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		flex-shrink: 0;
+		align-items: center;
+		padding:0 20px;
+
+		&::before{
+			content:"";
+			flex-grow: 1;
+			order:1;
+		}
+
+		&::after{
+			content:"";
+			flex-grow: 1;
+			order:3;
+		}
+	}
+
+	&__gift-img{
+		order:2;
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__gift-bottom{
+		margin-top:20px;
+		text-align: center;
+		order:5;
+	}
+}
+
+@media (max-width:800px){
+	.plaisir{
+		&__tendances{
+			display: block;
+			margin-right: auto;
+			max-width: 640px;
+		}
+
+		&__tendances-img{
+			width: 100%;
+			display: block;
+		}
+
+		&__part-right{
+			margin-left:0;
+			width:100%;
+			margin-top: 0;
+		}
+
+		&__tendances-text{
+			max-width: none;
+		}
+
+		&__tendances-bottom{
+			max-width: 500px;
+
+			.btn{
+				width:172px;
+				margin-left: 10px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+@media #{$mobile}{
+	.plaisir{
+		&__root{
+			margin-top:120px;
+
+			&::before{
+				top:-350px;
+			}
+		}
+
+		&__title{
+			text-align: center;
+
+			> span{
+				margin-left:0;
+				position: relative;
+    			left: 21px;
+			}
+		}
+
+		&__tendances{
+			margin-top:percentage(50px/610px);
+			padding-bottom: percentage(80px/610px);
+			max-width: 515px;
+		}
+
+		&__part-left{
+			width:100%;
+		}
+
+		&__part-right{
+
+		}
+
+		&__subtitle{
+			@include fs(40);
+
+			&--gift{
+				margin-top:percentage(20px/515px);
+			}
+		}
+
+		&__tendances-text{
+			@include fs(26);
+			@include lh(28);
+		}
+
+		&__tendances-bottom{
+			margin-top: percentage(30px/515px);
+			margin-bottom: -20px;
+			margin-left: -20px;
+			max-width: 500px;
+			display: flex;
+			flex-wrap:wrap;
+
+			.btn{
+				width:calc(50% - 20px);
+				margin-left: 20px;
+				margin-bottom: 20px;
+				padding-left:10px;
+				padding-right:10px;
+			}
+		}
+
+		&__ribbon{
+			padding:percentage(35px/640px) 0;
+			@include fs(40);
+		}
+
+		&__gifts{
+			display: block;
+			max-width: 515px;
+			margin: percentage(65px/640px) auto 0;
+			padding-bottom: percentage(65px/640px);
+		}
+
+		&__gift{
+			display: block;
+			width:100%;
+			padding:0;
+
+			&::before,
+			&::after{
+				display: none;
+			}
+
+			& + &{
+				margin-top:percentage(70px/515px);
+			}
+		}
+
+		&__gift-img{
+			width:100%;
+		}
+
+		&__gift-bottom{
+			margin-top:percentage(30px/515px);
+		}
+	}
+}
+
+@media #{$small}{
+	.plaisir{
+		&__root{
+			margin-top:100px;
+
+			&::before{
+				top:-320px;
+			}
+		}
+
+		&__tendances-bottom{
+			margin-bottom: -10px;
+			margin-left: -10px;
+
+			.btn{
+				width:calc(50% - 10px);
+				margin-left: 10px;
+				margin-bottom: 10px;
+				padding-left:0;
+				padding-right:0;
+			}
+		}
 	}
 }

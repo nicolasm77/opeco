@@ -10,7 +10,7 @@ Deux environnements locaux :
 * desktop
 * sim
 
-Chacun contenant le header, le footer et les fichers CSS présents sur ces 2 versions du site boulanger.com. Un *hot reloading* (rechargement de la page à chaque modifications de fichier inclus) est lancé automatiquement.
+Chacun contenant le header, le footer et les fichers CSS présents sur ces 2 versions du site. Un *hot reloading* (rechargement de la page à chaque modifications de fichier inclus) est lancé automatiquement.
 
 ### Liste des fonctionnalités
 * Minification HTML
@@ -24,8 +24,8 @@ Chacun contenant le header, le footer et les fichers CSS présents sur ces 2 ver
 * Suppression du CSS non utilisé
 * Optimisation des images (jpg, png et svg)
 * Lazyloading des images
-* Intégration du framework CSS boulanger et des bulles (cf. index.js)
-* Intégration des scripts Boulanger (swiper, data-xiti, etc.)
+* Intégration du framework CSS B et des bulles (cf. index.js)
+* Intégration des scripts B (swiper, data-xiti, etc.)
 
 ## Installation
 
@@ -87,13 +87,13 @@ Le starter dispose de 3 commandes d'initialisation :
 ```
 npm run desk
 ```
-Initialise un serveur local à l'adresse http://localhost:8080 avec hot reloading et l'apparence du site _desktop_ de boulanger. Dans ce cas, le traitement est minimal : les ressources (images, script, css, etc.) ne sont pas optimisées.
+Initialise un serveur local à l'adresse http://localhost:8080 avec hot reloading et l'apparence du site _desktop_ du site. Dans ce cas, le traitement est minimal : les ressources (images, script, css, etc.) ne sont pas optimisées.
 
 2. Lancement du local *sim*
 ```
 npm run sim
 ```
-Initialise un serveur local à l'adresse http://localhost:8080 avec hot reloading et l'apparence du site _sim_ de boulanger. Dans ce cas, le traitement est minimal : les ressources (images, script, css, etc.) ne sont pas optimisées.
+Initialise un serveur local à l'adresse http://localhost:8080 avec hot reloading et l'apparence du site _sim_ du site. Dans ce cas, le traitement est minimal : les ressources (images, script, css, etc.) ne sont pas optimisées.
 
 3. Génération des fichiers pour la prod
 ```

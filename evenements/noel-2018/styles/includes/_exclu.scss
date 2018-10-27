@@ -1,5 +1,16 @@
 .exclu{
 	&__root{
+		position: relative;
+		z-index: 10;
 		background-color: #F4F4F4;
+		padding:65px 0;
+	}
+
+	&__item{
+		display: flex;
+	}
+
+	&__container{
+		display: flex;
 	}
 }

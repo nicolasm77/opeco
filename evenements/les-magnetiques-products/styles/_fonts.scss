@@ -1,0 +1,19 @@
+@font-face {
+	font-family: "ARS";
+	src : url("../fonts/ARS-Regular-subset.woff2") format("woff2"),
+	url("../fonts/ARS-Regular-subset.woff") format("woff");
+	font-style: normal;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+	font-family: "ARS";
+	src : url("../fonts/ARS-Medium-subset.woff2") format("woff2"),
+	url("../fonts/ARS-Medium-subset.woff") format("woff");
+	font-style: normal;
+	font-weight: 500;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

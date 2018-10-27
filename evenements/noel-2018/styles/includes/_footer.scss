@@ -1,5 +1,29 @@
 .footer{
 	&__root{
 		background-color:$color-back-back;
+		padding:70px 0 60px;
+		position: relative;
+		z-index: 10;
+	}
+
+	&__text{
+		color:$color-white;
+		font-family: $font-ars;
+		font-size:30px;
+		line-height:32px;
+		text-align: center;
+	}
+}
+
+@media #{$mobile}{
+	.footer{
+		&__root{
+			padding:percentage(70px/640px) 0 percentage(60px/640px);
+		}
+
+		&__text{
+			@include fs(40);
+			@include lh(43);
+		}
 	}
 }

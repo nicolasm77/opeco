@@ -31,5 +31,6 @@ module.exports = [
 	"open",
 	"closed",
 	"frise__space",
-	"resize"
+	"resize",
+	"swiper-slide-active"
 ];

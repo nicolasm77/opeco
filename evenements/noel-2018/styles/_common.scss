@@ -1,3 +1,16 @@
+@media #{$mobile} {
+    .only-desk{
+        display: none !important;
+    }
+}
+.only-sim{
+    display: none !important;
+
+    @media #{$mobile} {
+        display: block !important;
+	}
+}
+
 .typex{
 	text-align:center;
 	width:100%;
@@ -54,6 +67,21 @@
 				rgba(255,255,255,0) 100%
 			);
 		}
+	}
+}
+@media #{$notDesktop}{
+	.typex{
+		font-size:48px;
+	}
+}
+@media #{$mobile}{
+	.typex{
+		@include fs(48);
+	}
+}
+@media #{$small}{
+	.typex{
+		@include fs(60);
 	}
 }
 
@@ -122,7 +150,70 @@
 		}
 	}
 }
+@media #{$mobile}{
+	.btn{
+		@include fs(20);
+		@include lh(24);
+		padding:12px 22px;
 
+		&--big{
+			@include fs(24);
+			padding:14px 40px;
+		}
+	}
+}
+@media #{$small}{
+	.btn{
+		// @include fs(28);
+		// @include lh(28);
+		font-size:15px;
+		line-height: 16px;
+		padding:8px 12px;
+
+		&--big{
+			font-size:17px;
+			padding:14px 30px;
+		}
+	}
+}
+
+.subtitle{
+	font-family:$font-ars;
+	font-weight:700;
+	font-size:26px;
+}
+@media #{$mobile}{
+	.subtitle{
+		@include fs(40);
+	}
+}
+
+.separ{
+	&::after{
+		content:"";
+		display: block;
+		width:67px;
+		height:2px;
+		background-color: $color-orange;
+		margin:15px 0;
+	}
+
+	&--white::after{
+		background-color: $color-white;
+	}
+}
+@media #{$small}{
+	.separ{
+		&::after{
+			width:50px;
+		}
+	}
+}
+
+
+#filAriane {
+    margin: 10px auto;
+}
 .ftr__top{
 	display: none;
 }

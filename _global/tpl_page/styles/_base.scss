@@ -33,6 +33,10 @@ img.lazyloaded {
 	font-family: Arial, sans-serif;
 	line-height: normal;
 	line-height: initial;
+
+	span{
+		font-family: inherit;
+	}
 }
 
 .embed-responsive {

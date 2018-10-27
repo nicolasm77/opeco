@@ -1,5 +1,25 @@
 .video{
 	&__root{
+		position: relative;
 		background-color: $color-gold;
+
+		&::before{
+			content:"";
+			position: absolute;
+			z-index: 0;
+			width: 3000px;
+			height:2600px;
+			background: url(../images/oblique_white.svg) no-repeat bottom left;
+			background-size: contain;
+			top: calc(50% - 218px);
+			left: calc(50% - 1500px);
+			opacity: 0.15;
+		}
+	}
+
+	&__container{
+		background-color: $color-orange;
+		z-index: 10;
+		position: relative;
 	}
 }
