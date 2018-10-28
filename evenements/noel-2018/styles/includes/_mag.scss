@@ -4,6 +4,8 @@
 	}
 
 	&__container{
+		position: relative;
+		z-index: 10;
 		display: flex;
 		max-width: 956px;
 		align-items: flex-end;
@@ -11,7 +13,7 @@
 	}
 
 	&__part-content{
-		width: percentage(485px/926px);
+		width: percentage(485px/956px);
 		flex-shrink: 0;
 	}
 
@@ -31,7 +33,7 @@
 	}
 
 	&__part-find{
-		width: percentage(410px/926px);
+		width: percentage(410px/956px);
 		flex-shrink: 0;
 		position: relative;
 	}
@@ -113,6 +115,7 @@
 		}
 
 		&__map{
+			display: block;
 			position: absolute;
 			top: 39%;
 			left: 2.5%;
