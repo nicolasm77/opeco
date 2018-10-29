@@ -82,7 +82,7 @@
     }
 }
 
-@media #{$mobile} {
+@media #{$notDesktop} {
     .articles.adq{
         padding-left: 0px;
         padding-right: 0px;
