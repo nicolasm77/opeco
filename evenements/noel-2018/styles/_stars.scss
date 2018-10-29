@@ -17,29 +17,45 @@
 	background-image: url("../images/stars_gold.svg");
 }
 
-.advent__root{
-	position: relative;
+.advent{
+	&__root{
+		position: relative;
 
-	&::before{
-		@extend .stars-gold;
-		width: 132px;
-		height: 127px;
-		bottom:-15px;
-		right:calc(50% + 500px);
-		transform: rotate(169deg);
-		opacity: 0.73;
-		z-index: 10;
+		&::before{
+			@extend .stars-gold;
+			width: 132px;
+			height: 127px;
+			bottom:-15px;
+			right:calc(50% + 500px);
+			transform: rotate(169deg);
+			opacity: 0.73;
+			z-index: 10;
+		}
+
+		&::after{
+			@extend .stars-gold;
+			width: 129px;
+			height: 124px;
+			top:270px;
+			left:calc(50% + 500px);
+			transform: rotate(77deg);
+			opacity: 0.73;
+			z-index: 10;
+		}
 	}
 
-	&::after{
-		@extend .stars-gold;
-		width: 129px;
-		height: 124px;
-		top:270px;
-		left:calc(50% + 500px);
-		transform: rotate(77deg);
-		opacity: 0.73;
-		z-index: 10;
+	&__part-prod{
+		position: relative;
+
+		&::before{
+			@extend .star-gold;
+			display: none;
+		}
+
+		&::after{
+			@extend .stars-gold;
+			display: none;
+		}
 	}
 }
 
@@ -232,9 +248,43 @@
 @media #{$mobile}{
 	.advent{
 		&__root{
-			&::before,
-			&::after{
+			&::before{
 				display: none;
+			}
+
+			&::after{
+				width: percentage(132px/640px);
+				height: 0;
+				padding-bottom:percentage(127px/640px);
+				top:auto;
+				bottom:1%;
+				left:-3%;
+				transform: rotate(8deg);
+				opacity: 0.73;
+			}
+		}
+
+		&__part-prod{
+			&::before{
+				display: block;
+				width: percentage(132px/580px);
+				height: 0;
+				padding-bottom:percentage(132px/580px);
+				top:2%;
+				left:-13%;
+				transform: rotate(30deg);
+				opacity: 0.73;
+			}
+
+			&::after{
+				display: block;
+				width: percentage(130px/580px);
+				height: 0;
+				padding-bottom:percentage(124px/580px);
+				top:24%;
+				right:-10%;
+				transform: rotate(88deg);
+				opacity: 0.73;
 			}
 		}
 	}

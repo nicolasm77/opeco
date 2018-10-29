@@ -493,6 +493,7 @@ td.day{
 		&__part-prod{
 			margin-bottom: -35px;
 			padding-bottom: 0;
+			margin-top: percentage(30px/580px);
 		}
 
 		&__prod-img{
