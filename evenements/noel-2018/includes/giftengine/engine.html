@@ -1,3 +1,18 @@
+<div class="gift">
+	<div class="gift__header">
+		<div class="gift__title">Votre sélection</div>
+		<div class="gift__params">
+			<div class="gift__paramsType"></div>
+			<div class="gift__paramsCategory"></div>
+			<div class="gift__paramsPricerange"></div>
+		</div>
+		<a href="javascript:void(0);" class="gift__edit btn btn--large">Faire une nouvelle recherche</a>
+	</div>
+	<div class="gift__content"></div>
+	<div class="gift__footer">
+		<a href="javascript:void(0);" class="gift__footer__more">Voir plus de cadeaux</a>
+	</div>
+</div>
 <div class="layout" id="engine">
 	<div class="giftengine">
 		<div class="giftengine__top">
@@ -8,19 +23,19 @@
 			<div class="box box--type">
 				<h3 class="box__title">Pour <b>qui&nbsp;?</b></h3>
 				<div class="box__flex">
-					<button data-value="man" class="link">
+					<button data-value=1 class="link">
 						${require('../../images/giftengine/type-man.svg?inline')}
 						<span class="link__text">Un homme</span>
 					</button>
-					<button data-value="woman" class="link">
+					<button data-value=2 class="link">
 						${require('../../images/giftengine/type-woman.svg?inline')}
 						<span class="link__text">Une femme</span>
 					</button>
-					<button data-value="couple" class="link">
+					<button data-value=3 class="link">
 						${require('../../images/giftengine/type-couple.svg?inline')}
 						<span class="link__text">Un couple</span>
 					</button>
-					<button data-value="child" class="link">
+					<button data-value=4 class="link">
 						${require('../../images/giftengine/type-child.svg?inline')}
 						<span class="link__text">Un ado/enfant</span>
 					</button>
@@ -29,59 +44,59 @@
 			<div class="box box--category">
 				<h3 class="box__title">Ajouter <b>une catégorie</b> <small>(3&nbsp;maximum)</small></h3>
 				<div class="box__flex">
-					<button data-value="cuisine" class="link">
+					<button data-value=1 class="link">
 						${require('../../images/giftengine/category-cuisine.svg?inline')}
 						<span class="link__text">Préparation<br> culinaire</span>
 					</button>
-					<button data-value="dejeuner" class="link">
+					<button data-value=2 class="link">
 						${require('../../images/giftengine/category-dejeuner.svg?inline')}
 						<span class="link__text">Petit déjeuner<br> & Boissons</span>
 					</button>
-					<button data-value="tv" class="link">
+					<button data-value=3 class="link">
 						${require('../../images/giftengine/category-tv.svg?inline')}
 						<span class="link__text">Univers<br> de la TV</span>
 					</button>
-					<button data-value="son" class="link specific specific1">
+					<button data-value=4 class="link specific specific1">
 						${require('../../images/giftengine/category-son.svg?inline')}
 						<span class="link__text">Univers<br> du son</span>
 					</button>
-					<button data-value="entretien" class="link">
+					<button data-value=5 class="link">
 						${require('../../images/giftengine/category-entretien.svg?inline')}
 						<span class="link__text">Entretien<br> & Bien-être<br> à la maison</span>
 					</button>
-					<button data-value="beaute" class="link specific specific1">
+					<button data-value=6 class="link specific specific1">
 						${require('../../images/giftengine/category-beaute.svg?inline')}
 						<span class="link__text">Beauté,<br> Sport & Santé</span>
 					</button>
-					<button data-value="informatique" class="link">
+					<button data-value=7 class="link">
 						${require('../../images/giftengine/category-informatique.svg?inline')}
 						<span class="link__text">Informatique</span>
 					</button>
-					<button data-value="smartphone" class="link">
+					<button data-value=8 class="link">
 						${require('../../images/giftengine/category-smartphone.svg?inline')}
 						<span class="link__text">Smartphone<br> & Montres<br> connectées</span>
 					</button>
-					<button data-value="maison" class="link">
+					<button data-value=9 class="link">
 						${require('../../images/giftengine/category-maison.svg?inline')}
 						<span class="link__text">Maison<br> & Gros électro</span>
 					</button>
-					<button data-value="objetsco" class="link">
+					<button data-value=10 class="link">
 						${require('../../images/giftengine/category-objetsco.svg?inline')}
 						<span class="link__text">Objets<br> connectés</span>
 					</button>
-					<button data-value="gaming" class="link">
+					<button data-value=11 class="link">
 						${require('../../images/giftengine/category-gaming.svg?inline')}
 						<span class="link__text">Console<br> Gaming</span>
 					</button>
-					<button data-value="loisir" class="link">
+					<button data-value=12 class="link">
 						${require('../../images/giftengine/category-loisir.svg?inline')}
 						<span class="link__text">Loisirs<br> & Photos</span>
 					</button>
-					<button data-value="cadeau" class="link specific specific1">
+					<button data-value=13 class="link specific specific1">
 						${require('../../images/giftengine/category-cadeau.svg?inline')}
 						<span class="link__text">Cartes<br> & coffrets<br> cadeaux</span>
 					</button>
-					<button data-value="incontournable" class="link">
+					<button data-value=14 class="link">
 						${require('../../images/giftengine/category-incontournable.svg?inline')}
 						<span class="link__text">Incontournables</span>
 					</button>
@@ -94,31 +109,31 @@
 			<div class="box box--pricerange">
 				<h3 class="box__title">Quel <b>budget&nbsp;?</b></h3>
 				<div class="box__flex">
-				<button data-value="less_30" class="link">
-					${require('../../images/giftengine/pricerange.svg?inline')}
-					<span class="link__text">Moins de 30€</span>
-				</button>
-				<button data-value="less_50" class="link">
-					${require('../../images/giftengine/pricerange.svg?inline')}
-					<span class="link__text">Moins de 50€</span>
-				</button>
-				<button data-value="less_100" class="link">
-					${require('../../images/giftengine/pricerange.svg?inline')}
-					<span class="link__text">Moins de 100€</span>
-				</button>
-				<button data-value="between100_200" class="link">
-					${require('../../images/giftengine/pricerange.svg?inline')}
-					<span class="link__text">De 100€ à 200€</span>
-				</button>
-				<button data-value="more_200" class="link">
-					${require('../../images/giftengine/pricerange.svg?inline')}
-					<span class="link__text">Plus de 200€</span>
-				</button>
-				<button data-value="all" class="link">
-					${require('../../images/giftengine/pricerange.svg?inline')}
-					<span class="link__text">Tous budgets</span>
-				</button>
-			</div>
+					<button data-value="less_30" class="link">
+						${require('../../images/giftengine/pricerange.svg?inline')}
+						<span class="link__text">Moins de 30€</span>
+					</button>
+					<button data-value="less_50" class="link">
+						${require('../../images/giftengine/pricerange.svg?inline')}
+						<span class="link__text">Moins de 50€</span>
+					</button>
+					<button data-value="less_100" class="link">
+						${require('../../images/giftengine/pricerange.svg?inline')}
+						<span class="link__text">Moins de 100€</span>
+					</button>
+					<button data-value="between100_200" class="link">
+						${require('../../images/giftengine/pricerange.svg?inline')}
+						<span class="link__text">De 100€ à 200€</span>
+					</button>
+					<button data-value="more_200" class="link">
+						${require('../../images/giftengine/pricerange.svg?inline')}
+						<span class="link__text">Plus de 200€</span>
+					</button>
+					<button data-value="all" class="link">
+						${require('../../images/giftengine/pricerange.svg?inline')}
+						<span class="link__text">Tous budgets</span>
+					</button>
+				</div>
 			</div>
 		</div>
 		<div class="giftengine__error">

@@ -3,7 +3,7 @@
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st0{fill:none;stroke:#ccb079;stroke-width:2;}
 </style>
 <circle class="st0" cx="100" cy="100" r="10.2">
 <animate  accumulate="none" additive="replace" attributeName="r" begin="-0.5s" calcMode="spline" dur="1" fill="remove" keySplines="0 0.2 0.8 1" keyTimes="0;1" repeatCount="indefinite" restart="always" values="0;40">
