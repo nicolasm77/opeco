@@ -1,0 +1,288 @@
+#popcart {
+  display: none;
+
+  .popcart {
+  	&__layer {
+  		position: fixed;
+  		top: 0;
+  		left: 0;
+  		z-index: 9999;
+  		display: block;
+  		width: 100%;
+  		height: 100%;
+  		overflow: hidden;
+  		background-color: rgba(0, 0, 0, 0.6);
+  	}
+  	&__global {
+  		position: fixed;
+  		top: 50%;
+  		left: 50%;
+  		z-index: 9999;
+  		width: 90%;
+  		max-width: 910px;
+  		max-height: 90%;
+  		padding: 0 20px;
+  		background-color: #ffffff;
+  		border-radius: 3px;
+  		-webkit-transform: translate(-50%, -50%);
+  		transform: translate(-50%, -50%);
+  		&__seecart--mobile {
+  			display: none;
+  		}
+  		&__actioncart {
+  			display: table;
+  			width: 100%;
+  			padding: 10px 0;
+  			&__validadd {
+  				display: table-cell;
+  				padding: 10px 0 10px 50px;
+  				color: #000000;
+  				font: 600 20px/24px Arial, sans-serif;
+  				vertical-align: middle;
+  				background: url("/webapp/wcs/stores/BoulangerStg/statics/plugins/service/img/icon-cart-check.png") no-repeat 4px 50%;
+  			}
+  			&__popvalidright {
+  				display: table-cell;
+  				text-align: right;
+  				vertical-align: middle;
+  			}
+  			&__popvalidright__continue {
+  				display: inline-block;
+  				height: 44px;
+  				padding: 2px 2px 2px 25px;
+  				color: #999999;
+  				font: 14px/40px Arial, sans-serif;
+  				text-decoration: none;
+  				text-transform: uppercase;
+  				background: url("/webapp/wcs/stores/BoulangerStg/statics/plugins/service/img/icon-btn-continue.png") no-repeat 0 50%;
+  				border: 0 none;
+  				outline: 0;
+  				cursor: pointer;
+  			}
+  		}
+  	}
+  }
+  .popcart__global__actioncart__popvalidright__seecart {
+  	display: inline-block;
+  	width: 163px;
+  	height: 44px;
+  	padding: 2px;
+  	margin-left: 25px;
+  	color: #ffffff;
+  	font-family: Arial, sans-serif;
+  	font-size: 14px;
+  	font-weight: 700;
+  	line-height: 38px;
+  	text-align: center;
+  	text-decoration: none;
+  	text-transform: uppercase;
+  	background-color: #ff5c00;
+  	border: 1px solid #ff5c00;
+  	border-radius: 3px;
+  	cursor: pointer;
+
+  	-webkit-border-radius: 3px;
+  }
+
+  .popcart__global__resumecart {
+  	display: table;
+  	width: 100%;
+  	padding: 10px 20px;
+  	border-top: 1px solid #e0e0e0;
+  }
+
+  .popcart__global__resumecart__imgpdt {
+  	display: table-cell;
+  	width: 20%;
+  	text-align: center;
+  	vertical-align: middle;
+  }
+
+  .popcart__global__resumecart__imgpdt img {
+  	width: auto;
+  	height: 95px;
+  }
+
+  .popcart__global__resumecart__labelpdt {
+  	display: table-cell;
+  	width: 65%;
+  	color: #000000;
+  	font: 14px/16px Arial, sans-serif;
+	  vertical-align: middle;
+	  padding-left:20px;
+  }
+
+  .popcart__global__resumecart__pricepdt {
+  	display: table-cell;
+  	width: 15%;
+  	text-align: right;
+  	vertical-align: middle;
+  }
+
+  .popcart__global__resumecart__pricepdt__old {
+  	display: block;
+  	margin-bottom: 5px;
+  	color: #000000;
+  	font: 700 16px/16px Arial, sans-serif;
+  	text-decoration: line-through;
+  }
+
+  .popcart__global__resumecart__pricepdt__old sup {
+  	font-size: 11px;
+  }
+
+  .popcart__global__resumecart__pricepdt__new {
+  	display: block;
+  	color: #000000;
+  	font: 700 24px/24px Arial, sans-serif;
+  }
+
+  .popcart__global__resumecart__pricepdt__new sup {
+  	font-size: 14px;
+  }
+
+  .popcart__closepopcart {
+  	position: absolute;
+  	top: -13px;
+  	right: -13px;
+  	z-index: 9999;
+  	display: block;
+  	width: 26px;
+  	height: 26px;
+  	font-size: 0;
+  	background: url("/webapp/wcs/stores/BoulangerStg/statics/plugins/service/img/icon-close.png") no-repeat 50% 50% #ffffff;
+  	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  	border: 1px solid #ffffff;
+  	border-radius: 50%;
+  	outline: 0 none;
+  	cursor: pointer;
+
+  	-webkit-border-radius: 50%;
+  }
+
+  @media all and (max-width: 767px) {
+  	.popcart__global {
+  		top: inherit;
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		max-height: 80%;
+  		padding: 0;
+  		background-color: #ffffff;
+  		-webkit-transform: none;
+  		transform: none;
+  	}
+  	.popcart__global__seecart--mobile {
+  		display: block;
+  		width: auto;
+  		height: 44px;
+  		padding: 2px;
+  		margin: 15px 10px;
+  		clear: both;
+  		color: #ffffff;
+  		font-family: Arial, sans-serif;
+  		font-size: 14px;
+  		font-weight: 700;
+  		line-height: 38px;
+  		text-align: center;
+  		text-decoration: none;
+  		text-transform: uppercase;
+  		background-color: #ff5c00;
+  		border: 1px solid #ff5c00;
+  		border-radius: 3px;
+  		cursor: pointer;
+
+  		-webkit-border-radius: 3px;
+  	}
+  	.popcart__global__actioncart {
+  		-ms-flex-direction: column;
+  		flex-direction: column;
+  		-webkit-box-direction: normal;
+  		-webkit-box-orient: vertical;
+  		display: -webkit-box;
+  		display: -ms-flexbox;
+  		display: flex;
+  		padding: 0;
+  	}
+  	.popcart__global__actioncart__validadd {
+  		-ms-flex-order: 2;
+  		order: 2;
+  		padding: 15px 0;
+  		font: 600 18px/20px Arial, sans-serif;
+  		text-align: center;
+  		background: none;
+
+  		-webkit-box-ordinal-group: 3;
+  	}
+  	.popcart__global__actioncart__validadd:before {
+  		display: inline-block;
+  		width: 26px;
+  		height: 16px;
+  		content: "";
+  		vertical-align: middle;
+  		background: url("/webapp/wcs/stores/BoulangerStg/statics/plugins/service/img/icon-cart-check.png") no-repeat 0 50%;
+  		background-size: contain;
+  	}
+  	.popcart__global__actioncart__popvalidright {
+  		-ms-flex-order: 1;
+  		order: 1;
+
+  		-webkit-box-ordinal-group: 2;
+  	}
+  	.popcart__global__actioncart__popvalidright__continue {
+  		display: block;
+  		width: 100%;
+  		padding: 2px 2px 2px 30px;
+  		color: #999999;
+  		text-align: left;
+  		text-transform: uppercase;
+  		background: url("https://m.boulanger.com/wcsstore/gulp/gulp-mobile/src/assets/service/img/icon-btn-continue.png") 12px 50% no-repeat #edf1f8;
+  		border-bottom: 1px solid #e0e0e0;
+  		cursor: pointer;
+  	}
+  	.popcart__global__actioncart__popvalidright__seecart {
+  		display: none;
+  	}
+  	.popcart__global__resumecart {
+  		display: block;
+  		padding: 10px;
+  		overflow: hidden;
+  		border-top: 0;
+  		border-bottom: 1px solid #e0e0e0;
+  	}
+  	.popcart__global__resumecart__imgpdt {
+  		display: block;
+  		width: 100%;
+  		margin-bottom: 25px;
+  	}
+  	.popcart__global__resumecart__labelpdt {
+  		display: block;
+  		float: left;
+  		width: 70%;
+  	}
+  	.popcart__global__resumecart__pricepdt {
+  		display: block;
+  		float: right;
+  		width: 25%;
+  	}
+  	.popcart__global__resumecart__pricepdt__old {
+  		margin-bottom: 3px;
+  		font: 700 15px/15px Arial, sans-serif;
+  	}
+  	.popcart__global__resumecart__pricepdt__old sup {
+  		font-size: 10px;
+  	}
+  	.popcart__global__resumecart__pricepdt__new {
+  		font: 700 20px/20px Arial, sans-serif;
+  	}
+  	.popcart__global__resumecart__pricepdt__new sup {
+  		font-size: 13px;
+  	}
+  	.popcart__closepopcart {
+  		display: none;
+	  }
+	  .popcart__global__resumecart__labelpdt {
+		padding-left:0;
+	}
+  }
+}
