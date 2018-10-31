@@ -101,7 +101,7 @@ function productsHtml(object, more) {
 }
 
 function productsCheck(more) {
-	if(currentProductIndex === allProducts.responseJSON.length){
+	if(currentProductIndex === allProducts.responseJSON.length-1){
 		$j(".gift__footer__more").hide();
 	}else if (currentProductIndex <= allProducts.responseJSON.length) {
 		var currentProduct = allProducts.responseJSON[currentProductIndex];
