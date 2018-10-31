@@ -101,7 +101,9 @@ function productsHtml(object, more) {
 }
 
 function productsCheck(more) {
-	if (currentProductIndex <= allProducts.responseJSON.length) {
+	if(currentProductIndex === allProducts.responseJSON.length){
+		$j(".gift__footer__more").hide();
+	}else if (currentProductIndex <= allProducts.responseJSON.length) {
 		var currentProduct = allProducts.responseJSON[currentProductIndex];
 		if (typeof currentProduct !== "undefined" && verifiedProducts.length < 8) {
 			var validType = function () {
@@ -179,8 +181,6 @@ function productsCheck(more) {
 			verifiedProducts = [];
 		}
 		$j(".gift__footer__more").show();
-	}else{
-		$j(".gift__footer__more").hide();
 	}
 }
 
