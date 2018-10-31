@@ -5,7 +5,7 @@ import bubblecss from "bubbles/dist/main.css";
 import bubbleCalcul from "bubbles/dist/main.js";
 import bubbleAnim from "bubbles/dist/anims.js";
 
-//custom scrollbar
+/* TOP SCROLLBAR */
 import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually
 import 'simplebar/dist/simplebar.css';
 
@@ -20,7 +20,10 @@ import style from "./styles/style.scss";
 import giftengine from "./scripts/giftengine.js";
 
 /* PUSHES PRODUCTS */
-import products from "./scripts/products.js"; // push products
+import products from "./scripts/products.js";
+
+/* GO TO TOP */
+import gototop from "./scripts/gototop.js";
 
 /* XITI CALLS */
 import xiti from "../../_global/scripts/data-xiti.js";

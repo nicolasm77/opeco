@@ -568,32 +568,86 @@
     	display: flex;
     	margin-left: -30px;
     }
-}
+    &__footer {
+    	align-items: center;
+    	justify-content: center;
+    	display: flex;
+    	&__more {
+    		align-items: center;
+    		justify-content: center;
+    		display: flex;
+    		margin-top: 35px;
+    		color: $color-white;
+    		font-family: $font-ars;
+    		font-size: 17px;
+    		text-decoration: none;
+    		&::before {
+    			display: block;
+    			width: 25px;
+    			height: 25px;
+    			margin-right: 10px;
+    			content: "";
+    			background-image: url("../images/giftengine/ui-more.svg");
+    			background-size: 100%;
+    		}
+    	}
+    }
+    .push {
+    	width: calc(33.33% - 30px);
+    	margin-bottom: 30px;
+    	margin-left: 30px;
 
-.push {
-    width: calc(33.33% - 30px);
-    margin-bottom: 30px;
-    margin-left: 30px;
-    &__item {
-    	height: 100%;
-    	background-color: $color-white;
-    	a {
-    		flex-flow: column;
-    		justify-content: space-between;
-    		display: flex !important;
+    	&__item {
     		height: 100%;
+    		background-color: $color-white;
+    		a {
+    			flex-flow: column;
+    			justify-content: space-between;
+    			display: flex !important;
+    			height: 100%;
+    		}
     	}
-    }
-    &__ratings {
-    	&.norating {
-    		visibility: hidden;
+    	&__ratings {
+    		&.norating {
+    			visibility: hidden;
+    		}
     	}
-    }
-    &__promo {
-    	text-align: center;
-    	border: 1px solid grey;
-    	&.noborder {
-    		visibility: hidden !important;
+    	&__promo {
+    		text-align: center;
+    		border: 1px solid grey;
+    		&.noborder {
+    			visibility: hidden !important;
+    		}
+    	}
+    	&__service {
+    		.engine {
+    			display: none;
+    		}
+    		.service {
+    			&__separ {
+    				width: 100px;
+    				height: 2px;
+    				margin: 15px 0;
+    			}
+    			&__picto {
+    				height: 160px;
+    				max-width: 190px;
+    			}
+    			&__block {
+    				position: relative;
+    				justify-content: center;
+    			}
+    			&__name {
+    				font-size: 28px;
+    				line-height: 32px;
+    			}
+    			&__conditions {
+    				position: absolute;
+    				bottom: 15px;
+    				font-family: $font-ars;
+    				font-size: 13px;
+    			}
+    		}
     	}
     }
 }

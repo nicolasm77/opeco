@@ -10,7 +10,7 @@ function number_format(number, decimals, decPoint, thousandsSep) {
     var decimalsString = decimals ? roundedNumber.slice(decimals * -1) : '';
     var formattedNumber = "";
     while (numbersString.length > 3) {
-        formattedNumber += thousandsSep + numbersString.slice(-3)
+        formattedNumber += thousandsSep + numbersString.slice(-3);
         numbersString = numbersString.slice(0, -3);
     }
     if (decimals && decimalsString.length === 1) {

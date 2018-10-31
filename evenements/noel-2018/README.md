@@ -1,11 +1,7 @@
-EMS : test-marketing
-
-CSS products
-
-Voir conditions (services)
-
-Centrer ODR
-
-Responsive params recap (mobile)
-
-Go to top
+- [] EMS : test-marketing
+- [] Go to top
+- [] Delete Watch more products if it's the end
+- [] RESPONSIVE
+	- [] Params
+	- [] Products
+	- [] Watch more products
