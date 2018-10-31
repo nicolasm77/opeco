@@ -381,7 +381,13 @@
     	margin-bottom: 20px;
     	color: #ffffff;
     	font-family: $font-ars;
-    	font-size: 25px;
+    	white-space: nowrap;
+    	@media #{$notMobile} {
+    		font-size: 25px;
+    	}
+    	@media #{$mobile} {
+    		@include fs(40);
+    	}
 
     	@media #{$notSmall} {
     		white-space: nowrap;
@@ -549,13 +555,17 @@
     		display: block;
     		&__text {
     			font-family: $font-ars;
-    			font-size: 13px;
     			font-weight: 500;
+    			@media #{$mobile} {
+    				@include fs(19);
+    			}
+    			@media #{$notMobile} {
+    				font-size: 13px;
+    			}
     		}
     	}
     	svg {
     		width: 100%;
-    		margin-bottom: 15px;
     		transform: scale(1.25);
     	}
     	&Category {

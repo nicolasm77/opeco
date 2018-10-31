@@ -97,7 +97,6 @@ function productsHtml(object, more) {
 				window.scrollTo(0, $j(".gift__edit").offset().top - 35);
 			}
 		}
-
 	}
 }
 
@@ -206,7 +205,7 @@ function init() {
 
 				/* On réceptionne tous les produits */
 				if(!Object.keys(allProducts).length){
-					allProducts = $j.get("scripts/products.json", function (data) {
+					allProducts = $j.get("/content/static/bcom/evenements/2018/test_noel/prods_noel2018.json", function (data) {
 						return data;
 					});
 				}
