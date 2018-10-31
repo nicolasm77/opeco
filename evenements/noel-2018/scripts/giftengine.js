@@ -91,16 +91,16 @@ function productsHtml(object, more) {
 				currentServiceShowed++;
 			}
 		}else if (i === object.length - 1) {
-			if(object.length !== 8){
-				$j(".gift__footer__more").hide();
-			}else{
-				$j(".gift__footer__more").show();
-			}
 			$j(".gift__content").append(inject);
 			$j('.push.push__service .service__block:not(.conditionsAdded)').append('<span class="service__conditions">voir conditions</span>').addClass("conditionsAdded");
 			if (typeof more === "undefined") {
 				window.scrollTo(0, $j(".gift__edit").offset().top - 35);
 			}
+		}
+		if(object.length !== 8){
+			$j(".gift__footer__more").hide();
+		}else{
+			$j(".gift__footer__more").show();
 		}
 	}
 }
