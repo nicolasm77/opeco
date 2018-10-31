@@ -1,4 +1,0 @@
-- [] Delete Watch more products if it's the end
-- [] RESPONSIVE params
--* margin 20 tablet
--* margin 10 mobile
