@@ -45,8 +45,13 @@ function productsHtml(object, more) {
 		var xiti = $j.sanitize(o.name);
 		var nameWithoutTags = o.name.replace("<b>", "").replace("</b>", "");
 
-		if (typeof o.odr !== "undefined") {odr = '<span class="push__promo">' + o.odr + '</span><span class="hub-grow"></span>';} else {odr = '';}
-		if (typeof o.rating !== "undefined") {rating = `<span class="push__ratings"><img src="${require('../images/products/ratings.svg')}" alt=""><span style="width:${o.rating}%;"></span></span>`;} else {rating = '';}
+		if (typeof o.odr !== "undefined") {odr = '<span class="push__promo">' + o.odr + '</span><span class="hub-grow"></span>';} else {odr = '<span class="push__promo noborder"></span><span class="hub-grow"></span>';}
+		if (typeof o.rating !== "undefined") {
+			rating = `<span class="push__ratings"><img src="${require('../images/products/ratings.svg')}" alt=""><span style="width:${o.rating}%;"></span></span>`;
+		}
+		else {
+			rating = `<span class="push__ratings norating"><img src="${require('../images/products/ratings.svg')}" alt=""><span></span></span>`;
+		}
 
 		inject +=
 			`<div class="push">

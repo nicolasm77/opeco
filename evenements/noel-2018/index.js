@@ -6,7 +6,8 @@ import bubbleCalcul from "bubbles/dist/main.js";
 import bubbleAnim from "bubbles/dist/anims.js";
 
 //custom scrollbar
-import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually => import 'simplebar/dist/simplebar.css';
+import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually
+import 'simplebar/dist/simplebar.css';
 
 /* MAIN CSS */
 import style from "./styles/style.scss";
