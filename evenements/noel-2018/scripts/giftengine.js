@@ -91,6 +91,11 @@ function productsHtml(object, more) {
 				currentServiceShowed++;
 			}
 		}else if (i === object.length - 1) {
+			if(verifiedProducts.length !== 8){
+				$j(".gift__footer__more").hide();
+			}else{
+				$j(".gift__footer__more").show();
+			}
 			$j(".gift__content").append(inject);
 			$j('.push.push__service .service__block:not(.conditionsAdded)').append('<span class="service__conditions">voir conditions</span>').addClass("conditionsAdded");
 			if (typeof more === "undefined") {
@@ -171,11 +176,6 @@ function productsCheck(more) {
 		} else {
 			console.warn('END');
 			productsHtml(verifiedProducts, more);
-			if(verifiedProducts.length !== 8){
-				$j(".gift__footer__more").hide();
-			}else{
-				$j(".gift__footer__more").show();
-			}
 			$j(".push__item:not('.priced')").each(function () {
 				if(location.hostname !== "localhost"){
 					$j.managePushProds.getPrices($j(this));
