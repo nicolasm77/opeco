@@ -167,22 +167,22 @@ module.exports = {
 									publicPath: stagingPath + "/assets"
 								}
 							},
-							{
-								//optimisation des images
-								loader: 'img-loader',
-								options: {
-									plugins: [
-										require('imagemin-mozjpeg')({
-											progressive: true,
-											arithmetic: false,
-											quality: 80
-										}),
-										require('imagemin-pngquant')({
-											floyd: 0.5
-										})
-									]
-								}
-							}
+							// {
+							// 	//optimisation des images
+							// 	loader: 'img-loader',
+							// 	options: {
+							// 		plugins: [
+							// 			require('imagemin-mozjpeg')({
+							// 				progressive: true,
+							// 				arithmetic: false,
+							// 				quality: 80
+							// 			}),
+							// 			require('imagemin-pngquant')({
+							// 				floyd: 0.5
+							// 			})
+							// 		]
+							// 	}
+							// }
 						]
 					}
 				]
@@ -318,7 +318,8 @@ module.exports = {
 				/^sidebar/,
 				/^popcart/,
 				/swiper-pagination/,
-				/^poi/
+				/^poi/,
+				/^simplebar/
 			]
 		}),
 

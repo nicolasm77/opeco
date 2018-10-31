@@ -42,7 +42,7 @@
 		}
 
 		&--02{
-			left: 140px;
+			right: 0;
 			bottom:-180px;
 		}
 	}
@@ -56,7 +56,7 @@
 		text-indent: 40px;
 	}
 
-	&__subtitle{
+	&__text{
 		margin-top: 50px;
 	}
 
@@ -104,9 +104,15 @@
 		z-index: 10;
 	}
 
+	&__btn{
+		order:1;
+	}
+
 	&__store{
 		text-decoration: none;
 		margin-left:45px;
+		display: block;
+		order:2;
 
 		& + &{
 			margin-left:20px;
@@ -115,5 +121,219 @@
 
 	&__store-img{
 		display: block;
+	}
+
+	&__small-bottom{
+		display: none;
+		text-align: center;
+		margin-top: 30px;
+		position: relative;
+		z-index: 20;
+	}
+}
+@media (max-width:900px){
+	.app{
+		&__phone--02{
+			right: -15px;
+		}
+
+		&__btn{
+			display: none;
+		}
+
+		&__store{
+			margin-left:0px;
+		}
+
+		&__small-bottom{
+			display: block;
+		}
+	}
+}
+@media (max-width:750px){
+	.app{
+		&__part-img{
+			width: 300px;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+
+		&__phone{
+			&--01{
+				bottom: auto;
+				top: 100px;
+			}
+
+			&--02{
+				right: -40px;
+				bottom: auto;
+				top: 151px;
+			}
+		}
+
+		&__part-content{
+			width:100%;
+		}
+
+		&__title{
+			text-align: center;
+			text-indent: 0;
+		}
+
+		&__text{
+			margin-left: 300px;
+		}
+
+		&__bottom-block{
+			width:calc(100% - 300px);
+		}
+
+		&__small-bottom{
+			margin-top: 40px;
+		}
+	}
+}
+@media #{$mobile}{
+	.app{
+		&__back-img{
+			padding: percentage(90px/640px) 0 percentage(50px/640px);
+		}
+
+		&__part-img{
+			width: percentage(320px/610px);
+		}
+
+		&__phone{
+			&--01{
+				width:percentage(261px/320px);
+				height: auto;
+				top: 38%;
+				left:0;
+			}
+
+			&--02{
+				width:percentage(267px/320px);
+				height: auto;
+				right: -6%;
+				top: 66%;
+			}
+		}
+
+		&__text{
+			width: percentage(290px/610px);
+			margin-left:auto;
+			margin-top: percentage(30px/610px);
+		}
+
+		&__subtitle{
+			@include fs(26);
+		}
+
+		&__phrase{
+			@include fs(24);
+		}
+
+		&__bottom-block{
+			width:percentage(290px/610px);
+			display: block;
+			padding:percentage(25px/610px) 0;
+		}
+
+		&__store{
+			width:percentage(180px/290px);
+			min-width: 120px;
+
+			& + &{
+				margin-left:0;
+				margin-top:percentage(12px/290px)
+			}
+		}
+
+		&__store-img{
+			width: 100%;
+			height: auto;
+		}
+
+		&__small-bottom{
+			margin-top: percentage(60px/610px);
+		}
+	}
+}
+
+@media (max-width:400px){
+	.app{
+		&__root{
+			& + .mag__root{
+				padding-top:35%;
+			}
+		}
+
+		&__back-img{
+			padding: percentage(60px/400px) 0 percentage(70px/400px);
+		}
+
+		&__part-img{
+			width: 100%;
+			top:100%;
+		}
+
+		&__phone{
+			&--01{
+				width:percentage(178px/320px);
+				top: 2%;
+				left:percentage(-86px/320px);
+			}
+
+			&--02{
+				width:percentage(176px/320px);
+				right: 50%;
+				top: 28%;
+			}
+		}
+
+		&__text{
+			width: 100%;
+			margin-top: percentage(40px/400px);
+		}
+
+		&__subtitle{
+			@include fs(32);
+		}
+
+		&__phrase{
+			@include fs(30);
+		}
+
+		&__bottom::after{
+			width: 50%;
+		}
+
+		&__bottom-block{
+			width:percentage(170px/320px);
+			padding:percentage(20px/400px) 0;
+		}
+
+		&__store{
+			width: 100%;
+			max-width:150px;
+
+			& + &{
+				margin-top:percentage(20px/290px)
+			}
+		}
+
+		&__btn{
+			display: block;
+			margin-top:percentage(20px/290px);
+			padding-top: 14px;
+			padding-bottom: 14px;
+			max-width:150px;
+		}
+
+		&__small-bottom{
+			display: none;
+		}
 	}
 }
