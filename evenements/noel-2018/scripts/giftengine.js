@@ -45,8 +45,13 @@ function productsHtml(object, more) {
 		var xiti = $j.sanitize(o.name);
 		var nameWithoutTags = o.name.replace("<b>", "").replace("</b>", "");
 
-		if (typeof o.odr !== "undefined") {odr = '<span class="push__promo">' + o.odr + '</span><span class="hub-grow"></span>';} else {odr = '';}
-		if (typeof o.rating !== "undefined") {rating = `<span class="push__ratings"><img src="${require('../images/products/ratings.svg')}" alt=""><span style="width:${o.rating}%;"></span></span>`;} else {rating = '';}
+		if (typeof o.odr !== "undefined") {odr = '<span class="push__promo">' + o.odr + '</span><span class="hub-grow"></span>';} else {odr = '<span class="push__promo noborder"></span><span class="hub-grow"></span>';}
+		if (typeof o.rating !== "undefined") {
+			rating = `<span class="push__ratings"><img src="${require('../images/products/ratings.svg')}" alt=""><span style="width:${o.rating}%;"></span></span>`;
+		}
+		else {
+			rating = `<span class="push__ratings norating"><img src="${require('../images/products/ratings.svg')}" alt=""><span></span></span>`;
+		}
 
 		inject +=
 			`<div class="push">
@@ -87,6 +92,7 @@ function productsHtml(object, more) {
 			}
 		}else if (i === object.length - 1) {
 			$j(".gift__content").append(inject);
+			$j('.push.push__service .service__block:not(.conditionsAdded)').append('<span class="service__conditions">voir conditions</span>').addClass("conditionsAdded");
 			if (typeof more === "undefined") {
 				window.scrollTo(0, $j(".gift__edit").offset().top - 35);
 			}
@@ -167,7 +173,9 @@ function productsCheck(more) {
 			console.warn('END');
 			productsHtml(verifiedProducts, more);
 			$j(".push__item:not('.priced')").each(function () {
-				$j.managePushProds.getPrices($j(this));
+				if(location.hostname !== "localhost"){
+					$j.managePushProds.getPrices($j(this));
+				}
 			});
 			verifiedProducts = [];
 		}

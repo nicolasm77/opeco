@@ -1,0 +1,52 @@
+.gototop {
+    position: fixed;
+    right: 10px;
+    bottom: 40px;
+    z-index: 99999;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: rgba($color-black, 0.8) url(../images/ux-arrow.svg) no-repeat center 50%;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s, background-color 0.3s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s, background-color 0.3s 0s;
+    opacity: 0;
+    visibility: hidden;
+    &.gototop--show,
+    &.gototop--fade-out,
+    &:hover {
+    	-webkit-transition: opacity 0.3s 0s, visibility 0s 0s, background-color 0.3s 0s;
+    	transition: opacity 0.3s 0s, visibility 0s 0s, background-color 0.3s 0s;
+    }
+
+    &.gototop--show {
+    	opacity: 1;
+    	visibility: visible;
+    }
+
+    &.gototop--fade-out {
+    	opacity: 0.5;
+    }
+
+    &:hover {
+    	background-color: $color-black;
+    	opacity: 1;
+    }
+
+    @media only screen and (min-width: 768px) {
+    	right: 20px;
+    	bottom: 20px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+    	right: 30px;
+    	bottom: 30px;
+    	width: 60px;
+    	height: 60px;
+    }
+}
