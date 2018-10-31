@@ -1,7 +1,7 @@
 - [] EMS : test-marketing
-- [] Go to top
 - [] Delete Watch more products if it's the end
 - [] RESPONSIVE
 	- [] Params
-	- [] Products
-	- [] Watch more products
+
+
+	margin 20

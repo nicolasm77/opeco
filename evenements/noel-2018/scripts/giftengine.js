@@ -84,7 +84,7 @@ function productsHtml(object, more) {
 		</div>`;
 
 		if (i === 3) {
-			inject += '<div class="push push__service">' + $j('.service__item[data-increment-order=' + currentServiceShowed + ']').html() + '</div>';
+			inject += '<div class="push push__service service__item--sim-col">' + $j('.service__item[data-increment-order=' + currentServiceShowed + ']').html() + '</div>';
 			if (currentServiceShowed === 2) {
 				currentServiceShowed = 0;
 			} else {

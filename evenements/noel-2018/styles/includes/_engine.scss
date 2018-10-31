@@ -279,6 +279,7 @@
 
     	.link {
     		margin-left: 30px;
+    		white-space: nowrap;
     	}
 
     	@media #{$desktop} {
@@ -424,7 +425,6 @@
     	color: #ffffff;
     	font-family: $font-ars;
     	line-height: 1;
-    	white-space: nowrap;
     	transition: 0.2s all;
 
     	@media #{$notSmall} {
@@ -490,9 +490,14 @@
     	margin-bottom: 30px;
     	color: $color-white;
     	font-family: $font-ars;
-    	font-size: 30px;
     	font-weight: 500;
     	text-align: center;
+    	@media #{$mobile} {
+    		@include fs(40);
+    	}
+    	@media #{$notMobile} {
+    		font-size: 30px;
+    	}
     	&::after {
     		position: absolute;
     		top: 100%;
@@ -509,8 +514,17 @@
     	align-content: flex-start;
     	justify-content: center;
     	display: flex;
+    	@media #{$mobile} {
+    		&::before {
+    			order: 3;
+    			display: block;
+    			width: 100%;
+    			content: "";
+    		}
+    	}
     	& > div {
     		flex-direction: row;
+    		justify-content: center;
     		display: flex;
     		& + div {
     			position: relative;
@@ -531,7 +545,8 @@
     	}
     	.link {
     		flex-direction: column;
-    		padding: 0 7%;
+    		flex-shrink: 0;
+    		display: block;
     		&__text {
     			font-family: $font-ars;
     			font-size: 13px;
@@ -539,19 +554,32 @@
     		}
     	}
     	svg {
+    		width: 100%;
     		margin-bottom: 15px;
     		transform: scale(1.25);
     	}
-    	@media #{$small} {
-    		flex-wrap: nowrap;
+    	&Category {
+    		padding-left: 0 !important;
+    		margin-left: 0 !important;
+    		.link {
+    			width: 33.33%;
+    		}
+    	}
+    	@media #{$mobile} {
+    		flex-wrap: wrap;
     		&Type {
     			order: 1;
+    			width: 50%;
     		}
     		&Pricerange {
     			order: 2;
+    			width: 40%;
     		}
     		&Category {
-    			order: 3;
+    			order: 4;
+    			&::before {
+    				display: none !important;
+    			}
     		}
     	}
     }
@@ -566,7 +594,12 @@
     	flex-wrap: wrap;
     	z-index: 1;
     	display: flex;
-    	margin-left: -30px;
+    	@media #{$notMobile} {
+    		margin-left: -30px;
+    	}
+    	@media #{$mobile} {
+    		margin-left: -15px;
+    	}
     }
     &__footer {
     	align-items: center;
@@ -579,8 +612,13 @@
     		margin-top: 35px;
     		color: $color-white;
     		font-family: $font-ars;
-    		font-size: 17px;
     		text-decoration: none;
+    		@media #{$mobile} {
+    			@include fs(26);
+    		}
+    		@media #{$notMobile} {
+    			font-size: 17px;
+    		}
     		&::before {
     			display: block;
     			width: 25px;
@@ -593,9 +631,16 @@
     	}
     }
     .push {
-    	width: calc(33.33% - 30px);
-    	margin-bottom: 30px;
-    	margin-left: 30px;
+    	@media #{$notMobile} {
+    		width: calc(33.33% - 30px);
+    		margin-bottom: 30px;
+    		margin-left: 30px;
+    	}
+    	@media #{$mobile} {
+    		width: calc(50% - 15px);
+    		margin-bottom: 15px;
+    		margin-left: 15px;
+    	}
 
     	&__item {
     		height: 100%;
@@ -620,34 +665,71 @@
     		}
     	}
     	&__service {
+    		@media #{$mobile} {
+    			width: 100%;
+    		}
     		.engine {
-    			display: none;
+    			@media #{$notMobile} {
+    				display: none;
+    			}
     		}
     		.service {
     			&__separ {
-    				width: 100px;
-    				height: 2px;
-    				margin: 15px 0;
+    				@media #{$notMobile} {
+    					width: 100px;
+    					height: 2px;
+    					margin: 15px 0;
+    				}
     			}
     			&__picto {
-    				height: 160px;
-    				max-width: 190px;
+    				@media #{$notMobile} {
+    					max-width: 190px;
+    				}
     			}
     			&__block {
     				position: relative;
-    				justify-content: center;
+    				@media #{$notMobile} {
+    					justify-content: center;
+    					&::before,
+    					&::after {
+    						display: none;
+    					}
+    				}
     			}
     			&__name {
-    				font-size: 28px;
-    				line-height: 32px;
+    				@media #{$notMobile} {
+    					font-size: 28px;
+    					line-height: 32px;
+    				}
+    				@media #{$mobile} {
+    					@include fs(35);
+
+@include lh(35);
+    				}
     			}
     			&__conditions {
     				position: absolute;
-    				bottom: 15px;
     				font-family: $font-ars;
-    				font-size: 13px;
+    				@media #{$notMobile} {
+    					bottom: 10px;
+    					font-size: 13px;
+    				}
+    				@media #{$mobile} {
+    					@include fs(19);
+    					right: 11px;
+    					bottom: 5px;
+    					width: calc(100% - 16px - 32.5% - 6.91% - 8.18%);
+    					text-align: center;
+    				}
     			}
     		}
     	}
+    }
+}
+
+
+@media #{$mobile} {
+    .push__service.service__item--sim-col {
+    	max-width: 100% !important;
     }
 }

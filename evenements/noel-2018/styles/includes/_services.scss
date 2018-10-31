@@ -73,30 +73,26 @@
 }
 
 .service {
-    &__item {
-    	.service {
-    		&__picto {
-    			order: 1;
-    		}
-    		&__separ {
-    			order: 2;
-    		}
-    		&__block {
-    			&::before {
-    				flex-grow: 1;
-    				order: 3;
-    				content: "";
-    			}
-    			&::after {
-    				flex-grow: 1;
-    				order: 5;
-    				content: "";
-    			}
-    		}
-    		&__name {
-    			order: 4;
-    		}
+    &__picto {
+    	order: 1;
+    }
+    &__separ {
+    	order: 2;
+    }
+    &__block {
+    	&::before {
+    		flex-grow: 1;
+    		order: 3;
+    		content: "";
     	}
+    	&::after {
+    		flex-grow: 1;
+    		order: 5;
+    		content: "";
+    	}
+    }
+    &__name {
+    	order: 4;
     }
 }
 
