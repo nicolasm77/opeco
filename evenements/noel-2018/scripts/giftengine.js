@@ -91,7 +91,7 @@ function productsHtml(object, more) {
 				currentServiceShowed++;
 			}
 		}else if (i === object.length - 1) {
-			if(verifiedProducts.length !== 8){
+			if(object.length !== 8){
 				$j(".gift__footer__more").hide();
 			}else{
 				$j(".gift__footer__more").show();
