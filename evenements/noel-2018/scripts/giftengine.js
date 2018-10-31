@@ -97,11 +97,6 @@ function productsHtml(object, more) {
 				window.scrollTo(0, $j(".gift__edit").offset().top - 35);
 			}
 		}
-		if(object.length !== 8){
-			$j(".gift__footer__more").hide();
-		}else{
-			$j(".gift__footer__more").show();
-		}
 	}
 }
 
@@ -183,6 +178,9 @@ function productsCheck(more) {
 			});
 			verifiedProducts = [];
 		}
+		$j(".gift__footer__more").show();
+	}else{
+		$j(".gift__footer__more").hide();
 	}
 }
 
