@@ -534,8 +534,6 @@
     		display: flex;
     		& + div {
     			position: relative;
-    			padding-left: 5%;
-    			margin-left: 5%;
     			&::before {
     				position: absolute;
     				top: 50%;
@@ -566,13 +564,19 @@
     	}
     	svg {
     		width: 100%;
-    		transform: scale(1.25);
+    		@media #{$notMobile} {
+    			transform: scale(1.25);
+    		}
     	}
     	&Category {
     		padding-left: 0 !important;
     		margin-left: 0 !important;
     		.link {
     			width: 33.33%;
+    		}
+    		@media #{$mobile} {
+    			margin-top: 20px;
+    			margin-bottom: 10px;
     		}
     	}
     	@media #{$mobile} {

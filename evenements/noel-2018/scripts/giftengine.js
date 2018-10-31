@@ -205,7 +205,7 @@ function init() {
 
 				/* On réceptionne tous les produits */
 				if(!Object.keys(allProducts).length){
-					allProducts = $j.get("/content/static/bcom/evenements/2018/test_noel/prods_noel2018.json", function (data) {
+					allProducts = $j.getJSON("/content/static/bcom/evenements/2018/test_noel/prods_noel2018.json", function (data) {
 						return data;
 					});
 				}

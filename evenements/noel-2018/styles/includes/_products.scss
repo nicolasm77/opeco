@@ -254,7 +254,7 @@
     &__old-price {
     	position: relative;
     	display: inline-block;
-    	color: #434a4e;
+    	color: $color-white;
     	font-size: 18px;
     	line-height: 13px;
 
@@ -265,7 +265,7 @@
     		width: calc(100% + 5px);
     		height: 2px;
     		content: "";
-    		background-color: rgba(#434a4e, 0.9);
+    		background-color: rgba($color-white, 0.9);
     		transform: translateY(-50%) rotate(-16deg);
     	}
 
@@ -290,7 +290,7 @@
     	position: relative;
     	top: -3px;
     	display: block;
-    	color: #434a4e;
+    	color: $color-white;
     	font-size: 24px;
     	font-weight: 700;
     	line-height: 20px;

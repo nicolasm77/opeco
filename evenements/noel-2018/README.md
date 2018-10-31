@@ -1,7 +1,4 @@
-- [] EMS : test-marketing
 - [] Delete Watch more products if it's the end
-- [] RESPONSIVE
-	- [] Params
-
-
-	margin 20
+- [] RESPONSIVE params
+-* margin 20 tablet
+-* margin 10 mobile
