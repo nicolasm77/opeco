@@ -318,7 +318,8 @@ module.exports = {
 				/^sidebar/,
 				/^popcart/,
 				/swiper-pagination/,
-				/^poi/
+				/^poi/,
+				/^simplebar/
 			]
 		}),
 

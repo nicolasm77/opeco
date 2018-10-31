@@ -178,13 +178,15 @@
 	z-index: 3;
 }
 .simplebar-scrollbar {
-    right: 0;
+	right: 0;
 	width: 6px;
-	background-color:#BABABA;
-	border-radius: 10px;
 
 	&::before{
-		display: none;
+		width: 6px;
+		background-color:#BABABA;
+		border-radius: 10px;
+		opacity: 1 !important;
+		margin-top: -2px;
 	}
 }
 
