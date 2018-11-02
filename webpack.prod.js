@@ -305,23 +305,23 @@ module.exports = {
 		}),
 
 		//plugin de supression de CSS unitile
-		new PurgecssPlugin({
-			//paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
-			paths: glob.sync([
-				path.join(process.env.INIT_CWD, '*.html'),
-				path.join(process.env.INIT_CWD, 'includes/*.html')
-			]),
-			whitelist: whitelist,
-			whitelistPatterns: [
-				/^wl-/, //class ou id qui commence par "wl-"
-				/^slider/, //class ou id qui commence par "slider"
-				/^sidebar/,
-				/^popcart/,
-				/swiper-pagination/,
-				/^poi/,
-				/^simplebar/
-			]
-		}),
+		// new PurgecssPlugin({
+		// 	//paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
+		// 	paths: glob.sync([
+		// 		path.join(process.env.INIT_CWD, '*.html'),
+		// 		path.join(process.env.INIT_CWD, 'includes/*.html')
+		// 	]),
+		// 	whitelist: whitelist,
+		// 	whitelistPatterns: [
+		// 		/^wl-/, //class ou id qui commence par "wl-"
+		// 		/^slider/, //class ou id qui commence par "slider"
+		// 		/^sidebar/,
+		// 		/^popcart/,
+		// 		/swiper-pagination/,
+		// 		/^poi/,
+		// 		/^simplebar/
+		// 	]
+		// }),
 
 		//plugin de minification du CSS
 		new OptimizeCssAssetsPlugin({

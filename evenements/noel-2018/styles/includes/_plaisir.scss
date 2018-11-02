@@ -13,6 +13,12 @@
 			background-size: contain;
 			top:-378px;
 			left: calc(50% - 1500px);
+			transition:transform 1s, top 1s;
+		}
+
+		&.anim::before{
+			top: -275px;
+			transform: rotate(9.75deg);
 		}
 	}
 
