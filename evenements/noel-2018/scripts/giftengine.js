@@ -204,6 +204,7 @@ function init() {
 		/* On bloque le scroll de la page si le layout est affiché */
 		open: function () {
 			$j("body,html").addClass("overflowFix");
+			$j.MENU.$burgerFixed.addClass("menu");
 			$j(".layout#engine").fadeIn(function(){
 
 				/* On réceptionne tous les produits */
@@ -220,6 +221,7 @@ function init() {
 			$j(".layout#engine").fadeOut(function () {
 				$j(".overflowFix").removeClass("overflowFix");
 			});
+			$j.MENU.$burgerFixed.removeClass("menu");
 		}
 	};
 

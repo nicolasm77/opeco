@@ -106,6 +106,12 @@
 
 	&__btn{
 		order:1;
+
+		@media #{$desktop}{
+			&:hover{
+				background-color:transparent;
+			}
+		}
 	}
 
 	&__store{

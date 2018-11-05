@@ -13,7 +13,7 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.9);
 }
 
 @keyframes alert {
@@ -601,7 +601,8 @@
     	position: absolute;
     	bottom: -25px;
     	left: 50%;
-    	transform: translateX(-50%);
+		transform: translateX(-50%);
+		border-width:0;
     }
     &__content {
     	position: relative;

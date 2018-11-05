@@ -6,7 +6,8 @@
 	&__container{
 		position: relative;
 		z-index: 1;
-		padding-top:76px;
+		// padding-top:76px;
+		padding-top:65px;
 
 		&::before{
 			content:"";
@@ -25,8 +26,10 @@
 		z-index: 10;
 		display: flex;
 		justify-content: space-between;
-		align-items: flex-end;
-		max-width:935px;
+		// align-items: flex-end;
+		// max-width:935px;
+		align-items: flex-start;
+		max-width:946px;
 		margin-left:auto;
 	}
 
@@ -42,15 +45,17 @@
 	}
 
 	&__header{
-		height: 286px;
-		background: url("../images/calendar_top.jpg") no-repeat top center;
-		background-size: 100% auto;
+		// height: 286px;
+		height: 270px;
+		background: url("../images/calendar_top-all.jpg") no-repeat bottom center;
+		// background-size: 100% auto;
 	}
 
 	&__title{
 		text-align: left;
 		position: absolute;
-		top:120px;
+		// top:120px;
+		top:112px;
 		left: 180px;
 		text-indent:-60px;
 		z-index: 100;
@@ -144,7 +149,8 @@
 			font-size:18px;
 			line-height: 22px;
 			font-family: $font-ars;
-			padding: 12px 0;
+			// padding: 12px 0;
+			padding: 9px 0;
 			cursor: pointer;
 
 			&::after{
@@ -185,6 +191,9 @@
 		display: block;
 		width: 100%;
 		height: auto;
+
+		max-width: 93%;
+		margin: 0 auto;
 	}
 
 	&__prod-name{

@@ -7,17 +7,26 @@
 		top:0;
 		background-color:rgba($color-black, 0.9);
 		display: flex;
-		align-items: center;
-		justify-content: center;
 		visibility: hidden;
 		z-index: 1001;
 		opacity: 0;
 		transition: opacity 0.4s, visibility 0.4s;
+		overflow: auto;
+    	align-items: flex-start;
 
 		&.show{
 			visibility: visible;
 			opacity: 1;
 		}
+	}
+
+	&__precontainer{
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		padding-top: 20px;
+		min-height: 100%;
 	}
 
 	&__container{
@@ -28,14 +37,28 @@
 	}
 
 	&__close{
-		width: 26px;
-		height: 26px;
-		background: url(../images/giftengine/ui-close.svg) no-repeat center center;
-		background-size: cover;
+		// background: url(../images/giftengine/ui-close.svg) no-repeat center center;
+		// background-size: cover;
 		position: absolute;
-		top:0;
-		left:0;
+		top:-10px;
+		left:10px;
+		padding: 10px;
 		cursor: pointer;
+
+		svg{
+			width: 26px;
+			height: 26px;
+		}
+
+		line{
+			transition: stroke 0.3s;
+		}
+
+		@media #{$desktop}{
+			&:hover line{
+				stroke:$color-orange;
+			}
+		}
 	}
 
 	&__title{
@@ -67,7 +90,7 @@
 		&.current{
 			color:$color-orange;
 
-			.menu__link-d::before,
+			.menu__link-d span::before,
 			.menu__link-s::before{
 				opacity: 1;
 			}
@@ -80,7 +103,7 @@
 		}
 	}
 
-	&__link-d,
+	&__link-d span,
 	&__link-s{
 		position: relative;
 
@@ -104,7 +127,7 @@
 .burger{
 	&__root{
 		position: fixed;
-		z-index: 1000;
+		z-index: 998;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -156,22 +179,31 @@
 		left: 15px;
 		text-decoration: none;
 
+		line{
+			transition: stroke 0.3s;
+		}
+
 		@media #{$desktop}{
 			&:hover{
 				.burger__menu{
+					color:$color-orange;
 					opacity: 1;
+				}
+
+				line{
+					stroke: $color-orange;
 				}
 			}
 		}
 	}
 
-	&__svg{
-		width: 31px;
-		height: 20px;
-		background: url(../images/burger.svg) no-repeat center center;
-		background-size: cover;
-		display: block;
-	}
+	// &__svg{
+	// 	width: 31px;
+	// 	height: 20px;
+	// 	background: url(../images/burger.svg) no-repeat center center;
+	// 	background-size: cover;
+	// 	display: block;
+	// }
 
 	&__menu{
 		color:$color-white;
@@ -180,7 +212,7 @@
 		display: inline-block;
 		margin-left: 15px;
 		opacity: 0;
-		transition: opacity 0.4s;
+		transition: opacity 0.4s, color 0.3s;
 	}
 
 	&__title{
@@ -222,6 +254,10 @@
 
 @media #{$mobile}{
 	.menu{
+		&__precontainer{
+			padding-top: 0;
+		}
+
 		&__container{
 			padding:percentage(70px/640px) percentage(60px/640px);
 		}
@@ -276,6 +312,10 @@
 			@include fs(20);
 		}
 
+
+		&__root--header{
+			top:15px;
+		}
 	}
 }
 @media #{$small}{

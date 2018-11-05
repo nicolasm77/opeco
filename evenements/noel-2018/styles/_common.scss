@@ -223,6 +223,15 @@
 	}
 }
 
+html.no-scroll{
+	height:100%;
+
+	body{
+		height:100%;
+		overflow:hidden !important;
+	}
+}
+
 
 #filAriane {
     margin: 10px auto;
