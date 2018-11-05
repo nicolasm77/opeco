@@ -17,6 +17,7 @@ import style from "./styles/style.scss";
 // import SwiperCSS from "swiper/dist/css/swiper.css";
 
 /* GIFENGINE */
+import _ from "lodash";
 import giftengine from "./scripts/giftengine.js";
 
 /* PUSHES PRODUCTS */
