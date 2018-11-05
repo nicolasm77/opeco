@@ -587,7 +587,7 @@
     		}
     		&Pricerange {
     			order: 2;
-    			width: 40%;
+    			width: 50%;
     		}
     		&Category {
     			order: 4;
@@ -673,8 +673,6 @@
     		}
     	}
     	&__promo {
-    		text-align: center;
-    		border: 1px solid grey;
     		&.noborder {
     			visibility: hidden !important;
     		}

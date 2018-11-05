@@ -26,6 +26,7 @@ import style from "./styles/style.scss";
 import paro from 'paroller.js/dist/jquery.paroller.js';
 
 /* GIFENGINE */
+import _ from "lodash";
 import giftengine from "./scripts/giftengine.js";
 
 /* PUSHES PRODUCTS */
