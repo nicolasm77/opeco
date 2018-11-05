@@ -49,6 +49,7 @@
 		"glob-all": "^3.1.0",
 		"imagemin": "^5.3.1",
 		"imagemin-mozjpeg": "^7.0.0",
+		"intersection-observer": "^0.5.1",
 		"npm": "^6.4.1",
 		"object-fit-images": "^3.2.4",
 		"simplebar": "^3.1.0-beta.2",
