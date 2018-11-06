@@ -37,7 +37,7 @@
 		width:515px;
 		flex-shrink: 0;
 
-		&--dec {
+		&.advent__calendars--dec{
 			.advent__calendar--decembre{
 				right: 0;
 
@@ -98,10 +98,17 @@
 		padding:30px 0 15px;
 		color:$color-white;
 		width:calc(100% - 50px);
+		z-index: 1;
+		position:relative;
+
+		&--novembre{
+			background-color: #E5D7BB;
+		}
 
 		&--decembre{
 			background-color: $color-gold;
 			position: absolute;
+			z-index: 2;
 			top: 0;
 			right: calc(-100% + 100px);
 			height: 100%;
@@ -163,7 +170,20 @@
 			font-family: $font-ars;
 			// padding: 12px 0;
 			padding: 9px 0;
-			cursor: pointer;
+			cursor:pointer;
+
+			&::before{
+				content:"";
+				position: absolute;
+				height: 34px;
+				width: 34px;
+				background-color: $color-black;
+				border-radius: 50%;
+				top: calc(50% - 16px);
+				left: calc(50% - 17px);
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
 
 			&::after{
 				content:"";
@@ -179,15 +199,25 @@
 				opacity: 0;
 			}
 
+			span{
+				position: relative;
+				z-index: 10;
+			}
+
 			@media #{$desktop}{
-				&:hover::after{
-					opacity: 1;
+				&[data-date]:hover{
+					&::after{
+						opacity: 1;
+					}
 				}
 			}
 		}
 
 		thead td,
-		td:empty{
+		td:empty,
+		td.day-current,
+		td.day-future,
+		td.day-none{
 			cursor: default;
 			&::after{
 				display: none !important;
@@ -305,6 +335,8 @@ td.day{
 			border-radius: 50%;
 			top: calc(50% - 16px);
 			left: calc(50% - 17px);
+			opacity:1;
+			background-color:transparent;
 		}
 	}
 
@@ -312,20 +344,8 @@ td.day{
 		color:$color-white;
 		position: relative;
 
-		span{
-			position: relative;
-			z-index: 10;
-		}
-
 		&::before{
-			content:"";
-			position: absolute;
-			height: 34px;
-			width: 34px;
-			background-color: $color-black;
-			border-radius: 50%;
-			top: calc(50% - 16px);
-			left: calc(50% - 17px);
+			opacity:1;
 		}
 	}
 
@@ -344,6 +364,20 @@ td.day{
 	.advent{
 		&__part-calendar{
 			width:405px;
+			background-color: #E5D7BB;
+			transition: background-color 0.3s;
+
+			&.advent__calendars--dec{
+				background: $color-gold;
+				.advent__calendar--novembre{
+					z-index: 0;
+					top: 49px;
+				}
+				.advent__calendar--decembre{
+					z-index: 10;
+					top: 0;
+				}
+			}
 		}
 
 		&__header{
@@ -355,23 +389,33 @@ td.day{
 			left: 130px;
 		}
 
+		&__calendars{
+			padding-bottom: 49px;
+			box-shadow: none;
+			overflow: inherit;
+			background-color: transparent;
+		}
+
 		&__calendar{
 			width:100%;
 			flex-direction: column;
 			padding: 30px 25px 0;
+			box-shadow: 0 3px 6px rgba($color-black, 0.16);
 
-			&--novembre .advent__calendar-container{
-				margin-top:50px;
+			&--novembre {
+				position: relative;
+				z-index: 10;
+				top: 0;
+				transition:top 0.3s;
 			}
 
 			&--decembre{
 				right: 0;
 				height:calc(100% - 49px);
+				top: 49px;
+				z-index: 0;
+				transition:top 0.3s;
 				//transition: right 0.5s;
-			}
-
-			&--open{
-
 			}
 		}
 
@@ -448,7 +492,6 @@ td.day{
 
 		&__part-calendar{
 			width:100%;
-			background: #E5D7BB;
 		}
 
 		&__part-prod{

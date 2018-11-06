@@ -51,14 +51,6 @@ IntersectionObserver.prototype.USE_MUTATION_OBSERVER = false;
 
 $j(function() {
 
-	$j(".advent__calendar--decembre .advent__calendar-month").on("click", function(){
-		$j(".advent__calendar--decembre").addClass("advent__calendar--open");
-	});
-
-	$j(".advent__calendar--novembre .advent__calendar-month").on("click", function(){
-		$j(".advent__calendar--decembre").removeClass("advent__calendar--open");
-	});
-
 	$j(".video__item").on("click", function(){
 		$j(".video__item.current").removeClass("current");
 		$j(this).addClass("current");
@@ -82,8 +74,8 @@ $j(function() {
 		events : function(){
 			const self = this;
 
-			self.$burger.on("click", $j.proxy(self.toggleMenu, self));
-			self.$close.on("click", $j.proxy(self.toggleMenu, self));
+			self.$burger.on("click", $j.proxy(self.openMenu, self));
+			self.$close.on("click", $j.proxy(self.closeMenu, self));
 			self.$menu.find(".menu__link").on("click", $j.proxy(self.goTo, self));
 
 			new IntersectionObserver((entries) => {
@@ -108,13 +100,22 @@ $j(function() {
 			});
 		},
 
-		toggleMenu : function(){
+		openMenu : function(){
 			const self = this;
 
-			$j("html").toggleClass("no-scroll");
-			self.$menu.toggleClass("show");
+			$j("html").addClass("no-scroll");
+			self.$menu.addClass("show");
 			self.isDisplay = !self.isDisplay;
-			self.$burgerFixed.toggleClass("menu");
+			self.$burgerFixed.addClass("menu");
+		},
+
+		closeMenu : function(){
+			const self = this;
+
+			$j("html").removeClass("no-scroll");
+			self.$menu.removeClass("show");
+			self.isDisplay = !self.isDisplay;
+			self.$burgerFixed.removeClass("menu");
 		},
 
 		goTo : function(e){
@@ -125,7 +126,7 @@ $j(function() {
 			const target = $j(e.currentTarget).attr("href");
 			const targetTop = (target === "#section-faire-plaisir")? $j(target).offset().top -80 : $j(target).offset().top;
 
-			self.toggleMenu();
+			self.closeMenu();
 
 			$j('html, body').delay(150).animate({
 				scrollTop : targetTop
@@ -141,23 +142,68 @@ $j(function() {
 			self.$cals = $j(".advent__part-calendar");
 			self.$calNov = $j(".advent__calendar--novembre");
 			self.$calDec = $j(".advent__calendar--decembre");
+			self.$tdDay = $j(".advent__calendar-table").find("td[data-date]");
+
+			self.today = "22_12"//self.getDate();
+			self.selectedDate = self.today;
 
 			self.dataProds = [];
 			self.isLoading = false;
 
 			self.run();
-			self.events();
-			self.getData();
 		},
 
 		run : function(){
+			const self = this;
 
+			self.setupCalendar();
+			self.getData();
+			self.events();
+		},
+
+		setupCalendar : function(){
+			const self = this;
+			let today = self.$tdDay.filter("[data-date="+self.today+"]");
+			let todayIndex = self.$tdDay.index(today);
+
+			if(!today.length) {
+				today = self.$tdDay.eq(0);
+				todayIndex = self.$tdDay.index(today);
+				self.today = today.data("date");
+			}
+
+			today.addClass("day-current");
+			self.$tdDay.slice(todayIndex+1).addClass("day-future");
+			$j(".advent__calendar-day").text(self.getFullTextDate(self.today));
+
+			if(self.today.split("_")[1] == "12") self.$cals.addClass("advent__calendars--dec");
 		},
 
 		events : function(){
 			const self = this;
 
 			$j(".advent__calendar-month").on("click",  $j.proxy(self.toggleMonth, self));
+			self.$tdDay.on("click",  $j.proxy(self.selectDate, self));
+		},
+
+		getDate : function(){
+			const date = new Date();
+			const day = (date.getDate() < 10)? "0"+date.getDate() : date.getDate();
+			const month = (date.getMonth()+1 < 10)? "0"+date.getMonth()+1 : date.getMonth()+1;
+
+			return day +"_"+ month;
+		},
+
+		getFullTextDate : function(date){
+			const self = this;
+			const day = date.split("_")[0];
+			const month = date.split("_")[1];
+			const today = self.$tdDay.filter(".day-current");
+			const todayIndex = today.index();
+
+			const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+
+			return `${jours[todayIndex]} ${((day.indexOf("0") == 0)? day.substring(1) : day)} ${(month == "11")? "novembre" : "décembre"}`;
 		},
 
 		getData : function(){
@@ -177,16 +223,52 @@ $j(function() {
 			}
 		},
 
-		selectItem : function(){
+		selectDate : function(e){
 			const self = this;
+			const item = $j(e.currentTarget);
+			const itemIndex = self.$tdDay.index(item);
 
+			if(item.hasClass("day-current") || item.hasClass("day-future")) return false;
 
+			self.selectedDate = item.data("date");
+			self.$tdDay.filter(".day-current").removeClass("day-current");
+			item.addClass("day-current");
+			$j(".advent__calendar-day").text(self.getFullTextDate(self.selectedDate));
+
+			self.changeProd();
 		},
 
-		changeItem : function(){
+		changeProd : function(){
+			const self = this;
+			const objData = self.dataProds[self.selectedDate];
+			const newprod = self.createProd(objData);
+		},
+
+		createProd : function(data){
 			const self = this;
 
-
+			return `
+			<div class="advent__prod-item advent__prod-item--new">
+				<img src="../images/${self.selectedDate}.jpg" alt="" class="advent__prod-img">
+				<p class="advent__prod-name">
+					Montre connectée <b>APPLE WATCH</b> SERIES 4 40mm alu gris/noir
+				</p>
+				<p class="advent__prod-desc">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</p>
+				<div class="advent__prod-price">
+					<span class="advent__prod-old-price">
+						559€<sup>00</sup>
+					</span>
+					<span class="advent__prod-new-price">
+						499€<sup>00</sup>
+					</span>
+				</div>
+				<div class="advent__prod-bottom">
+					<a href="" target="_blank" class="btn btn--golden">Voir le produit</a>
+				</div>
+			</div>
+			`
 		}
 	};
 	$j.ADVENT.init();
@@ -246,5 +328,19 @@ $j(function() {
 		_sheet.innerHTML += " ."+className+":"+element+"{"+prop+":"+value+"}";
 		_head.appendChild(_sheet);
 		return this;
+	};
+
+	document.onkeydown = function(evt) {
+		evt = evt || window.event;
+		var isEscape = false;
+		if ("key" in evt) {
+			isEscape = (evt.key == "Escape" || evt.key == "Esc");
+		} else {
+			isEscape = (evt.keyCode == 27);
+		}
+
+		if (isEscape) {
+			$j(".menu__close, .giftengine__close").trigger("click")
+		}
 	};
 });
