@@ -15,6 +15,7 @@ import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to us
 import 'simplebar/dist/simplebar.css';
 
 
+import adventProds from "./scripts/advent_prods.js";
 
 /* MAIN CSS */
 import style from "./styles/style.scss";
@@ -63,6 +64,7 @@ $j(function() {
 		$j(this).addClass("current");
 	});
 
+	//Objet de gestion du menu (affichage, scroll, burger)
 	$j.MENU = {
 		init : function(){
 			const self = this;
@@ -136,64 +138,55 @@ $j(function() {
 		init : function(){
 			const self = this;
 
+			self.$cals = $j(".advent__part-calendar");
+			self.$calNov = $j(".advent__calendar--novembre");
+			self.$calDec = $j(".advent__calendar--decembre");
 
-
+			self.dataProds = [];
 			self.isLoading = false;
 
-			// self.events();
+			self.run();
+			self.events();
+			self.getData();
+		},
+
+		run : function(){
+
 		},
 
 		events : function(){
 			const self = this;
 
-			self.$burger.on("click", $j.proxy(self.toggleMenu, self));
-			self.$close.on("click", $j.proxy(self.toggleMenu, self));
-			self.$menu.find(".menu__link").on("click", $j.proxy(self.goTo, self));
-
-			new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (entry.intersectionRatio > 0) {
-						self.$burgerFixed.removeClass("fixed");
-					} else {
-						self.$burgerFixed.addClass("fixed");
-					}
-				});
-			}).observe($j(".burger__root--header").get(0));
-
-			const sectionObs = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (entry.intersectionRatio >= 0.30) {
-						$j(".menu__link").removeClass("current").filter("[href=#"+entry.target.id+"]").addClass("current");
-					}
-				});
-			}, {threshold: [0.30]});
-			$j("section[id]").get().forEach(section => {
-				sectionObs.observe(section);
-			});
+			$j(".advent__calendar-month").on("click",  $j.proxy(self.toggleMonth, self));
 		},
 
-		toggleMenu : function(){
+		getData : function(){
 			const self = this;
 
-			$j("html").toggleClass("no-scroll");
-			self.$menu.toggleClass("show");
-			self.isDisplay = !self.isDisplay;
-			self.$burgerFixed.toggleClass("menu");
+			self.dataProds = adventProds;
 		},
 
-		goTo : function(e){
-			e.preventDefault();
+		toggleMonth : function(e){
 			const self = this;
-			const scroll = $j(window).scrollTop();
-			const wHeight = $j("#contenuhome").height();
-			const target = $j(e.currentTarget).attr("href");
-			const targetTop = (target === "#section-faire-plaisir")? $j(target).offset().top -80 : $j(target).offset().top;
+			const elm = $j(e.currentTarget);
 
-			self.toggleMenu();
+			if(elm.parent().is(self.$calDec) && !self.$cals.hasClass("advent__calendars--dec")){
+				self.$cals.addClass("advent__calendars--dec");
+			}else if(elm.parent().is(self.$calNov) && self.$cals.hasClass("advent__calendars--dec")){
+				self.$cals.removeClass("advent__calendars--dec");
+			}
+		},
 
-			$j('html, body').delay(150).animate({
-				scrollTop : targetTop
-			}, Math.max(250, 2500*Math.abs(targetTop - scroll)/wHeight));
+		selectItem : function(){
+			const self = this;
+
+
+		},
+
+		changeItem : function(){
+			const self = this;
+
+
 		}
 	};
 	$j.ADVENT.init();
