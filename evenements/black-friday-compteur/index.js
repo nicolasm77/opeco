@@ -23,7 +23,7 @@ import flip from "./scripts/flipclock.min.js";
 
 $j(document).ready(function() {
     var n = new Date,
-	e = new Date('November 23, 2018 08:00:00').getTime()/1e3-n.getTime()/1e3;
+	e = new Date('November 19, 2018 08:00:00').getTime()/1e3-n.getTime()/1e3;
 	$j('.black-friday__countdown__clock').FlipClock(e,{
 		clockFace: 'DailyCounter',
 		countdown: true

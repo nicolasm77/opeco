@@ -22,12 +22,14 @@
 	background-repeat: no-repeat;
 	background-color: #161616;
 	overflow: hidden;
+	font-family: ARS;
 
 	&__date{
 		font-size:16px;
 		margin: 75px auto 0px;
 		color: $color-main;
 		font-weight: bold;
+		font-family: ARS;
 	}
 
 	&__title{
@@ -53,7 +55,8 @@
         padding: 0 10px;
         -webkit-box-decoration-break: clone;
         -o-box-decoration-break: clone;
-        box-decoration-break: clone;
+		box-decoration-break: clone;
+		font-family:$font-ars;
 	}
 	
 	&__trad{
@@ -75,6 +78,9 @@
 	p {
 		color: #3b3b3b;
 		text-align: center;
+		a{
+			color: #3b3b3b;
+		}
 	}
 }
 
