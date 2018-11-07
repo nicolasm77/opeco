@@ -56,7 +56,7 @@ function productsHtml(object, more) {
 		inject +=
 			`<div class="push">
 			<article class="push__item" data-ref="${o.ref}" data-offer="${o.offerId}">
-				<a href="${o.ref}" title="${nameWithoutTags}" data-xiti="Portail::Noel2018::Push_Produits::${xiti}">
+				<a href="/ref/${o.ref}" title="${nameWithoutTags}" data-xiti="Portail::Noel2018::Push_Produits::${xiti}">
 					<span class="push__img">
 						<img class="lazyload" src="https://boulanger.scene7.com/is/image/Boulanger/${o.ean}_h_f_l_0?fit=constrain,1&amp;wid=230&amp;hei=230&amp;fmt=png&amp;qlt=100" alt="${nameWithoutTags}" >
 					</span>
