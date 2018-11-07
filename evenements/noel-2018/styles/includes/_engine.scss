@@ -67,12 +67,20 @@
     	display: flex;
     	color: $color-white;
     	transition: 0.2s all;
-    	cursor: pointer;
+		cursor: pointer;
+
+		span{
+			transition: color 0.3s;
+		}
+
+		line {
+			transition: stroke 0.3s;
+		}
 
     	@media #{$notTablet} {
     		span {
     			margin-right: 10px;
-    			font-size: 16px;
+    			font-size: 14px;
     			text-decoration: underline;
     		}
     	}
@@ -88,25 +96,24 @@
     		}
     	}
 
-    	&::after {
-    		color: $color-white;
-    		content: "⨉";
-    		font-size: 50px;
-    		line-height: 0;
-    		transition: 0.6s ease-in;
-    	}
+    	// &::after {
+    	// 	color: $color-white;
+    	// 	content: "⨉";
+    	// 	font-size: 50px;
+    	// 	line-height: 0;
+    	// 	transition: 0.6s ease-in;
+    	// }
+		@media #{$desktop} {
+			&:hover {
+				span {
+					color: $color-orange;
+				}
 
-    	&:hover {
-    		span {
-    			text-decoration: none;
-    		}
-
-    		&::after {
-    			color: $color-orange;
-    			transform: rotate(90deg);
-    			transition: 0.2s ease-out;
-    		}
-    	}
+				line {
+					stroke: $color-orange;
+				}
+			}
+		}
     }
 
     &__center {
