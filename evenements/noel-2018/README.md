@@ -1,5 +1,7 @@
 # TODO
 
+- XITI dynamique sur le bouton "découvrir les produits" du moteur à cadeaux
+
 ## Bugs
 
 ### iOS
