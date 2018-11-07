@@ -50,12 +50,6 @@ window.lazySizesConfig.expand = 350;
 IntersectionObserver.prototype.USE_MUTATION_OBSERVER = false;
 
 $j(function() {
-
-	$j(".video__item").on("click", function(){
-		$j(".video__item.current").removeClass("current");
-		$j(this).addClass("current");
-	});
-
 	//Objet de gestion du menu (affichage, scroll, burger)
 	$j.MENU = {
 		init : function(){
@@ -135,6 +129,46 @@ $j(function() {
 	};
 	$j.MENU.init();
 
+	$j.VIDEO = {
+		init : function(){
+			const self = this;
+
+			self.$container = $j(".video__container-video");
+			self.$items = $j(".video__item");
+
+			self.events();
+		},
+
+		events : function(){
+			const self = this;
+
+			self.$items.on("click", $j.proxy(self.changeVideo, self));
+
+			$j(window).on("load", function(){
+				self.$container.append(self.makeIframe(self.$items.eq(0).data("yt"), ""));
+			})
+		},
+
+		changeVideo : function(e){
+			const self = this;
+			const elm = $j(e.currentTarget);
+			const iframe = self.makeIframe(elm.data("yt"), "?autoplay=1");
+
+			if(!elm.hasClass("current")){
+				self.$items.filter(".current").removeClass("current");
+				elm.addClass("current");
+
+				self.$container.children().remove();
+				self.$container.append(iframe);
+			}
+		},
+
+		makeIframe : function(yt, auto){
+			return `<iframe class="video__itself" width="560" height="315" src="https://www.youtube.com/embed/${yt}${auto}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+		}
+	};
+	$j.VIDEO.init();
+
 	$j.ADVENT = {
 		init : function(){
 			const self = this;
@@ -144,11 +178,12 @@ $j(function() {
 			self.$calDec = $j(".advent__calendar--decembre");
 			self.$tdDay = $j(".advent__calendar-table").find("td[data-date]");
 
-			self.today = "22_12"//self.getDate();
+			self.today = "24_12"//self.getDate();
 			self.selectedDate = self.today;
 
 			self.dataProds = [];
 			self.isLoading = false;
+			self.firstLoading = true;
 
 			self.run();
 		},
@@ -209,7 +244,15 @@ $j(function() {
 		getData : function(){
 			const self = this;
 
-			self.dataProds = adventProds;
+			if (location.hostname !== "localhost") {
+				$j.getJSON("/content/static/bcom/evenements/2018/12_noel-2018/advent_prods.json", function (json) {
+					self.dataProds = json[0];
+					self.changeProd();
+				});
+			}else{
+				self.dataProds = adventProds[0];
+				self.changeProd();
+			}
 		},
 
 		toggleMonth : function(e){
@@ -233,45 +276,164 @@ $j(function() {
 			self.selectedDate = item.data("date");
 			self.$tdDay.filter(".day-current").removeClass("day-current");
 			item.addClass("day-current");
-			$j(".advent__calendar-day").text(self.getFullTextDate(self.selectedDate));
+			// $j(".advent__calendar-day").text(self.getFullTextDate(self.selectedDate));
 
-			self.changeProd();
+			if(self.dataProds.length !== 0){
+				self.changeProd();
+			}
 		},
 
 		changeProd : function(){
 			const self = this;
 			const objData = self.dataProds[self.selectedDate];
 			const newprod = self.createProd(objData);
+
+			$j(".advent__part-prod").addClass("loading").append(newprod).css({minHeight: $j(".advent__prod-item").height()});
+			$j(".advent__prod-item").not(".advent__prod-item--new").addClass("advent__prod-item--old");
+
+			if (location.hostname !== "localhost") {
+				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading){
+					console.log("ici")
+					self.getPrices($j(".advent__prod-item--new"), function(){
+						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
+						$j(".advent__prod-item--old").remove()
+					})
+				}else{
+					console.log("la")
+					self.getPrices($j(".advent__prod-item--new"), function(){});
+					$j('html, body').animate({scrollTop : $j(".advent__part-prod").offset().top - 40 - 30}, 450, function(){
+						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
+						$j(".advent__prod-item--old").remove()
+					});
+				}
+			}else{
+				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading){
+					setTimeout(function(){
+						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
+						$j(".advent__prod-item--old").remove()
+					}, 300)
+				}else{
+					$j('html, body').animate({scrollTop : $j(".advent__part-prod").offset().top - 40 - 30}, 450, function(){
+						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
+						$j(".advent__prod-item--old").remove()
+					});
+				}
+			}
+
+			self.firstLoading = false;
 		},
 
 		createProd : function(data){
 			const self = this;
+			const path = "/content/static/bcom/evenements/2018/12_noel-2018/assets/img_advent/";
+			// const path = "img_advent/";
 
 			return `
-			<div class="advent__prod-item advent__prod-item--new">
-				<img src="../images/${self.selectedDate}.jpg" alt="" class="advent__prod-img">
+			<div class="advent__prod-item advent__prod-item--new" data-offer="${data.o}">
+				<div class="advent__prod-container">
+					<div class="advent__prod-subcontainer">
+						${(data => {
+							if(data.v && document.createElement('video').canPlayType('video/mp4; codecs="avc1.42E01E"') == "probably"){
+								return `<video muted loop autoplay src="${path}${self.selectedDate.replace("_", "-")}.mp4" class="advent__prod-img"></video>`
+							}else{
+								return `<img src="${path}${self.selectedDate.replace("_", "-")}.jpg" class="advent__prod-img lazyload">`
+							}
+						})(data)}
+					</div>
+				</div>
 				<p class="advent__prod-name">
-					Montre connectée <b>APPLE WATCH</b> SERIES 4 40mm alu gris/noir
+					${data.n}
 				</p>
 				<p class="advent__prod-desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					${data.d}
 				</p>
 				<div class="advent__prod-price">
 					<span class="advent__prod-old-price">
-						559€<sup>00</sup>
+						&nbsp;<sup>&nbsp;</sup>
 					</span>
 					<span class="advent__prod-new-price">
-						499€<sup>00</sup>
+						&nbsp;<sup>&nbsp;</sup>
 					</span>
 				</div>
 				<div class="advent__prod-bottom">
-					<a href="" target="_blank" class="btn btn--golden">Voir le produit</a>
+					<a href="/ref/${data.r}" target="_blank" class="btn btn--golden">Voir le produit</a>
 				</div>
 			</div>
 			`
-		}
+		},
+
+		getPrices : function(prod, callback){
+            const self = this;
+            const cat = prod.attr("data-offer");
+			const url = "/webapp/wcs/stores/servlet/BLGetDynamicOffer?leadOfferCatentryId=" + cat + "&storeId=10001&catalogId=10001&langId=-2";
+
+            $j.getJSON(url, function (data) {
+				self.updateProdHtml(prod, data);
+
+				callback();
+			});
+		},
+
+        updateProdHtml : function(prod, data){
+			if(!data.offer) return false;
+
+            var reference = data.offer.price.referenceAmount;
+			var amount = data.offer.price.amount;
+
+            if (data.catentryId === null || data.offer.published === false) {
+                prod.find('.advent__prod-new-price').text('Produit indisponible');
+            } else {
+                var op = number_format(reference, 2, "|", " ").split("|")[0] + "&euro;<sup>" + number_format(reference, 2, "|", " ").split("|")[1] + "</sup>";
+                var np = number_format(amount, 2, "|", " ").split("|")[0] + "&euro;<sup>" + number_format(amount, 2, "|", " ").split("|")[1] + "</sup>";
+                if (reference <= amount) {
+                    prod.find(".advent__prod-new-price").removeClass("advent__prod-new-price--offer");
+                    prod.find(".advent__prod-old-price").removeClass("advent__prod-old-price--offer");
+                    op = "";
+                }else{
+                    prod.find(".advent__prod-new-price").addClass("advent__prod-new-price--offer");
+                    prod.find(".advent__prod-old-price").addClass("advent__prod-old-price--offer");
+                }
+                prod.find(".advent__prod-old-price").html(op);
+                prod.find(".advent__prod-new-price").html(np);
+            }
+        },
 	};
 	$j.ADVENT.init();
+
+	function intersec(elm, margin){
+		const offset = elm.offset().top;
+		const wHeight = $j(window).height();
+		const top = $j(window).scrollTop();
+
+		return (offset+margin)<(top + wHeight);
+	}
+
+	function number_format(number, decimals, decPoint, thousandsSep) {
+		decimals = Math.abs(decimals) || 0;
+		number = parseFloat(number);
+		if (!decPoint || !thousandsSep) {
+			decPoint = '.';
+			thousandsSep = ',';
+		}
+		var roundedNumber = Math.round(Math.abs(number) * ('1e' + decimals)) + '';
+		var numbersString = decimals ? (roundedNumber.slice(0, decimals * -1) || 0) : roundedNumber;
+		var decimalsString = decimals ? roundedNumber.slice(decimals * -1) : '';
+		var formattedNumber = "";
+		while (numbersString.length > 3) {
+			formattedNumber += thousandsSep + numbersString.slice(-3);
+			numbersString = numbersString.slice(0, -3);
+		}
+		if (decimals && decimalsString.length === 1) {
+			while (decimalsString.length < decimals) {
+				decimalsString = decimalsString + decimalsString;
+			}
+		}
+		return (number < 0 ? '-' : '') + numbersString + formattedNumber + (decimalsString ? (decPoint + decimalsString) : '');
+	}
 
 	new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
@@ -308,27 +470,27 @@ $j(function() {
 		}
 	})
 
-	var UID = {
-		_current: 0,
-		getNew: function(){
-			this._current++;
-			return this._current;
-		}
-	};
-	HTMLElement.prototype.pseudoStyle = function(element,prop,value){
-		var _this = this;
-		var _sheetId = "pseudoStyles";
-		var _head = document.head || document.getElementsByTagName('head')[0];
-		var _sheet = document.getElementById(_sheetId) || document.createElement('style');
-		_sheet.id = _sheetId;
-		var className = "pseudoStyle" + UID.getNew();
+	// var UID = {
+	// 	_current: 0,
+	// 	getNew: function(){
+	// 		this._current++;
+	// 		return this._current;
+	// 	}
+	// };
+	// HTMLElement.prototype.pseudoStyle = function(element,prop,value){
+	// 	var _this = this;
+	// 	var _sheetId = "pseudoStyles";
+	// 	var _head = document.head || document.getElementsByTagName('head')[0];
+	// 	var _sheet = document.getElementById(_sheetId) || document.createElement('style');
+	// 	_sheet.id = _sheetId;
+	// 	var className = "pseudoStyle" + UID.getNew();
 
-		_this.className +=  " "+className;
+	// 	_this.className +=  " "+className;
 
-		_sheet.innerHTML += " ."+className+":"+element+"{"+prop+":"+value+"}";
-		_head.appendChild(_sheet);
-		return this;
-	};
+	// 	_sheet.innerHTML += " ."+className+":"+element+"{"+prop+":"+value+"}";
+	// 	_head.appendChild(_sheet);
+	// 	return this;
+	// };
 
 	document.onkeydown = function(evt) {
 		evt = evt || window.event;
