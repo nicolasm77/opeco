@@ -360,7 +360,7 @@ $j(function() {
 					</span>
 				</div>
 				<div class="advent__prod-bottom">
-					<a href="/ref/${data.r}" target="_blank" class="btn btn--golden">Voir le produit</a>
+					<a href="/ref/${data.r}" target="_blank" class="btn btn--golden" data-xiti="Portail::Noel_2018::1jour_1cadeau::voir_le_produit">Voir le produit</a>
 				</div>
 			</div>
 			`
