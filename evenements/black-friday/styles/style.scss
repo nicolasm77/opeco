@@ -228,7 +228,7 @@
 		align-items: flex-end;
 	}
 
-	&__4x-block{
+	&__4x-block, &__odr-block{
 		padding:0 20px;
 		width: 50%;
 		display: flex;
@@ -236,7 +236,7 @@
 		align-items: center;
 	}
 
-	&__4x-subblock{
+	&__4x-subblock, &__odr-subblock{
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -250,7 +250,14 @@
 		flex-shrink: 0;
 	}
 
-	&__4x-center{
+	&__odr-title{
+		text-align: center;
+		font-size: 16px;
+		font-family: $font-ars;
+		flex-shrink: 0;
+	}
+
+	&__4x-center, &__odr-center{
 		margin:20px;
 	}
 
@@ -260,8 +267,24 @@
 		margin:0 auto;
 	}
 
+	&__odr-picto{
+		display: block;
+		max-width: 40px;
+		margin: 0 auto;
+	}
+
 	&__4x-text{
 		font-size:17px;
+		font-family: $font-ars;
+	}
+	
+	&__odr-text{
+		font-size:20px;
+		font-family: $font-ars;
+		.color{
+			color: $color-main;
+			font-weight: bold;
+		}
 	}
 
 	&__4x-grow{
@@ -330,7 +353,7 @@
 			margin-bottom: 0;
 		}
 
-		&__4x-block{
+		&__4x-block, &__odr-block{
 			width: 100%;
 			margin:0 auto;
 			max-width: 640px;
