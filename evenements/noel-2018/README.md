@@ -1,17 +1,20 @@
 # TODO
 
-## Bugs iOS
-
-- [MOTEURCADEAUX] Rating.
-
 - [STICKYTOPBAR] Lors de l'ouverture la page remonte.
-- [MOTEURCADEAUX] Scroll on body.
 
-- [VIDEO] Réduire la taille de texte de la vidéo.
+- [MOTEURCADEAUX]
+	- Ne pas faire scroller le body.
+	- Rating cassés.
 
-- [CALENDRIER] box shadow
-- [CALENDRIER] *
-- [CALENDRIER] On click date bug
+- [MENU]
+	- Réduire la typo du texte dans la pop-in
+	- Mettre dans l'ordre de haut en bas, de gauche à droite
+	- La croix est en haut à gauche alors que sur la pop-in du moteur à cadeaux c'est à droite. Peut-on être iso des 2 côtés et mettre la croix en haut à droite sur la pop in menu.
 
-## Bugs IE 10
-- Compiler le "const" en "var" (sur greensock/anim.js)
+- [CALENDRIER]
+	- box shadow
+	- *
+	- On click date bug
+
+- [BUG_IE10]
+	- Compiler le "const" en "var" (sur greensock/anim.js)
