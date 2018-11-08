@@ -274,41 +274,57 @@ function init() {
 				$j(".gift__paramsCategory span").width("100%");
 			}
 			productsCheck();
-		}else{
+		} else {
 			tc_events_global(this,'standard',{'event_name':'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::disabled','level2_id':'23','event_type':'N'});
 		}
 
 	}).on("click", ".giftengine__close", function () {
 		engineLayer.close();
-	}).on("click", ".box span.link", function () {
+	}).on("click mouseenter mouseleave tap touchend", ".box span.link", function (e) {
 
-		var link = $j(this);
 
-		/* RÈGLES DE GESTION */
-		if (link.parents(".box").hasClass("box--pricerange")) {
-			$j(".box--pricerange .link").removeClass("selected");
-		} else if (link.parents(".box").hasClass("box--category")) {
-			if (link.data("value") === "all") {
-				$j(".box--category .link").removeClass("selected");
-			} else if ($j(".box--category .link[data-value='all']").hasClass("selected")) {
-				$j(".box--category .link[data-value='all']").removeClass("selected");
+
+		if(e.type == 'click' || e.type == 'touchend') {
+
+			e.stopImmediatePropagation(); // Don't trigger mouseenter even if they hold
+			e.preventDefault(); // If $item is a link (<a>), don't go to said link on mobile, show menu instead
+
+			var link = $j(this);
+
+			/* RÈGLES DE GESTION */
+			if (link.parents(".box").hasClass("box--pricerange")) {
+				$j(".box--pricerange .link").removeClass("selected");
+			} else if (link.parents(".box").hasClass("box--category")) {
+				if (link.data("value") === "all") {
+					$j(".box--category .link").removeClass("selected");
+				} else if ($j(".box--category .link[data-value='all']").hasClass("selected")) {
+					$j(".box--category .link[data-value='all']").removeClass("selected");
+				}
+			} else if (link.parents(".box").hasClass("box--type")) {
+				$j(".box--type .link").removeClass("selected");
 			}
-		} else if (link.parents(".box").hasClass("box--type")) {
-			$j(".box--type .link").removeClass("selected");
-		}
 
-		/* ACTIVATION DU LIEN */
-		if (isLinkClickable(link)) {
-			link.removeClass("hover").toggleClass("selected");
-		} else {
-			$j(".box__title small").removeAttr("class");
-			setTimeout(function () {
-				$j(".box__title small").addClass("alert");
-			}, 10);
-		}
+			/* ACTIVATION DU LIEN */
+			if (isLinkClickable(link)) {
+				link.removeClass("hover").toggleClass("selected");
+			} else {
+				$j(".box__title small").removeAttr("class");
+				setTimeout(function () {
+					$j(".box__title small").addClass("alertt");
+				}, 10);
+			}
 
-		/* CONTRÔLES DE SURFACE */
-		surfaceControl();
+			/* CONTRÔLES DE SURFACE */
+			surfaceControl();
+		}else if(e.type == 'mouseenter') {
+			if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
+				$j(this).addClass("hover");
+			}
+		}else if(e.type == 'mouseleave') {
+			if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
+				$j(this).removeClass("hover");
+			}
+		}
 
 	}).on("click", ".gift__footer__more", function () {
 		productsCheck(1);
@@ -316,17 +332,7 @@ function init() {
 		engineLayer.open();
 	});
 
-	$j("span.link").on("mouseenter", function () {
-		if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
-			$j(this).addClass("hover");
-		}
-	});
 
-	$j("span.link").on("mouseleave", function () {
-		if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
-			$j(this).removeClass("hover");
-		}
-	});
 
 	if (location.hash === "#engine") {
 		engineLayer.open();

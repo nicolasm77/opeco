@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 /*
  *
  *	Gestion des chemins
@@ -14,7 +16,7 @@ const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
 const config = require(relativePath + '/webpack.config.js');
 const now = new Date();
 
-//chemin du dossier FTP
+// chemin du dossier FTP
 let stagingPath = "";
 if(path.dirname(path.dirname(relativePath)).split(path.sep).pop() == "vivre-mieux"){
 	stagingPath = "/content/static/bcom/desktop/evenements/2018/01_espace-beaute/asset/images/"+path.basename(process.env.INIT_CWD);
@@ -23,13 +25,11 @@ if(path.dirname(path.dirname(relativePath)).split(path.sep).pop() == "vivre-mieu
 }
 
 
-//répertoire de destination du "build"
+// répertoire de destination du "build"
 const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), 'dist');
 
 /*
- *
  *	Ajout des plugins necessaires
- *
  */
 
 //module Node.js

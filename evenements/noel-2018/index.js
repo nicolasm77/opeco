@@ -1,8 +1,8 @@
 /*jshint esversion: 6 */
 
 /* POLYFILL */
-import "./scripts/classList_polyfill.js";
-import 'intersection-observer';
+import polyfill from "./scripts/classList_polyfill.js";
+import interObserver from 'intersection-observer';
 
 /* BUBBLES */
 import bubblecss from "bubbles/dist/main.css";
@@ -11,20 +11,22 @@ import bubbleAnim from "bubbles/dist/anims.js";
 
 
 /* TOP SCROLLBAR */
-import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually
-import 'simplebar/dist/simplebar.css';
+import simplebar from "simplebar"; // or "import SimpleBar from 'simplebar';" if you want to use it manually
+import simplebarcss from "simplebar/dist/simplebar.css";
 
-
+/* CALENDRIER DE L'AVENT */
 import adventProds from "./scripts/advent_prods.js";
 
 /* MAIN CSS */
 import style from "./styles/style.scss";
 
-/* SWIPER CAROUSEL */
-// import Swiper from "swiper/dist/js/swiper.min.js";
-// import SwiperCSS from "swiper/dist/css/swiper.css";
+/*
+SWIPER CAROUSEL
+import Swiper from "swiper/dist/js/swiper.min.js";
+import SwiperCSS from "swiper/dist/css/swiper.css";
+*/
 
-import paro from 'paroller.js/dist/jquery.paroller.js';
+import paro from "paroller.js/dist/jquery.paroller.js";
 
 /* GIFENGINE */
 import _ from "lodash";
@@ -50,9 +52,9 @@ window.lazySizesConfig.expand = 350;
 IntersectionObserver.prototype.USE_MUTATION_OBSERVER = false;
 
 $j(function() {
-	//Objet de gestion du menu (affichage, scroll, burger)
+	/* Objet de gestion du menu (affichage, scroll, burger) */
 	$j.MENU = {
-		init : function(){
+		init: function(){
 			const self = this;
 
 			self.$burger = $j(".burger__itself");
@@ -65,7 +67,7 @@ $j(function() {
 			self.events();
 		},
 
-		events : function(){
+		events: function(){
 			const self = this;
 
 			self.$burger.on("click", $j.proxy(self.openMenu, self));
@@ -94,7 +96,7 @@ $j(function() {
 			});
 		},
 
-		openMenu : function(e){
+		openMenu: function(e){
 			e.preventDefault();
 
 			const self = this;
@@ -105,7 +107,7 @@ $j(function() {
 			self.$burgerFixed.addClass("menu");
 		},
 
-		closeMenu : function(){
+		closeMenu: function(){
 			const self = this;
 
 			$j("html").removeClass("no-scroll");
@@ -114,7 +116,7 @@ $j(function() {
 			self.$burgerFixed.removeClass("menu");
 		},
 
-		goTo : function(e){
+		goTo: function(e){
 			e.preventDefault();
 			const self = this;
 			const scroll = $j(window).scrollTop();
@@ -132,7 +134,7 @@ $j(function() {
 	$j.MENU.init();
 
 	$j.VIDEO = {
-		init : function(){
+		init: function(){
 			const self = this;
 
 			self.$container = $j(".video__container-video");
@@ -141,7 +143,7 @@ $j(function() {
 			self.events();
 		},
 
-		events : function(){
+		events: function(){
 			const self = this;
 
 			self.$items.on("click", $j.proxy(self.changeVideo, self));
@@ -151,7 +153,7 @@ $j(function() {
 			});
 		},
 
-		changeVideo : function(e){
+		changeVideo: function(e){
 			const self = this;
 			const elm = $j(e.currentTarget);
 			const iframe = self.makeIframe(elm.data("yt"), "?autoplay=1");
@@ -165,14 +167,15 @@ $j(function() {
 			}
 		},
 
-		makeIframe : function(yt, auto){
+		makeIframe: function(yt, auto){
 			return `<iframe class="video__itself" width="560" height="315" src="https://www.youtube.com/embed/${yt}${auto}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 		}
 	};
+
 	$j.VIDEO.init();
 
 	$j.ADVENT = {
-		init : function(){
+		init: function(){
 			const self = this;
 
 			self.$cals = $j(".advent__part-calendar");
@@ -190,7 +193,7 @@ $j(function() {
 			self.run();
 		},
 
-		run : function(){
+		run: function(){
 			const self = this;
 
 			self.setupCalendar();
@@ -198,7 +201,7 @@ $j(function() {
 			self.events();
 		},
 
-		setupCalendar : function(){
+		setupCalendar: function(){
 			const self = this;
 			let today = self.$tdDay.filter("[data-date="+self.today+"]");
 			let todayIndex = self.$tdDay.index(today);
@@ -216,14 +219,14 @@ $j(function() {
 			if(self.today.split("_")[1] == "12") self.$cals.addClass("advent__calendars--dec");
 		},
 
-		events : function(){
+		events: function(){
 			const self = this;
 
 			$j(".advent__calendar-month").on("click",  $j.proxy(self.toggleMonth, self));
 			self.$tdDay.on("click",  $j.proxy(self.selectDate, self));
 		},
 
-		getDate : function(){
+		getDate: function(){
 			const date = new Date();
 			const day = (date.getDate() < 10)? "0"+date.getDate() : date.getDate();
 			const month = (date.getMonth()+1 < 10)? "0"+date.getMonth()+1 : date.getMonth()+1;
@@ -231,7 +234,7 @@ $j(function() {
 			return day +"_"+ month;
 		},
 
-		getFullTextDate : function(date){
+		getFullTextDate: function(date){
 			const self = this;
 			const day = date.split("_")[0];
 			const month = date.split("_")[1];
@@ -243,7 +246,7 @@ $j(function() {
 			return `${jours[todayIndex]} ${((day.indexOf("0") == 0)? day.substring(1) : day)} ${(month == "11")? "novembre" : "décembre"}`;
 		},
 
-		getData : function(){
+		getData: function(){
 			const self = this;
 
 			if (location.hostname !== "localhost") {
@@ -257,7 +260,7 @@ $j(function() {
 			}
 		},
 
-		toggleMonth : function(e){
+		toggleMonth: function(e){
 			const self = this;
 			const elm = $j(e.currentTarget);
 
@@ -268,7 +271,7 @@ $j(function() {
 			}
 		},
 
-		selectDate : function(e){
+		selectDate: function(e){
 			const self = this;
 			const item = $j(e.currentTarget);
 			const itemIndex = self.$tdDay.index(item);
@@ -278,14 +281,15 @@ $j(function() {
 			self.selectedDate = item.data("date");
 			self.$tdDay.filter(".day-current").removeClass("day-current");
 			item.addClass("day-current");
-			// $j(".advent__calendar-day").text(self.getFullTextDate(self.selectedDate));
+
+			/* $j(".advent__calendar-day").text(self.getFullTextDate(self.selectedDate)); */
 
 			if(self.dataProds.length !== 0){
 				self.changeProd();
 			}
 		},
 
-		changeProd : function(){
+		changeProd: function(){
 			const self = this;
 			const objData = self.dataProds[self.selectedDate];
 			const newprod = self.createProd(objData);
@@ -327,10 +331,11 @@ $j(function() {
 			self.firstLoading = false;
 		},
 
-		createProd : function(data){
+		createProd: function(data){
 			const self = this;
 			const path = "/content/static/bcom/evenements/2018/12_noel-2018/assets/img_advent/";
-			// const path = "img_advent/";
+
+			/* const path = "img_advent/"; */
 
 			return `
 			<div class="advent__prod-item advent__prod-item--new" data-offer="${data.o}">
@@ -366,7 +371,7 @@ $j(function() {
 			`;
 		},
 
-		getPrices : function(prod, callback){
+		getPrices: function(prod, callback){
             const self = this;
             const cat = prod.attr("data-offer");
 			const url = "/webapp/wcs/stores/servlet/BLGetDynamicOffer?leadOfferCatentryId=" + cat + "&storeId=10001&catalogId=10001&langId=-2";
@@ -378,7 +383,7 @@ $j(function() {
 			});
 		},
 
-        updateProdHtml : function(prod, data){
+        updateProdHtml: function(prod, data){
 			if(!data.offer) return false;
 
             var reference = data.offer.price.referenceAmount;
@@ -440,7 +445,7 @@ $j(function() {
 			if (entry.intersectionRatio > 0) {
 				$j(entry.target).removeClass("anim");
 			} else {
-				// $j(entry.target).addClass("anim");
+				/* $j(entry.target).addClass("anim"); */
 			}
 		});
 	}).observe($j(".plaisir__root").get(0));
@@ -472,6 +477,7 @@ $j(function() {
 		}
 	});
 
+	/*
 	// var UID = {
 	// 	_current: 0,
 	// 	getNew: function(){
@@ -493,6 +499,7 @@ $j(function() {
 	// 	_head.appendChild(_sheet);
 	// 	return this;
 	// };
+	*/
 
 	document.onkeydown = function(evt) {
 		evt = evt || window.event;
