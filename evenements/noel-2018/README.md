@@ -6,7 +6,9 @@
 
 ### iOS
 - layer engine : les items sont coupés sur les côtés, comme s'il y avait un "oh".
-- sticky topbar : la barre du haut ne s'ouvre pas, il faut insister (deux fois ?).
+- sticky topbar : lors de l'ouverture la page remonte.
+- fil d'ariane qui apparait
+- loader calendrier avent qui est en rouge
 
 ### IE 10
 -

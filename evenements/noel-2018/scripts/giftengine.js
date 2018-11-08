@@ -264,14 +264,14 @@ function init() {
 				pricerange: $j('.box--pricerange .selected').data('value'),
 				category: arr
 			};
-			if ($j(".gift__paramsCategory button").length === 3) {
-				$j(".gift__paramsCategory button").width("33.33%");
+			if ($j(".gift__paramsCategory span").length === 3) {
+				$j(".gift__paramsCategory span").width("33.33%");
 			}
-			if ($j(".gift__paramsCategory button").length === 2) {
-				$j(".gift__paramsCategory button").width("50%");
+			if ($j(".gift__paramsCategory span").length === 2) {
+				$j(".gift__paramsCategory span").width("50%");
 			}
-			if ($j(".gift__paramsCategory button").length === 1) {
-				$j(".gift__paramsCategory button").width("100%");
+			if ($j(".gift__paramsCategory span").length === 1) {
+				$j(".gift__paramsCategory span").width("100%");
 			}
 			productsCheck();
 		}else{
@@ -280,7 +280,7 @@ function init() {
 
 	}).on("click", ".giftengine__close", function () {
 		engineLayer.close();
-	}).on("click", ".box button.link", function () {
+	}).on("click", ".box span.link", function () {
 
 		var link = $j(this);
 
@@ -316,13 +316,13 @@ function init() {
 		engineLayer.open();
 	});
 
-	$j("button.link").on("mouseenter", function () {
+	$j("span.link").on("mouseenter", function () {
 		if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
 			$j(this).addClass("hover");
 		}
 	});
 
-	$j("button.link").on("mouseleave", function () {
+	$j("span.link").on("mouseleave", function () {
 		if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
 			$j(this).removeClass("hover");
 		}

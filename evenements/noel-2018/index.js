@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
 /* POLYFILL */
-import "./scripts/classList_polyfill.js"
+import "./scripts/classList_polyfill.js";
 import 'intersection-observer';
 
 /* BUBBLES */
@@ -94,7 +94,9 @@ $j(function() {
 			});
 		},
 
-		openMenu : function(){
+		openMenu : function(e){
+			e.preventDefault();
+
 			const self = this;
 
 			$j("html").addClass("no-scroll");
@@ -146,7 +148,7 @@ $j(function() {
 
 			$j(window).on("load", function(){
 				self.$container.append(self.makeIframe(self.$items.eq(0).data("yt"), ""));
-			})
+			});
 		},
 
 		changeVideo : function(e){
@@ -164,7 +166,7 @@ $j(function() {
 		},
 
 		makeIframe : function(yt, auto){
-			return `<iframe class="video__itself" width="560" height="315" src="https://www.youtube.com/embed/${yt}${auto}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+			return `<iframe class="video__itself" width="560" height="315" src="https://www.youtube.com/embed/${yt}${auto}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 		}
 	};
 	$j.VIDEO.init();
@@ -178,7 +180,7 @@ $j(function() {
 			self.$calDec = $j(".advent__calendar--decembre");
 			self.$tdDay = $j(".advent__calendar-table").find("td[data-date]");
 
-			self.today = "24_12"//self.getDate();
+			self.today = "24_12";
 			self.selectedDate = self.today;
 
 			self.dataProds = [];
@@ -293,33 +295,31 @@ $j(function() {
 
 			if (location.hostname !== "localhost") {
 				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading){
-					console.log("ici")
 					self.getPrices($j(".advent__prod-item--new"), function(){
-						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__part-prod").removeClass("loading");
 						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
-						$j(".advent__prod-item--old").remove()
-					})
+						$j(".advent__prod-item--old").remove();
+					});
 				}else{
-					console.log("la")
 					self.getPrices($j(".advent__prod-item--new"), function(){});
 					$j('html, body').animate({scrollTop : $j(".advent__part-prod").offset().top - 40 - 30}, 450, function(){
-						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__part-prod").removeClass("loading");
 						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
-						$j(".advent__prod-item--old").remove()
+						$j(".advent__prod-item--old").remove();
 					});
 				}
 			}else{
 				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading){
 					setTimeout(function(){
-						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__part-prod").removeClass("loading");
 						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
-						$j(".advent__prod-item--old").remove()
-					}, 300)
+						$j(".advent__prod-item--old").remove();
+					}, 300);
 				}else{
 					$j('html, body').animate({scrollTop : $j(".advent__part-prod").offset().top - 40 - 30}, 450, function(){
-						$j(".advent__part-prod").removeClass("loading")
+						$j(".advent__part-prod").removeClass("loading");
 						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
-						$j(".advent__prod-item--old").remove()
+						$j(".advent__prod-item--old").remove();
 					});
 				}
 			}
@@ -338,9 +338,9 @@ $j(function() {
 					<div class="advent__prod-subcontainer">
 						${(data => {
 							if(data.v && document.createElement('video').canPlayType('video/mp4; codecs="avc1.42E01E"') == "probably"){
-								return `<video muted loop autoplay src="${path}${self.selectedDate.replace("_", "-")}.mp4" class="advent__prod-img"></video>`
+								return `<video muted loop autoplay src="${path}${self.selectedDate.replace("_", "-")}.mp4" class="advent__prod-img"></video>`;
 							}else{
-								return `<img src="${path}${self.selectedDate.replace("_", "-")}.jpg" class="advent__prod-img lazyload">`
+								return `<img src="${path}${self.selectedDate.replace("_", "-")}.jpg" class="advent__prod-img lazyload">`;
 							}
 						})(data)}
 					</div>
@@ -363,7 +363,7 @@ $j(function() {
 					<a href="/ref/${data.r}" target="_blank" class="btn btn--golden" data-xiti="Portail::Noel_2018::1jour_1cadeau::voir_le_produit">Voir le produit</a>
 				</div>
 			</div>
-			`
+			`;
 		},
 
 		getPrices : function(prod, callback){
@@ -455,8 +455,10 @@ $j(function() {
 		$j('html, body').animate({
 			scrollTop : 0
 		}, Math.max(200, 1500*Math.abs(targetTop - scroll)/wHeight));
-	})
+	});
+
 	window.oldScroll = window.scrollY;
+
 	$j(window).on("scroll", function(e) {
 		if(this.scrollY < 5){
 			$j(".gototop").removeClass("gototop--show");
@@ -468,7 +470,7 @@ $j(function() {
 			}
 			this.oldScroll = this.scrollY;
 		}
-	})
+	});
 
 	// var UID = {
 	// 	_current: 0,
@@ -502,7 +504,7 @@ $j(function() {
 		}
 
 		if (isEscape) {
-			$j(".menu__close, .giftengine__close").trigger("click")
+			$j(".menu__close, .giftengine__close").trigger("click");
 		}
 	};
 });

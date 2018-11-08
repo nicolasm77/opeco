@@ -67,15 +67,15 @@
     	display: flex;
     	color: $color-white;
     	transition: 0.2s all;
-		cursor: pointer;
+    	cursor: pointer;
 
-		span{
-			transition: color 0.3s;
-		}
+    	span {
+    		transition: color 0.3s;
+    	}
 
-		line {
-			transition: stroke 0.3s;
-		}
+    	line {
+    		transition: stroke 0.3s;
+    	}
 
     	@media #{$notTablet} {
     		span {
@@ -103,17 +103,17 @@
     	// 	line-height: 0;
     	// 	transition: 0.6s ease-in;
     	// }
-		@media #{$desktop} {
-			&:hover {
-				span {
-					color: $color-orange;
-				}
+    	@media #{$desktop} {
+    		&:hover {
+    			span {
+    				color: $color-orange;
+    			}
 
-				line {
-					stroke: $color-orange;
-				}
-			}
-		}
+    			line {
+    				stroke: $color-orange;
+    			}
+    		}
+    	}
     }
 
     &__center {
@@ -425,6 +425,7 @@
     align-items: center;
     justify-content: flex-start;
     display: flex;
+    text-align: center;
     background: none;
     border: 0;
 
@@ -602,8 +603,8 @@
     	position: absolute;
     	bottom: -25px;
     	left: 50%;
-		transform: translateX(-50%);
-		border-width:0;
+    	border-width: 0;
+    	transform: translateX(-50%);
     }
     &__content {
     	position: relative;
