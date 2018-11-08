@@ -6,7 +6,7 @@
 - [MOTEURCADEAUX] Scroll on body.
 - [VIDEO] Réduire la taille de texte de la vidéo.
 - [PRODUCTS] Centrer les prix (non barrés) seuls avec l'ajout au panier.
-
+- [CALENDRIER] click scroll sim
 - [CALENDRIER] box shadow
 - [CALENDRIER] *
 

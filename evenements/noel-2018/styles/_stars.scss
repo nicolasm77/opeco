@@ -373,6 +373,7 @@
 				left:-13%;
 				transform: rotate(30deg);
 				opacity: 0.73;
+				z-index: 10;
 			}
 
 			&::after{
@@ -587,11 +588,23 @@
 
 	.footer__root{
 		&::before{
-			display: none;
+			@extend .stars-white;
+			width: 87px;
+			height: 84px;
+			top:40px;
+			right:calc(50% + 326px);
+			transform: rotate(261deg);
+			opacity: 0.3;
 		}
 
 		&::after{
-			display: none;
+			@extend .stars-white;
+			width: 152px;
+			height: 146px;
+			top:80px;
+			left:calc(50% + 355px);
+			transform: rotate(77deg);
+			opacity: 0.2;
 		}
 	}
 }
