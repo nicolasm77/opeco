@@ -90,7 +90,7 @@
     &__cta-text {
     	color: $color-white;
     	font-family: $font-ars;
-    	font-size: 28px;
+    	font-size: 26px;
     	font-weight: 700;
     	text-align: center;
     }
@@ -250,7 +250,7 @@
     left: 50%;
     z-index: 10;
     width: 100%;
-	font-size: 11px;
+    font-size: 11px;
     transform: translateX(-50%);
 
     @media #{$notMobile} {
@@ -272,9 +272,9 @@
     	}
     }
 }
-.header__cta-btn{
-	transition:transform 0.3s;
-	&:hover{
-		transform: scale(1.1);
-	}
+.header__cta-btn {
+    transition: transform 0.3s;
+    &:hover {
+    	transform: scale(1.1);
+    }
 }
