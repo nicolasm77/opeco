@@ -546,7 +546,7 @@ td.day{
     		top: 0;
     		left: 0;
     		text-align: center;
-    		transform: translateY(-18%);
+    		transform: translateY(-18%) !important;
     	}
 
     	&__title-br {

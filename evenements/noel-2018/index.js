@@ -28,7 +28,8 @@ import SwiperCSS from "swiper/dist/css/swiper.css";
 */
 
 /* PARALLAX */
-import paro from "paroller.js/dist/jquery.paroller.js";
+// import paro from "paroller.js/dist/jquery.paroller.js";
+import paro from "./scripts/parallax.js";
 
 /* GIFENGINE */
 import _ from "lodash";

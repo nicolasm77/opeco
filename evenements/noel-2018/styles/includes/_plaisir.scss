@@ -61,6 +61,23 @@
     	margin-left: percentage(33px/930px);
     }
 
+    &__subtitle{
+		font-family: $font-ars;
+		font-weight:500;
+		font-size:30px;
+		text-align: center;
+		color:$color-white;
+
+		&--tend{
+			text-align: left;
+		}
+
+		&--gift,
+		&--gift2{
+			order:4;
+		}
+	}
+
     &__tendances-text {
     	max-width: 355px;
     	color: $color-white;
