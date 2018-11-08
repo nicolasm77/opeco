@@ -280,9 +280,7 @@ function init() {
 
 	}).on("click", ".giftengine__close", function () {
 		engineLayer.close();
-	}).on("click mouseenter mouseleave tap touchend", ".box span.link", function (e) {
-
-
+	}).on("click mouseenter mouseleave touchend", ".box span.link", function (e) {
 
 		if(e.type == 'click' || e.type == 'touchend') {
 

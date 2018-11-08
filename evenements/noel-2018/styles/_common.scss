@@ -1,9 +1,14 @@
+#idz_btn {
+    display: none;
+}
+
 @media #{$mobile} {
-    .only-desk{
-        display: none !important;
+    .only-desk {
+    	display: none !important;
     }
 }
-.only-sim{
+
+.only-sim {
     display: none !important;
 
     @media #{$mobile} {
@@ -237,6 +242,7 @@ html.no-scroll{
 #filAriane {
     margin: 10px auto;
 }
-.ftr__top{
-	display: none;
+
+.ftr__top {
+    display: none;
 }
