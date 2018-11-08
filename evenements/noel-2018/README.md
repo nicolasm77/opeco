@@ -12,8 +12,6 @@
 	- La croix est en haut à gauche alors que sur la pop-in du moteur à cadeaux c'est à droite. Peut-on être iso des 2 côtés et mettre la croix en haut à droite sur la pop in menu.
 
 - [CALENDRIER]
-	- box shadow
-	- *
 	- On click date bug
 
 - [BUG_IE10]

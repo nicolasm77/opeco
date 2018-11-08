@@ -171,7 +171,6 @@ $j(function() {
 			return `<iframe class="video__itself" width="560" height="315" src="https://www.youtube.com/embed/${yt}${auto}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 		}
 	};
-
 	$j.VIDEO.init();
 
 	$j.ADVENT = {

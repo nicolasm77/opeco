@@ -588,23 +588,20 @@
 
 	.footer__root{
 		&::before{
-			@extend .stars-white;
-			width: 87px;
-			height: 84px;
-			top:40px;
-			right:calc(50% + 326px);
-			transform: rotate(261deg);
-			opacity: 0.3;
+			width: 20.7%;
+			height: 0;
+			padding-bottom: 20.9%;
+			top: 8%;
+			right: 87%;
 		}
 
 		&::after{
-			@extend .stars-white;
-			width: 152px;
-			height: 146px;
-			top:80px;
-			left:calc(50% + 355px);
-			transform: rotate(77deg);
-			opacity: 0.2;
+			width: 24.7%;
+			height: 0;
+			padding-bottom: 24.9%;
+			top: 59%;
+			left: 75%;
+			transform: rotate(25deg);
 		}
 	}
 }
