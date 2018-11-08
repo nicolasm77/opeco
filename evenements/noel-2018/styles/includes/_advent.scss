@@ -438,7 +438,7 @@ td.day{
     		flex-direction: column;
     		width: 100%;
     		padding: 30px 25px 0;
-    		box-shadow: 0 3px 6px rgba($color-black, 0.16);
+    		box-shadow: 0 4px 4px rgba(0,0,0,.16);
 
     		&--novembre {
     			position: relative;
@@ -717,7 +717,7 @@ td.day{
 
 	position: absolute;
 	z-index: 10;
-	top:150px;
+	top:calc(128px - 30px);
 	left: calc(50% - 30px);
 	visibility: hidden;
 	opacity: 0;
@@ -735,8 +735,8 @@ td.day{
 }
 .advent__loader::after {
 	background: #fff;
-	width: 75%;
-	height: 75%;
+	width: 50px;
+    height: 50px;
 	border-radius: 50%;
 	content: '';
 	margin: auto;

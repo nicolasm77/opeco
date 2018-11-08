@@ -1,8 +1,9 @@
 /*jshint esversion: 6 */
 
 /* POLYFILL */
-import polyfill from "./scripts/classList_polyfill.js";
+import classlist from "./scripts/classList_polyfill.js";
 import interObserver from 'intersection-observer';
+IntersectionObserver.prototype.USE_MUTATION_OBSERVER = false;
 
 /* BUBBLES */
 import bubblecss from "bubbles/dist/main.css";
@@ -26,6 +27,7 @@ import Swiper from "swiper/dist/js/swiper.min.js";
 import SwiperCSS from "swiper/dist/css/swiper.css";
 */
 
+/* PARALLAX */
 import paro from "paroller.js/dist/jquery.paroller.js";
 
 /* GIFENGINE */
@@ -42,14 +44,12 @@ import gototop from "./scripts/gototop.js";
 import xiti from "../../_global/scripts/data-xiti.js";
 
 
-
 /* LAZY LOAD */
 import lazy from "lazysizes";
 window.lazySizesConfig = window.lazySizesConfig || {};
 window.lazySizesConfig.srcAttr = 'data-lazy';
 window.lazySizesConfig.expand = 350;
 
-IntersectionObserver.prototype.USE_MUTATION_OBSERVER = false;
 
 $j(function() {
 	/* Objet de gestion du menu (affichage, scroll, burger) */

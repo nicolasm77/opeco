@@ -115,10 +115,10 @@
 	border-radius:3px;
 
 	@media #{$desktop}{
-		&:hover{
-			color:$color-orange;
-			background-color: $color-white;
-		}
+		// &:hover{
+		// 	color:$color-orange;
+		// 	background-color: $color-white;
+		// }
 	}
 
 	&--big{

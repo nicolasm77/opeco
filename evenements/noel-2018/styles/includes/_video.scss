@@ -24,6 +24,22 @@
 		}
 	}
 
+	&__studiob{
+		&::after{
+			content: "";
+			display: inline-block;
+			width: 50px;
+			height: 35px;
+			width:#{(50/51)}em;
+			height:#{(35*51/50)}em;
+			background-image: url(../images/b-bloc_orange.svg);
+			background-repeat: no-repeat;
+			background-size: 100% auto;
+			vertical-align: baseline;
+			margin-left: 8px;
+		}
+	}
+
 	&__player{
 		background-color: #1F1F1F;
 		position: relative;

@@ -17,7 +17,11 @@
 
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-    -webkit-overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
+
+	span{
+		font-family: inherit;
+	}
 }
 
 .giftengine {
