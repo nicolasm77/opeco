@@ -210,6 +210,22 @@
     }
 }
 
+.ope__root{
+	.ope__ml{
+		font: 400 12px/16px Arial,sans-serif;
+		color: $color-black;
+		margin: 15px 0px 25px;
+		text-align: left;
+	}
+}
+
+@media #{$mobile} {
+	.ope__root .ope__visuel{
+		margin-top: 50px;
+	}
+}
+
+
 .footer{
 	&__root{
 		color:$color-white;
@@ -427,8 +443,4 @@
 			display: block;
 		}
 	}
-}
-@media #{$notMobile} {
-}
-@media #{$notDesktop} {
 }
