@@ -60,12 +60,7 @@ function productsHtml(object, more) {
 					<span class="push__img">
 						<img class="lazyload" src="https://boulanger.scene7.com/is/image/Boulanger/${o.ean}_h_f_l_0?fit=constrain,1&amp;wid=230&amp;hei=230&amp;fmt=png&amp;qlt=100" alt="${nameWithoutTags}" >
 					</span>
-					<span class="hub-grow"></span>
-					${odr}
-					<span class="push__name">
-					<span>${o.name}</span>
-					<span class="hub-grow"></span>
-					</span>
+					<span class="hub-grow"></span>${odr}<span class="push__name"><span>${o.name}</span><span class="hub-grow"></span></span>
 					${rating}
 					<span class="push__bottom">
 						<span class="push__bottom-left">
@@ -248,8 +243,12 @@ function init() {
 		if (!$j(this).attr("disabled")) {
 			engineLayer.close();
 			var arr = [];
+			var tag = $j(".box--type [data-name].selected").data("name")+"__"+$j(".box--category [data-name].selected").data("name")+"__"+$j(".box--pricerange [data-value].selected").data("value");
 			currentProductIndex = 0;
 			verifiedProducts = [];
+
+			tc_events_global(this,'standard',{'event_name':'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::'+tag,'level2_id':'23','event_type':'N'});
+
 			$j('.box--category .selected').each(function () {
 				arr.push($j(this).data('value'));
 			});
@@ -275,6 +274,8 @@ function init() {
 				$j(".gift__paramsCategory button").width("100%");
 			}
 			productsCheck();
+		}else{
+			tc_events_global(this,'standard',{'event_name':'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::disabled','level2_id':'23','event_type':'N'});
 		}
 
 	}).on("click", ".giftengine__close", function () {
