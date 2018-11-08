@@ -193,13 +193,13 @@ function productsCheck(more) {
 	}
 }
 
-function surfaceControl() {
+function surfaceControl(param) {
 
 	/* CONTRÔLE DE SURFACE */
 	if (($j(".box--type .selected").length >= 1) && ($j(".box--category .selected").length >= 1) && ($j(".box--pricerange .selected").length >= 1)) {
 		$j(".giftengine__error").stop(true, true).slideUp();
 		$j(".giftengine__submit").removeAttr("disabled");
-	} else {
+	} else if(typeof param !== "undefined"){
 		$j(".giftengine__error").stop(true, true).slideDown();
 		$j(".giftengine__submit").attr("disabled", "disabled");
 	}
@@ -239,6 +239,8 @@ function init() {
 	$j("#engine").detach().appendTo("body").detach().appendTo("body");
 
 	$j("body").on("click", ".giftengine__submit", function () {
+
+		surfaceControl("submit");
 
 		if (!$j(this).attr("disabled")) {
 			engineLayer.close();

@@ -256,7 +256,6 @@
 
     &__old-price {
     	position: relative;
-    	display: inline-block;
     	color: $color-white;
     	font-size: 18px;
     	line-height: 13px;
@@ -291,7 +290,6 @@
 
     &__price {
     	position: relative;
-    	top: -3px;
     	display: block;
     	color: $color-white;
     	font-size: 24px;
