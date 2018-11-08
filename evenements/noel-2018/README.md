@@ -2,16 +2,13 @@
 
 ## Bugs iOS
 
-- [STICKY TOPBAR] Lors de l'ouverture la page remonte.
-- [FIL D'ARIANE] Qui apparait
+- [STICKYTOPBAR] Lors de l'ouverture la page remonte.
+- [MOTEURCADEAUX] Scroll on body.
+- [VIDEO] Réduire la taille de texte de la vidéo.
+- [PRODUCTS] Centrer les prix (non barrés) seuls avec l'ajout au panier.
 
-- [CALENDRIER AVENT] Loader qui est en rouge
-- [CALENDRIER AVENT] box shadow
-- [CALENDRIER AVENT] *
-
-- [MOTEUR À CADEAUX] Croix qui déborde
-- [MOTEUR À CADEAUX] padding latéral
-- [MOTEUR À CADEAUX] Scroll on body
+- [CALENDRIER] box shadow
+- [CALENDRIER] *
 
 ## Bugs IE 10
 - compiler le "const" en "var" (sur greensock/anim.js)

@@ -304,7 +304,8 @@
     			align-items: flex-start;
     			width: calc(50% - 10px);
     			height: auto;
-    			margin-bottom: 20px;
+    			padding-top: 10px;
+    			padding-bottom: 10px;
     			margin-left: 10px;
     			&__text {
     				font-size: 17px;
@@ -367,18 +368,12 @@
     	margin-bottom: 20px;
     	color: #ffffff;
     	font-family: $font-ars;
-    	white-space: nowrap;
     	@media #{$notMobile} {
     		font-size: 25px;
     	}
     	@media #{$mobile} {
     		@include fs(40);
     	}
-
-    	@media #{$notSmall} {
-    		white-space: nowrap;
-    	}
-
     	&::after {
     		position: absolute;
     		top: 100%;
@@ -389,11 +384,9 @@
     		content: "";
     		background: #ffffff;
     	}
-
     	b {
     		font-weight: 600;
     	}
-
     	small {
     		color: $color-white;
     		font-size: 17px;
@@ -568,6 +561,8 @@
     			font-weight: 500;
     			@media #{$mobile} {
     				@include fs(19);
+    				display: block;
+    				line-height: 13px;
     			}
     			@media #{$notMobile} {
     				font-size: 13px;
