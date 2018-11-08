@@ -60,12 +60,7 @@ function productsHtml(object, more) {
 					<span class="push__img">
 						<img class="lazyload" src="https://boulanger.scene7.com/is/image/Boulanger/${o.ean}_h_f_l_0?fit=constrain,1&amp;wid=230&amp;hei=230&amp;fmt=png&amp;qlt=100" alt="${nameWithoutTags}" >
 					</span>
-					<span class="hub-grow"></span>
-					${odr}
-					<span class="push__name">
-					<span>${o.name}</span>
-					<span class="hub-grow"></span>
-					</span>
+					<span class="hub-grow"></span>${odr}<span class="push__name"><span>${o.name}</span><span class="hub-grow"></span></span>
 					${rating}
 					<span class="push__bottom">
 						<span class="push__bottom-left">
@@ -248,8 +243,12 @@ function init() {
 		if (!$j(this).attr("disabled")) {
 			engineLayer.close();
 			var arr = [];
+			var tag = $j(".box--type [data-name].selected").data("name")+"__"+$j(".box--category [data-name].selected").data("name")+"__"+$j(".box--pricerange [data-value].selected").data("value");
 			currentProductIndex = 0;
 			verifiedProducts = [];
+
+			tc_events_global(this,'standard',{'event_name':'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::'+tag,'level2_id':'23','event_type':'N'});
+
 			$j('.box--category .selected').each(function () {
 				arr.push($j(this).data('value'));
 			});
@@ -265,49 +264,67 @@ function init() {
 				pricerange: $j('.box--pricerange .selected').data('value'),
 				category: arr
 			};
-			if ($j(".gift__paramsCategory button").length === 3) {
-				$j(".gift__paramsCategory button").width("33.33%");
+			if ($j(".gift__paramsCategory span").length === 3) {
+				$j(".gift__paramsCategory span").width("33.33%");
 			}
-			if ($j(".gift__paramsCategory button").length === 2) {
-				$j(".gift__paramsCategory button").width("50%");
+			if ($j(".gift__paramsCategory span").length === 2) {
+				$j(".gift__paramsCategory span").width("50%");
 			}
-			if ($j(".gift__paramsCategory button").length === 1) {
-				$j(".gift__paramsCategory button").width("100%");
+			if ($j(".gift__paramsCategory span").length === 1) {
+				$j(".gift__paramsCategory span").width("100%");
 			}
 			productsCheck();
+		} else {
+			tc_events_global(this,'standard',{'event_name':'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::disabled','level2_id':'23','event_type':'N'});
 		}
 
 	}).on("click", ".giftengine__close", function () {
 		engineLayer.close();
-	}).on("click", ".box button.link", function () {
+	}).on("click mouseenter mouseleave tap touchend", ".box span.link", function (e) {
 
-		var link = $j(this);
 
-		/* RÈGLES DE GESTION */
-		if (link.parents(".box").hasClass("box--pricerange")) {
-			$j(".box--pricerange .link").removeClass("selected");
-		} else if (link.parents(".box").hasClass("box--category")) {
-			if (link.data("value") === "all") {
-				$j(".box--category .link").removeClass("selected");
-			} else if ($j(".box--category .link[data-value='all']").hasClass("selected")) {
-				$j(".box--category .link[data-value='all']").removeClass("selected");
+
+		if(e.type == 'click' || e.type == 'touchend') {
+
+			e.stopImmediatePropagation(); // Don't trigger mouseenter even if they hold
+			e.preventDefault(); // If $item is a link (<a>), don't go to said link on mobile, show menu instead
+
+			var link = $j(this);
+
+			/* RÈGLES DE GESTION */
+			if (link.parents(".box").hasClass("box--pricerange")) {
+				$j(".box--pricerange .link").removeClass("selected");
+			} else if (link.parents(".box").hasClass("box--category")) {
+				if (link.data("value") === "all") {
+					$j(".box--category .link").removeClass("selected");
+				} else if ($j(".box--category .link[data-value='all']").hasClass("selected")) {
+					$j(".box--category .link[data-value='all']").removeClass("selected");
+				}
+			} else if (link.parents(".box").hasClass("box--type")) {
+				$j(".box--type .link").removeClass("selected");
 			}
-		} else if (link.parents(".box").hasClass("box--type")) {
-			$j(".box--type .link").removeClass("selected");
-		}
 
-		/* ACTIVATION DU LIEN */
-		if (isLinkClickable(link)) {
-			link.removeClass("hover").toggleClass("selected");
-		} else {
-			$j(".box__title small").removeAttr("class");
-			setTimeout(function () {
-				$j(".box__title small").addClass("alert");
-			}, 10);
-		}
+			/* ACTIVATION DU LIEN */
+			if (isLinkClickable(link)) {
+				link.removeClass("hover").toggleClass("selected");
+			} else {
+				$j(".box__title small").removeAttr("class");
+				setTimeout(function () {
+					$j(".box__title small").addClass("alertt");
+				}, 10);
+			}
 
-		/* CONTRÔLES DE SURFACE */
-		surfaceControl();
+			/* CONTRÔLES DE SURFACE */
+			surfaceControl();
+		}else if(e.type == 'mouseenter') {
+			if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
+				$j(this).addClass("hover");
+			}
+		}else if(e.type == 'mouseleave') {
+			if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
+				$j(this).removeClass("hover");
+			}
+		}
 
 	}).on("click", ".gift__footer__more", function () {
 		productsCheck(1);
@@ -315,17 +332,7 @@ function init() {
 		engineLayer.open();
 	});
 
-	$j("button.link").on("mouseenter", function () {
-		if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
-			$j(this).addClass("hover");
-		}
-	});
 
-	$j("button.link").on("mouseleave", function () {
-		if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
-			$j(this).removeClass("hover");
-		}
-	});
 
 	if (location.hash === "#engine") {
 		engineLayer.open();

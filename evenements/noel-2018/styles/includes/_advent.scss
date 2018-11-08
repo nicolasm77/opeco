@@ -398,304 +398,305 @@ td.day{
 	}
 }
 
-@media (max-width:910px){
-	.advent{
-		&__part-calendar{
-			width:405px;
-			background-color: #E5D7BB;
-			transition: background-color 0.3s;
+@media (max-width:910px) {
+    .advent {
+    	&__part-calendar {
+    		width: 405px;
+    		background-color: #e5d7bb;
+    		transition: background-color 0.3s;
 
-			&.advent__calendars--dec{
-				background: $color-gold;
-				.advent__calendar--novembre{
-					z-index: 0;
-					top: 49px;
-				}
-				.advent__calendar--decembre{
-					z-index: 10;
-					top: 0;
-				}
-			}
-		}
+    		&.advent__calendars--dec {
+    			background: $color-gold;
+    			.advent__calendar--novembre {
+    				top: 49px;
+    				z-index: 0;
+    			}
+    			.advent__calendar--decembre {
+    				top: 0;
+    				z-index: 10;
+    			}
+    		}
+    	}
 
-		&__header{
-			height: 205px;
-		}
+    	&__header {
+    		height: 205px;
+    	}
 
-		&__title{
-			top:55px;
-			left: 130px;
-		}
+    	&__title {
+    		top: 55px;
+    		left: 130px;
+    	}
 
-		&__calendars{
-			padding-bottom: 49px;
-			box-shadow: none;
-			overflow: inherit;
-			background-color: transparent;
-		}
+    	&__calendars {
+    		padding-bottom: 49px;
+    		overflow: inherit;
+    		background-color: transparent;
+    		box-shadow: none;
+    	}
 
-		&__calendar{
-			width:100%;
-			flex-direction: column;
-			padding: 30px 25px 0;
-			box-shadow: 0 3px 6px rgba($color-black, 0.16);
+    	&__calendar {
+    		flex-direction: column;
+    		width: 100%;
+    		padding: 30px 25px 0;
+    		box-shadow: 0 3px 6px rgba($color-black, 0.16);
 
-			&--novembre {
-				position: relative;
-				z-index: 10;
-				top: 0;
-				transition:top 0.3s;
-			}
+    		&--novembre {
+    			position: relative;
+    			top: 0;
+    			z-index: 10;
+    			transition: top 0.3s;
+    		}
 
-			&--decembre{
-				right: 0;
-				height:calc(100% - 49px);
-				top: 49px;
-				z-index: 0;
-				transition:top 0.3s;
-				//transition: right 0.5s;
-			}
-		}
+    		&--decembre {
+    			top: 49px;
+    			right: 0;
+    			z-index: 0;
+    			height: calc(100% - 49px);
+    			transition: top 0.3s;
+    			//transition: right 0.5s;
+    		}
+    	}
 
-		&__calendar-table {
-		    width: calc(100% + 10px);
-		    margin-left: -10px;
-		}
+    	&__calendar-table {
+    		width: calc(100% + 10px);
+    		margin-left: -10px;
+    	}
 
-		&__calendar-month{
-			width:100%;
-			border-top:1px solid $color-white;
-			border-right:0 none;
-			margin-right: 0;
-			margin-top:25px;
-			order:2;
-			text-align: right;
-			padding:12px 0 13px;
-		}
+    	&__calendar-month {
+    		order: 2;
+    		width: 100%;
+    		padding: 12px 0 13px;
+    		margin-top: 25px;
+    		margin-right: 0;
+    		text-align: right;
+    		border-top: 1px solid $color-white;
+    		border-right: 0 none;
+    	}
 
-		&__calendar-name{
-			position: relative;
-			bottom:0;
-			left:0;
-			transform: none;
-		}
+    	&__calendar-name {
+    		position: relative;
+    		bottom: 0;
+    		left: 0;
+    		transform: none;
+    	}
 
-		&__calendar-container{
-			padding-right:0;
-			order:1;
-		}
-	}
+    	&__calendar-container {
+    		order: 1;
+    		padding-right: 0;
+    	}
+    }
 }
-@media (max-width:810px){
-	.advent{
-		&__part-calendar{
-			width:percentage(405px/780px);
-		}
+@media (max-width:810px) {
+    .advent {
+    	&__part-calendar {
+    		width: percentage(405px/780px);
+    	}
 
-		&__part-prod{
-			width:percentage(360px/780px);
-		}
+    	&__part-prod {
+    		width: percentage(360px/780px);
+    	}
 
-		&__header{
-			height: 0;
-			padding-bottom:percentage(205px/405px);
-		}
+    	&__header {
+    		height: 0;
+    		padding-bottom: percentage(205px/405px);
+    	}
 
-		&__title{
-			top: 6%;
-			left: 14%;
-		}
-	}
+    	&__title {
+    		top: 6%;
+    		left: 14%;
+    	}
+    }
 }
 
-@media #{$mobile}{
-	.advent{
-		&__root{
+@media #{$mobile} {
+    .advent {
+    	&__root {
+    	}
 
-		}
+    	&__container {
+    		padding-top: 0;
 
-		&__container{
-			padding-top:0;
+    		&::before {
+    			display: none;
+    		}
+    	}
 
-			&::before{
-				display: none;
-			}
-		}
+    	&__subcontainer {
+    		display: block;
+    		max-width: 580px;
+    		margin: 0 auto;
+    	}
 
-		&__subcontainer{
-			display: block;
-			max-width: 580px;
-			margin: 0 auto;
-		}
+    	&__part-calendar {
+    		width: 100%;
+    	}
 
-		&__part-calendar{
-			width:100%;
-		}
+    	&__part-prod {
+    		width: 100%;
+    	}
 
-		&__part-prod{
-			width:100%;
-		}
+    	&__header {
+    		height: auto;
+    		padding-bottom: 0;
+    		background: none;
+    	}
 
-		&__header{
-			padding-bottom: 0;
-			height: auto;
-			background: none;
-		}
+    	&__title {
+    		position: relative;
+    		top: 0;
+    		left: 0;
+    		text-align: center;
+    		transform: translateY(-18%);
+    	}
 
-		&__title{
-			position: relative;
-			text-align: center;
-			top:0;
-			left:0;
-			transform: translateY(-18%);
-		}
+    	&__title-br {
+    		display: inline;
+    	}
 
-		&__title-br{
-			display: inline;
-		}
+    	&__calendar {
+    		padding: 0 percentage(50px/580px);
+    	}
 
-		&__calendar {
-		    padding: 0 percentage(50px/580px);
-		}
+    	&__calendar-month {
+    		margin-top: percentage(30px/580px);
+    		// padding:12px 0 13px;
+    	}
 
-		&__calendar-month{
-			margin-top:percentage(30px/580px);
-			// padding:12px 0 13px;
-		}
+    	&__calendar-container {
+    	}
 
-		&__calendar-container{
+    	&__calendar-day {
+    		@include fs(32);
 
-		}
+@include lh(43);
+    	}
 
-		&__calendar-day{
-			@include fs(32);
-			@include lh(43);
-		}
+    	&__calendar-table {
+    		td {
+    			@include fs(24);
 
-		&__calendar-table{
+@include lh(32);
+    			padding: 10px 0;
+    			&::after {
+    				top: calc(50% - 20px);
+    				left: calc(50% - 21px);
+    				width: 42px;
+    				height: 42px;
+    			}
+    		}
+    	}
 
-			td{
-				@include fs(24);
-				@include lh(32);
-				padding: 10px 0;
+    	&__calendar-name {
+    		@include fs(25);
+    		line-height: 24px;
+    	}
 
-				&::after{
-					height: 42px;
-					width: 42px;
-					top: calc(50% - 20px);
-					left: calc(50% - 21px);
-				}
-			}
-		}
+    	&__part-prod {
+    		padding-bottom: 0;
+    		margin-top: percentage(30px/580px);
+    		margin-bottom: -35px;
+    	}
 
-		&__calendar-name{
-			@include fs(25);
-			line-height: 24px;
-		}
+    	&__prod-img {
+    		max-width: 468px;
+    		margin-right: auto;
+    		margin-left: auto;
+    	}
 
-		&__part-prod{
-			margin-bottom: -35px;
-			padding-bottom: 0;
-			margin-top: percentage(30px/580px);
-		}
+    	&__prod-name {
+    		@include fs(30);
+    	}
 
-		&__prod-img{
-			max-width: 468px;
-			margin-left:auto;
-			margin-right:auto;
-		}
+    	&__prod-desc {
+    		@include fs(26);
 
-		&__prod-name{
-			@include fs(30);
-		}
+@include lh(31);
+    		max-width: 550px;
+    	}
 
-		&__prod-desc{
-			@include fs(26);
-			@include lh(31);
-			max-width: 550px;
-		}
+    	&__prod-price {
+    		margin-top: percentage(26px/580px);
+    	}
 
-		&__prod-price{
-			margin-top: percentage(26px/580px);
-		}
+    	&__prod-old-price {
+    		@include fs(25);
 
-		&__prod-old-price{
-			@include fs(25);
-			@include lh(20);
-		}
+@include lh(20);
+    	}
 
-		&__prod-new-price{
-			@include fs(40);
-			@include lh(30);
-		}
+    	&__prod-new-price {
+    		@include fs(40);
 
-		&__prod-bottom{
-			margin-top: percentage(35px/580px);
-		}
-	}
+@include lh(30);
+    	}
 
-	td.day{
-		&-christmas,
-		&-current{
-			&::before{
-				height: 42px;
-				width: 42px;
-				top: calc(50% - 20px);
-				left: calc(50% - 21px);
-			}
-		}
-	}
+    	&__prod-bottom {
+    		margin-top: percentage(35px/580px);
+    	}
+    }
+
+    td.day {
+    	&-christmas,
+    	&-current {
+    		&::before {
+    			top: calc(50% - 20px);
+    			left: calc(50% - 21px);
+    			width: 42px;
+    			height: 42px;
+    		}
+    	}
+    }
 }
-@media #{$small}{
-	.advent{
-		&__calendar {
-		    padding: 0 percentage(30px/420px);
-		}
+@media #{$small} {
+    .advent {
+    	&__calendar {
+    		padding: 0 percentage(30px/420px);
+    	}
 
-		&__calendar-table{
-			td{
-				@include fs(28);
-				@include lh(32);
+    	&__calendar-table {
+    		td {
+    			@include fs(28);
 
-				&::after{
-					height: 38px;
-					width: 38px;
-					top: calc(50% - 19px);
-					left: calc(50% - 19px);
-				}
-			}
-		}
+@include lh(32);
+    			&::after {
+    				top: calc(50% - 19px);
+    				left: calc(50% - 19px);
+    				width: 38px;
+    				height: 38px;
+    			}
+    		}
+    	}
 
-		&__calendar-name{
-			@include fs(32);
-		}
+    	&__calendar-name {
+    		@include fs(32);
+    	}
 
-		&__part-prod{
-			margin-bottom: -45px;
-		}
-	}
+    	&__part-prod {
+    		margin-bottom: -45px;
+    	}
+    }
 
-	td.day{
-		&-christmas,
-		&-current{
-			&::before{
-				height: 38px;
-				width: 38px;
-				top: calc(50% - 19px);
-				left: calc(50% - 19px);
-			}
-		}
-	}
+    td.day {
+    	&-christmas,
+    	&-current {
+    		&::before {
+    			top: calc(50% - 19px);
+    			left: calc(50% - 19px);
+    			width: 38px;
+    			height: 38px;
+    		}
+    	}
+    }
 }
-@media (max-width:400px){
-	.advent__calendar-table td::after,
-	td.day-christmas::before,
-	td.day-current::before{
-		height: 32px;
-		width: 32px;
-		top: calc(50% - 15px);
-		left: calc(50% - 16px);
-	}
+@media (max-width:400px) {
+    .advent__calendar-table td::after,
+    td.day-christmas::before,
+    td.day-current::before {
+    	top: calc(50% - 15px);
+    	left: calc(50% - 16px);
+    	width: 32px;
+    	height: 32px;
+    }
 }
 
 

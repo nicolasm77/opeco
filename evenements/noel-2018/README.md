@@ -1,12 +1,17 @@
 # TODO
 
-- XITI dynamique sur le bouton "découvrir les produits" du moteur à cadeaux
+## Bugs iOS
 
-## Bugs
+- [STICKY TOPBAR] Lors de l'ouverture la page remonte.
+- [FIL D'ARIANE] Qui apparait
 
-### iOS
-- layer engine : les items sont coupés sur les côtés, comme s'il y avait un "oh".
-- sticky topbar : la barre du haut ne s'ouvre pas, il faut insister (deux fois ?).
+- [CALENDRIER AVENT] Loader qui est en rouge
+- [CALENDRIER AVENT] box shadow
+- [CALENDRIER AVENT] *
 
-### IE 10
--
+- [MOTEUR À CADEAUX] Croix qui déborde
+- [MOTEUR À CADEAUX] padding latéral
+- [MOTEUR À CADEAUX] Scroll on body
+
+## Bugs IE 10
+- compiler le "const" en "var" (sur greensock/anim.js)
