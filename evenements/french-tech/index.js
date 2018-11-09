@@ -16,6 +16,7 @@ window.lazySizesConfig.expand = 350;
 //Swiper plugin
 import Swiper from "swiper/dist/js/swiper.min.js";
 
+//javascript mobile
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     $j('.page-french-tech').before('<link rel="stylesheet" href="https://www.boulanger.com/content/static/bcom/framework/swiper/swiper.min.css">');
     var navSwiper = new Swiper('.navbar__root .swiper-container', {
@@ -46,4 +47,25 @@ $j('.articles__root .article__item').each(function(){
     var color = $j(this).attr('data-color');
     $j(this).find('.article__item__links--link:first-child').css({'background':color,'border':'1px solid '+color});
     $j(this).find('.article__item__top__titles--subtitle').css('color',color);
-})
+});
+
+//video
+$j('.articles__root .article__item .article__item__links--link.video').click(function(){
+    var srcVideo = $j(this).parent('.article__item__links').find('.content-video video').attr('data-video');
+    $j('body, html').css('overflow','hidden');
+    $j(this).parent('.article__item__links').find('.content-video').addClass('in').find('video').attr('src',srcVideo);
+});
+$j('.articles__root .article__item .content-video').on('click','.video__close',function(){
+    $j('body, html').css('overflow','inherit');
+    $j(this).parent('.content-video.in').removeClass('in').find('video').attr('src','');
+});
+
+//ancres desk
+if(window.location.hash) {
+    var ancre = window.location.hash.substring(1);
+    $j('.navbar__root .nav__item[data-nav='+ancre+']').trigger('click');
+    var ancreIndex = $j('.navbar__root .nav__item[data-nav='+ancre+']').parent().index();
+    setTimeout(function(){ 
+        navSwiper.slideTo(ancreIndex);
+    }, 400);
+}

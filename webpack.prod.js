@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 /*
  *
  *	Gestion des chemins
@@ -14,7 +16,7 @@ const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
 const config = require(relativePath + '/webpack.config.js');
 const now = new Date();
 
-//chemin du dossier FTP
+// chemin du dossier FTP
 let stagingPath = "";
 if(path.dirname(path.dirname(relativePath)).split(path.sep).pop() == "vivre-mieux"){
 	stagingPath = "/content/static/bcom/desktop/evenements/2018/01_espace-beaute/asset/images/"+path.basename(process.env.INIT_CWD);
@@ -23,13 +25,11 @@ if(path.dirname(path.dirname(relativePath)).split(path.sep).pop() == "vivre-mieu
 }
 
 
-//répertoire de destination du "build"
+// répertoire de destination du "build"
 const buildPath = path.resolve(path.relative(__dirname, process.env.INIT_CWD), 'dist');
 
 /*
- *
  *	Ajout des plugins necessaires
- *
  */
 
 //module Node.js
@@ -167,22 +167,22 @@ module.exports = {
 									publicPath: stagingPath + "/assets"
 								}
 							},
-							// {
-							// 	//optimisation des images
-							// 	loader: 'img-loader',
-							// 	options: {
-							// 		plugins: [
-							// 			require('imagemin-mozjpeg')({
-							// 				progressive: true,
-							// 				arithmetic: false,
-							// 				quality: 80
-							// 			}),
-							// 			require('imagemin-pngquant')({
-							// 				floyd: 0.5
-							// 			})
-							// 		]
-							// 	}
-							// }
+							{
+								//optimisation des images
+								loader: 'img-loader',
+								options: {
+									plugins: [
+										require('imagemin-mozjpeg')({
+											progressive: true,
+											arithmetic: false,
+											quality: 80
+										}),
+										require('imagemin-pngquant')({
+											floyd: 0.5
+										})
+									]
+								}
+							}
 						]
 					}
 				]
@@ -305,22 +305,23 @@ module.exports = {
 		}),
 
 		//plugin de supression de CSS unitile
-		new PurgecssPlugin({
-			//paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
-			paths: glob.sync([
-				path.join(process.env.INIT_CWD, '*.html'),
-				path.join(process.env.INIT_CWD, 'includes/*.html')
-			]),
-			whitelist: whitelist,
-			whitelistPatterns: [
-				/^wl-/, //class ou id qui commence par "wl-"
-				/^slider/, //class ou id qui commence par "slider"
-				/^sidebar/,
-				/^popcart/,
-				/swiper-pagination/,
-				/^poi/
-			]
-		}),
+		// new PurgecssPlugin({
+		// 	//paths: glob.sync(path.join(process.env.INIT_CWD, 'index.html')),
+		// 	paths: glob.sync([
+		// 		path.join(process.env.INIT_CWD, '*.html'),
+		// 		path.join(process.env.INIT_CWD, 'includes/*.html')
+		// 	]),
+		// 	whitelist: whitelist,
+		// 	whitelistPatterns: [
+		// 		/^wl-/, //class ou id qui commence par "wl-"
+		// 		/^slider/, //class ou id qui commence par "slider"
+		// 		/^sidebar/,
+		// 		/^popcart/,
+		// 		/swiper-pagination/,
+		// 		/^poi/,
+		// 		/^simplebar/
+		// 	]
+		// }),
 
 		//plugin de minification du CSS
 		new OptimizeCssAssetsPlugin({

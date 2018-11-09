@@ -1,6 +1,7 @@
 .conversation{
     &__block{
 		position: relative;
+		margin-top:5px;
 		z-index: 10;
         padding:percentage(65px/1920px) 0 percentage(65px/1920px);
         background: url("../images/conv_back.jpg") no-repeat center center;
@@ -18,13 +19,19 @@
 @media #{$mobile}{
     .conversation{
         &__block{
-            padding:percentage(190px/640px) 0 percentage(50px/640px);
-            background: url("../images/conv_back.jpg") no-repeat top center;
-            background-size: cover;
+            padding:percentage(100px/640px) 0 percentage(50px/640px);
+            background-size: 180% auto;
         }
 
         &__root{
             margin-right: auto;
+        }
+    }
+}
+@media #{$small}{
+    .conversation{
+        &__block{
+            background-size: 220% auto;
         }
     }
 }

@@ -1,4 +1,18 @@
 <section class="header__root" id="section-idee">
+	<!-- fil d'ariane-->
+	${require( '../includes/ariane.html' )}
+
+	<div class="burger__root burger__root--header">
+		<div class="burger__container container-center">
+			<a href="javascript:void(0);" class="burger__itself" data-xiti="Portail::Noel_2018::pop_in_menu_de_noel">
+				${require('../images/burger.svg?inline')}
+				<span class="burger__menu">Menu</span>
+			</a>
+			<p class="burger__title">
+				Ce Noël on vous fait briller !
+			</p>
+		</div>
+	</div>
 	<div class="container-center header__container">
 		<h1 class="header__title typex">
 			<span class="typex__child">
@@ -10,19 +24,20 @@
 		<div class="header__cta-container">
 			<div class="header__cta-item">
 				<div class="header__cta-img-container">
-					<img src="../images/gift_gold.png" alt="illustration d'un cadeau doré qui s'ouvre" class="header__cta-img only-desk">
-					<img src="../images/gift_gold-sim.png" alt="illustration d'un cadeau doré qui s'ouvre" class="header__cta-img only-sim">
+					<img src="../images/gift_gold.png" alt="illustration d'un cadeau doré qui s'ouvre" class="header__cta-img only-desk lazyload">
+					<img src="../images/gift_gold-sim.png" alt="illustration d'un cadeau doré qui s'ouvre" class="header__cta-img only-sim lazyload">
 				</div>
 				<p class="header__cta-text">
 					Trouvez une idée <br>
 					lumineuse en un éclair&nbsp;!
 				</p>
 				<div class="header__cta-btn-container">
-					<a class="header__cta-btn btn btn--big" href="#engine">C'est parti</a>
+					<a class="header__cta-btn btn btn--big" data-xiti="Portail::Noel_2018::moteur_cadeaux::cestparti" href="javascript:void(0);"><span>C'est parti !</span></a>
 				</div>
 			</div>
 		</div>
 		<!-- h1 + accès au moteur à cadeaux + grande image de fond -->
-		${require( '../includes/header.giftengine.html' )}
+		${require( '../includes/giftengine/engine.html' )}
+		${require( '../includes/giftengine/popin_addtocart.html' )}
 	</div>
 </section>

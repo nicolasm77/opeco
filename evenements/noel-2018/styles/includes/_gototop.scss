@@ -1,0 +1,98 @@
+.gototop {
+    position: fixed;
+    right: 10px;
+    bottom: 40px;
+    z-index: 99999;
+    display: block;
+    width: 73px;
+    padding: 10px 11px 14px;
+    color: $color-white;
+    font-family: $font-ars;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+	transition: visibility 0.6s;
+	line-height: initial;
+
+/* opacity: 0; */
+    visibility: hidden;
+
+    span {
+    	position: relative;
+    	z-index: 1;
+    	transition: opacity 0.3s;
+    	opacity: 0;
+    }
+
+    &::before {
+    	position: relative;
+    	z-index: 1;
+    	display: block;
+    	width: 26px;
+    	height: 13px;
+    	margin: 0 auto 2px;
+    	content: "";
+    	background: url("../images/to_top.svg") no-repeat center center;
+    	background-size: cover;
+    	transition: opacity 0.3s;
+    	opacity: 0;
+    }
+
+    &::after {
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	z-index: 0;
+    	width: 0;
+    	height: 0;
+    	content: "";
+    	background-color: rgba($color-black, 0.15);
+    	border-radius: 50px;
+    	transform: translate(-50%, -50%);
+    	transition: width 0.3s 0.2s, height 0.3s 0.2s;
+
+    	-webkit-backdrop-filter: blur(3px);
+    	backdrop-filter: blur(3px);
+    }
+
+    @media #{$desktop} {
+    	&:hover::after {
+    		background-color: rgba($color-black, 0.8);
+    	}
+    }
+
+    &--show {
+    	visibility: visible;
+
+    	&::after {
+    		width: 98%;
+    		height: 98%;
+    		transition: width 0.3s, height 0.3s, background-color 0.3s;
+    	}
+
+    	span,
+    	&::before {
+    		transition: opacity 0.3s 0.2s;
+    		opacity: 1;
+    	}
+    }
+}
+@media #{$notDesktop} {
+    .gototop {
+    	&::after {
+    		background-color: rgba($color-black, 0.6);
+    	}
+    }
+}
+@media #{$mobile} {
+    .gototop {
+    	bottom: 20px;
+    	width: 50px;
+    	padding: 17px 11px 18px;
+
+    	span {
+    		display: none;
+    	}
+    }
+}
