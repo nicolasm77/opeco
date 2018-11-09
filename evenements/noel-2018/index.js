@@ -8,7 +8,7 @@ IntersectionObserver.prototype.USE_MUTATION_OBSERVER = false;
 /* BUBBLES */
 import bubblecss from "bubbles/dist/main.css";
 import bubbleCalcul from "bubbles/dist/main.js";
-import bubbleAnim from "bubbles/dist/anims.js";
+import bubbleAnim from "./scripts/anim_bubbles.js";
 
 
 /* TOP SCROLLBAR */
