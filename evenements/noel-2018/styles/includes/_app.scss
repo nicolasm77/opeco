@@ -111,6 +111,7 @@
 		@media #{$desktop}{
 			&:hover{
 				background-color:transparent;
+				color:$color-orange;
 			}
 		}
 	}
@@ -118,7 +119,7 @@
 	&__store{
 		text-decoration: none;
 		margin-left:45px;
-		display: block;
+		display: none;
 		order:2;
 
 		& + &{
@@ -259,6 +260,7 @@
 		&__store{
 			width:percentage(180px/290px);
 			min-width: 120px;
+			display: block;
 
 			& + &{
 				margin-left:0;

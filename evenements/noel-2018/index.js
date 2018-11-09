@@ -286,7 +286,7 @@ $j(function() {
 			self.$tdDay.filter(".day-current").removeClass("day-current");
 			item.addClass("day-current");
 
-			/* $j(".advent__calendar-day").text(self.getFullTextDate(self.selectedDate)); */
+			$j(".advent__calendar-day").text(self.getFullTextDate(self.selectedDate));
 
 			if(self.dataProds.length !== 0){
 				self.changeProd();
@@ -347,7 +347,7 @@ $j(function() {
 					<div class="advent__prod-subcontainer">
 						${(data => {
 							if(data.v && document.createElement('video').canPlayType('video/mp4; codecs="avc1.42E01E"') == "probably"){
-								return `<video muted loop autoplay src="${path}${self.selectedDate.replace("_", "-")}.mp4" class="advent__prod-img"></video>`;
+								return `<video playsinline muted loop autoplay src="${path}${self.selectedDate.replace("_", "-")}.mp4" class="advent__prod-img"></video>`;
 							}else{
 								return `<img src="${path}${self.selectedDate.replace("_", "-")}.jpg" class="advent__prod-img lazyload">`;
 							}
