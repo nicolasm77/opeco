@@ -363,10 +363,10 @@
     align-items: center;
     justify-content: flex-start;
     display: flex;
+    line-height: 1 !important;
     text-align: center;
     background: none;
     border: 0;
-
     &__text {
     	color: #ffffff;
     	font-family: $font-ars !important;
@@ -446,6 +446,9 @@
 .gift {
     display: none;
     padding-top: 65px;
+    svg {
+    	display: inline !important;
+    }
     &__header {
     	position: relative;
     	width: 100%;
