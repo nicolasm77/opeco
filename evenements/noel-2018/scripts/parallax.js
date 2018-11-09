@@ -241,27 +241,27 @@
         gap : 70
     });
 
-    $('.advent__title').paroller({
-        factor: 0.1,
-        factorMd : 0,
-        factorSm : 0,
-        factorXs : 0,
-        type:"foreground"
-    });
+    // $('.advent__title').paroller({
+    //     factor: 0.1,
+    //     factorMd : 0,
+    //     factorSm : 0,
+    //     factorXs : 0,
+    //     type:"foreground"
+    // });
 
-    $('.app__phone--01').paroller({
-        factor: 0.15,
-        factorSm : 0.1,
-        factorXs : 0,
-        type:"foreground"
-    });
+    // $('.app__phone--01').paroller({
+    //     factor: 0.15,
+    //     factorSm : 0.1,
+    //     factorXs : 0,
+    //     type:"foreground"
+    // });
 
-    $('.app__phone--02').paroller({
-        factor: 0.3,
-        factorSm : 0.2,
-        factorXs : 0.1,
-        type:"foreground"
-    });
+    // $('.app__phone--02').paroller({
+    //     factor: 0.3,
+    //     factorSm : 0.2,
+    //     factorXs : 0.1,
+    //     type:"foreground"
+    // });
 
 
 });
