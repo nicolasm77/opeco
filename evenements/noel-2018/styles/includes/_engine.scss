@@ -446,6 +446,9 @@
 .gift {
     display: none;
     padding-top: 65px;
+    svg {
+    	display: inline !important;
+    }
     &__header {
     	position: relative;
     	width: 100%;
