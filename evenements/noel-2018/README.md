@@ -5,10 +5,7 @@
 
 - [MOTEURCADEAUX]
 	- Ne pas faire scroller le body.
-
-- [MENU]
-	- Réduire la typo du texte dans la pop-in
-	- Mettre dans l'ordre de haut en bas, de gauche à droite
+	- 100% and not 50%
 
 - [BUG_IE10]
 	- Compiler le "const" en "var" (sur greensock/anim.js)
