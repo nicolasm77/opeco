@@ -1,0 +1,139 @@
+
+@keyframes fadein {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+.newsletter__root{
+	.newsletter--row{
+		display:flex;
+		flex-direction: row;
+		margin-top: 0px;
+		margin-bottom: 50px;
+					background-color: $color-orange;
+					border-radius: 0 0 0 50px;
+					.newsletter--item{
+							padding: 33px 0;
+							margin-left: 0;
+						&:nth-of-type(1){
+							flex:7 7 0;
+							text-align: center;
+							position: relative;
+							&::after{
+								content: "";
+								position: absolute;
+								width: 1px;
+								height: 43px;
+								background-color: $color-white;
+								right:0;
+								top:33px;
+							}
+						}
+						&:nth-of-type(2){
+							flex:3 3 0;
+							text-align: center;
+						}
+						h3, a{color: $color-white;}
+						h3{
+							font-size: 29px;
+						}
+						a{
+							font-size: 20px;
+							text-decoration: none;
+							display: inline-block;
+							position: relative;
+							padding-right: 35px;
+							margin-right: 20px;
+							&::after{
+								content:url(../images/arrow-right.svg);	
+								position:absolute;
+								display:block;
+								width:17px;
+								height:36px;
+								right:0px;
+								top:10px;
+								background-position:top left;	
+    							transition-duration: 0.4s;
+								transition-property: all;
+									
+								}
+							&:hover::after{
+								right:5px;
+							}
+							}
+					}
+		.show-mobile{display:none;}	
+		
+	}
+	
+}
+
+
+@media #{$tablette} {
+	
+.newsletter__root{
+	.newsletter--row{
+					.newsletter--item{
+						&:nth-of-type(1){
+							flex:5 5 0;
+							
+						}
+						h3{
+							font-size: 25px;
+						}
+					}
+		
+		
+	}
+	
+}
+}
+
+@media #{$mobile} {
+	.newsletter__root{
+	.newsletter--row{
+		display:flex;
+		flex-direction: column;
+		margin-top: 30px;
+					background-color: $color-orange;
+					border-radius: 0 0 0 50px;
+					.newsletter--item{
+							margin-left: 0;
+						&:nth-of-type(1){
+							flex:1 1 0;
+							text-align: left;
+							position: relative;
+							padding: 33px 15% 15px 15%;
+							&::after{
+								content: "";
+								position: absolute;
+								display: block;
+								width: 70%;
+								align-content: center;
+								height: 1px;
+								background-color: $color-white;
+								right: 15%;
+								top: 125px;
+							}
+						}
+						&:nth-of-type(2){
+							flex:1 1 0;
+							text-align: right;
+							padding: 15px 15% 33px 15%;
+						}
+						h3, a{color: $color-white;}
+						h3{
+							font-size: 23px;
+							font-weight: 600;
+						}
+						a{
+						font-size: 17px;	
+						}
+					}
+		.show-mobile{display: block;}
+		
+	}
+		
+	
+}
+}

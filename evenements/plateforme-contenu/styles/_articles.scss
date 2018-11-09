@@ -1,0 +1,118 @@
+.articles__root {
+	text-align: center;
+	background-color: $color-beige;
+	padding-top: 32px;
+	padding-bottom: 35px;
+	margin-top: 40px;
+	.articles__title{
+		font-family:$font-ars;
+		font-size: 40px;
+		font-weight: 500;
+		color: $color-black;
+		margin-bottom: 30px;
+	}
+	.hub-row {
+		padding-bottom: 30px;
+		[class^=hub-col-] {
+    	padding-right: 1rem;
+        padding-left: 1rem;
+}		
+		> div{
+			display: flex;
+		}
+	}
+}
+.articles__root article{
+	display: flex;
+}
+.articles__root article a,
+.articles__root article a:focus,
+.articles__root article a:hover {
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+	color: inherit;
+	text-decoration: none;
+	-webkit-transition: all ease 0.3s;
+	transition: all ease 0.3s;
+}
+.articles__root article img {
+	flex-wrap: wrap;
+	height: 90px !important;
+    max-width: 90px;
+}
+.articles__text {
+	position: relative;
+	width: 100%;
+	color: black;
+	font-family: $font-ars;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+.articles__content{
+	display: block;
+	padding: 0 0 0 10px;
+	text-align: left;
+	h3,p, span{
+		font-family: Arial, "Helvetica Neue", Helvetica,  "sans-serif";
+		color: $color-grey;
+	}
+	h3{
+		font-size:15px; 	
+		font-weight:bold;
+	}
+	p{
+		font-size:12px; 
+		font-weight:400;
+	}
+	span{
+		display: block;
+		text-align: right;
+		text-decoration: underline;
+		margin-right: 15px;
+	}
+}
+
+@media #{$mobile} {
+.articles__root{
+	.articles__title {
+		margin-top: 30px;
+		font-size: 25px;
+		}
+	article a,
+	article a:focus,
+	article a:hover {
+		flex-direction: column;	
+	}
+	.articles__content{
+		padding: 10px 0 0 0;
+
+	}
+}	
+}
+@media only screen and (max-width: 991.99px) {
+.articles__root {
+	padding-top: 20px;
+	padding-bottom: 35px;
+	.articles__title {
+		margin-bottom: 30px;
+	}
+}
+}
+@media only screen and (max-width: 991.99px) {
+.articles__root .hub-row {
+	flex-wrap: nowrap;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: hidden;
+}
+}
+
+@media only screen and (min-width: 992px) {
+.articles__root article a:hover {
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+}
+}

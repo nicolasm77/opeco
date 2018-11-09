@@ -1,0 +1,276 @@
+.edito__root{
+	margin-top: 40px;
+	margin-bottom: 20px;
+	.hub-row{
+		margin-right: 0rem;
+    	margin-left: 0rem;
+	}
+	[class^=hub-col-]{
+		padding-right: 0rem;
+	}
+	.edito--column{
+		background-color:$color-bleu-ciel;
+		border-radius: 0 0 0 50px;
+		height:315px;
+	.edito_item{
+		padding: 15px 20px;
+		
+		h2{
+			font-family:$font-ars;
+			color:$color-white;
+			font-weight: bold;
+			font-size: 42px;
+			
+			
+		}
+		p{
+			font-size: 13px;
+			line-height: 1.3em;
+			margin-top: 15px;
+			font-family:  Arial, Helvetica, "sans-serif";
+			
+		}
+	}
+	}
+	.nav__menu{
+		background-color:$color-bleu-canard;
+		height:315px;
+		padding: 15px 10px;
+		h2{
+			font-family:$font-ars;
+			color:$color-white;
+			font-weight: bold;
+			font-size: 42px;
+		}
+		ul{
+			
+			.nav--item{
+				display: inline-block;
+				width: 31%;
+				margin:10px 3px;
+				transition-duration: 0.4s;
+				transition-property: all;
+				
+				a{
+					cursor: pointer;
+					font-family:  Arial, Helvetica, "sans-serif";
+					font-size: 16px;
+					text-decoration:none;
+					color: $color-white;
+					display: flex;
+					position: relative;
+					font-weight: bold;
+					align-items: center;
+					
+					 span:nth-child(1){
+						margin-right: 10px;
+						background-color: $color-white;
+						color: $color-bleu-canard;
+						font-family:$font-ars;
+						display: block;
+						min-width: 51px;
+						height: 51px;
+						font-size:40px;
+						line-height: 70px;
+						font-weight: 600;
+						overflow: hidden;
+						transition-duration: 0.4s;
+						transition-property: all;
+					}
+					span:nth-child(2){
+						display: block; 
+						position: relative; 
+						margin-top: 0px;
+						line-height: 21px;
+						transition-duration: 0.4s;
+						transition-property: all;
+					}
+					&:hover{
+						span:nth-child(2){text-decoration: underline;}
+					}
+					
+				}
+				&.active {
+					a{
+						span:nth-child(1){background-color: $color-grey-middle;}
+						span:nth-child(2){color:$color-grey-middle;}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@media #{$notDesktop} {
+.edito__root{
+	margin-top: 40px;
+	margin-bottom: 20px;
+	.edito--column{
+		border-radius: 0 0 0 50px;
+		height:auto;
+		.edito_item{
+		
+			h2{
+				font-size: 36px;
+				line-height: 1em;
+
+			}
+			p{
+				font-size: 12px;
+				line-height: 1.4em;
+			}
+		}
+	}
+	.nav__menu{
+		h2{
+			font-size: 36px;
+		}
+		ul{
+			
+			.nav--item{
+				width: 48%;
+				margin:5px 0;
+				a{
+					font-size: 17px;
+					 span:nth-child(1){
+						margin-right: 10px;
+						width: 48px;
+						height: 48px;
+						min-width: 48px;
+						min-height: 48px;
+						font-size:38px;
+						line-height: 66px;
+					}
+				}
+			}
+		}
+	}
+}
+}
+@media #{$tablette} {
+.edito__root{
+	[class^=hub-col-]{
+		padding-right: 1rem;
+	}
+	.edito--column{
+		border-radius: 0 0 0 50px;
+		height:auto;
+		padding: 30px 15px;
+		margin: 30px auto;
+		.edito_item{
+		padding: 30px 0px;
+			h2{
+				font-size: 38px;
+
+			}
+			p{
+				font-size: 14px;
+				line-height: 20px;
+				margin-top: 15px;
+			}
+		}
+	}
+	.nav__menu{
+		padding: 15px 30px;
+		h2{
+			font-size: 38px;
+		}
+		}
+	
+}
+}
+@media #{$mobile} {
+.edito__root{
+	
+	.edito--column{
+		.edito_item{
+		padding: 20px 0px;
+			h2{
+				font-size: 42px;
+
+			}
+			p{
+				font-size: 13px;
+				line-height: 1.4em;
+				margin-top: 15px;
+			}
+		}
+	}
+	.pdg0{
+		padding-left:0;
+		padding-right: 0;
+	}
+	.nav__menu{
+		h2{
+			font-size: 40px;
+			margin-bottom: 10px;
+			
+		}
+		ul{
+			
+			.nav--item{
+				a{
+					font-size: 17px;
+
+					 span:nth-child(1){
+						margin-right: 8px;
+						width: 45px;
+						height: 45px;
+						min-width: 45px;
+						min-height: 45px;
+						font-size:35px;
+						line-height: 63px;
+
+					}
+				}
+			}
+		}
+	}
+}	
+	
+}
+@media #{$small}{
+	.edito__root{
+		margin-top: 10px;
+		.edito--column{
+			.edito_item{
+			 padding-top: 10px;
+			h2{
+				font-size: 31px;
+			}
+		}
+	}
+	.nav__menu{
+		padding: 15px 5px 15px 30px;
+		h2{
+			font-size: 31px;
+			margin-bottom: 15px;
+			
+		}
+		ul{
+			
+			.nav--item{
+				a{
+					font-size: 14px;
+
+					 span:nth-child(1){
+						margin-right: 5px;
+						width: 40px;
+						height: 40px;
+						min-width: 40px;
+						min-height: 40px; 
+						font-size:30px;
+						line-height: 56px;
+
+					}
+					span:nth-child(2){
+						font-size: 13px;
+						line-height: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+}

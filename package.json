@@ -41,7 +41,7 @@
 		"webpack-permissions-plugin": "^1.0.0"
 	},
 	"dependencies": {
-		"babel-core": "^7.1.2",
+		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.5",
 		"babel-preset-env": "^1.7.0",
 		"bubbles": "https://github.com/nicolasm77/bubbles.git",

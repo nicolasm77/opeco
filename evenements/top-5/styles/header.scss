@@ -1,0 +1,136 @@
+.header__root{
+    position: relative;
+    .ariane__root{
+        padding-top: 10px;
+        padding-bottom: 8px;
+        font-size: 12px;
+        max-width: 1020px;
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: $font-ars;
+        .ariane__item{
+            &:after{
+                content: " / ";
+            }
+            a{
+                text-decoration: none;
+                color: inherit;
+                transition: color 0.3s;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+		
+    }
+    .banner--top{
+        background: url(../images/header.jpg) center top no-repeat;
+		background-size: cover;
+		background-position:top center;
+        height: 428px;
+		border-radius: 0 0 0 118px;
+        .show-mobile{
+            display: none;
+        }
+		.text--content{
+			display: flex;
+    		flex-direction: column;
+    		align-items: center;
+		    padding: 132px 0px 30px;
+    		
+			 h2{ 
+				font-size: 45px;
+				color: $color-white;
+				font-weight: 700;
+				font-family:  $font-ars; 
+				 &:after{
+                	 content:"";
+					 display: block;
+					  
+					 background: $color-white;
+					 margin: 30px auto;
+					 width: 103px;
+					 height: 6px;
+					 border-radius: 4px;
+            			}
+				}
+			   h3{ 
+				font-size: 21px;
+				color: $color-white;
+				font-weight: 700; 
+				}
+			}
+    }
+}
+
+@media #{$notDesktop} {
+    .header__root{
+        .container-full{
+            background: none;
+            height: auto;
+            .show-mobile{
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        
+    }
+}
+@media #{$mobile} {
+	.header__root{
+		.banner--top{
+			background: url(../images/header-mob.jpg) center top no-repeat;
+			background-size:cover;
+		border-radius: 0 0 0 118px;
+		height: 428px;
+		.text--content{
+		    padding: 118px 0px 30px;
+    		
+			 h2{ 
+				font-size: 40px;
+				 &:after{
+					 margin: 30px auto;
+					 width: 103px;
+					 height: 6px;
+					 border-radius: 4px;
+            			}
+				}
+			   h3{ 
+				font-size: 19px;
+				font-weight: 700; 
+				}
+			}
+		}
+	}
+
+}
+@media #{$small} {
+	.header__root{
+		.banner--top{
+			background: url(../images/header-mob.png) center top no-repeat;
+			background-size:cover;
+		border-radius: 0 0 0 118px;
+		height: 328px;
+		.text--content{
+		    padding: 90px 0px 30px;
+    		
+			 h2{ 
+				font-size: 37px;
+				 &:after{
+					 margin: 30px auto;
+					 width: 103px;
+					 height: 6px;
+					 border-radius: 4px;
+            			}
+				}
+			   h3{ 
+				font-size: 17px;
+				font-weight: 700; 
+				}
+			}
+		}
+	}
+	
+}
