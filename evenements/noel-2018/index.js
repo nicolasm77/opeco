@@ -187,7 +187,7 @@ $j(function() {
 			self.$calDec = $j(".advent__calendar--decembre");
 			self.$tdDay = $j(".advent__calendar-table").find("td[data-date]");
 
-			self.today = "24_12";
+			self.today = self.getDate();
 			self.selectedDate = self.today;
 
 			self.dataProds = [];
@@ -214,6 +214,7 @@ $j(function() {
 				today = self.$tdDay.eq(0);
 				todayIndex = self.$tdDay.index(today);
 				self.today = today.data("date");
+				self.selectedDate = self.today;
 			}
 
 			today.addClass("day-current");
@@ -339,8 +340,6 @@ $j(function() {
 			const self = this;
 			const path = "/content/static/bcom/evenements/2018/12_noel-2018/assets/img_advent/";
 
-			/* const path = "img_advent/"; */
-
 			return `
 			<div class="advent__prod-item advent__prod-item--new" data-offer="${data.o}">
 				<div class="advent__prod-container">
@@ -465,45 +464,6 @@ $j(function() {
 			scrollTop : 0
 		}, Math.max(200, 1500*Math.abs(targetTop - scroll)/wHeight));
 	});
-
-	window.oldScroll = window.scrollY;
-
-	$j(window).on("scroll", function(e) {
-		if(this.scrollY < 5){
-			$j(".gototop").removeClass("gototop--show");
-		}else if(Math.abs(this.oldScroll - this.scrollY) > 1){
-			if(this.oldScroll > this.scrollY){
-				$j(".gototop").addClass("gototop--show");
-			}else{
-				$j(".gototop").removeClass("gototop--show");
-			}
-			this.oldScroll = this.scrollY;
-		}
-	});
-
-	/*
-	// var UID = {
-	// 	_current: 0,
-	// 	getNew: function(){
-	// 		this._current++;
-	// 		return this._current;
-	// 	}
-	// };
-	// HTMLElement.prototype.pseudoStyle = function(element,prop,value){
-	// 	var _this = this;
-	// 	var _sheetId = "pseudoStyles";
-	// 	var _head = document.head || document.getElementsByTagName('head')[0];
-	// 	var _sheet = document.getElementById(_sheetId) || document.createElement('style');
-	// 	_sheet.id = _sheetId;
-	// 	var className = "pseudoStyle" + UID.getNew();
-
-	// 	_this.className +=  " "+className;
-
-	// 	_sheet.innerHTML += " ."+className+":"+element+"{"+prop+":"+value+"}";
-	// 	_head.appendChild(_sheet);
-	// 	return this;
-	// };
-	*/
 
 	document.onkeydown = function(evt) {
 		evt = evt || window.event;
