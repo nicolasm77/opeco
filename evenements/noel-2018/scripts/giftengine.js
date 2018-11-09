@@ -270,14 +270,14 @@ function init() {
 				pricerange: $j('.box--pricerange .selected').data('value'),
 				category: arr
 			};
-			if ($j(".gift__paramsCategory span").length === 3) {
-				$j(".gift__paramsCategory span").width("33.33%");
+			if ($j(".gift__paramsCategory > span").length === 3) {
+				$j(".gift__paramsCategory > span").width("33.33%");
 			}
-			if ($j(".gift__paramsCategory span").length === 2) {
-				$j(".gift__paramsCategory span").width("50%");
+			if ($j(".gift__paramsCategory > span").length === 2) {
+				$j(".gift__paramsCategory > span").width("50%");
 			}
-			if ($j(".gift__paramsCategory span").length === 1) {
-				$j(".gift__paramsCategory span").width("100%");
+			if ($j(".gift__paramsCategory > span").length === 1) {
+				$j(".gift__paramsCategory > span").width("100%");
 			}
 			productsCheck();
 		} else {

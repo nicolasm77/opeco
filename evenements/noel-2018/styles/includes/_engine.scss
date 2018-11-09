@@ -41,8 +41,8 @@
     	@media #{$notMobile} {
     		margin-bottom: 30px;
     	}
-
     	@media #{$mobile} {
+    		margin-top: 15px;
     		margin-bottom: 15px;
     	}
     }
@@ -327,7 +327,7 @@
     	padding-bottom: 10px;
     	margin-bottom: 20px;
     	color: #ffffff;
-    	font-family: $font-ars;
+    	font-family: $font-ars !important;
     	@media #{$notMobile} {
     		font-size: 25px;
     	}
@@ -369,7 +369,7 @@
 
     &__text {
     	color: #ffffff;
-    	font-family: $font-ars;
+    	font-family: $font-ars !important;
     	line-height: 1;
     	transition: 0.2s all;
 
@@ -460,7 +460,7 @@
     	padding-bottom: 10px;
     	margin-bottom: 30px;
     	color: $color-white;
-    	font-family: $font-ars;
+    	font-family: $font-ars !important;
     	font-weight: 500;
     	text-align: center;
     	@media #{$mobile} {
@@ -517,7 +517,7 @@
     		flex-shrink: 0;
     		display: block;
     		&__text {
-    			font-family: $font-ars;
+    			font-family: $font-ars !important;
     			font-weight: 500;
     			@media #{$mobile} {
     				@include fs(19);
@@ -593,7 +593,7 @@
     		display: flex;
     		margin-top: 35px;
     		color: $color-white;
-    		font-family: $font-ars;
+    		font-family: $font-ars !important;
     		text-decoration: none;
     		@media #{$mobile} {
     			@include fs(26);
@@ -689,7 +689,7 @@
     			}
     			&__conditions {
     				position: absolute;
-    				font-family: $font-ars;
+    				font-family: $font-ars !important;
     				@media #{$notMobile} {
     					bottom: 10px;
     					font-size: 13px;
