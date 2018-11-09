@@ -5,8 +5,6 @@
 
 - [MOTEURCADEAUX]
 	- Ne pas faire scroller le body.
-	- Récap Params => MOBILE : "inheritance" on text.
-	? Rating bavent.
 
 - [AUTRE]
 	- Changer le hover du bouton c'est parti !
