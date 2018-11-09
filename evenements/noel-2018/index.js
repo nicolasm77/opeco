@@ -153,9 +153,15 @@ $j(function() {
 
 			self.$items.on("click", $j.proxy(self.changeVideo, self));
 
-			$j(window).on("load", function(){
-				self.$container.append(self.makeIframe(self.$items.eq(0).data("yt"), ""));
-			});
+			var observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.intersectionRatio > 0) {
+						self.$container.append(self.makeIframe(self.$items.eq(0).data("yt"), ""));
+						observer.disconnect();
+					}
+				});
+			})
+			observer.observe(self.$container.get(0));
 		},
 
 		changeVideo: function(e){
@@ -201,8 +207,12 @@ $j(function() {
 			const self = this;
 
 			self.setupCalendar();
-			self.getData();
 			self.events();
+
+			$j(".advent__part-prod").addClass("loading");
+			$j(window).on("load", function(){
+				self.getData();
+			});
 		},
 
 		setupCalendar: function(){
