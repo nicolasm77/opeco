@@ -12,7 +12,8 @@
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
-    transition: visibility 0.6s;
+	transition: visibility 0.6s;
+	line-height: initial;
 
 /* opacity: 0; */
     visibility: hidden;

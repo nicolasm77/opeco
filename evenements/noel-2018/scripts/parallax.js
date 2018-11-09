@@ -238,7 +238,7 @@
         factor: 0.45,
         factorMd : 0.6,
         factorSm : 0.6,
-        gap : 70
+        gap : 90
     });
 
     // $('.advent__title').paroller({
