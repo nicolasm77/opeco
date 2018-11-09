@@ -16,9 +16,9 @@ $j.MENU = {
 	events: function(){
 		const self = this;
 
-		self.$burger.on("click", $j.proxy(self.openMenu, self));
-		self.$close.on("click", $j.proxy(self.closeMenu, self));
-		self.$menu.find(".menu__link").on("click", $j.proxy(self.goTo, self));
+		self.$burger.on("click touchend", $j.proxy(self.openMenu, self));
+		self.$close.on("click touchend", $j.proxy(self.closeMenu, self));
+		self.$menu.find(".menu__link").on("click touchend", $j.proxy(self.goTo, self));
 
 		new IntersectionObserver((entries) => {
 			entries.forEach(entry => {

@@ -28,7 +28,6 @@
     position: relative;
     flex-direction: column;
     display: flex;
-
     &__top {
     	position: relative;
     	padding: 0 15px;
@@ -38,7 +37,6 @@
     		margin: 0 auto;
     	}
     }
-
     &__title {
     	@media #{$notMobile} {
     		margin-bottom: 30px;
@@ -48,7 +46,6 @@
     		margin-bottom: 15px;
     	}
     }
-
     &__close {
     	position: absolute;
     	top: 5px;
@@ -59,15 +56,12 @@
     	color: $color-white;
     	transition: 0.2s all;
     	cursor: pointer;
-
     	span {
     		transition: color 0.3s;
     	}
-
     	line {
     		transition: stroke 0.3s;
     	}
-
     	@media #{$notTablet} {
     		span {
     			margin-right: 10px;
@@ -75,46 +69,38 @@
     			text-decoration: underline;
     		}
     	}
-
     	@media #{$notDesktop} {
     		top: 23px;
     		right: 10px;
     	}
-
     	@media #{$tablet} {
     		span {
     			display: none;
     		}
     	}
-
     	@media #{$desktop} {
     		&:hover {
     			span {
     				color: $color-orange;
     			}
-
     			line {
     				stroke: $color-orange;
     			}
     		}
     	}
     }
-
     &__center {
     	align-items: stretch;
     	flex-shrink: 0;
     	justify-content: center;
     	display: flex;
-
     	@media #{$notTablet} {
     		margin: 0 20px;
     	}
-
     	@media #{$tablet} {
     		flex-direction: column;
     	}
     }
-
     &__error {
     	display: none;
     	padding-right: 10px;
@@ -126,13 +112,11 @@
     	background: #732b2b;
     	border: 1px solid red;
     	border-radius: 3px;
-
     	@media #{$notTablet} {
     		margin-top: 30px;
     		margin-right: auto;
     		margin-left: auto;
     	}
-
     	@media #{$tablet} {
     		padding-top: 5px;
     		padding-bottom: 5px;
@@ -141,7 +125,6 @@
     		margin-left: 15px;
     	}
     }
-
     &__submit {
     	align-items: center;
     	justify-content: center;
@@ -150,7 +133,6 @@
     	margin-right: auto;
     	margin-bottom: 50px;
     	margin-left: auto;
-
     	&[disabled] {
     		color: grey;
     		background: #333333;
@@ -159,7 +141,6 @@
     	}
     }
 }
-
 .box {
     padding: 15px 25px;
     border-radius: 10px;
@@ -219,7 +200,6 @@
     			height: auto;
     			margin-bottom: 20px;
     			margin-left: 10px;
-
     			&__text {
     				font-size: 17px;
     			}
