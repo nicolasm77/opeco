@@ -17,11 +17,11 @@
 
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-	-webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 
-	span{
-		font-family: inherit;
-	}
+    span {
+    	font-family: inherit;
+    }
 }
 
 .giftengine {
@@ -41,16 +41,11 @@
 
     &__title {
     	@media #{$notMobile} {
-    		margin-bottom: 54px;
+    		margin-bottom: 30px;
     	}
 
     	@media #{$mobile} {
-    		padding-top: 60px;
     		margin-bottom: 15px;
-    	}
-
-    	@media #{$notMobileNotDesktop} {
-    		padding-top: 50px;
     	}
     }
 
@@ -171,35 +166,31 @@
     .link {
     	cursor: pointer;
     }
-
     @media #{$notTablet} {
     	background: rgba(0, 0, 0, 0.5);
     	box-shadow: rgba(204, 176, 121, 0.35) 7px 7px 60px;
     }
-
     @media #{$tablet} {
     	background: rgba(0, 0, 0, 0.05);
     }
-
     & + & {
     	@media #{$desktop} {
     		margin-left: 30px;
     	}
-
     	@media #{$notMobileNotDesktop} {
     		margin-left: 15px;
     	}
-
     	@media #{$mobile} {
     		margin-left: 0;
     	}
     }
-
     &--type {
     	@media #{$desktop} {
     		width: 225px;
+    		.link {
+    			width: calc(50% - 30px) !important;
+    		}
     	}
-
     	@media #{$notDesktop} {
     		.box__flex {
     			justify-content: space-around;
@@ -209,23 +200,19 @@
     		.box__flex {
     			margin-left: -30px;
     		}
-
     		.link {
     			width: auto;
     			margin-left: 30px;
     		}
     	}
-
     	@media #{$small} {
     		.box__flex {
     			justify-content: flex-start;
     			margin-left: -10px;
     		}
-
     		svg {
     			display: none;
     		}
-
     		.link {
     			align-items: flex-start;
     			width: calc(50% - 10px);
@@ -238,26 +225,21 @@
     			}
     		}
     	}
-
     	.box__title {
     		margin-bottom: 25px;
     	}
     }
-
     &--category {
     	.box__flex {
     		margin-left: -30px;
     	}
-
     	@media #{$notDesktop} {
     		.link {
     			width: calc(20% - 30px);
     			min-width: 60px;
     		}
-
     		.box__flex {
     			justify-content: space-between;
-
     			&::after {
     				width: calc(20% - 30px);
     				min-width: 60px;
@@ -266,27 +248,25 @@
     			}
     		}
     	}
-
     	.link {
     		margin-left: 30px;
     		white-space: nowrap;
     	}
-
     	@media #{$desktop} {
     		width: 485px;
+    		.link {
+    			width: calc(20% - 30px) !important;
+    		}
     	}
-
     	@media #{$small} {
     		.link {
     			margin-bottom: 10px;
-
     			&__text {
     				font-size: 12px;
     			}
     		}
     	}
     }
-
     &--pricerange {
     	flex-direction: column;
     	display: flex;
@@ -316,22 +296,18 @@
     			}
     		}
     	}
-
     	@media #{$notTablet} {
     		.link + .link {
     			margin-top: 20px;
     		}
     	}
-
     	.box__title {
     		margin-bottom: 29px;
     	}
-
     	.link {
     		&__text {
     			font-size: 16px;
     		}
-
     		&.selected {
     			font-weight: bold;
     		}
