@@ -190,6 +190,7 @@
     	// @include lh(28);
     	font-size: 15px;
     	line-height: 16px;
+
     	&--big {
     		padding: 14px 30px;
     		font-size: 17px;
@@ -230,14 +231,14 @@
     }
 }
 
-html{
-	overflow: initial;
+html {
+    overflow: initial;
 }
-body{
-	overflow: initial;
+body {
+    overflow: initial;
 }
-#container{
-	overflow: hidden;
+#container {
+    overflow: hidden;
 }
 html.no-scroll {
     height: 100%;
@@ -248,6 +249,9 @@ html.no-scroll {
     }
 }
 
+.blankfill {
+    fill: #ffffff;
+}
 
 #filAriane {
     margin: 10px auto;

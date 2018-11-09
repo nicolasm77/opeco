@@ -8,4 +8,4 @@
 
 - [AUTRE]
 	- Changer le hover du bouton c'est parti !
-	- Changer l'EMS test-marketing => idee-cadeaux-noel / preparer campagne
+	- Calendrier remettre la bonne date (décommenter un truc)
