@@ -214,6 +214,9 @@ function init() {
 		open: function () {
 			$j("body,html").addClass("overflowFix");
 			$j.MENU.$burgerFixed.addClass("menu");
+			var top = $j(window).scrollTop();
+			$j("html").addClass("no-scroll");
+			$j(window).scrollTop(top);
 			$j(".layout#engine").fadeIn(function(){
 
 				/* On réceptionne tous les produits */
@@ -232,6 +235,7 @@ function init() {
 				$j(".overflowFix").removeClass("overflowFix");
 			});
 			$j.MENU.$burgerFixed.removeClass("menu");
+			$j("html").removeClass("no-scroll");
 		}
 	};
 

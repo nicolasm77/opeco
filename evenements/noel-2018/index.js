@@ -101,8 +101,10 @@ $j(function() {
 			e.preventDefault();
 
 			const self = this;
+			const top = $j(window).scrollTop();
 
 			$j("html").addClass("no-scroll");
+			$j(window).scrollTop(top)
 			self.$menu.addClass("show");
 			self.isDisplay = !self.isDisplay;
 			self.$burgerFixed.addClass("menu");
@@ -121,15 +123,17 @@ $j(function() {
 			e.preventDefault();
 			const self = this;
 			const scroll = $j(window).scrollTop();
-			const wHeight = $j("#contenuhome").height();
+			const wHeight = $j(".page-noel").height();
 			const target = $j(e.currentTarget).attr("href");
 			const targetTop = (target === "#section-faire-plaisir")? $j(target).offset().top -80 : $j(target).offset().top;
 
 			self.closeMenu();
 
-			$j('html, body').delay(150).animate({
-				scrollTop : targetTop
-			}, Math.max(250, 2500*Math.abs(targetTop - scroll)/wHeight));
+			setTimeout(function(){
+				$j('html, body').animate({
+					scrollTop : targetTop
+				}, Math.max(250, 2500*Math.abs(targetTop - $j(window).scrollTop())/wHeight));
+			}, 160)
 		}
 	};
 	$j.MENU.init();

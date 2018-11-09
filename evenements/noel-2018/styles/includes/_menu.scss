@@ -184,7 +184,8 @@
     	align-items: center;
     	display: flex;
     	padding: 0 12px;
-    	text-decoration: none;
+		text-decoration: none;
+		z-index: 1;
 
     	line {
     		transition: stroke 0.3s;
@@ -330,7 +331,6 @@
     		right: 0;
     		left: auto;
     		flex-direction: row-reverse;
-    		z-index: 1;
     		padding: 0 15px;
     	}
 

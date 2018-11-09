@@ -230,6 +230,15 @@
     }
 }
 
+html{
+	overflow: initial;
+}
+body{
+	overflow: initial;
+}
+#container{
+	overflow: hidden;
+}
 html.no-scroll {
     height: 100%;
 
