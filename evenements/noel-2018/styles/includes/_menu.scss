@@ -44,7 +44,7 @@
     	// background-size: cover;
     	position: absolute;
     	top: -10px;
-    	left: 10px;
+    	right: 10px;
     	padding: 10px;
     	cursor: pointer;
 
@@ -300,7 +300,6 @@
     	&__close {
     		top: 0;
     		right: 0;
-    		left: auto;
     	}
 
     	&__list {
