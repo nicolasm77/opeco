@@ -15,8 +15,7 @@ module.exports = function (relative, files, same, isSim) {
 			options.filename = path.basename(file);
 			options.inject = true;
 
-			if (!same) options.chunks = [path.basename(file, ".js")];
-
+			if (!same) options.chunks = [path.basename(file, ".html")];
 			templates.push(new HtmlWebpackPlugin(options));
 
 		} else {
