@@ -88,6 +88,7 @@ function productsHtml(object, more) {
 		if (i === object.length - 1) {
 			$j(".gift__content").append(inject);
 			$j('.push.push__service .service__block:not(.conditionsAdded)').append('<span class="service__conditions">voir conditions</span>').addClass("conditionsAdded");
+			$j(window).trigger("resize");
 			if (typeof more === "undefined") {
 				window.scrollTo(0, $j(".gift__edit").offset().top - 35);
 			}
@@ -213,7 +214,7 @@ function init() {
 		/* On bloque le scroll de la page si le layout est affiché */
 		open: function () {
 			$j("body,html").addClass("overflowFix");
-			$j.MENU.$burgerFixed.addClass("menu");
+			if($j.MENU) $j.MENU.$burgerFixed.addClass("menu");
 			var top = $j(window).scrollTop();
 			$j("html").addClass("no-scroll");
 			$j(window).scrollTop(top);
@@ -234,7 +235,7 @@ function init() {
 			$j(".layout#engine").fadeOut(function () {
 				$j(".overflowFix").removeClass("overflowFix");
 			});
-			$j.MENU.$burgerFixed.removeClass("menu");
+			if($j.MENU) $j.MENU.$burgerFixed.removeClass("menu");
 			$j("html").removeClass("no-scroll");
 		}
 	};

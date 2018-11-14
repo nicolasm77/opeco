@@ -291,7 +291,7 @@ $j(function() {
 			const item = $j(e.currentTarget);
 			const itemIndex = self.$tdDay.index(item);
 
-			if(item.hasClass("day-current") || item.hasClass("day-future")) return false;
+			if(item.hasClass("day-current")) return false;
 
 			self.selectedDate = item.data("date");
 			self.$tdDay.filter(".day-current").removeClass("day-current");
@@ -307,13 +307,18 @@ $j(function() {
 		changeProd: function(){
 			const self = this;
 			const objData = self.dataProds[self.selectedDate];
-			const newprod = self.createProd(objData);
+			const future = self.$tdDay.filter(".day-current").hasClass("day-future");
+			const newprod = self.createProd(objData, future);
 
 			$j(".advent__part-prod").addClass("loading").append(newprod).css({minHeight: $j(".advent__prod-item").height()});
 			$j(".advent__prod-item").not(".advent__prod-item--new").addClass("advent__prod-item--old");
 
+			$j(".advent__prod-item--new video").off().on("play", function(){
+				$j(this).addClass("play")
+			})
+
 			if (location.hostname !== "localhost") {
-				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading){
+				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading || future){
 					self.getPrices($j(".advent__prod-item--new"), function(){
 						$j(".advent__part-prod").removeClass("loading");
 						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
@@ -346,42 +351,55 @@ $j(function() {
 			self.firstLoading = false;
 		},
 
-		createProd: function(data){
+		createProd: function(data, future){
 			const self = this;
 			const path = "/content/static/bcom/evenements/2018/12_noel-2018/assets/img_advent/";
 
-			return `
-			<div class="advent__prod-item advent__prod-item--new" data-offer="${data.o}">
-				<div class="advent__prod-container">
-					<div class="advent__prod-subcontainer">
+			if(future){
+				return  `
+				<div class="advent__prod-item advent__prod-item--new" data-offer="">
+					<div class="advent__prod-container">
+						<div class="advent__prod-subcontainer">
+							<img src="/content/static/bcom/evenements/2018/12_noel-2018/assets/img_advent/no-prods.jpg" class="advent__prod-img lazyload">
+						</div>
+					</div>
+					<p class="advent__prod-name">
+						<b>Revenez à cette date</b><br> pour découvrir l'idée cadeau&nbsp;!
+					</p>
+				</div>
+				`;
+			}else{
+				return `
+				<div class="advent__prod-item advent__prod-item--new" data-offer="${data.o}">
+					<div class="advent__prod-container">
 						${(data => {
 							if(data.v && document.createElement('video').canPlayType('video/mp4; codecs="avc1.42E01E"') == "probably"){
-								return `<video playsinline muted loop autoplay src="${path}${self.selectedDate.replace("_", "-")}.mp4" class="advent__prod-img"></video>`;
+								return `<div class="advent__prod-subcontainer" style="background-image:url(${path}${self.selectedDate.replace("_", "-")}.jpg);"><video playsinline muted loop autoplay src="${path}${self.selectedDate.replace("_", "-")}.mp4" class="advent__prod-img"></video></div>`;
 							}else{
-								return `<img src="${path}${self.selectedDate.replace("_", "-")}.jpg" class="advent__prod-img lazyload">`;
+								return `<div class="advent__prod-subcontainer"><img src="${path}${self.selectedDate.replace("_", "-")}.jpg" class="advent__prod-img lazyload"></div>`;
 							}
 						})(data)}
 					</div>
+					<p class="advent__prod-name">
+						${data.n}
+					</p>
+					<p class="advent__prod-desc">
+						${data.d}
+					</p>
+					<div class="advent__prod-price">
+						<span class="advent__prod-old-price">
+							&nbsp;<sup>&nbsp;</sup>
+						</span>
+						<span class="advent__prod-new-price">
+							&nbsp;<sup>&nbsp;</sup>
+						</span>
+					</div>
+					<div class="advent__prod-bottom">
+						<a href="/ref/${data.r}" target="_blank" class="btn btn--golden" data-xiti="Portail::Noel_2018::1jour_1cadeau::voir_le_produit">Voir le produit</a>
+					</div>
 				</div>
-				<p class="advent__prod-name">
-					${data.n}
-				</p>
-				<p class="advent__prod-desc">
-					${data.d}
-				</p>
-				<div class="advent__prod-price">
-					<span class="advent__prod-old-price">
-						&nbsp;<sup>&nbsp;</sup>
-					</span>
-					<span class="advent__prod-new-price">
-						&nbsp;<sup>&nbsp;</sup>
-					</span>
-				</div>
-				<div class="advent__prod-bottom">
-					<a href="/ref/${data.r}" target="_blank" class="btn btn--golden" data-xiti="Portail::Noel_2018::1jour_1cadeau::voir_le_produit">Voir le produit</a>
-				</div>
-			</div>
-			`;
+				`;
+			}
 		},
 
 		getPrices: function(prod, callback){
@@ -389,11 +407,15 @@ $j(function() {
             const cat = prod.attr("data-offer");
 			const url = "/webapp/wcs/stores/servlet/BLGetDynamicOffer?leadOfferCatentryId=" + cat + "&storeId=10001&catalogId=10001&langId=-2";
 
-            $j.getJSON(url, function (data) {
-				self.updateProdHtml(prod, data);
+			if(cat != ""){
+				$j.getJSON(url, function (data) {
+					self.updateProdHtml(prod, data);
 
+					callback();
+				});
+			}else{
 				callback();
-			});
+			}
 		},
 
         updateProdHtml: function(prod, data){
