@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 $j(function(){
     var working = false;
     var scrollAction = function() {
@@ -170,7 +172,7 @@ $j(function(){
                     }
 				}
 
-				$j(window).trigger("scroll")
+				$j(window).trigger("scroll");
 			});
 
 			window.oldScroll = window.scrollY;

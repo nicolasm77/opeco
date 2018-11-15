@@ -34,9 +34,6 @@ import paro from "./scripts/parallax.js";
 /* PUSHES PRODUCTS */
 import products from "./scripts/products.js";
 
-/* GO TO TOP */
-import gototop from "./scripts/gototop.js";
-
 /* XITI CALLS */
 import xiti from "../../_global/scripts/data-xiti.js";
 
@@ -101,7 +98,7 @@ $j(function() {
 			const top = $j(window).scrollTop();
 
 			$j("html").addClass("no-scroll");
-			$j(window).scrollTop(top)
+			$j(window).scrollTop(top);
 			self.$menu.addClass("show");
 			self.isDisplay = !self.isDisplay;
 			self.$burgerFixed.addClass("menu");
@@ -130,7 +127,7 @@ $j(function() {
 				$j('html, body').animate({
 					scrollTop : targetTop
 				}, Math.max(250, 2500*Math.abs(targetTop - $j(window).scrollTop())/wHeight));
-			}, 160)
+			}, 160);
 		}
 	};
 	$j.MENU.init();
@@ -157,7 +154,7 @@ $j(function() {
 						observer.disconnect();
 					}
 				});
-			})
+			});
 			observer.observe(self.$container.get(0));
 		},
 
@@ -311,8 +308,8 @@ $j(function() {
 			$j(".advent__prod-item").not(".advent__prod-item--new").addClass("advent__prod-item--old");
 
 			$j(".advent__prod-item--new video").off().on("play", function(){
-				$j(this).addClass("play")
-			})
+				$j(this).addClass("play");
+			});
 
 			if (location.hostname !== "localhost") {
 				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading || future){

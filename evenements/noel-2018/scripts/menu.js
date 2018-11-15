@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 /* Objet de gestion du menu (affichage, scroll, burger) */
 $j.MENU = {
 	init: function(){
