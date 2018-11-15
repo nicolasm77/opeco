@@ -130,6 +130,7 @@ function productsHtml(object, more) {
 		if (i === object.length - 1) {
 			$j(".gift__content").append(inject);
 			$j('.push.push__service .service__block:not(.conditionsAdded)').append('<span class="service__conditions">voir conditions</span>').addClass("conditionsAdded");
+			$j(window).trigger("resize");
 			if (typeof more === "undefined") {
 				window.scrollTo(0, $j(".gift__edit").offset().top - 35);
 			}
@@ -249,7 +250,38 @@ function surfaceControl(param) {
 
 }
 
-$j(function () {
+var engineLayer = {
+
+	/* On bloque le scroll de la page si le layout est affiché */
+	open: function () {
+		$j("body,html").addClass("overflowFix");
+		if($j.MENU) $j.MENU.$burgerFixed.addClass("menu");
+		var top = $j(window).scrollTop();
+		$j("html").addClass("no-scroll");
+		$j(window).scrollTop(top);
+		$j(".layout#engine").fadeIn(function(){
+
+			/* On réceptionne tous les produits */
+			if (!Object.keys(allProducts).length) {
+				// allProducts = $j.getJSON("scripts/products.json", function (data) {
+				allProducts = $j.getJSON("/content/static/bcom/evenements/2018/12_noel-2018/prods_noel2018.json", function (data) {
+					return data;
+				});
+			}
+		});
+	},
+
+	/* On bloque le scroll de la page si le layout est affiché */
+	close: function () {
+		$j(".layout#engine").fadeOut(function () {
+			$j(".overflowFix").removeClass("overflowFix");
+		});
+		if($j.MENU) $j.MENU.$burgerFixed.removeClass("menu");
+		$j("html").removeClass("no-scroll");
+	}
+};
+
+function init() {
 
 	/* On déplace le moteur à cadeaux dans le body pour le Zindex */
 	$j("#engine").detach().appendTo("body").detach().appendTo("body");
@@ -356,4 +388,8 @@ $j(function () {
 	}).on("click", ".gift__edit", function () {
 		window.engineLayer.open();
 	});
+}
+
+$j(function(){
+	init();
 });

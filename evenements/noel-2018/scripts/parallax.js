@@ -1,21 +1,4 @@
-/**
- * jQuery plugin paroller.js v1.4.4
- * https://github.com/tgomilar/paroller.js
- * preview: https://tgomilar.github.io/paroller/
- **/
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define('parollerjs', ['jquery'], factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object') {
-        module.exports = factory(require('jquery'));
-    }
-    else {
-        factory(jQuery);
-    }
-})(function ($) {
-    'use strict';
-
+$j(function(){
     var working = false;
     var scrollAction = function() {
         working = false;
@@ -101,13 +84,13 @@
         }
     };
 
-    $.fn.paroller = function (options) {
-        var windowHeight = $(window).height();
-        var windowWidth = $(window).width();
-        var documentHeight = $(document).height();
+    $j.fn.paroller = function (options) {
+        var windowHeight = $j(window).height();
+        var windowWidth = $j(window).width();
+        var documentHeight = $j(document).height();
 
         // default options
-        var options = $.extend({
+        var options = $j.extend({
             factor: 0, // - to +
             factorXs: 0, // - to +
             factorSm: 0, // - to +
@@ -120,44 +103,45 @@
         }, options);
 
         return this.each(function () {
-            var $this = $(this);
-            var width = $(window).width();
-            var offset = $this.offset().top;
-            var height = $this.outerHeight();
+            var $jthis = $j(this);
+            var width = $j(window).width();
+            var offset = $jthis.offset().top;
+            var height = $jthis.outerHeight();
 
-            var dataType = $this.data('paroller-type');
-            var dataDirection = $this.data('paroller-direction');
-            var oldTransform = $this.css('transform');
+            var dataType = $jthis.data('paroller-type');
+            var dataDirection = $jthis.data('paroller-direction');
+            var oldTransform = $jthis.css('transform');
 
             var type = (dataType) ? dataType : options.type;
             var direction = (dataDirection) ? dataDirection : options.direction;
-            var factor = setMovement.factor($this, width, options);
+            var factor = setMovement.factor($jthis, width, options);
             var bgOffset = setMovement.bgOffset(offset, factor);
             var transform = setMovement.transform(offset, factor, windowHeight, height);
 
             if (type === 'background') {
                 if (direction === 'vertical') {
-                    setDirection.bgVertical($this, bgOffset);
+                    setDirection.bgVertical($jthis, bgOffset);
                 }
                 else if (direction === 'horizontal') {
-                    setDirection.bgHorizontal($this, bgOffset);
+                    setDirection.bgHorizontal($jthis, bgOffset);
                 }
             }
             else if (type === 'foreground') {
                 if (direction === 'vertical') {
-                    setDirection.vertical($this, transform, oldTransform);
+                    setDirection.vertical($jthis, transform, oldTransform);
                 }
                 else if (direction === 'horizontal') {
-                    setDirection.horizontal($this, transform, oldTransform);
+                    setDirection.horizontal($jthis, transform, oldTransform);
                 }
             }
 
-            $(window).on('resize', function () {
-                windowWidth = $(window).width();
-                width = $(window).width();
-                offset = $this.offset().top;
-                height = $this.outerHeight();
-                factor = setMovement.factor($this, width, options);
+            $j(window).on('resize', function () {
+				windowWidth = $j(window).width();
+				windowHeight = $j(window).height();
+                width = $j(window).width();
+                offset = $jthis.offset().top;
+                height = $jthis.outerHeight();
+                factor = setMovement.factor($jthis, width, options);
 
                 bgOffset = Math.round(offset * factor)+(options.gap*windowWidth/1920);
                 transform = Math.round((offset - (windowHeight / 2) + height) * factor);
@@ -168,31 +152,31 @@
                 }
 
                 if (type === 'background') {
-                    // clearPositions.background($this);
+                    // clearPositions.background($jthis);
                     if (direction === 'vertical') {
-                        setDirection.bgVertical($this, bgOffset);
+                        setDirection.bgVertical($jthis, bgOffset);
                     }
                     else if (direction === 'horizontal') {
-                        setDirection.bgHorizontal($this, bgOffset);
+                        setDirection.bgHorizontal($jthis, bgOffset);
                     }
                 }
                 else if ((type === 'foreground') && (scrolling <= documentHeight)) {
-                    // clearPositions.foreground($this);
+                    // clearPositions.foreground($jthis);
                     if (direction === 'vertical') {
-                        setDirection.vertical($this, transform);
+                        setDirection.vertical($jthis, transform);
                     }
                     else if (direction === 'horizontal') {
-                        setDirection.horizontal($this, transform);
+                        setDirection.horizontal($jthis, transform);
                     }
 				}
 
-				$(window).trigger("scroll")
+				$j(window).trigger("scroll")
 			});
 
 			window.oldScroll = window.scrollY;
-            $(window).on('scroll', function () {
-                var scrolling = $(this).scrollTop();
-                documentHeight = $(document).height();
+            $j(window).on('scroll', function () {
+                var scrolling = $j(this).scrollTop();
+                documentHeight = $j(document).height();
 
                 bgOffset = Math.round((offset - scrolling) * factor)+(options.gap*windowWidth/1920);
                 transform = Math.round(((offset - (windowHeight / 2) + height) - scrolling) * factor);
@@ -204,18 +188,18 @@
 
                 if (type === 'background') {
                     if (direction === 'vertical') {
-                        setDirection.bgVertical($this, bgOffset);
+                        setDirection.bgVertical($jthis, bgOffset);
                     }
                     else if (direction === 'horizontal') {
-                        setDirection.bgHorizontal($this, bgOffset);
+                        setDirection.bgHorizontal($jthis, bgOffset);
                     }
                 }
                 else if ((type === 'foreground') && (scrolling <= documentHeight)) {
                     if (direction === 'vertical') {
-                        setDirection.vertical($this, transform, oldTransform);
+                        setDirection.vertical($jthis, transform, oldTransform);
                     }
                     else if (direction === 'horizontal') {
-                        setDirection.horizontal($this, transform, oldTransform);
+                        setDirection.horizontal($jthis, transform, oldTransform);
                     }
 				}
 
@@ -233,28 +217,28 @@
         });
     };
 
-    $('.conversation__block').paroller({
+    $j('.conversation__block').paroller({
         factor: 0.6,
         factorSm : 0.3,
         factorXs : 0.2,
         gap : 220
     });
 
-    $('.app__back-img').paroller({
+    $j('.app__back-img').paroller({
         factor: 0.45,
         factorSm : 0.3,
         factorXs : 0.3,
         gap : 50
     });
 
-    $('.advent__header').paroller({
+    $j('.advent__header').paroller({
         factor: 0.45,
         factorMd : 0.6,
         factorSm : 0.6,
         gap : 90
     });
 
-    // $('.advent__title').paroller({
+    // $j('.advent__title').paroller({
     //     factor: 0.1,
     //     factorMd : 0,
     //     factorSm : 0,
@@ -262,14 +246,14 @@
     //     type:"foreground"
     // });
 
-    // $('.app__phone--01').paroller({
+    // $j('.app__phone--01').paroller({
     //     factor: 0.15,
     //     factorSm : 0.1,
     //     factorXs : 0,
     //     type:"foreground"
     // });
 
-    // $('.app__phone--02').paroller({
+    // $j('.app__phone--02').paroller({
     //     factor: 0.3,
     //     factorSm : 0.2,
     //     factorXs : 0.1,
