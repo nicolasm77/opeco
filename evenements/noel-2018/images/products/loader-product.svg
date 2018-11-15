@@ -1,1 +1,17 @@
-<svg width="200px"  height="200px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;"><circle cx="50" cy="50" r="5.09955" fill="none" ng-attr-stroke="{{config.c1}}" ng-attr-stroke-width="{{config.width}}" stroke="#ccb079" stroke-width="1"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="-0.5s" repeatCount="indefinite"></animate><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="-0.5s" repeatCount="indefinite"></animate></circle><circle cx="50" cy="50" r="27.801" fill="none" ng-attr-stroke="{{config.c2}}" ng-attr-stroke-width="{{config.width}}" stroke="#ccb079" stroke-width="1"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate></circle></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+<style type="text/css">.st2{fill:none;stroke:#ffffff;stroke-width:2;}</style>
+<circle class="st2" cx="100" cy="100" r="10.2">
+<animate  accumulate="none" additive="replace" attributeName="r" begin="-0.5s" calcMode="spline" dur="1" fill="remove" keySplines="0 0.2 0.8 1" keyTimes="0;1" repeatCount="indefinite" restart="always" values="0;40">
+</animate>
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="-0.5s" calcMode="spline" dur="1" fill="remove" keySplines="0.2 0 0.8 1" keyTimes="0;1" repeatCount="indefinite" restart="always" values="1;0">
+</animate>
+</circle>
+<circle class="st2" cx="100" cy="100" r="55.6">
+<animate  accumulate="none" additive="replace" attributeName="r" begin="0s" calcMode="spline" dur="1" fill="remove" keySplines="0 0.2 0.8 1" keyTimes="0;1" repeatCount="indefinite" restart="always" values="0;40">
+</animate>
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0s" calcMode="spline" dur="1" fill="remove" keySplines="0.2 0 0.8 1" keyTimes="0;1" repeatCount="indefinite" restart="always" values="1;0">
+</animate>
+</circle>
+</svg>

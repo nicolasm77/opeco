@@ -31,10 +31,6 @@ import SwiperCSS from "swiper/dist/css/swiper.css";
 // import paro from "paroller.js/dist/jquery.paroller.js";
 import paro from "./scripts/parallax.js";
 
-/* GIFENGINE */
-import _ from "lodash";
-import giftengine from "./scripts/giftengine.js";
-
 /* PUSHES PRODUCTS */
 import products from "./scripts/products.js";
 
@@ -50,6 +46,7 @@ import lazy from "lazysizes";
 window.lazySizesConfig = window.lazySizesConfig || {};
 window.lazySizesConfig.srcAttr = 'data-lazy';
 window.lazySizesConfig.expand = 350;
+
 
 
 $j(function() {
@@ -420,6 +417,7 @@ $j(function() {
             }
         },
 	};
+
 	$j.ADVENT.init();
 
 	function intersec(elm, margin){
@@ -488,4 +486,30 @@ $j(function() {
 			$j(".menu__close, .giftengine__close").trigger("click");
 		}
 	};
+
+	var engineClicked = false;
+	$j(".header__cta-btn.btn.btn--big").on("click", function(){
+		var a = $j(this);
+		a.addClass("loading");
+		if(engineClicked === false) {
+			$j.ajax({
+				url: "/content/static/bcom/evenements/2018/12_noel-2018-v2/giftengine.html",
+				cache: true,
+				success: function(data){
+					a.removeClass("loading");
+					$j(".header__container").append($j(data).filter(".gift"));
+					$j("body").append($j(data).filter(":not(.gift)"));
+					engineClicked = true;
+					window.engineLayer.open();
+				}
+			});
+		} else {
+			window.engineLayer.open();
+		}
+	});
+
+	if (location.hash === "#engine") {
+		$j(".header__cta-btn.btn.btn--big").trigger("click");
+	}
+
 });

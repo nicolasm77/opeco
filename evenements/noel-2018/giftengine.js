@@ -1,10 +1,15 @@
 /*jshint esversion: 6 */
-var moreProductIndex = 0;
+
+/* GIFENGINE */
+
+import intersection from "lodash/intersection";
+import giftengine from "./styles/engine.scss";
+
 var currentServiceShowed = 0;
 var currentProductIndex = 0;
 var verifiedProducts = [];
-var allProducts = {};
 var selectedParams = {};
+
 $j.sanitize = function (str) {
 	str = str.replace(new RegExp(/Ç/, "g"), 'C')
 		.replace(new RegExp(/ç/, "g"), 'c')
@@ -23,6 +28,43 @@ $j.sanitize = function (str) {
 		.replace(new RegExp(" ", "g"), "_")
 		.toUpperCase();
 	return (str);
+};
+
+var allProducts = {};
+
+window.engineLayer = {
+
+	/* On bloque le scroll de la page si le layout est affiché */
+	open: function () {
+		$j("body,html").addClass("overflowFix");
+		var top = $j(window).scrollTop();
+		$j("html").addClass("no-scroll");
+		$j(window).scrollTop(top);
+		$j(".layout#engine").fadeIn(function () {
+			/* On réceptionne tous les produits */
+			if (!Object.keys(allProducts).length) {
+				// allProducts = $j.getJSON("scripts/products.json", function (data) {
+				allProducts = $j.getJSON("/content/static/bcom/evenements/2018/12_noel-2018/prods_noel2018.json", function (data) {
+					return data;
+				});
+			}
+		});
+		if($j.MENU){
+			$j.MENU.$burgerFixed.addClass("menu");
+		}
+	},
+
+	/* On bloque le scroll de la page si le layout est affiché */
+	close: function () {
+		$j(".layout#engine").fadeOut(function () {
+			$j(".overflowFix").removeClass("overflowFix");
+		});
+		if($j.MENU) {
+			$j.MENU.$burgerFixed.removeClass("menu");
+		}
+		$j("html").removeClass("no-scroll");
+	}
+
 };
 
 function isLinkClickable(link) {
@@ -49,9 +91,9 @@ function productsHtml(object, more) {
 			odr = '<span class="push__promo noborder"></span><span class="hub-grow"></span>';
 		}
 		if (typeof o.rating !== "undefined") {
-			rating = `<span class="push__ratings"><img src="${require('../images/products/ratings.svg')}" alt=""><span style="width:${o.rating}%;"></span></span>`;
+			rating = `<span class="push__ratings"><img src="${require('./images/products/ratings.svg')}" alt=""><span style="width:${o.rating}%;"></span></span>`;
 		} else {
-			rating = `<span class="push__ratings norating"><img src="${require('../images/products/ratings.svg')}" alt=""><span></span></span>`;
+			rating = `<span class="push__ratings norating"><img src="${require('./images/products/ratings.svg')}" alt=""><span></span></span>`;
 		}
 		inject +=
 			`<div class="push">
@@ -122,7 +164,7 @@ function validType(product) {
 function validCategory(product) {
 	if (selectedParams.category[0] !== "all") {
 		if (typeof product.category !== "undefined") {
-			if (_.intersection(product.category, selectedParams.category).length) {
+			if (intersection(product.category, selectedParams.category).length) {
 				return true;
 			}
 		}
@@ -191,6 +233,7 @@ function productsCheck(more) {
 			verifiedProducts = [];
 		}
 	}
+
 }
 
 function surfaceControl(param) {
@@ -199,45 +242,14 @@ function surfaceControl(param) {
 	if (($j(".box--type .selected").length >= 1) && ($j(".box--category .selected").length >= 1) && ($j(".box--pricerange .selected").length >= 1)) {
 		$j(".giftengine__error").stop(true, true).slideUp();
 		$j(".giftengine__submit").removeAttr("disabled");
-	} else if(typeof param !== "undefined"){
+	} else if (typeof param !== "undefined") {
 		$j(".giftengine__error").stop(true, true).slideDown();
 		$j(".giftengine__submit").attr("disabled", "disabled");
 	}
 
 }
 
-function init() {
-
-	var engineLayer = {
-
-		/* On bloque le scroll de la page si le layout est affiché */
-		open: function () {
-			$j("body,html").addClass("overflowFix");
-			$j.MENU.$burgerFixed.addClass("menu");
-			var top = $j(window).scrollTop();
-			$j("html").addClass("no-scroll");
-			$j(window).scrollTop(top);
-			$j(".layout#engine").fadeIn(function(){
-
-				/* On réceptionne tous les produits */
-				if (!Object.keys(allProducts).length) {
-					// allProducts = $j.getJSON("scripts/products.json", function (data) {
-					allProducts = $j.getJSON("/content/static/bcom/evenements/2018/12_noel-2018/prods_noel2018.json", function (data) {
-						return data;
-					});
-				}
-			});
-		},
-
-		/* On bloque le scroll de la page si le layout est affiché */
-		close: function () {
-			$j(".layout#engine").fadeOut(function () {
-				$j(".overflowFix").removeClass("overflowFix");
-			});
-			$j.MENU.$burgerFixed.removeClass("menu");
-			$j("html").removeClass("no-scroll");
-		}
-	};
+$j(function () {
 
 	/* On déplace le moteur à cadeaux dans le body pour le Zindex */
 	$j("#engine").detach().appendTo("body").detach().appendTo("body");
@@ -247,17 +259,22 @@ function init() {
 		surfaceControl("submit");
 
 		if (!$j(this).attr("disabled")) {
-			engineLayer.close();
+			window.engineLayer.close();
 			var arr = [];
-			var tag = $j(".box--type [data-name].selected").data("name")+"__"+$j(".box--category [data-name].selected").data("name")+"__"+$j(".box--pricerange [data-value].selected").data("value");
+			var tag = $j(".box--type [data-name].selected").data("name") + "__" + $j(".box--category [data-name].selected").data("name") + "__" + $j(".box--pricerange [data-value].selected").data("value");
 			currentProductIndex = 0;
 			verifiedProducts = [];
 
-			tc_events_global(this,'standard',{'event_name':'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::'+tag,'level2_id':'23','event_type':'N'});
+			tc_events_global(this, 'standard', {
+				'event_name': 'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::' + tag,
+				'level2_id': '23',
+				'event_type': 'N'
+			});
 
 			$j('.box--category .selected').each(function () {
 				arr.push($j(this).data('value'));
 			});
+
 			$j(".gift__content,.gift__params > div").html('');
 			$j(".header__container .header__cta-container").hide();
 			$j('.header__container .gift').show();
@@ -281,14 +298,18 @@ function init() {
 			}
 			productsCheck();
 		} else {
-			tc_events_global(this,'standard',{'event_name':'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::disabled','level2_id':'23','event_type':'N'});
+			tc_events_global(this, 'standard', {
+				'event_name': 'Portail::Noel_2018::moteur_cadeaux::decouvrir_ma_liste::disabled',
+				'level2_id': '23',
+				'event_type': 'N'
+			});
 		}
 
 	}).on("click", ".giftengine__close", function () {
-		engineLayer.close();
+		window.engineLayer.close();
 	}).on("click mouseenter mouseleave touchend", ".box span.link", function (e) {
 
-		if(e.type == 'click' || e.type == 'touchend') {
+		if (e.type == 'click' || e.type == 'touchend') {
 
 			e.stopImmediatePropagation(); // Don't trigger mouseenter even if they hold
 			e.preventDefault(); // If $item is a link (<a>), don't go to said link on mobile, show menu instead
@@ -320,11 +341,11 @@ function init() {
 
 			/* CONTRÔLES DE SURFACE */
 			surfaceControl();
-		}else if(e.type == 'mouseenter') {
+		} else if (e.type == 'mouseenter') {
 			if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
 				$j(this).addClass("hover");
 			}
-		}else if(e.type == 'mouseleave') {
+		} else if (e.type == 'mouseleave') {
 			if (isLinkClickable($j(this)) && !$j(this).hasClass('selected')) {
 				$j(this).removeClass("hover");
 			}
@@ -332,18 +353,7 @@ function init() {
 
 	}).on("click", ".gift__footer__more", function () {
 		productsCheck(1);
-	}).on("click", ".header__cta-btn, .gift__edit", function () {
-		engineLayer.open();
+	}).on("click", ".gift__edit", function () {
+		window.engineLayer.open();
 	});
-
-
-
-	if (location.hash === "#engine") {
-		engineLayer.open();
-	}
-
-}
-
-$j(function () {
-	init();
 });

@@ -249,6 +249,10 @@ html.no-scroll {
     }
 }
 
+.layout {
+    display: none;
+}
+
 .blankfill {
     fill: #ffffff;
 }
@@ -262,4 +266,16 @@ html.no-scroll {
 .ftr__top,
 #footer #bottomfooter .top {
     display: none !important;
+}
+
+.header__cta-btn.btn.btn--big.loading {
+    &::before {
+    	background-image: url("../images/products/loader-product.svg") !important;
+    	background-repeat: no-repeat;
+    	background-position: center center !important;
+    	background-size: 70%;
+    }
+    span {
+    	visibility: hidden;
+    }
 }

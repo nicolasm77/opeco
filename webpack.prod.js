@@ -332,7 +332,8 @@ module.exports = {
 				},
 				discardComments: {
 					removeAll: true
-				}
+				},
+				zindex: false
 			}
 		}),
 
