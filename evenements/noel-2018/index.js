@@ -31,15 +31,8 @@ import SwiperCSS from "swiper/dist/css/swiper.css";
 // import paro from "paroller.js/dist/jquery.paroller.js";
 import paro from "./scripts/parallax.js";
 
-/* GIFENGINE */
-import _ from "lodash";
-import giftengine from "./scripts/giftengine.js";
-
 /* PUSHES PRODUCTS */
 import products from "./scripts/products.js";
-
-/* GO TO TOP */
-import gototop from "./scripts/gototop.js";
 
 /* XITI CALLS */
 import xiti from "../../_global/scripts/data-xiti.js";
@@ -50,6 +43,7 @@ import lazy from "lazysizes";
 window.lazySizesConfig = window.lazySizesConfig || {};
 window.lazySizesConfig.srcAttr = 'data-lazy';
 window.lazySizesConfig.expand = 350;
+
 
 
 $j(function() {
@@ -104,7 +98,7 @@ $j(function() {
 			const top = $j(window).scrollTop();
 
 			$j("html").addClass("no-scroll");
-			$j(window).scrollTop(top)
+			$j(window).scrollTop(top);
 			self.$menu.addClass("show");
 			self.isDisplay = !self.isDisplay;
 			self.$burgerFixed.addClass("menu");
@@ -133,7 +127,7 @@ $j(function() {
 				$j('html, body').animate({
 					scrollTop : targetTop
 				}, Math.max(250, 2500*Math.abs(targetTop - $j(window).scrollTop())/wHeight));
-			}, 160)
+			}, 160);
 		}
 	};
 	$j.MENU.init();
@@ -160,7 +154,7 @@ $j(function() {
 						observer.disconnect();
 					}
 				});
-			})
+			});
 			observer.observe(self.$container.get(0));
 		},
 
@@ -314,8 +308,8 @@ $j(function() {
 			$j(".advent__prod-item").not(".advent__prod-item--new").addClass("advent__prod-item--old");
 
 			$j(".advent__prod-item--new video").off().on("play", function(){
-				$j(this).addClass("play")
-			})
+				$j(this).addClass("play");
+			});
 
 			if (location.hostname !== "localhost") {
 				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading){
@@ -442,6 +436,7 @@ $j(function() {
             }
         },
 	};
+
 	$j.ADVENT.init();
 
 	function intersec(elm, margin){
@@ -510,4 +505,30 @@ $j(function() {
 			$j(".menu__close, .giftengine__close").trigger("click");
 		}
 	};
+
+	var engineClicked = false;
+	$j(".header__cta-btn.btn.btn--big").on("click", function(){
+		var a = $j(this);
+		a.addClass("loading");
+		if(engineClicked === false) {
+			$j.ajax({
+				url: "/content/static/bcom/evenements/2018/12_noel-2018-v2/giftengine.html",
+				cache: true,
+				success: function(data){
+					a.removeClass("loading");
+					$j(".header__container").append($j(data).filter(".gift"));
+					$j("body").append($j(data).filter(":not(.gift)"));
+					engineClicked = true;
+					window.engineLayer.open();
+				}
+			});
+		} else {
+			window.engineLayer.open();
+		}
+	});
+
+	if (location.hash === "#engine") {
+		$j(".header__cta-btn.btn.btn--big").trigger("click");
+	}
+
 });

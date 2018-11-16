@@ -40,4 +40,4 @@ module.exports =[{"12_11":{"n":"Raclette <b>ESSENTIELB</b> Multiplug rouge","r":
 "21_12":{"n":"Coffret <b>MARABOUT</b> Faire sa bière maison","r":1095487,"o":1266520,"d":"Faites vos premiers pas de brasseur !"},
 "22_12":{"n":"Assistant vocal <b>GOOGLE</b> Home mini","r":1098632,"o":1239124,"d":"Demandez lui ce que vous voulez"},
 "23_12":{"n":"Guillotine à saucisson <b>ESSENTIELB</b> Multi-usage","r":8004556,"o":1316639,"d":"Idéale pour faire plaisir à coup sûr !"},
-"24_12":{"n":"Magnétique noir charge micro usb intégré","r":null,"o":null,"d":"Transportez, branchez, aimantez !"}}]
+"24_12":{"n":"Magnétique noir charge micro usb intégré","r":null,"o":null,"d":"Transportez, branchez, aimantez !"}}];

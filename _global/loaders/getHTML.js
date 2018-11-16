@@ -16,7 +16,7 @@ module.exports = function (relative, files, same) {
 		if (path.basename(file).indexOf('ajax') !== -1) {
 			options.chunks = [];
 		} else if (!same) {
-			options.chunks = [path.basename(file, ".js")];
+			options.chunks = [path.basename(file, ".html")];
 		}
 
 		templates.push(new HtmlWebpackPlugin(options));
