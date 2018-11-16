@@ -318,7 +318,7 @@ $j(function() {
 			})
 
 			if (location.hostname !== "localhost") {
-				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading || future){
+				if(intersec($j(".advent__part-prod"), 150) || self.firstLoading){
 					self.getPrices($j(".advent__prod-item--new"), function(){
 						$j(".advent__part-prod").removeClass("loading");
 						$j(".advent__prod-item--new").removeClass("advent__prod-item--new");
