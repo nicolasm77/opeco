@@ -15,7 +15,7 @@
 .black-friday__header{
 	text-align: center;
 	height: 0;
-	min-height: 460px;
+	min-height: 356px;
 	background-position: 50%;
 	background-size: 1000px;
 	background-image: url(../images/header.png);
@@ -34,7 +34,7 @@
 
 	&__title{
         width:80%;
-        margin:10px auto;
+        margin:30px auto 10px;
         padding:5px;
         display:flex;
         align-items:center;
@@ -63,7 +63,7 @@
         color:$color-white;
         font-size:12px;
 		font-family:$font-ars;
-		margin-top: 40px;
+		margin-top: 20px;
 		text-align: right;
 		display: block;
 	}
@@ -117,7 +117,7 @@
         display: none !important;
 	}
 	.black-friday__header{
-		min-height: 260px;
+		min-height: 230px;
 		background-size: cover;
 		background-image: url(../images/header-mobile.png);
 
