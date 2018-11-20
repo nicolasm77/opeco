@@ -1,0 +1,294 @@
+.tract{
+	&__root{
+		position: relative;
+		font-family: $font-ars;
+
+		&::before{
+			content:"";
+			position: absolute;
+			top:0;
+			left: 0;
+			width: 100%;
+			height: 148px;
+			background-color: #EFE4D0;
+			z-index: 0;
+		}
+
+		& + .advent__root .advent__container {
+			padding-top: 120px;
+		}
+	}
+
+	&__container{
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		position: relative;
+		z-index: 10;
+	}
+
+	&__part-bplus{
+		width: calc(50% - 20px);
+		max-width: 430px;
+		border-radius:10px;
+		background-color: #D0C5B1;
+		color:$color-white;
+		text-align: center;
+		box-shadow:7px 7px 20px rgba(#000000, 0.15);
+	}
+
+	&__card-header{
+		padding : 25px 15px 50px;
+		border-radius:10px 10px 0 0;
+		background-color: #B2A07E;
+	}
+
+	&__card-date{
+		font-size:15px;
+		margin-bottom:5px;
+	}
+
+	&__card-title{
+		font-size:28px;
+		position: relative;
+
+		&::after {
+    		display: block;
+    		width: 67px;
+    		height: 2px;
+    		margin: 15px auto 0;
+    		content: "";
+    		background-color: $color-white;
+    	}
+	}
+
+	&__card-body{
+		padding:0 10px 20px;
+	}
+
+	&__card-illu{
+		margin:-28px auto -10px;
+		display: block;
+		max-width:100%;
+		height: auto;
+	}
+
+	&__card-text{
+		font-size:26px;
+	}
+
+	&__card-footer{
+		background-color: #B2A07E;
+		border-radius:0 0 10px 10px;
+		display: flex;
+		align-items: flex-start;
+		padding:15px;
+		text-align: left;
+		flex-direction:row-reverse;
+
+		.btn{
+			flex-shrink: 0;
+			margin-left:20px;
+		}
+	}
+
+	&__card-legal{
+		font-size:12px;
+		line-height: 13px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	&__part-mag{
+		width: calc(50% - 10px);
+    	max-width: 490px;
+	}
+
+	&__mag{
+		width: auto;
+		max-width: none;
+		margin-top: -66px;
+		margin-bottom: -160px;
+	}
+
+	&__mag-title{
+		color:$color-black;
+		text-align: left;
+	}
+
+	&__mag-text{
+		font-size:17px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	&__mag-bottom{
+		margin-top: 15px;
+	}
+}
+
+@media #{$notDesktop}{
+	.tract{
+		&__root{
+			& + .advent__root .advent__container {
+				padding-top: 80px;
+			}
+
+			&::before {
+				height: 142px;
+			}
+		}
+
+		&__card-date{
+			font-size:15px;
+		}
+
+		&__card-title{
+			font-size:25px;
+
+			&::after {
+				margin: 12px auto 0;
+			}
+		}
+
+		&__card-illu{
+			margin:-25px auto -10px;
+		}
+
+		&__card-text{
+			font-size:24px;
+		}
+	}
+}
+
+@media (max-width:800px){
+	.tract{
+		&__card-footer{
+			flex-wrap: wrap;
+
+			.btn{
+				margin-left: auto;
+				margin-right:auto;
+				margin-bottom:10px;
+			}
+		}
+
+		&__card-legal{
+			width: 100%;
+		}
+	}
+}
+
+@media #{$mobile}{
+	.tract{
+		&__root{
+			&::before{
+				height: calc(100% - 100px);
+			}
+
+			& + .advent__root .advent__container {
+				padding-top: 80px;
+			}
+		}
+
+		&__container{
+			display: block;
+		}
+
+		&__part-bplus{
+			width: 100%;
+			max-width: none;
+			margin-top:percentage(75px/610px);
+			box-shadow: 7px 7px 20px 0px rgba(0, 0, 0, 0.20);
+		}
+
+		&__card-header{
+			padding : percentage(30px/610px) percentage(15px/610px);
+		}
+
+		&__card-date{
+			@include fs(22);
+		}
+
+		&__card-title{
+			@include fs(40);
+
+			&::after {
+				width: 50px;
+			}
+		}
+
+		&__card-body{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding:0 percentage(17px/610px);
+		}
+
+		&__card-illu{
+			margin:-2% auto -4% -9%;
+			width: 63%;
+		}
+
+		&__card-text{
+			@include fs(30);
+			text-align: left;
+			width: 43%;
+		}
+
+		&__card-footer{
+			flex-wrap:nowrap;
+			padding:15px;
+
+			.btn{
+				flex-shrink: 0;
+				margin-left:20px;
+				margin-bottom: 0;
+			}
+		}
+
+		&__card-legal{
+			@include fs(18);
+			@include lh(20);
+			width: auto;
+		}
+
+		&__part-mag{
+			width: 100%;
+			max-width: none;
+		}
+
+		&__mag{
+			// margin-top: -66px;
+			// margin-bottom: -160px;
+			margin-top: 0;
+			margin-bottom: percentage(-160px/610px);
+			margin-right: -15px;
+			width: calc(100% + 15px);
+		}
+
+		&__mag-text{
+			@include fs(26);
+		}
+
+		&__mag-bottom{
+			margin-top: percentage(27px/610px);
+		}
+	}
+}
+
+@media #{$small}{
+	.tract{
+		&__card-footer{
+			flex-wrap: wrap;
+
+			.btn{
+				margin-left: auto;
+				margin-right:auto;
+				margin-bottom:10px;
+			}
+		}
+
+		&__card-legal{
+			width: 100%;
+		}
+	}
+}

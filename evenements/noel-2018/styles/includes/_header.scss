@@ -31,10 +31,12 @@
     		background-color: rgba($color-black, 0.5);
     	}
 
-    	& + .advent__root {
+		& + .advent__root,
+		& + .zop__root {
     		margin-top: -250px;
 
-    		.advent__container::before {
+			.advent__container::before,
+			.zop__container::before {
     			border-radius: 20px 20px 0 0;
     		}
     	}
@@ -147,10 +149,12 @@
     	&__root {
     		padding-bottom: 0;
 
-    		& + .advent__root {
+			& + .advent__root,
+			& + .zop__root {
     			margin-top: 0;
 
-    			.advent__container::before {
+				.advent__container::before,
+				.zop__container::before {
     				border-radius: 0;
     			}
     		}
@@ -209,7 +213,8 @@
     		}
 
 
-    		& + .advent__root {
+			& + .advent__root,
+			& + .zop__root  {
     			margin-top: percentage(-200px/640px);
     		}
     	}

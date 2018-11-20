@@ -46,7 +46,6 @@
     	);
     	-webkit-box-decoration-break: clone;
     	box-decoration-break: clone;
-
     	-o-box-decoration-break: clone;
     }
 
@@ -221,6 +220,10 @@
 
     &--white::after {
     	background-color: $color-white;
+    }
+
+    &--gold::after {
+    	background-color: $color-gold;
     }
 }
 @media #{$small} {

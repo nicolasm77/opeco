@@ -1,3 +1,5 @@
+import Swiper from "swiper/dist/js/swiper.min.js";
+
 function number_format(number, decimals, decPoint, thousandsSep) {
     decimals = Math.abs(decimals) || 0;
     number = parseFloat(number);
@@ -40,7 +42,7 @@ $j(function(){
         },
         run : function(){
             var self = this;
-            /* new Swiper('.swiper-container', swiperOptions); */
+            new Swiper('.swiper-container', swiperOptions);
             if(location.hostname !== "localhost"){
                 $j(".push__item").each(function () {
                     self.getPrices($j(this));
@@ -103,7 +105,7 @@ $j(function(){
             $j('#popcart').fadeIn();
         }
     };
-    /*
+
         var swiperOptions = {
             speed: 400,
             slidesPerView: 3,
@@ -141,6 +143,6 @@ $j(function(){
                 prevEl: '.swiper-button-prev',
             },
         };
-    */
+
     $j.managePushProds.init();
 });

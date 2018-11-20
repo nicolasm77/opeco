@@ -579,15 +579,13 @@ td.day{
 
     	&__calendar-day {
     		@include fs(32);
-
-@include lh(43);
+			@include lh(43);
     	}
 
     	&__calendar-table {
     		td {
     			@include fs(24);
-
-@include lh(32);
+				@include lh(32);
     			padding: 10px 0;
     			&::after {
     				top: calc(50% - 20px);
@@ -621,8 +619,7 @@ td.day{
 
     	&__prod-desc {
     		@include fs(26);
-
-@include lh(31);
+			@include lh(31);
     		max-width: 550px;
     	}
 
@@ -632,14 +629,12 @@ td.day{
 
     	&__prod-old-price {
     		@include fs(25);
-
-@include lh(20);
+			@include lh(20);
     	}
 
     	&__prod-new-price {
     		@include fs(40);
-
-@include lh(30);
+			@include lh(30);
     	}
 
     	&__prod-bottom {
@@ -668,8 +663,7 @@ td.day{
     	&__calendar-table {
     		td {
     			@include fs(28);
-
-@include lh(32);
+				@include lh(32);
     			&::after {
     				top: calc(50% - 19px);
     				left: calc(50% - 19px);

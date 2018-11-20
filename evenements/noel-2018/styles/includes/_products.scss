@@ -1,9 +1,9 @@
 .slider {
     &__root {
     	position: relative;
-    	padding: 40px 0 85px;
+    	padding: 60px 0 160px;
     	font-size: 0;
-    	background-color: $color-main;
+    	background-color: #EFE4D0;
 
     	@media #{$mobile} {
     		padding: 40px 0 55px;
@@ -50,7 +50,15 @@
     		&:hover {
     			background-position: center left;
     		}
-    	}
+		}
+
+		.push__item a{
+			background-color: $color-white;
+		}
+
+		.push__bottom{
+			border-color:#EFE4D0;
+		}
     }
 
     &__title {
