@@ -224,7 +224,7 @@
 		thead td,
 		td:empty,
 		td.day-current,
-		td.day-future,
+		// td.day-future,
 		td.day-none{
 			cursor: default;
 			&::after{
@@ -263,6 +263,18 @@
 		position: relative;
 		height: 0;
 		padding-bottom: 100%;
+		background-position: center center;
+		background-size:contain;
+		background-repeat: no-repeat;
+
+		video{
+			transition:opacity 0.2s;
+			opacity: 0;
+
+			&.play{
+				opacity: 1;
+			}
+		}
 	}
 
 	&__prod-img{
