@@ -25,6 +25,29 @@ $j('.edito__root .nav--item').click(function(){
     }
 });
 
+function clickActive(a){
+    if(a === ""){
+        a = "#cooking";
+    }
+    var b = $j(a);
+    var c = a.slice(1);
+    if(!b.hasClass('active')){
+        $j('.edito__root .nav--item.active').removeClass('active');
+        $j('.page__root.active').removeClass('active');
+        b.addClass('active');
+        $j('[data-nav="'+c+'"]').addClass('active');
+    }
+
+}
+$j('.edito__root .nav--item').click(function(){
+    clickActive($j(this));
+});
+
+$j(window).on('hashchange',function(){ 
+    var hash = location.hash;
+    clickActive(hash);
+});
+
 //colors
 $j('.articles__root .article__item').each(function(){
     var color = $j(this).attr('data-color');
@@ -42,3 +65,9 @@ $j('.page__root .video').on('click','.video__content.in',function(){
     $j('body, html').css('overflow','inherit');
     $j(this).fadeOut().removeClass('in').find('.video__frame').attr('src','');
 })
+
+
+$j(function(){
+    var hash = location.hash;
+    clickActive(hash);
+});

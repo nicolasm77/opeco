@@ -167,8 +167,7 @@ module.exports = {
 									publicPath: stagingPath + "/assets"
 								}
 							},
-							{
-								//optimisation des images
+							/*{
 								loader: 'img-loader',
 								options: {
 									plugins: [
@@ -182,7 +181,7 @@ module.exports = {
 										})
 									]
 								}
-							}
+							}*/
 						]
 					}
 				]
