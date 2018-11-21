@@ -44,7 +44,7 @@
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.5",
 		"babel-preset-env": "^1.7.0",
-		"bubbles": "https://github.com/nicolasm77/bubbles.git",
+		"bubbles": "git+https://github.com/nicolasm77/bubbles.git",
 		"frameworkHUB": "https://github.com/nicolasm77/framework.git",
 		"glob-all": "^3.1.0",
 		"imagemin": "^5.3.1",
