@@ -47,8 +47,9 @@
 					}
 					.btn-orange{
 					display:inline-block;
-					min-width:200px;
+					min-width:135px;
 					padding:7px 30px;
+					margin:10px 5px 0px 0;
 					font-family: Arial, "Helvetica Neue", Helvetica, "sans-serif";
 					font-size:13px;
 					font-weight:700;
@@ -234,6 +235,11 @@
 				margin:15px;
 				flex: 1 95%;
 				.content-text{
+					.btn-orange{
+					display:inline-block;
+					width:100%;
+					
+					}
 					h2{
 						
 						font-size: 20px;
@@ -258,6 +264,7 @@
 						p{
 							line-height: 15px;
 						}
+					
 					}
 					&.visuel{
 						text-align: center;
