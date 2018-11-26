@@ -46,9 +46,19 @@
     	position: relative;
     	z-index: 10;
 
-// padding-bottom: 90px;
+		// padding-bottom: 90px;
     	padding-bottom: 60px;
-    }
+	}
+
+	&__date{
+		text-align: center;
+		color:$color-white;
+		font-size:14px;
+		display: block;
+		font-weight: bold;
+		position: relative;
+		top: -21px;
+	}
 
     &__title {
     	// font-size: 76px;
@@ -221,7 +231,13 @@
 
     	&__container {
     		padding-bottom: 0;
-    	}
+		}
+
+		&__date{
+			top: 0;
+			font-size:12px;
+			margin-bottom: 5px;
+		}
 
     	&__title {
     		@include fs(74);
@@ -269,6 +285,13 @@
     	&__cta-btn {
     	}
     }
+}
+@media #{$small}{
+	.header{
+		&__date{
+			font-size:11px;
+		}
+	}
 }
 
 #filAriane {

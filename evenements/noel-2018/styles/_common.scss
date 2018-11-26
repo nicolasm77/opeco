@@ -156,6 +156,18 @@
     	}
     }
 
+    &--white2 {
+    	background-color: transparent;
+    	border-color: $color-white;
+
+    	@media #{$desktop} {
+    		&:hover {
+    			color: $color-gold;
+    			background-color: $color-white;
+    		}
+    	}
+    }
+
     &--golden {
     	background-color: $color-gold;
     	border-color: $color-gold;
