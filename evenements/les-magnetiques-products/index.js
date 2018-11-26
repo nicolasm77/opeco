@@ -33,7 +33,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
               slidesPerView: 1.5
             },
             500: {
-                slidesPerView: 2.2 
+                slidesPerView: 2.2
             }
           }
     });
@@ -54,12 +54,12 @@ $j('.navbar__root .nav__item').click(function(){
 })
 
 //video
-$j('.articles article.video .visuel').click(function(){
-    var srcIframe = $j(this).parent('.video').find('.video__content .video__frame').attr('data-src');
-    $j('body, html').css('overflow','hidden');
-    $j(this).parent('.video').find('.video__content').fadeIn().addClass('in').find('.video__frame').attr('src',srcIframe);
-})
-$j('.articles article.video').on('click','.video__content.in',function(){
-    $j('body, html').css('overflow','inherit');
-    $j(this).fadeOut().removeClass('in').find('.video__frame').attr('src','');
-})
+// $j('.articles article.video .visuel').click(function(){
+//     var srcIframe = $j(this).parent('.video').find('.video__content .video__frame').attr('data-src');
+//     $j('body, html').css('overflow','hidden');
+//     $j(this).parent('.video').find('.video__content').fadeIn().addClass('in').find('.video__frame').attr('src',srcIframe);
+// })
+// $j('.articles article.video').on('click','.video__content.in',function(){
+//     $j('body, html').css('overflow','inherit');
+//     $j(this).fadeOut().removeClass('in').find('.video__frame').attr('src','');
+// })

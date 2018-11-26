@@ -37,7 +37,7 @@
         display:flex;
         align-items:center;
     }
-    
+
     &__title h1{
         text-align:center;
         width:100%;
@@ -47,7 +47,7 @@
         font-family:$font-ars;
         font-weight:bold;
     }
-    
+
     &__title h1 span{
         background: linear-gradient(to bottom, rgba(220,167,87,0) 17%,rgba(220,167,87,1) 17%,rgba(220,167,87,1) 90%,rgba(220,167,87,0) 90%,rgba(220,167,87,0) 100%);
         padding: 0 10px;
@@ -56,7 +56,7 @@
 		box-decoration-break: clone;
 		font-family: $font-ars;
 	}
-	
+
 	&__trad{
         color:$color-white;
         font-size:12px;
@@ -216,7 +216,7 @@
 
         &__illu{
 			display: none;
-			
+
             &--sim{
 				display: block;
 				height: auto !important;
@@ -245,7 +245,7 @@
 	.container-center{
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;	
+		justify-content: space-between;
 	}
 	.ope{
 		width: 49%;
@@ -265,11 +265,11 @@
 
 @media #{$mobile} {
 	.ope__root{
-		margin-top: 0px;
+		// margin-top: 0px;
 		.container-center{
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;	
+			justify-content: space-between;
 		}
 		.ope{
 			width: 100%;
@@ -363,7 +363,7 @@
 		font-size:17px;
 		font-family: $font-ars;
 	}
-	
+
 	&__odr-text{
 		font-size:20px;
 		font-family: $font-ars;
@@ -501,7 +501,7 @@
 			font-size:65px;
 			line-height:1.06;
 		}
-		
+
 		&__trad{
 			color:$color-white;
 			font-size:12px;
@@ -522,4 +522,33 @@
 			font-size: 12px;
 		}
 	}
+}
+
+.scroll-bottom{
+	cursor: pointer;
+	margin-top: -30px;
+	padding-top:10px;
+    padding-bottom: 14px;
+
+	&__svg{
+		display: block;
+		margin:0 auto;
+		transform: rotate(180deg);
+		height:20px !important;
+		position: relative;
+		animation-name: example;
+    	animation-duration: 0.7s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+	}
+}
+@media #{$mobile}{
+	.scroll-bottom{
+		display: none;
+	}
+}
+
+@keyframes example {
+    from {top: -8px;}
+    to {top:8px}
 }

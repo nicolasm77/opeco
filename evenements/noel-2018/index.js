@@ -8,7 +8,7 @@ IntersectionObserver.prototype.USE_MUTATION_OBSERVER = false;
 /* BUBBLES */
 import bubblecss from "bubbles/dist/main.css";
 import bubbleCalcul from "bubbles/dist/main.js";
-import bubbleAnim from "./scripts/anim_bubbles.js";
+import bubbleAnim from "bubbles/dist/anims";
 
 
 /* TOP SCROLLBAR */
@@ -16,16 +16,14 @@ import simplebar from "simplebar"; // or "import SimpleBar from 'simplebar';" if
 import simplebarcss from "simplebar/dist/simplebar.css";
 
 /* CALENDRIER DE L'AVENT */
-import adventProds from "./scripts/advent_prods.js";
+// import adventProds from "./scripts/advent_prods.js";
 
 /* MAIN CSS */
 import style from "./styles/style.scss";
 
-/*
-SWIPER CAROUSEL
-import Swiper from "swiper/dist/js/swiper.min.js";
+/*SWIPER CAROUSEL */
 import SwiperCSS from "swiper/dist/css/swiper.css";
-*/
+
 
 /* PARALLAX */
 // import paro from "paroller.js/dist/jquery.paroller.js";
@@ -47,6 +45,8 @@ window.lazySizesConfig.expand = 350;
 
 
 $j(function() {
+
+	console.log('%c Joyeux Noël !', 'padding: 0 10px;background: linear-gradient(to bottom,rgba(255,255,255,0) 17%,#ccb079 17%,#ccb079 90%,rgba(255,255,255,0) 90%,rgba(255,255,255,0) 100%);-webkit-box-decoration-break: clone;box-decoration-break: clone;font-size: 51px;line-height: 1.06;text-align:center;color:white;font-family:Arial');
 	/* Objet de gestion du menu (affichage, scroll, burger) */
 	$j.MENU = {
 		init: function(){
@@ -264,8 +264,8 @@ $j(function() {
 					self.changeProd();
 				});
 			}else{
-				self.dataProds = adventProds[0];
-				self.changeProd();
+				// self.dataProds = adventProds[0];
+				// self.changeProd();
 			}
 		},
 

@@ -19,5 +19,9 @@ window.lazySizesConfig.expand = 350;
 
 
 $j(document).ready(function() {
-    
+	$j(".scroll-bottom").on("click", function(){
+		$j('html, body').animate({
+			scrollTop : $j(".prods__root:visible").offset().top
+		}, 300);
+	})
 });
