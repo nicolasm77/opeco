@@ -6,6 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 
 dist/
+**/dist/
+**/dist2/
+**/dist3/
+**/save/
+
 
 # Runtime data
 pids
