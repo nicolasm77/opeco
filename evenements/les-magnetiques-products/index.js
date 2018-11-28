@@ -27,7 +27,10 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
           depth: 90,
           modifier: 1,
           slideShadows : false,
-        },
+		},
+		hashNavigation: {
+			watchState: true,
+		},
         breakpoints: {
             380: {
               slidesPerView: 1.5
@@ -37,21 +40,29 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
             }
           }
     });
-    navSwiper.on('slideChange', function () {
-        var activeMobile = $j('.navbar__root .swiper-container .swiper-slide:eq('+navSwiper.activeIndex+') .nav__item').attr('data-nav');
-        $j('.article_section.active').removeClass('active');
-        $j('.article_section[data-article="'+activeMobile+'"]').addClass('active');
-    });
+    // navSwiper.on('slideChange', function () {
+	// 	console.log(navSwiper.activeIndex)
+    //     var activeMobile = $j('.navbar__root .swiper-container .swiper-slide:eq('+navSwiper.activeIndex+') .nav__item').attr('data-nav');
+    //     $j('.article_section.active').removeClass('active');
+    //     $j('.article_section[data-article="'+ activeMobile +'"]').addClass('active');
+    // });
 }
-$j('.navbar__root .nav__item').click(function(){
-    if(!$j(this).hasClass('active')){
-        var art = $j(this).attr('data-nav');
-        $j('.navbar__root .nav__item.active').removeClass('active');
-        $j(this).addClass('active');
-        $j('.article_section.active').removeClass('active');
-        $j('.article_section[data-article="'+art+'"]').addClass('active');
-    }
-})
+$j(window).on("hashchange", function(){
+	const hash = (location.hash)? location.hash.substring(1) : "chargeur-secteur";
+
+	$j('.navbar__root .nav__item.active').removeClass('active');
+	$j(".nav__item[href='#"+ hash +"']").addClass('active');
+	$j('.article_section.active').removeClass('active');
+	$j('.article_section[data-article="'+hash+'"]').addClass('active');
+
+	const limite = $j(".press__root").offset().top;
+	if($j(window).scrollTop() < limite){
+		$j('html, body').animate({
+			scrollTop: limite - 5
+		}, 300);
+	}
+});
+$j(window).trigger("hashchange");
 
 //video
 // $j('.articles article.video .visuel').click(function(){
