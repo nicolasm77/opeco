@@ -15,6 +15,27 @@
 	}
 }
 
+.seo{
+	&__root{
+		padding:40px 0;
+	}
+
+	&__text{
+		font-size:13px;
+		line-height: 16px;
+
+		p + p::before{
+			content:"\00a0";
+			display: block;
+			width:100%;
+		}
+
+		a{
+			color:inherit;
+		}
+	}
+}
+
 @media #{$mobile}{
 	.footer{
 		&__root{
