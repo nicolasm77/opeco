@@ -149,8 +149,13 @@ $j(function() {
 
 			var observer = new IntersectionObserver((entries) => {
 				entries.forEach(entry => {
+					const hash = location.hash;
 					if (entry.intersectionRatio > 0) {
-						self.$container.append(self.makeIframe(self.$items.eq(0).data("yt"), ""));
+						if(hash.indexOf("video") > -1){
+							self.$items.eq(parseInt(hash.substring(7))-1).trigger("click",[true]);
+						}else{
+							self.$container.append(self.makeIframe(self.$items.eq(0).data("yt"), ""));
+						}
 						observer.disconnect();
 					}
 				});
@@ -158,10 +163,15 @@ $j(function() {
 			observer.observe(self.$container.get(0));
 		},
 
-		changeVideo: function(e){
+		changeVideo: function(e, mute){
 			const self = this;
 			const elm = $j(e.currentTarget);
-			const iframe = self.makeIframe(elm.data("yt"), "?autoplay=1");
+
+			if(mute){
+				var iframe = self.makeIframe(elm.data("yt"), "?autoplay=1&mute=1");
+			}else{
+				var iframe = self.makeIframe(elm.data("yt"), "?autoplay=1");
+			}
 
 			if(!elm.hasClass("current")){
 				self.$items.filter(".current").removeClass("current");
