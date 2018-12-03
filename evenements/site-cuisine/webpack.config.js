@@ -1,5 +1,7 @@
-module.exports = {
-	fixedYearPath : "",
-	fixedMonthPath : "",
-	sameJSandCSS : true
-}
+
+	module.exports = {
+		fixedYearPath : "2018",
+		fixedMonthPath : "11",
+		sameJSandCSS : true
+	}
+	

@@ -9,6 +9,9 @@
 //module Node.js pour la gestion des chemins d'accès au fichier
 const path = require('path');
 
+//module Node.js pour le système de fichier
+const fs = require("fs");
+
 //chemin de l'évenement en cours
 const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
 
@@ -16,12 +19,25 @@ const relativePath = "./" + path.relative(__dirname, process.env.INIT_CWD);
 const config = require(relativePath + '/webpack.config.js');
 const now = new Date();
 
+//fixe le mois et l'année dans le nom du dossier sur le FTP à la 1ère execution de "npm run mep"
+if(config.fixedMonthPath === ""){
+	config.fixedYearPath = now.getFullYear()
+	config.fixedMonthPath = ((now.getMonth() + 1 < 10) ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1));
+	fs.writeFileSync(relativePath + '/webpack.config.js', `
+	module.exports = {
+		fixedYearPath : "${config.fixedYearPath}",
+		fixedMonthPath : "${config.fixedMonthPath}",
+		sameJSandCSS : ${config.sameJSandCSS}
+	}
+	`)
+}
+
 // chemin du dossier FTP
 let stagingPath = "";
 if(path.dirname(path.dirname(relativePath)).split(path.sep).pop() == "vivre-mieux"){
 	stagingPath = "/content/static/bcom/desktop/evenements/2018/01_espace-beaute/asset/images/"+path.basename(process.env.INIT_CWD);
 }else{
-	stagingPath = "/content/static/bcom/evenements/" + ((config.fixedYearPath != "") ? config.fixedYearPath : now.getFullYear()) + "/" + ((config.fixedMonthPath != "") ? config.fixedMonthPath : ((now.getMonth() + 1 < 10) ? "0" + (now.getMonth() + 1) : (now.getMonth() + 1))) + "_" + path.basename(process.env.INIT_CWD);
+	stagingPath = "/content/static/bcom/evenements/" + config.fixedYearPath + "/" + config.fixedMonthPath + "_" + path.basename(process.env.INIT_CWD);
 }
 
 
@@ -167,7 +183,7 @@ module.exports = {
 									publicPath: stagingPath + "/assets"
 								}
 							},
-							/*{
+							{
 								loader: 'img-loader',
 								options: {
 									plugins: [
@@ -176,12 +192,12 @@ module.exports = {
 											arithmetic: false,
 											quality: 80
 										}),
-										require('imagemin-pngquant')({
-											floyd: 0.5
-										})
+										// require('imagemin-pngquant')({
+										// 	floyd: 0.5
+										// })
 									]
 								}
-							}*/
+							}
 						]
 					}
 				]
